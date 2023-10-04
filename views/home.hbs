@@ -7,24 +7,28 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<div class="font h-96 text-xl bg-teal-100 flex w-9/12">
-    <form action="" method="POST">
-        <label for="firstName">First Name</label>
-        <input type="text" name="firstName" id="firstName" required>
-        <label for="lastName">Last Name</label>
-        <input type="text" name="lastName" id="lastName" required>
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" name="confirmPassword" id="confirmPassword" required>
-        <button type="submit" class="btn">Register</button>
-        <button disabled="disabled" class="bg-teal-800">ss</button>
+<div class="font h-96 flex w-9/12 items-center justify-between h-screen mx-auto bg-slate-100">
+    <img src="/assets/images/sign-up.svg" width=600" alt="">
+    <form action="" method="POST" class="flex flex-col p-10 rounded-3xl w-1/3 box-border bg-white shadow-lg">
+        <div class="flex justify-between w-full">
+            <div class="flex flex-col mr-1">
+        <label for="firstName" class="font-semibold text-sm">First Name</label>
+        <input type="text" name="firstName" id="firstName" class="w-full p-2 border-2 border-slate-300 rounded-md mt-1 mb-3" required>
+            </div>
+            <div class="flex flex-col ml-1">
+        <label for="lastName" class="font-semibold text-sm">Last Name</label>
+        <input type="text" name="lastName" id="lastName" class="w-full p-2 border-2 border-slate-300 rounded-md mt-1 mb-3" required>
+            </div>
+        </div>
+        <label for="email" class="font-semibold text-sm">Email</label>
+        <input type="email" name="email" id="email" class="p-2 border-2 border-slate-300 rounded-md mt-1 mb-3" required>
+        <label for="password" class="font-semibold text-sm">Password</label>
+        <input type="password" name="password" id="password" class="p-2 border-2 border-slate-300 rounded-md mt-1 mb-3" required>
+        <label for="confirmPassword" class="font-semibold text-sm">Confirm Password</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" class="p-2 border-2 border-slate-300 rounded-md mt-1 mb-3" required>
+        <button type="submit" class="btn py-3 bg-sky-400 hover:bg-sky-500 rounded-md mt-3 font-semibold">Sign Up</button>
     </form>
 </div>
-<h1 class="text-3xl font-bold underline text-red-300 bg-500 my-100 bg-teal-500">
-    Hello world!
-</h1>
+
 </body>
 </html>
