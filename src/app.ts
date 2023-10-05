@@ -41,8 +41,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 app.set('views', viewsPath);
-app.use('sign-in', loginRouter);
-app.use('sign-up', registerRouter);
+app.use('/sign-in', loginRouter);
+app.use('/sign-up', registerRouter);
 app.use(( req : Request , res : Response , next : NextFunction ) => {
     logger.info(`Request Received ${req.method} ${req.url} ${req.ip}`);
     console.log(`Request Received ${req.method} ${req.url} ${req.ip}`);
@@ -50,7 +50,6 @@ app.use(( req : Request , res : Response , next : NextFunction ) => {
 });
 const checkAuth = ( req : Request , res : Response, next : NextFunction ) => {
     if ( req.session && req.session.user ) {
-
         next();
     }
     else {
