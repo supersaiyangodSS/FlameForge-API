@@ -27,37 +27,37 @@ const hbs = create({
     layoutsDir: layoutPath,
     partialsDir: partialsPath
 })
+const sessions = session({
+    secret,
+    resave: false,
+    saveUninitialized: true
+})
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
-app.use(
-    session({
-        secret,
-        resave: false,
-        saveUninitialized: true
-    })
-);
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(sessions);
 app.use(express.static('public'));
 app.set('views', viewsPath);
 app.use('/sign-in', loginRouter);
 app.use('/sign-up', registerRouter);
 app.use(( req : Request , res : Response , next : NextFunction ) => {
-    logger.info(`Request Received ${req.method} ${req.url} ${req.ip}`);
-    console.log(`Request Received ${req.method} ${req.url} ${req.ip}`);
+    logger.info(`Request Received ${req.method} ${req.hostname} ${req.url} ${req.ip}`);
+    console.log(`Request Received ${req.method} ${req.hostname} ${req.url} ${req.ip}`);
     next();
 });
+
 const checkAuth = ( req : Request , res : Response, next : NextFunction ) => {
     if ( req.session && req.session.user ) {
         next();
     }
     else {
-        res.redirect('/');
+        res.redirect('/sign-in');
     }
 }
 
-app.get('/', ( req : Request , res : Response) => {
+app.get('/', checkAuth, ( req : Request , res : Response) => {
     res.render('home', {
         title: "Homepage"
     });

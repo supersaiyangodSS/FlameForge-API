@@ -14,6 +14,11 @@ const userSchema = new Schema<IUser>({
         type: String,
         required: true,
     },
+    username: {
+        type: String,
+        unique: true,
+        required: true,
+    },
     password: {
         type: String,
         required: true,
@@ -33,7 +38,7 @@ const userSchema = new Schema<IUser>({
     },
     isTokenUsed: {
         type: Boolean,
-        required: false,
+        default: false,
     },
     createdAt: {
         type: Date,
