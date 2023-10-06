@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { loginPage, loginUser } from '../controllers/loginController.js';
+import {loginPage, loginUser, logoutUser} from '../controllers/loginController.js';
 import { body } from 'express-validator';
 const router : Router = Router();
 
@@ -11,5 +11,7 @@ const validateUsers = [
 router.route('/')
     .get(loginPage)
     .post(validateUsers, loginUser)
+
+router.get('/logout', logoutUser);
 
 export default router;

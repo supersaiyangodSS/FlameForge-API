@@ -15,20 +15,27 @@ const loginUser = async (req: Request, res: Response) => {
         console.log('validation error')
         return res.status(409).json({
             errors: errors.array().map((key) => key.msg)
-        })
+        });
     }
     try {
         const user = await User.findOne({username})
         if (!user) {
             return res.status(404).json({
                 notFound: `${username} does not exits`
-            })
+            });
+        }
+        if (password === user.password) {
+            return res.status(401).json({
+                unauthorized: 'wrong username or password'
+            });
+        }
+        if (user.verified === false) {
+            return res.status(302).redirect('/verify');
         }
         req.session.user = user.username;
+        console.log('session ${user.username}') //TODO: Remove Later
         console.log(`session is `, req.session.user);
-        return res.status(400).json({
-            bruh: `${req.session.user}`
-        })
+        return res.status(200).redirect('/dashboard');
     }
     catch (error) {
         console.log(error);
@@ -38,4 +45,16 @@ const loginUser = async (req: Request, res: Response) => {
     }
 }
 
-export { loginPage , loginUser };
+const logoutUser = (req: Request, res: Response) => {
+    req.session.destroy((err) => {
+    if (err) {
+        console.error('Error destroyin session', err);
+    }
+    else {
+        console.log('session destroyed successfully')
+    res.status(301).redirect('/sign-in');
+    }
+    });
+}
+
+export { loginPage , loginUser , logoutUser };

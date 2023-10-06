@@ -20,6 +20,7 @@ const layoutPath = join(__dirname, "../views/layouts");
 const partialsPath = join(__dirname, "../views/partials");
 const secretString = randomBytes(20).toString('hex');
 const secret = process.env.SECRET || secretString;
+const oneDay = 1000 * 60 * 60 * 24;
 
 const hbs = create({
     extname: 'hbs',
@@ -30,6 +31,7 @@ const hbs = create({
 const sessions = session({
     secret,
     resave: false,
+    cookie: { maxAge: oneDay },
     saveUninitialized: true
 })
 app.engine('hbs', hbs.engine);
