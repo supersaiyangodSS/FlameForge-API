@@ -48,7 +48,7 @@ const loginUser = async (req: Request, res: Response) => {
 const logoutUser = (req: Request, res: Response) => {
     req.session.destroy((err) => {
     if (err) {
-        console.error('Error destroyin session', err);
+        console.error('Error destroying session', err);
     }
     else {
         console.log('session destroyed successfully')

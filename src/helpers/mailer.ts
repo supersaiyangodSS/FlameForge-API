@@ -1,10 +1,11 @@
 import { createTransport } from 'nodemailer';
 
+
 const transporter = createTransport({
     service: 'gmail',
     auth: {
-        user: 'vedantsapalkar99@gmail.com', // TODO: use process.env.SERVER_EMAIL
-        pass: 'kprx vfgn vapl kgjb' // TODO: use process.env.SERVER_EMAIL_SECRET
+        user: process.env.SERVER_EMAIL,
+        pass: process.env.SERVER_EMAIL_SECRET
     }
 });
 
