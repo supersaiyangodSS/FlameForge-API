@@ -7,8 +7,6 @@
   "scripts": {
     "start": "node ./dist/server.js",
     "server": "nodemon ./dist/server.js -e js,ts,hbs",
-    "serverts": "node --watch-path=./views ./dist/server.js",
-    "browser-sync": "browser-sync start --proxy http://localhost:4000 --port 4001 --files '/views/**/*'",
     "build": "npx tailwindcss -i ./src/styles/input.css -o ./public/css/style.css --watch",
     "ts-watch": "tsc -w",
     "main": "tsc"

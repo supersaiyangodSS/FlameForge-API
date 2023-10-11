@@ -2,15 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="{{desc}}">
     <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 <nav>
 </nav>
-    <div class="bg-red-300 h-screen">Dashboards</div>
+    <div class="h-screen flex justify-end">
+        <div class="sidebar bg-slate-800 fixed top-0 left-0 h-full w-1/5 p-2 border-gray-600 border-r-2 border-solid flex flex-col justify-between">
+        <div class="sidebar-top">
+
+        <div class="card flex items-center w-full rounded-full py-2 px-4 mt-3">
+            <div class="pfp">
+                <div class="rounded-full bg-teal-700 border-white border-4 border-solid">
+        <img src="assets/images/Xiao.webp" alt="profile-pic" width="75" height="75" class="rounded-full">
+                </div>
+            </div>
+            <div class="info ml-4 text-white">
+                <p class="text-xl">Vedant</p>
+                <p class="desc text-sm mt-1 font-thin">~Admin</p>
+            </div>
+        </div>
+        <ul class="flex flex-col items-center">
+            <li class="w-full mt-4"><button class="hover:bg-slate-700 rounded-full text-teal-100 py-4 px-4 w-full transition-colors text-left" id="nav-characters">Characters</button></li>
+            <li class="w-full mt-4"><button class="hover:bg-slate-700 rounded-full text-teal-100 py-4 px-4 w-full transition-colors text-left" id="nav-weapons">Weapons</button></li>
+            <li class="w-full mt-4"><button class="hover:bg-slate-700 rounded-full text-teal-100 py-4 px-4 w-full transition-colors text-left" id="nav-artifacts">Artifacts</button></li>
+        </ul>
+        </div>
+        <div>
+
+        <ul class="flex mb-7 justify-evenly">
+            <li><button class="btn flex p-4 rounded-full text-teal-500 hover:text-teal-200 hover:bg-slate-700 transition-colors"><span class="material-symbols-outlined">home</span></button></li>
+            <li><button class="btn flex p-4 rounded-full text-teal-500 hover:text-teal-200 hover:bg-slate-700 transition-colors"><span class="material-symbols-outlined">people</span></button></li>
+            <li><button class="btn flex p-4 rounded-full text-teal-500 hover:text-teal-200 hover:bg-slate-700 transition-colors"><span class="material-symbols-outlined">settings</span></button></li>
+            <li><button class="btn flex p-4 rounded-full text-teal-500 hover:text-teal-200 hover:bg-slate-700 transition-colors"><span class="material-symbols-outlined">logout</span></button></li>
+        </ul>
+        <p class="text-center text-white text-xs opacity-50">v1.0.0 ~ FlameForge API</p>
+        </div>
+        </div>
+        <div class="main 1/4 w-4/5 overflow-y-auto px-10 py-10 bg-slate-800 text-white" id="content">
+            <p class="text-3xl">Characters</p>
+            <p id="content-data"></p>    
+        </div>
+    </div>
+    <script defer src="/js/script.js"></script>
 </body>
 </html>
