@@ -1,64 +1,42 @@
-const nav_link_characters = document.getElementById('nav-characters');
-const nav_link_weapons = document.getElementById('nav-weapons');
-const nav_link_artifacts = document.getElementById('nav-artifacts');
-const content = document.getElementById('content');
-
-const data = {
-    'characters': 'characters div',
-    'weapons': 'weapons div',
-    'artifacts': 'artifacts div'
-}
-
-function showContent(item) {
-    const contentData = document.getElementById('content-data');
-    let tempData = '';
-    if (item == 'characters') {
-        tempData = data.characters
+const navLinks = {
+    characters: document.getElementById('nav-characters'),
+    weapons: document.getElementById('nav-weapons'),
+    artifacts: document.getElementById('nav-artifacts')
+  };
+  
+  const contentData = document.getElementById('content-data');
+  const heading = document.getElementById('heading');
+  
+  const data = {
+    characters: `<h1 class="bg-teal-500">hello world</h1>
+      <input type="text" name="name">
+      <button class="btn">send</button>`,
+    weapons: 'weapons div',
+    artifacts: 'artifacts div'
+  };
+  
+  function showContent(item) {
+    contentData.innerHTML = data[item];
+  }
+  
+  function handleNavClick(item, link) {
+    showContent(item);
+    heading.innerHTML = link.innerHTML;
+  
+    for (const navLink of Object.values(navLinks)) {
+      navLink.classList.remove('light-gray');
     }
-    if (item == 'artifacts') {
-        tempData = data.artifacts
-    }
-    if (item == 'weapons') {
-        tempData = data.weapons
-    }
-    contentData.innerText = tempData;
-}
-
-nav_link_characters.addEventListener('click', () => {
-    showContent('characters');
-    if (nav_link_artifacts.classList.contains('light-gray')) {
-        nav_link_artifacts.classList.remove('light-gray')
-    }
-    if (nav_link_weapons.classList.contains('light-gray')) {
-        nav_link_weapons.classList.remove('light-gray');
-    }
-    nav_link_characters.classList.add('light-gray')
-});
-nav_link_artifacts.addEventListener('click', () => {
-    showContent('characters');
-    if (nav_link_characters.classList.contains('light-gray')) {
-        nav_link_characters.classList.remove('light-gray')
-    }
-    if (nav_link_weapons.classList.contains('light-gray')) {
-        nav_link_weapons.classList.remove('light-gray');
-    }
-    nav_link_artifacts.classList.add('light-gray')
-});
-nav_link_weapons.addEventListener('click', () => {
-    showContent('characters');
-    if (nav_link_artifacts.classList.contains('light-gray')) {
-        nav_link_artifacts.classList.remove('light-gray')
-    }
-    if (nav_link_characters.classList.contains('light-gray')) {
-        nav_link_characters.classList.remove('light-gray');
-    }
-    nav_link_weapons.classList.add('light-gray')
-});
-
-nav_link_artifacts.addEventListener('click' ,() => {
-    showContent('artifacts');
-});
-
-nav_link_weapons.addEventListener('click', () => {
-    showContent('weapons');
-})
+    navLinks[item].classList.add('light-gray');
+  }
+  
+  for (const [item, navLink] of Object.entries(navLinks)) {
+    navLink.addEventListener('click', () => {
+      handleNavClick(item, navLink);
+    });
+  }
+  
+  // Initial content display
+  showContent('characters');
+  heading.innerHTML = navLinks.characters.innerHTML;
+  navLinks.characters.classList.add('light-gray');
+  
