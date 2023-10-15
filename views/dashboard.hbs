@@ -28,27 +28,150 @@
             </div>
         </div>
         <ul class="flex flex-col items-center">
-            <li class="w-full mt-4"><button class="hover:bg-slate-700 rounded-full text-teal-100 py-4 px-4 w-full transition-colors text-left" id="nav-characters">Characters</button></li>
-            <li class="w-full mt-4"><button class="hover:bg-slate-700 rounded-full text-teal-100 py-4 px-4 w-full transition-colors text-left" id="nav-weapons">Weapons</button></li>
-            <li class="w-full mt-4"><button class="hover:bg-slate-700 rounded-full text-teal-100 py-4 px-4 w-full transition-colors text-left" id="nav-artifacts">Artifacts</button></li>
+            <li class="w-full mt-4"><button class="flex items-center hover:bg-slate-700 rounded-full text-teal-100 py-4 px-4 w-full transition-colors text-left" id="nav-1"><img src="/assets/images/ult.png" alt="ultimate" class="mr-2" width="40">Characters</button></li>
+            <li class="w-full mt-4"><button class="flex items-center hover:bg-slate-700 rounded-full text-teal-100 py-4 px-4 w-full transition-colors text-left" id="nav-2"><img src="/assets/images/skill.png" alt="ultimate" class="mr-2" width="40">Weapons</button></li>
+            <li class="w-full mt-4"><button class="flex items-center hover:bg-slate-700 rounded-full text-teal-100 py-4 px-4 w-full transition-colors text-left" id="nav-3"><img src="/assets/images/NA.png" alt="ultimate" class="mr-2" width="40">Artifacts</button></li>
         </ul>
         </div>
         <div>
 
-        <ul class="flex mb-7 justify-evenly">
-            <li><button class="btn flex p-4 rounded-full text-teal-500 hover:text-teal-200 hover:bg-slate-700 transition-colors"><span class="material-symbols-outlined">home</span></button></li>
-            <li><button class="btn flex p-4 rounded-full text-teal-500 hover:text-teal-200 hover:bg-slate-700 transition-colors"><span class="material-symbols-outlined">people</span></button></li>
-            <li><button class="btn flex p-4 rounded-full text-teal-500 hover:text-teal-200 hover:bg-slate-700 transition-colors"><span class="material-symbols-outlined">settings</span></button></li>
+        <ul class="flex mb-5 justify-evenly">
+            <li><button class="btn flex p-4 rounded-full text-teal-500 hover:text-teal-200 hover:bg-slate-700 transition-colors" id="nav-0"><span class="material-symbols-outlined">home</span></button></li>
+            <li><button class="btn flex p-4 rounded-full text-teal-500 hover:text-teal-200 hover:bg-slate-700 transition-colors" id="nav-5"><span class="material-symbols-outlined">people</span></button></li>
+            <li><button class="btn flex p-4 rounded-full text-teal-500 hover:text-teal-200 hover:bg-slate-700 transition-colors" id="nav-6"><span class="material-symbols-outlined">settings</span></button></li>
             <li><button class="btn flex p-4 rounded-full text-teal-500 hover:text-teal-200 hover:bg-slate-700 transition-colors"><span class="material-symbols-outlined">logout</span></button></li>
         </ul>
-        <p class="text-center text-white text-xs opacity-50">v1.0.0 ~ FlameForge API</p>
+        <p class="text-center text-white text-xs opacity-50 font-sans">v1.0.0 ~ FlameForge API</p>
         </div>
         </div>
         <div class="main 1/4 w-4/5 overflow-y-auto px-10 py-10 bg-slate-800 text-white" id="content">
             <div class="w-3/4 mx-auto overflow-hidden">
-            <p class="text-3xl" id="heading">Characters</p>
-            <p id="content-data" class="mt-2"></p>
+            <p class="text-3xl mb-5" id="heading">Characters</p>
+            <div id="content-data" class="mt-2">
+
+                <div id="content-0">
+                    <p class="text-center text-lg">Welcome to <span class="text-teal-400">FlameForge</span> API Dashboard</p>
+                    <p class="text-center text-sm my-2 font-sans">This API is an independent project created by Vedant and is not affiliated with or endorsed by miHoYo, the developers of Genshin Impact, or its associated entities (collectively referred to as "miHoYo/HoYoVerse"). All rights and credits for Genshin Impact, including its characters, artwork, and related intellectual property, are owned by miHoYo/HoYoVerse. The use of any copyrighted material is solely for informative and non-commercial purposes.</p>
+                    <img src="/assets/images/xiao-main.png" alt="xiao" class="mx-auto" width="600">
+    <h1 class="mb-3 mt-5 text-xl">1. Overview</h1>
+    <p class="font-sans">Welcome to the Genshin Impact API dashboard! This guideline will help you understand the features and functionalities available to enhance your Genshin Impact experience.</p>
+
+    <h2 class="mb-3 mt-5 text-xl">2. Dashboard Navigation</h2>
+    <ul>
+        <li class="mb-2">
+            <h3>Characters:</h3>
+            <p class="font-sans">Access detailed information about Genshin Impact characters.</p>
+        </li>
+        <li class="mb-2">
+            <h3>Weapons:</h3>
+            <p class="font-sans">Explore the wide range of weapons available in Genshin Impact.</p>
+        </li>
+        <li class="mb-2">
+            <h3>Artifacts:</h3>
+            <p class="font-sans">View and analyze various artifacts used in the game.</p>
+        </li>
+    </ul>
+
+    <h2 class="mb-3 mt-5 text-xl">3. Accessing Data</h2>
+    <ul>
+        <li class="mb-2">
+            <h3>Search:</h3>
+            <p class="font-sans">Search for specific characters, weapons, or artifacts.</p>
+        </li>
+        <li class="mb-2">
+            <h3>Filter and Sort:</h3>
+            <p class="font-sans">Customize the display by applying filters and sorting options.</p>
+        </li>
+    </ul>
+
+    <h2 class="mb-3 mt-5 text-xl">4. Usage Guidelines</h2>
+    <ul>
+        <li class="mb-2">
+            <h3>Non-commercial Use:</h3>
+            <p class="font-sans">Use the API and its data for non-commercial purposes only.</p>
+        </li>
+        <li>
+            <h3>Feedback:</h3>
+            <p class="font-sans">We welcome your feedback to improve and enhance the API. Feel free to share your suggestions and report any issues.</p>
+        </li>
+    </ul>
+                </div>
+
+
+                <div class="characters" id="content-1">
+                    <p class="text-lg mb-2">Upload Batch as JSON</p>
+                    <ul class="font-sans">
+                    <li>Choose valid json file to upload</li>
+                    <li>follow syntax given above</li>
+                    <li>incorrect syntax will cause error</li>
+                    <li>recheck json file before upload</li>
+                    </ul>
+                    <form action="/upload" method="post" enctype="multipart/form-data" class="flex justify-between items-center my-10 font-sans border-2 border-teal-500 p-4 rounded-md">
+                    <label for="uploadFile" class="cursor-pointer">
+                    <input type="file" name="jsonFile" id="uploadFile" accept=".json" class="bg-red-50">
+                    Choose File
+                    </label>
+                    <button type="submit" class="flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-md"><span class="material-symbols-outlined mr-1">
+upload_file
+</span> Upload</button>
+                    </form>
+                    <p class="my-3">Valid Data Syntax :</p>
+                    <pre class="language-json flex relative">
+                        <button id="copy-btn" class="absolute right-5 top-5 border-2 border-teal-400 px-4 rounded-md hover:bg-teal-400 active:scale-90 transition-transform">copy</button>
+                    <code id="codeBox">{
+    "name": "string",
+    "rarity": number,
+    "vision": "string",
+    "weapon": "string",
+    "version-release": number,
+    "birthday": "number",
+    "title": ["string"],
+    "constellation": "string",
+    "region": ["string"],
+    "affiliation": ["string"],
+    "images": {
+        "profile": "string",
+        "gacha": "string"
+    },
+    "model": "string",
+    "wiki-url": "string"
+}</code>
+                    </pre>
+                    <p class="my-3">Demo Response :</p>
+                        <pre class="language-json flex relative">
+                    <code id="codeBox">{
+    "name": "Diluc",
+    "rarity": 5,
+    "vision": "Pyro",
+    "weapon": "Claymore",
+    "version-release": 1.0,
+    "birthday": "April 30",
+    "title": ["The Dark Side of Dawn"],
+    "constellation": "Noctua",
+    "region": ["Mondstadt"],
+    "affiliation": ["Dawn Winery"],
+    "images": {
+        "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Diluc_icon.png",
+        "profile": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%25BF%25AA%25E5%258D%25A2%25E5%2585%258B/avatar_header.jpg"
+        "gacha": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%25BF%25AA%25E5%258D%25A2%25E5%2585%258B/avatar.png"
+    },
+    "model": "tall male",
+    "wiki-url": "https://genshin-impact.fandom.com/wiki/Diluc"
+}</code>
+                    </pre>
+                    
+                </div>
             </div>
+            <div id="content-2">
+                weapon
+            </div>
+
+            <div id="content-3">
+                artifacts
+            </div>
+
+            </div>
+
         </div>
     </div>
     <script defer src="/js/script.js"></script>
