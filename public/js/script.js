@@ -68,10 +68,18 @@ artifacts.addEventListener('click', () => {
     showTitle(artifcatsTitle)
 });
 
+const fileInput = document.getElementById('uploadFile');
+const fileDisplay = document.getElementById('file_display');
+
+fileInput.addEventListener('change', (event) => {
+    const fileName = event.target.files[0].name;
+    fileDisplay.textContent = fileName;
+})
 
 //test only
-charactersContent.style.display = 'block'
-homeContent.style.display = 'none'
+toggleContent(3);
+    toggleActive(3)
+    showTitle(artifcatsTitle)
 
 const copyBtn = document.getElementById('copy-btn');
 const codeBox = document.getElementById('codeBox');

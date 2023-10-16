@@ -16,13 +16,14 @@
         <div class="sidebar bg-slate-800 fixed top-0 left-0 h-full w-1/5 p-2 border-gray-600 border-r-2 border-solid flex flex-col justify-between">
         <div class="sidebar-top">
 
-        <div class="card flex items-center w-full rounded-full py-2 px-4 mt-3">
-            <div class="pfp">
+        <div class="card flex items-center w-full rounded-full py-2 px-4 mt-3 relative">
+            <div class="overlay absolute top-0 left-0 right-0 bottom-0 bg-black opacity-20 z-0 rounded-full"></div>
+            <div class="pfp z-10">
                 <div class="rounded-full bg-teal-700 border-white border-4 border-solid">
         <img src="assets/images/Xiao.webp" alt="profile-pic" width="75" height="75" class="rounded-full">
                 </div>
             </div>
-            <div class="info ml-4 text-white">
+            <div class="info ml-4 text-white z-10">
                 <p class="text-xl">Vedant</p>
                 <p class="desc text-sm mt-1 font-thin">~Admin</p>
             </div>
@@ -53,9 +54,18 @@
                     <p class="text-center text-lg">Welcome to <span class="text-teal-400">FlameForge</span> API Dashboard</p>
                     <p class="text-center text-sm my-2 font-sans">This API is an independent project created by Vedant and is not affiliated with or endorsed by miHoYo, the developers of Genshin Impact, or its associated entities (collectively referred to as "miHoYo/HoYoVerse"). All rights and credits for Genshin Impact, including its characters, artwork, and related intellectual property, are owned by miHoYo/HoYoVerse. The use of any copyrighted material is solely for informative and non-commercial purposes.</p>
                     <img src="/assets/images/xiao-main.png" alt="xiao" class="mx-auto" width="600">
+                    <div class="my-5 text-red-400">
+                    <p class="text-lg mb-2">Notes</p>
+                    <ul class="font-sans list-disc ml-5">
+                    <li>Choose valid json file to upload</li>
+                    <li>follow proper syntax given</li>
+                    <li>incorrect syntax will cause error</li>
+                    <li>recheck json file before upload</li>
+                    </ul>
+                    </div>
     <h1 class="mb-3 mt-5 text-xl">1. Overview</h1>
     <p class="font-sans">Welcome to the Genshin Impact API dashboard! This guideline will help you understand the features and functionalities available to enhance your Genshin Impact experience.</p>
-
+    
     <h2 class="mb-3 mt-5 text-xl">2. Dashboard Navigation</h2>
     <ul>
         <li class="mb-2">
@@ -99,18 +109,13 @@
 
 
                 <div class="characters" id="content-1">
-                    <p class="text-lg mb-2">Upload Batch as JSON</p>
-                    <ul class="font-sans">
-                    <li>Choose valid json file to upload</li>
-                    <li>follow syntax given above</li>
-                    <li>incorrect syntax will cause error</li>
-                    <li>recheck json file before upload</li>
-                    </ul>
-                    <form action="/upload" method="post" enctype="multipart/form-data" class="flex justify-between items-center my-10 font-sans border-2 border-teal-500 p-4 rounded-md">
-                    <label for="uploadFile" class="cursor-pointer">
-                    <input type="file" name="jsonFile" id="uploadFile" accept=".json" class="bg-red-50">
+                    <p class="mt-10">Upload as JSON :</p>
+                    <form action="/upload/characters" method="post" enctype="multipart/form-data" class="flex justify-between items-center mt-3 mb-10 font-sans border-2 border-teal-500 p-4 rounded-md">
+                    <label for="uploadFile" class="cursor-pointer border-2 border-teal-400 px-2 py-2 rounded-md transition-colors hover:bg-teal-400">
+                    <input type="file" name="jsonFile" id="uploadFile" accept=".json" class="hidden">
                     Choose File
                     </label>
+                    <p id="file_display"></p>
                     <button type="submit" class="flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-md"><span class="material-symbols-outlined mr-1">
 upload_file
 </span> Upload</button>
@@ -120,6 +125,7 @@ upload_file
                         <button id="copy-btn" class="absolute right-5 top-5 border-2 border-teal-400 px-4 rounded-md hover:bg-teal-400 active:scale-90 transition-transform">copy</button>
                     <code id="codeBox">{
     "name": "string",
+    "desc": "",
     "rarity": number,
     "vision": "string",
     "weapon": "string",
@@ -141,6 +147,7 @@ upload_file
                         <pre class="language-json flex relative">
                     <code id="codeBox">{
     "name": "Diluc",
+    "desc": "",
     "rarity": 5,
     "vision": "Pyro",
     "weapon": "Claymore",
@@ -163,11 +170,157 @@ upload_file
                 </div>
             </div>
             <div id="content-2">
-                weapon
+                    <p class="mt-10">Upload as JSON :</p>
+                    <form action="/upload/weapons" method="post" enctype="multipart/form-data" class="flex justify-between items-center mt-3 mb-10 font-sans border-2 border-teal-500 p-4 rounded-md">
+                    <label for="uploadFile" class="cursor-pointer border-2 border-teal-400 px-2 py-2 rounded-md transition-colors hover:bg-teal-400">
+                    <input type="file" name="jsonFile" id="uploadFile" accept=".json" class="hidden">
+                    Choose File
+                    </label>
+                    <p id="file_display"></p>
+                    <button type="submit" class="flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-md"><span class="material-symbols-outlined mr-1">
+upload_file
+</span> Upload</button>
+                    </form>
+                    <p class="my-3">Valid Data Syntax :</p>
+                    <pre class="language-json flex relative">
+                        <button id="copy-btn" class="absolute right-5 top-5 border-2 border-teal-400 px-4 rounded-md hover:bg-teal-400 active:scale-90 transition-transform">copy</button>
+                    <code id="codeBox">{
+    "name": "string",
+    "desc": "string",
+    "rarity": number,
+    "source": "string",
+    "secondary-stat": "string",
+    "passive": "string",
+    "version-release": number,
+    "region": "string",
+    "type": "string",
+    "affiliation": ["string"],
+    "images": {
+        "icon": "string",
+        "original": "string",
+        "awakened": "string",
+    },
+    "wiki-url": "string"
+}</code>
+                    </pre>
+                    <p class="my-3">Demo Response :</p>
+                        <pre class="language-json flex relative">
+                    <code id="codeBox">{
+    "name": "Primordial Jade Winged-Spear",
+    "desc": "A jade polearm made by the archons, capable of slaying ancient beasts.",
+    "rarity": 5,
+    "source": "wish",
+    "secondary-stat": "CRIT Rate",
+    "passive": "On hit, increases ATK by 3.2%/3.9%/4.6%/5.3%/6% for 6s. Max 7 stacks. This effect can only occur once every 0.3s. While in possession of the maximum possible stacks, DMG dealt is increased by 12%/15%/18%/21%/24%.",
+    "version-release": 1.0,
+    "region": "Liyue",
+    "type": "Polearm",
+    "images": {
+        "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/weapon/%25E5%2592%258C%25E7%2592%259E%25E9%25B8%25A2.png",
+        "original": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/06/24/94376896/edf9c94e3b4dd8fbfab0aeb4820ccc47_278966444220345681.png?x-oss-process=image%2Fformat%2Cwebp",
+        "awakened": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/06/24/94376896/3c3939178a2a01c9aae85692dfd69fb7_1300600320564433131.png?x-oss-process=image%2Fformat%2Cwebp",
+    },
+    "wiki-url": "https://genshin-impact.fandom.com/wiki/Primordial_Jade_Winged-Spear"
+}</code>
+                    </pre>
+                    
+         
             </div>
 
             <div id="content-3">
-                artifacts
+                <p class="mt-10">Upload as JSON :</p>
+                    <form action="/upload/artifacts" method="post" enctype="multipart/form-data" class="flex justify-between items-center mt-3 mb-10 font-sans border-2 border-teal-500 p-4 rounded-md">
+                    <label for="uploadFile" class="cursor-pointer border-2 border-teal-400 px-2 py-2 rounded-md transition-colors hover:bg-teal-400">
+                    <input type="file" name="jsonFile" id="uploadFile" accept=".json" class="hidden">
+                    Choose File
+                    </label>
+                    <p id="file_display"></p>
+                    <button type="submit" class="flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-md"><span class="material-symbols-outlined mr-1">
+upload_file
+</span> Upload</button>
+                    </form>
+                    <p class="my-3">Valid Data Syntax :</p>
+                    <pre class="language-json flex relative">
+                        <button id="copy-btn" class="absolute right-5 top-5 border-2 border-teal-400 px-4 rounded-md hover:bg-teal-400 active:scale-90 transition-transform">copy</button>
+                    <code id="codeBox">{
+    "name": "string",
+    "effect": [
+        "2pc": "String",
+        "4pc": "String"
+    ],
+"set": {
+    "flower": {
+        "title": "string",
+        "piece": "string",
+        "desc": "string",
+        "image": "string"
+        },
+    "sands": {
+        "title": "string",
+        "piece": "string",
+        "desc": "string",
+        "image": "string"
+        },
+    "plume": {
+        "title": "string",
+        "piece": "string",
+        "desc": "string",
+        "image": "string"
+        },
+    "circlet": {
+        "title": "string",
+        "piece": "string",
+        "desc": "string",
+        "image": "string"
+        },
+    "goblet": {
+        "title": "string",
+        "piece": "string",
+        "desc": "string",
+        "image": "string"
+        }   
+    }
+}</code>
+                    </pre>
+                    <p class="my-3">Demo Response :</p>
+                        <pre class="language-json flex relative">
+                    <code id="codeBox">{
+    "name": "Crimson Witch of Flames",
+    "effect": [
+        "2pc": "Pyro DMG Bonus +15%",
+        "4pc": "Increases Overloaded and Burning DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by 50% of its starting value for 10s. Max 3 stacks."
+    ],
+"set": {
+    "flower": {
+        "title": "Witch's Flower of Blaze",
+        "desc": "A flower touched by the witch who once dreamt of burning away all the demons in the world. The anonymous flames affectionately caress the hands of those who touch it.",
+        "image": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/reliquary/Crimson%2520Witch%2520of%2520Flames/flower_of_life_icon.png"
+        },
+    "sands": {
+        "title": "Witch's End Time",
+        "desc": "A timepiece worn by the witch who dreamt of burning away all the demons in the world. The years the witch dedicated to the flames flow within.",
+        "image": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/reliquary/Crimson%2520Witch%2520of%2520Flames/sands_of_eon_icon.png"
+        },
+    "plume": {
+        "title": "Witch's Ever-Burning Plume",
+        "desc": "A bird feather touched by the witch who once dreamt of burning away all the demons in the world. Its eternal flame burns hot.",
+        "image": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/reliquary/Crimson%2520Witch%2520of%2520Flames/plume_of_death_icon.png"
+        },
+    "circlet": {
+        "title": "Witch's Scorching Hat",
+        "desc": "A hat once worn by the witch who dreamt of burning away all of the demons in the world. The large brim blocked her sight.",
+        "image": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/reliquary/Crimson%2520Witch%2520of%2520Flames/circlet_of_logos_icon.png"
+        },
+    "goblet": {
+        "title": "Witch's Heart Flames",
+        "desc": "A flame-spitting urn left behind by the Crimson Witch of Flames, who once dreamt of burning away all the demons in the world. The fire in the urn burns eternally, as did its former master.",
+        "image": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/reliquary/Crimson%2520Witch%2520of%2520Flames/goblet_of_eonothem_icon.png"
+        }   
+    }
+}</code>
+                    </pre>
+                    
+         
             </div>
 
             </div>
