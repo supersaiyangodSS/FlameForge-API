@@ -19,7 +19,7 @@ function showTitle(title) {
     heading.innerText = title;
 }
 
-const characterTitle = characters.innerText; 
+const characterTitle = characters.innerText;
 const weaponsTitle = weapons.innerText;
 const artifcatsTitle = artifacts.innerText;
 const peopleTitle = 'People'
@@ -40,14 +40,14 @@ function loadDefaults() {
 loadDefaults();
 
 function toggleActive(navOrder) {
-    for (let i = 1; i <= 3; i++) {
-            document.getElementById(`nav-${i}`).classList.remove('light-gray');
-        }
+    for (let i = 1; i <= 4; i++) {
+        document.getElementById(`nav-${i}`).classList.remove('light-gray');
+    }
     document.getElementById(`nav-${navOrder}`).classList.add('light-gray');
 }
 
 function toggleContent(contentOrder) {
-    for (let i = 0; i <=5; i++) {
+    for (let i = 0; i <= 5; i++) {
         document.getElementById(`content-${i}`).style.display = 'none';
     }
     document.getElementById(`content-${contentOrder}`).style.display = 'block';
@@ -86,34 +86,88 @@ settings.addEventListener('click', () => {
     showTitle(settingsTitle);
 })
 
-const fileInput = document.getElementById('uploadFile');
-const fileDisplay = document.getElementById('file_display');
 
-fileInput.addEventListener('change', (event) => {
-    const fileName = event.target.files[0].name;
-    fileDisplay.textContent = fileName;
-})
+function handleFileInputDisplay(uploadFile, file_display) {
+    const fileInput = document.getElementById(uploadFile);
+    const fileDisplay = document.getElementById(file_display);
+
+    fileInput.addEventListener('change', (e) => {
+        const fileName = e.target.files[0].name;
+        fileDisplay.innerText = fileName;
+    })
+}
+
+handleFileInputDisplay('uploadFile', 'file_display');
+handleFileInputDisplay('uploadFile2', 'file_display2');
+handleFileInputDisplay('uploadFile3', 'file_display3');
+
 
 //test only
-toggleContent(5);
-    showTitle(peopleTitle)
+toggleContent(0);
 
 
-    
+
 function accountDeleteConfirmation() {
     const deleteBtn = document.getElementById('btn-delete');
     const deleteInput = document.getElementById('input-delete');
-        deleteInput.addEventListener('input', () => {
-            if (deleteInput.value === 'DELETE') {
-                deleteBtn.classList.remove('disable-btn');
-            }
-            else {
-                deleteBtn.classList.add('disable-btn');
-            }
-        })
+    deleteInput.addEventListener('input', () => {
+        if (deleteInput.value === 'DELETE') {
+            deleteBtn.classList.remove('disable-btn');
+        }
+        else {
+            deleteBtn.classList.add('disable-btn');
+        }
+    })
 }
 
-    accountDeleteConfirmation();
+function showAlertBox(msg) {
+    const alertBox = document.getElementById('alertBox');
+    alertBox.textContent = msg;
+    alertBox.style.top = '3%'
+    setTimeout(() => {
+        alertBox.style.top = '-50%'
+    }, 3000);
+}
 
-const copyBtn = document.getElementById('copy-btn');
-const codeBox = document.getElementById('codeBox');
+const copyButtons = document.querySelectorAll('.copyBtn');
+
+copyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+
+        const codeId = button.getAttribute('data-code');
+        const codeToCopy = document.getElementById(codeId).innerText;
+        navigator.clipboard.writeText(codeToCopy)
+        .then(() => {
+            showAlertBox('Code copied to clipboard');
+        })
+        .catch(err => {
+            showAlertBox('Could not copy to clipboard', err);
+        });
+    })
+});
+
+
+accountDeleteConfirmation();
+
+function hideLoader() {
+    const loader = document.getElementById('loader');
+    loader.style.display = 'none';
+}
+
+window.addEventListener('load', hideLoader);
+
+function hideModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+}
+
+const closeBtn = document.getElementById('btn-modal-close');
+closeBtn.addEventListener('click', () => {
+    hideModal();
+});
+
+const loginModal = document.getElementById('modal');
+const navLogoutBtn = document.getElementById('nav-logout');
+navLogoutBtn.addEventListener('click', () => {
+    loginModal.style.display = 'block';
+});

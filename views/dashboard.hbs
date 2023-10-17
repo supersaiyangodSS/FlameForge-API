@@ -15,8 +15,22 @@
     </style>
   </head>
   <body>
-    <div class="alertBox absolute">
-      jfskljdf
+    <div class="modal z-50 poppins" id="modal">
+      <div class="rounded-lg modal-card bg-slate-700 text-white w-80 p-4">
+        <p class="text-2xl mb-5 font-semibold">Are you sure?</p>
+        <div class="flex justify-center font-semibold">
+          <button id="btn-modal-close" class="px-2 py-2 w-full rounded-lg bg-teal-500 hover:bg-teal-600 mr-2 transition-colors">Cancel</button>
+          <form class="w-full" action="/logout">
+        <button type="submit" id="btn-modal-logout" class="w-full px-2 py-2 rounded-lg bg-red-400 hover:bg-red-500 transition-colors">Log Out</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="alertBox" class="alertBox text-white bg-teal-500 px-2 py-2 rounded-lg transition-all duration-300 z-40">
+      <p class=""></p>
+    </div>
+    <div class="bg-slate-800 fixed top-0 left-0 bottom-0 right-0 z-50 flex justify-center items-center" id="loader">
+      <span class="loader"></span>
     </div>
     <div class="h-screen flex justify-end">
       <div
@@ -98,6 +112,7 @@
                   class="material-symbols-outlined"
                 >settings</span></button></li>
             <li><button
+                id="nav-logout"
                 class="btn flex p-4 rounded-full text-teal-500 hover:text-teal-200 hover:bg-slate-700 transition-colors"
               ><span
                   class="material-symbols-outlined"
@@ -204,11 +219,11 @@
                 action="/upload/characters"
                 method="post"
                 enctype="multipart/form-data"
-                class="flex justify-between items-center mt-3 mb-10 font-sans border-2 border-teal-500 p-4 rounded-md"
+                class="flex justify-between items-center mt-3 mb-10 font-sans border-2 border-teal-500 p-4 rounded-lg"
               >
                 <label
                   for="uploadFile"
-                  class="cursor-pointer border-2 border-teal-400 px-2 py-2 rounded-md transition-colors hover:bg-teal-400"
+                  class="cursor-pointer border-2 border-teal-400 px-2 py-2 rounded-lg transition-colors hover:bg-teal-400"
                 >
                   <input
                     type="file"
@@ -222,7 +237,7 @@
                 <p id="file_display"></p>
                 <button
                   type="submit"
-                  class="flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-md"
+                  class="flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-lg"
                 ><span class="material-symbols-outlined mr-1">
                     upload_file
                   </span>
@@ -232,9 +247,10 @@
               <pre class="language-json flex relative">
                 <button
                   id="copy-btn"
-                  class="absolute right-5 top-5 border-2 border-teal-400 px-4 rounded-md hover:bg-teal-400 active:scale-90 transition-transform"
+                  class="absolute copyBtn right-5 top-5 border-2 border-teal-400 px-4 rounded-lg hover:bg-teal-400 active:scale-90 transition-transform"
+                  data-code="code1"
                 >copy</button>
-                <code id="codeBox">{
+                <code id="code1">{
   "name": "string",
   "desc": "string",
   "rarity": "number",
@@ -288,25 +304,25 @@
               action="/upload/weapons"
               method="post"
               enctype="multipart/form-data"
-              class="flex justify-between items-center mt-3 mb-10 font-sans border-2 border-teal-500 p-4 rounded-md"
+              class="flex justify-between items-center mt-3 mb-10 font-sans border-2 border-teal-500 p-4 rounded-lg"
             >
               <label
-                for="uploadFile"
-                class="cursor-pointer border-2 border-teal-400 px-2 py-2 rounded-md transition-colors hover:bg-teal-400"
+                for="uploadFile2"
+                class="cursor-pointer border-2 border-teal-400 px-2 py-2 rounded-lg transition-colors hover:bg-teal-400"
               >
                 <input
                   type="file"
-                  name="jsonFile"
-                  id="uploadFile"
+                  name="jsonFile2"
+                  id="uploadFile2"
                   accept=".json"
                   class="hidden"
                 />
                 Choose File
               </label>
-              <p id="file_display"></p>
+              <p id="file_display2"></p>
               <button
                 type="submit"
-                class="flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-md"
+                class="flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-lg"
               ><span class="material-symbols-outlined mr-1">
                   upload_file
                 </span>
@@ -316,9 +332,11 @@
             <pre class="language-json flex relative">
               <button
                 id="copy-btn"
-                class="absolute right-5 top-5 border-2 border-teal-400 px-4 rounded-md hover:bg-teal-400 active:scale-90 transition-transform"
+                class="absolute copyBtn right-5 top-5 border-2 border-teal-400 px-4 rounded-lg hover:bg-teal-400 active:scale-90 transition-transform "
+                data-box-id="code-box-2"
+                data-code="code2"
               >copy</button>
-              <code id="codeBox">{
+              <code id="code2">{
   "name": "string",
   "desc": "string",
   "rarity": "number",
@@ -368,25 +386,25 @@
               action="/upload/artifacts"
               method="post"
               enctype="multipart/form-data"
-              class="flex justify-between items-center mt-3 mb-10 font-sans border-2 border-teal-500 p-4 rounded-md"
+              class="flex justify-between items-center mt-3 mb-10 font-sans border-2 border-teal-500 p-4 rounded-lg"
             >
               <label
-                for="uploadFile"
-                class="cursor-pointer border-2 border-teal-400 px-2 py-2 rounded-md transition-colors hover:bg-teal-400"
+                for="uploadFile3"
+                class="cursor-pointer border-2 border-teal-400 px-2 py-2 rounded-lg transition-colors hover:bg-teal-400"
               >
                 <input
                   type="file"
-                  name="jsonFile"
-                  id="uploadFile"
+                  name="jsonFile3"
+                  id="uploadFile3"
                   accept=".json"
                   class="hidden"
                 />
                 Choose File
               </label>
-              <p id="file_display"></p>
+              <p id="file_display3"></p>
               <button
                 type="submit"
-                class="flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-md"
+                class="flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-lg"
               ><span class="material-symbols-outlined mr-1">
                   upload_file
                 </span>
@@ -396,9 +414,10 @@
             <pre class="language-json flex relative">
               <button
                 id="copy-btn"
-                class="absolute right-5 top-5 border-2 border-teal-400 px-4 rounded-md hover:bg-teal-400 active:scale-90 transition-transform"
+                class="absolute copyBtn right-5 top-5 border-2 border-teal-400 px-4 rounded-lg hover:bg-teal-400 active:scale-90 transition-transform "
+                data-code="code3"
               >copy</button>
-              <code id="codeBox">{
+              <code id="code3">{
   "name": "string",
   "effect": {
     "2pc": "String",
