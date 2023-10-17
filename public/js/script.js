@@ -95,9 +95,25 @@ fileInput.addEventListener('change', (event) => {
 })
 
 //test only
-toggleContent(4);
-    toggleActive(4)
+toggleContent(5);
     showTitle(peopleTitle)
+
+
+    
+function accountDeleteConfirmation() {
+    const deleteBtn = document.getElementById('btn-delete');
+    const deleteInput = document.getElementById('input-delete');
+        deleteInput.addEventListener('input', () => {
+            if (deleteInput.value === 'DELETE') {
+                deleteBtn.classList.remove('disable-btn');
+            }
+            else {
+                deleteBtn.classList.add('disable-btn');
+            }
+        })
+}
+
+    accountDeleteConfirmation();
 
 const copyBtn = document.getElementById('copy-btn');
 const codeBox = document.getElementById('codeBox');
