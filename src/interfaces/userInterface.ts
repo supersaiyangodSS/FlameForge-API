@@ -10,6 +10,7 @@ export interface IUser extends Document {
     verified: boolean,
     token: string,
     isTokenUsed: boolean,
+    profilePic: string,
     createdAt: Date,
     updatedAt: Date
 }

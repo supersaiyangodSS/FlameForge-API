@@ -40,6 +40,10 @@ const userSchema = new Schema<IUser>({
         type: Boolean,
         default: false,
     },
+    profilePic: {
+        type: String,
+        default: 'xiao'
+    },
     createdAt: {
         type: Date,
         default: Date.now,
