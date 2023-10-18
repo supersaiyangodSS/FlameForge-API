@@ -1,3 +1,4 @@
+import { Request, Response } from "express";
 import User from '../models/userModel.js';
 
 const getDashboard = async (req: Request, res: Response) => {
@@ -20,6 +21,5 @@ const getDashboard = async (req: Request, res: Response) => {
     }
 }
 
-import { Request, Response } from "express";
 
 export { getDashboard };

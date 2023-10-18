@@ -7,29 +7,28 @@
     <title>{{title}}</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="flex justify-center items-center bg-red-400">
-<div class="font h-96 flex w-9/12 items-center justify-between mx-auto h-screen ">
-    <img src="/assets/images/ayaka.png" width="700" alt="">
-    <form action="/sign-up" method="POST" class="flex flex-col p-10 rounded-3xl w-1/3 box-border bg-white shadow-lg">
+<body class="flex justify-center w-full items-center bg-slate-800 text-white poppins font-regular">
+<div class="font flex w-96 items-center justify-center mx-auto h-screen">
+    <form action="/sign-up" method="POST" class="flex flex-col p-10 w-full rounded-3xl box-border bg-slate-700 shadow-lg border-e-4 border-l-4 border-teal-400">
         <div class="flex justify-between w-full">
             <div class="flex flex-col mr-1">
-                <label for="firstName" class="font-semibold text-sm">First Name</label>
-                <input type="text" name="firstName" id="firstName" class="w-full p-2 border-2 border-slate-300 rounded-md mt-1 mb-3" required>
+                <label for="firstName" class="font-regular text-sm">First Name</label>
+                <input type="text" name="firstName" id="firstName" class="w-full p-2 placeholder:opacity-50 border-t-2 border-b-2 bg-slate-700 border-teal-700 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="Diluc" required>
             </div>
             <div class="flex flex-col ml-1">
-                <label for="lastName" class="font-semibold text-sm">Last Name</label>
-                <input type="text" name="lastName" id="lastName" class="w-full p-2 border-2 border-slate-300 rounded-md mt-1 mb-3" required>
+                <label for="lastName" class="font-regular text-sm">Last Name</label>
+                <input type="text" name="lastName" id="lastName" class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-700 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="Ragnvindr" required>
             </div>
         </div>
-        <label for="email" class="font-semibold text-sm">Email</label>
-        <input type="email" name="email" id="email" class="p-2 border-2 border-slate-300 rounded-md mt-1 mb-3" required>
-        <label for="username" class="font-semibold text-sm">Username</label>
-        <input type="text" name="username" id="username" class="p-2 border-2 border-slate-300 rounded-md mt-1 mb-3" required>
-        <label for="password" class="font-semibold text-sm">Password</label>
-        <input type="password" name="password" id="password" class="p-2 border-2 border-slate-300 rounded-md mt-1 mb-3" required>
-        <label for="confirmPassword" class="font-semibold text-sm">Confirm Password</label>
-        <input type="password" name="confirmPassword" id="confirmPassword" class="p-2 border-2 border-slate-300 rounded-md mt-1 mb-3" required>
-        <button type="submit" class="btn py-3 bg-sky-200 hover:bg-sky-400 rounded-md mt-3 font-semibold transition-colors ease-linear">Sign Up</button>
+        <label for="email" class="font-regular text-sm mt-3">Email</label>
+        <input type="email" name="email" id="email" class="p-2 border-t-2 border-b-2 bg-slate-700 border-teal-700 placeholder:opacity-50 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="dawnwinery@gmail.com" required>
+        <label for="username" class="font-regular text-sm mt-3">Username</label>
+        <input type="text" name="username" id="username" class="p-2 border-t-2 border-b-2 bg-slate-700 border-teal-700 placeholder:opacity-50 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="pheonix" required>
+        <label for="password" class="font-regular text-sm mt-3">Password</label>
+        <input type="password" name="password" id="password" class="p-2 border-t-2 border-b-2 bg-slate-700 border-teal-700 placeholder:opacity-50 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="jean@123" required>
+        <label for="confirmPassword" class="font-regular text-sm mt-3">Confirm Password</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" class="p-2 border-t-2 border-b-2 bg-slate-700 placeholder:opacity-50 border-teal-700 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="jean@123" required>
+        <button type="submit" class="btn py-3 border-4 rounded-2xl border-teal-400 hover:bg-teal-400 mt-3 font-regular transition-colors ease-linear font-semibold">Sign Up</button>
     </form>
 </div>
 

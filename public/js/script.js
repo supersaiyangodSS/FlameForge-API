@@ -129,6 +129,8 @@ function showAlertBox(msg) {
     }, 3000);
 }
 
+showAlertBox('SSJ')
+
 const copyButtons = document.querySelectorAll('.copyBtn');
 
 copyButtons.forEach(button => {

@@ -1,15 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="{{desc}}" >
-    <link rel="stylesheet" href="css/dist/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{desc}}">
     <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    <div class="bg-sky-200">LOGIN</div>
+<body class="flex justify-center items-center bg-slate-800 text-white poppins font-regular">
+<div class="font flex w-96 items-center justify-center h-screen">
+    <form action="/sign-in" method="POST" class="flex flex-col p-10 rounded-3xl w-full box-border bg-slate-700 shadow-lg border-e-4 border-l-4 border-teal-400">
+    <img src="/assets/images/xiao-main.png" width="250" class="mx-auto" alt="">
+        <label for="email" class="font-regular text-sm mt-3">Email</label>
+        <input type="email" name="email" id="email" class="p-2 border-t-2 border-b-2 placeholder:opacity-50 bg-slate-700 border-teal-700 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="dawnwinery@gmail.com" required>
+        <label for="password" class="font-regular text-sm mt-3">Password</label>
+        <input type="password" name="password" id="password" class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-700 border-teal-700 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="jean@123" required>
+        {{!-- <button type="submit" class="btn py-3 bg-teal-500 hover:bg-teal-600 rounded-md mt-3 font-regular transition-colors ease-linear font-semibold">Log In</button> --}}
+        {{!-- <button type="submit" class="btn py-3 border-t-4 border-b-4 border-teal-400  hover:bg-teal-600 rounded-md mt-3 font-regular transition-colors ease-linear font-semibold">Log In</button> --}}
+        <button type="submit" class="btn py-3 border-4 border-teal-400 rounded-2xl hover:bg-teal-400 mt-3 font-regular transition-colors ease-linear font-semibold">Log In</button>
+    </form>
+</div>
+
 </body>
 </html>

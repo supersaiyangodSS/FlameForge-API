@@ -52,12 +52,21 @@ app.use(( req : Request , res : Response , next : NextFunction ) => {
     next();
 });
 
-const checkAuth = ( req : Request , res : Response, next : NextFunction ) => {
-    if ( req.session && req.session.user ) {
+// export const checkAuth = ( req : Request , res : Response, next : NextFunction ) => {
+//     if ( req.session && req.session.user ) {
+//         next();
+//     }
+//     else {
+//         res.redirect('/sign-in');
+//     }
+// }
+
+export function checkAuth ( req: Request, res: Response, next: NextFunction ) {
+    if (req.session && req.session.user) {
         next();
     }
     else {
-        res.redirect('/sign-in');
+        res.redirect('sign-in');
     }
 }
 
@@ -67,4 +76,4 @@ app.get('/', ( req : Request , res : Response) => {
     });
 });
 
-export { app , checkAuth };
+export { app }
