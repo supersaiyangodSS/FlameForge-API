@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="flex justify-center w-full items-center bg-slate-800 text-white poppins font-regular">
+    <div id="alertBoxRegister" class="alertBox text-white bg-teal-500 px-2 py-2 rounded-lg transition-all duration-300 z-40">
+      <p class=""></p>
+    </div>
 <div class="font flex w-96 items-center justify-center mx-auto h-screen">
     <form action="/sign-up" method="POST" class="flex flex-col p-10 w-full rounded-3xl box-border bg-slate-700 shadow-lg border-e-4 border-l-4 border-teal-400">
         <div class="flex justify-between w-full">
@@ -17,7 +20,7 @@
             </div>
             <div class="flex flex-col ml-1">
                 <label for="lastName" class="font-regular text-sm">Last Name</label>
-                <input type="text" name="lastName" id="lastName" class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-700 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="Ragnvindr" required>
+                <input type="text" name="lastName" id="lastName" class="w-full p-2 placeholder:opacity-50 border-t-2 border-b-2 bg-slate-700 border-teal-700 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="Ragnvindr" required>
             </div>
         </div>
         <label for="email" class="font-regular text-sm mt-3">Email</label>
@@ -31,6 +34,6 @@
         <button type="submit" class="btn py-3 border-4 rounded-2xl border-teal-400 hover:bg-teal-400 mt-3 font-regular transition-colors ease-linear font-semibold">Sign Up</button>
     </form>
 </div>
-
+<script defer src="/js/register.js"></script>
 </body>
 </html>
