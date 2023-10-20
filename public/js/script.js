@@ -120,19 +120,21 @@ function accountDeleteConfirmation() {
     })
 }
 
+let alertBoxTimer;
 function showAlertBox(msg) {
-    const alertBox = document.getElementById('alertBox');
+    const alertBox = document.getElementById('alertBoxLogin');
     alertBox.textContent = msg;
     alertBox.style.top = '3%'
-    setTimeout(() => {
-        alertBox.style.top = '-50%'
+    if (alertBoxTimer) {
+        clearInterval(alertBoxTimer);
+    }
+    alertBoxTimer= setInterval(() => {
+        alertBox.style.top = '-50%';
+        clearInterval(alertBoxTimer)
     }, 3000);
 }
 
-
-
-
-showAlertBox('SSJ')
+// test
 
 const copyButtons = document.querySelectorAll('.copyBtn');
 
