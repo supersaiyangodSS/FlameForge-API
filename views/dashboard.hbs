@@ -15,9 +15,7 @@
     </style>
   </head>
   <body>
-    <div id="alertBox" class="alertBox text-white bg-teal-500 px-2 py-2 rounded-lg transition-all duration-300 z-40">
-      <p class=""></p>
-    </div>
+    <div id="alertBox" class="alertBox text-white bg-teal-500 px-2 py-2 rounded-lg transition-all duration-300 z-40"></div>
     <div class="modal z-50 poppins" id="modal">
       <div class="rounded-lg modal-card bg-slate-700 text-white w-80 p-4">
         <p class="text-2xl mb-5 font-semibold">Are you sure?</p>
@@ -219,8 +217,8 @@
             <div class="characters" id="content-1">
               <p class="mt-10">Upload as JSON :</p>
               <form
-                action="/upload/characters"
-                method="post"
+                action="dashboard/upload/characters"
+                method="POST"
                 enctype="multipart/form-data"
                 class="flex justify-between items-center mt-3 mb-10 font-sans border-2 border-teal-500 p-4 rounded-lg"
               >
@@ -230,7 +228,7 @@
                 >
                   <input
                     type="file"
-                    name="jsonFile"
+                    name="jsonCharacterFile"
                     id="uploadFile"
                     accept=".json"
                     class="hidden"
@@ -246,6 +244,9 @@
                   </span>
                   Upload</button>
               </form>
+              <div class="icon-card-container my-4">
+                <div class="icon-card five-star rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-3xl "></div>
+              </div>
               <p class="my-3">Valid Data Syntax :</p>
               <pre class="language-json flex relative">
                 <button
@@ -259,7 +260,7 @@
   "rarity": "number",
   "vision": "string",
   "weapon": "string",
-  "version-release": "number",
+  "versionRelease": "number",
   "birthday": "number",
   "title": ["string"],
   "constellation": "string",
@@ -270,7 +271,7 @@
     "gacha": "string"
   },
   "model": "string",
-  "wiki-url": "string"
+  "wikiUrl": "string"
 }</code>
               </pre>
               <p class="my-3">Demo Response :</p>
@@ -281,7 +282,7 @@
   "rarity": 5,
   "vision": "Pyro",
   "weapon": "Claymore",
-  "version-release": 1.0,
+  "versionRelease": 1.0,
   "birthday": "April 30",
   "title": ["The Dark Side of Dawn"],
   "constellation": "Noctua",
@@ -293,7 +294,7 @@
     "gacha": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%25BF%25AA%25E5%258D%25A2%25E5%2585%258B/avatar.png"
   },
   "model": "tall male",
-  "wiki-url": "https://genshin-impact.fandom.com/wiki/Diluc"
+  "wikiUrl": "https://genshin-impact.fandom.com/wiki/Diluc"
 }
 
 </code>
@@ -344,9 +345,9 @@
   "desc": "string",
   "rarity": "number",
   "source": "string",
-  "secondary-stat": "string",
+  "secondaryStat": "string",
   "passive": "string",
-  "version-release": "number",
+  "versionRelease": "number",
   "region": "string",
   "type": "string",
   "affiliation": ["string"],
@@ -355,7 +356,7 @@
     "original": "string",
     "awakened": "string"
   },
-  "wiki-url": "string"
+  "wikiUrl": "string"
 }
 </code>
             </pre>
@@ -366,9 +367,9 @@
   "desc": "A jade polearm made by the archons, capable of slaying ancient beasts.",
   "rarity": 5,
   "source": "wish",
-  "secondary-stat": "CRIT Rate",
+  "secondaryStat": "CRIT Rate",
   "passive": "On hit, increases ATK by 3.2%/3.9%/4.6%/5.3%/6% for 6s. Max 7 stacks. This effect can only occur once every 0.3s. While in possession of the maximum possible stacks, DMG dealt is increased by 12%/15%/18%/21%/24%.",
-  "version-release": 1.0,
+  "versionRelease": 1.0,
   "region": "Liyue",
   "type": "Polearm",
   "images": {
@@ -376,7 +377,7 @@
     "original": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/06/24/94376896/edf9c94e3b4dd8fbfab0aeb4820ccc47_278966444220345681.png?x-oss-process=image%2Fformat%2Cwebp",
     "awakened": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/06/24/94376896/3c3939178a2a01c9aae85692dfd69fb7_1300600320564433131.png?x-oss-process=image%2Fformat%2Cwebp"
   },
-  "wiki-url": "https://genshin-impact.fandom.com/wiki/Primordial_Jade_Winged-Spear"
+  "wikiUrl": "https://genshin-impact.fandom.com/wiki/Primordial_Jade_Winged-Spear"
 }
 </code>
             </pre>
@@ -426,7 +427,7 @@
     "2pc": "String",
     "4pc": "String"
   },
-  "set": {
+  "fullSet": {
     "flower": {
       "title": "string",
       "piece": "string",
@@ -532,7 +533,7 @@
                 <p class="mb-2 text-sm text-slate-400">to confirm this, type "DELETE"</p>
                 <form action="/delete" method="post">
                 <input type="text" name="delete" class="bg-slate-800 border-2 border-slate-600 py-2 px-2 rounded-lg outline-none" id="input-delete">
-                <button class="ml-1 text-white bg-red-400 transition-colors border-2 border-red-400 py-2 px-4 font-sans font-bold rounded-lg tracking-wider disable-btn" id="btn-delete">Delete Account</button>
+                <button class="ml-1 text-white transition-colors border-2 py-2 px-4 font-sans font-bold rounded-lg tracking-wider disable-btn" id="btn-delete">Delete Account</button>
                 </form> 
               </div>
             </div>

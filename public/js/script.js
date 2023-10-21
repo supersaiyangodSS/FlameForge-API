@@ -113,16 +113,18 @@ function accountDeleteConfirmation() {
     deleteInput.addEventListener('input', () => {
         if (deleteInput.value === 'DELETE') {
             deleteBtn.classList.remove('disable-btn');
+            deleteBtn.classList.add('deleteAccountBtn');
         }
         else {
             deleteBtn.classList.add('disable-btn');
+            deleteBtn.classList.remove('deleteAccountBtn');
         }
-    })
+    });
 }
 
 let alertBoxTimer;
 function showAlertBox(msg) {
-    const alertBox = document.getElementById('alertBoxLogin');
+    const alertBox = document.getElementById('alertBox');
     alertBox.textContent = msg;
     alertBox.style.top = '3%'
     if (alertBoxTimer) {

@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import User from '../models/userModel.js';
+import Character from "../models/characterModel.js";
 
 const getDashboard = async (req: Request, res: Response) => {
     
@@ -21,5 +22,30 @@ const getDashboard = async (req: Request, res: Response) => {
     }
 }
 
+const uploadFile = async (req: Request, res: Response) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: 'No file uploaded' });
+        }
+        if (req.file) {
+            const uploadedData = JSON.parse(req.file.buffer.toString());
+            for (const object of uploadedData) {
+                const document = new Character(object);
+                try {
+                    await document.validate();
+                } catch (validationError : any) {
+                    console.error(validationError);
+                    return res.status(400).json({ error: validationError.errors });
+                }
+                const result = await document.save();
+            }
+            res.status(201).json({ message: 'Data saved successfully'});
+        }
+        } catch (error) {
+            console.error(error);
+            
+      res.status(500).json({ error: 'Internal server error', mainError: error});
+    }
+};
 
-export { getDashboard };
+export { getDashboard, uploadFile };

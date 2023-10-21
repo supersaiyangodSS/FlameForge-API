@@ -30,6 +30,7 @@
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
     "mongoose": "^7.5.3",
+    "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.5",
     "tailwindcss-cli": "^0.1.2",
     "winston": "^3.10.0"
@@ -37,6 +38,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/express-validator": "^3.0.0",
+    "@types/multer": "^1.4.9",
     "@types/nodemailer": "^6.4.11",
     "autoprefixer": "^10.4.16",
     "express-handlebars": "^7.1.2",
