@@ -66,23 +66,20 @@ const characterSchema = new Schema<ICharacter>({
     wikiUrl : {
         type: String,
         required: true,
+    },
+    skin : {
+        title : {
+            type: String,
+        },
+        profile : {
+            type: String,
+        },
+        gacha : {
+            type: String,
+        }
     }
 });
 
 const Character: Model<ICharacter> = model<ICharacter>('Character', characterSchema);
- 
-// characterSchema.pre('save', async function (next) {
-//     const Character = this.constructor as Model<ICharacter & Document>;
-//     if (!this.isNew) {
-//         return next();
-//     }
-//     try {
-//         const count = await Character.countDocuments();
-//         this.id = count + 1;
-//         next();
-//     } catch (err: any) {
-//         next(err);
-//     }
-// });
 
 export default Character;

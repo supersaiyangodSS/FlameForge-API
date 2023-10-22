@@ -103,7 +103,7 @@ handleFileInputDisplay('uploadFile3', 'file_display3');
 
 
 //test only
-toggleContent(0);
+toggleContent(1);
 
 
 

@@ -11,6 +11,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { randomBytes } from 'crypto';
 import session from 'express-session';
+import flash from 'connect-flash';
 connectDB();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -41,6 +42,7 @@ app.set('view engine', 'hbs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(sessions);
+app.use(flash());
 app.use(express.static('public'));
 app.set('views', viewsPath);
 app.use('/sign-in', loginRouter);
@@ -51,6 +53,10 @@ app.use(( req : Request , res : Response , next : NextFunction ) => {
     console.log(`Request Received ${req.method} ${req.hostname} ${req.url} ${req.ip}`);
     next();
 });
+app.use((req: Request, res: Response, next: NextFunction) => {
+    req.session.user = 'SSJ'
+    next();
+})
 
 // export const checkAuth = ( req : Request , res : Response, next : NextFunction ) => {
 //     if ( req.session && req.session.user ) {

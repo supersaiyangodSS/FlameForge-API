@@ -59,8 +59,12 @@
               </div>
             </div>
             <div class="info ml-4 text-white z-10">
-              <p class="text-xl">Vedant</p>
-              <p class="desc text-sm mt-1 font-thin">~Admin</p>
+              {{#if user}}
+              <p class="text-xl">{{user}}</p>
+              {{/if}}
+              {{#if role}}
+              <p class="desc text-sm mt-1 font-thin">{{role}}</p>
+              {{/if}}
             </div>
           </div>
           <ul class="flex flex-col items-center">
@@ -244,8 +248,14 @@
                   </span>
                   Upload</button>
               </form>
-              <div class="icon-card-container my-4">
-                <div class="icon-card five-star rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-3xl "></div>
+                <p class="my-3">Previously Included Characters - Do Not Replicate</p>
+              <div class="icon-card-container my-8 flex">
+                {{#each characterIcons}}
+                <div class=" relative icon-card five-star rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-3xl box-border overflow-hidden mx-3">
+                  <img width="90px" src="{{this.images.profile}}" alt="{{this.name}}">
+                  <p class="bg-white absolute bottom-0 left-0 right-0 text-black text-xs text-center overflow-hidden whitespace-nowrap overflow-ellipsis px-3">{{this.name}}</p>
+                </div>
+                {{/each}}
               </div>
               <p class="my-3">Valid Data Syntax :</p>
               <pre class="language-json flex relative">
@@ -271,7 +281,12 @@
     "gacha": "string"
   },
   "model": "string",
-  "wikiUrl": "string"
+  "wikiUrl": "string",
+  "skin": {
+	  "title": "string",
+	  "profile": "string",
+  	"gacha": "string"
+}
 }</code>
               </pre>
               <p class="my-3">Demo Response :</p>
@@ -294,7 +309,12 @@
     "gacha": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%25BF%25AA%25E5%258D%25A2%25E5%2585%258B/avatar.png"
   },
   "model": "tall male",
-  "wikiUrl": "https://genshin-impact.fandom.com/wiki/Diluc"
+  "wikiUrl": "https://genshin-impact.fandom.com/wiki/Diluc",
+  "skin": {
+  	"title": "Red Dead of Night",
+	  "profile": "https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Red_Dead_of_Night_Icon.png/revision/latest/scale-to-width-down/185?cb=20220721184034",
+	  "gacha": "https://static.wikia.nocookie.net/gensin-impact/images/1/10/Red_Dead_of_Night_Preview.png/revision/latest/scale-to-width-down/185?cb=20220713104417"
+}
 }
 
 </code>
@@ -545,5 +565,10 @@
     </div>
 
     <script defer src="/js/script.js"></script>
+    <script>
+      {{#if messages.success}}
+      showAlertBox({{messages.success}});
+      {{/if}}
+    </script>
   </body>
 </html>
