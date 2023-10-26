@@ -92,4 +92,8 @@ const artifactSchema = new Schema<IArtifact>({
             },
         },
     }
-})
+});
+
+const Artifact : Model<IArtifact> = model<IArtifact>('Artifact', artifactSchema);
+
+export default Artifact;

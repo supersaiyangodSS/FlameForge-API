@@ -15,14 +15,13 @@ const getDashboard = async (req: Request, res: Response) => {
             title: 'Dashboard',
             desc: 'Dashboard for FlameForge API',
             users: users,
-            characterIcons: characters,
+            characters: characters,
             messages: req.flash(),
             user: req.session.user,
-            role: 'Admin'
+            role: req.session.role,
         }
         res.render('dashboard', locals);
-        console.log(locals.user);
-        
+                
     } catch (error) {
         console.log(error);
         
@@ -45,10 +44,12 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
                     return res.status(400).json({ error: validationError.errors });
                 }
                 const result = await document.save();
-                req.flash('success', 'Data uploaded successfully')
-                res.redirect('/dashboard');
+                if (result) {
+                    console.log('File Uploaded');
+                    req.flash("success", "Data uploaded successfully")
+                }
             }
-            // res.status(201).json({ message: 'Data saved successfully'});
+            res.redirect('/dashboard');
         }
         } catch (error) {
             console.error(error);
@@ -57,4 +58,16 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
     }
 };
 
-export { getDashboard, uploadCharacterFile };
+const logoutUser = (req: Request, res: Response) => {
+    req.session.destroy((err) => {
+    if (err) {
+        console.error('Error destroying session', err);
+    }
+    else {
+        console.log('session destroyed successfully')
+    res.status(301).redirect('/sign-in');
+    }
+    });
+}
+
+export { getDashboard, uploadCharacterFile, logoutUser };

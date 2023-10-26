@@ -33,6 +33,7 @@ const loginUser = async (req: Request, res: Response) => {
             return res.status(302).redirect('/verify');
         }
         req.session.user = user.username;
+        req.session.role = user.role;
         console.log('session ${user.username}') //TODO: Remove Later
         console.log(`session is `, req.session.user);
         return res.status(200).redirect('/dashboard');
@@ -45,16 +46,4 @@ const loginUser = async (req: Request, res: Response) => {
     }
 }
 
-const logoutUser = (req: Request, res: Response) => {
-    req.session.destroy((err) => {
-    if (err) {
-        console.error('Error destroying session', err);
-    }
-    else {
-        console.log('session destroyed successfully')
-    res.status(301).redirect('/sign-in');
-    }
-    });
-}
-
-export { loginPage , loginUser , logoutUser };
+export { loginPage , loginUser };

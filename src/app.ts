@@ -6,12 +6,13 @@ import loginRouter from './routes/loginRouter.js';
 import registerRouter from './routes/registerRouter.js';
 import dashboardRouter from "./routes/dashboardRouter.js";
 import logger from './logger.js';
-import { create } from 'express-handlebars';
+import exphbs, { create } from 'express-handlebars';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { randomBytes } from 'crypto';
 import session from 'express-session';
 import flash from 'connect-flash';
+import { eq } from './helpers/helper.js';
 connectDB();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -21,24 +22,30 @@ const viewsPath = join(__dirname, "../views");
 const layoutPath = join(__dirname, "../views/layouts");
 const partialsPath = join(__dirname, "../views/partials");
 const secretString = randomBytes(20).toString('hex');
-const secret = process.env.SECRET || secretString;
+// const secret = process.env.SECRET || secretString;
+const secret = 'js';
 const oneDay = 1000 * 60 * 60 * 24;
 
 const hbs = create({
     extname: 'hbs',
     defaultLayout: 'main',
     layoutsDir: layoutPath,
-    partialsDir: partialsPath
+    partialsDir: partialsPath,
+    helpers: {
+        eq: eq
+    }
 })
 const sessions = session({
     secret,
     resave: false,
-    cookie: { maxAge: oneDay },
+    cookie: { 
+        path: '/',
+        httpOnly: false,
+        maxAge: oneDay },
     saveUninitialized: true
 })
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(sessions);
@@ -53,10 +60,7 @@ app.use(( req : Request , res : Response , next : NextFunction ) => {
     console.log(`Request Received ${req.method} ${req.hostname} ${req.url} ${req.ip}`);
     next();
 });
-app.use((req: Request, res: Response, next: NextFunction) => {
-    req.session.user = 'SSJ'
-    next();
-})
+
 
 // export const checkAuth = ( req : Request , res : Response, next : NextFunction ) => {
 //     if ( req.session && req.session.user ) {
@@ -68,6 +72,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // }
 
 export function checkAuth ( req: Request, res: Response, next: NextFunction ) {
+    req.session.user = 'SSJ'; //temp
+    req.session.role = 'admin' //temp
+    // req.session.role = 'user' //temp
     if (req.session && req.session.user) {
         next();
     }

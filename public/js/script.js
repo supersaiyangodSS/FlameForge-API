@@ -2,8 +2,9 @@ const characters = document.getElementById('nav-1');
 const weapons = document.getElementById('nav-2');
 const artifacts = document.getElementById('nav-3');
 const home = document.getElementById('nav-0');
-const people = document.getElementById('nav-4');
-const settings = document.getElementById('nav-5');
+const admin = document.getElementById('nav-4');
+const people = document.getElementById('nav-5');
+const settings = document.getElementById('nav-6');
 
 const contentData = document.getElementById('content-data');
 const heading = document.getElementById('heading');
@@ -12,8 +13,9 @@ const homeContent = document.getElementById('content-0');
 const charactersContent = document.getElementById('content-1');
 const weaponsContent = document.getElementById('content-2');
 const artifactsContent = document.getElementById('content-3');
-const poepleContent = document.getElementById('content-4');
-const settingsContent = document.getElementById('content-5');
+const adminContent = document.getElementById('content-4');
+const poepleContent = document.getElementById('content-5');
+const settingsContent = document.getElementById('content-6');
 
 function showTitle(title) {
     heading.innerText = title;
@@ -24,6 +26,7 @@ const weaponsTitle = weapons.innerText;
 const artifcatsTitle = artifacts.innerText;
 const peopleTitle = 'People'
 const settingsTitle = 'Settings'
+const adminTitle = 'Admin Control'
 
 showTitle(characterTitle)
 
@@ -40,14 +43,14 @@ function loadDefaults() {
 loadDefaults();
 
 function toggleActive(navOrder) {
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 5; i++) {
         document.getElementById(`nav-${i}`).classList.remove('light-gray');
     }
     document.getElementById(`nav-${navOrder}`).classList.add('light-gray');
 }
 
 function toggleContent(contentOrder) {
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i <= 6; i++) {
         document.getElementById(`content-${i}`).style.display = 'none';
     }
     document.getElementById(`content-${contentOrder}`).style.display = 'block';
@@ -76,15 +79,25 @@ artifacts.addEventListener('click', () => {
     showTitle(artifcatsTitle)
 });
 
+
+if (adminContent && admin) {
+    admin.addEventListener('click', () => {
+        toggleContent(4);
+        toggleActive(4)
+        showTitle(adminTitle);
+    })
+}
+
 people.addEventListener('click', () => {
-    toggleContent(4);
+    toggleContent(5);
     showTitle(peopleTitle);
 });
 
 settings.addEventListener('click', () => {
-    toggleContent(5)
+    toggleContent(6)
     showTitle(settingsTitle);
 })
+
 
 
 function handleFileInputDisplay(uploadFile, file_display) {
