@@ -1,0 +1,43 @@
+<div class="characters" id="content-1">
+              <p class="mt-10">Upload as JSON :</p>
+              <form
+                action="dashboard/upload/characters"
+                method="POST"
+                enctype="multipart/form-data"
+                class="flex justify-between items-center mt-3 mb-10 font-sans border-2 border-teal-500 p-4 rounded-lg"
+              >
+                <label
+                  for="uploadFile"
+                  class="cursor-pointer border-2 border-teal-400 px-2 py-2 rounded-lg transition-colors hover:bg-teal-400"
+                >
+                  <input
+                    type="file"
+                    name="jsonCharacterFile"
+                    id="uploadFile"
+                    accept=".json"
+                    class="hidden"
+                  />
+                  Choose File
+                </label>
+                <p id="file_display"></p>
+                <button
+                  type="submit"
+                  class="flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-lg"
+                ><span class="material-symbols-outlined mr-1">
+                    upload_file
+                  </span>
+                  Upload</button>
+              </form>
+                <p class="my-3">Previously Included Characters - Do Not Replicate</p>
+              <div class="icon-card-container my-8 flex flex-wrap">
+                {{#each characters}}
+                <div class=" relative icon-card five-star rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-3xl box-border overflow-hidden m-3">
+                  <img width="90px" src="{{this.images.profile}}" alt="{{this.name}}">
+                  <p class="bg-white absolute bottom-0 left-0 right-0 text-black text-xs text-center overflow-hidden whitespace-nowrap overflow-ellipsis px-3">{{this.name}}</p>
+                  </div>
+                {{/each}}
+              </div>
+{{> codeCharacterSnippet}}
+
+            </div>
+          </div>

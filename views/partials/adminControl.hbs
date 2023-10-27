@@ -1,0 +1,16 @@
+{{#if (eq role 'admin')}}
+            <div id="content-4">
+              <p>Characters</p>
+              {{#each characters}}
+              <div class="flex justify-between items-center my-2 py-2 px-4 rounded-lg bg-slate-700">
+              <div class="flex justify-between items-center">
+                  <div class=" relative icon-card-mini five-star rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-2xl box-border overflow-hidden">
+                  <img width="90px" src="{{this.images.profile}}" alt="{{this.name}}">
+              </div>
+              <p class="text-lg ml-2">{{this.name}}</p>
+              </div>
+                <a href="/dashboard/delete/{{this._id}}"><button class="btn bg-red-400 px-4 py-2 rounded-lg hover:bg-red-500 transition-colors text-sm">Delete</button></a>
+              </div>
+              {{/each}}
+            </div>
+            {{/if}}
