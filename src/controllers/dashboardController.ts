@@ -11,6 +11,13 @@ const getDashboard = async (req: Request, res: Response) => {
         const characters = await Character.find().select(
             '-desc -vision -weapon -versionRelease -birthday -title -constellation -region -affiliation -model -wikiUrl'
         ).lean();
+        const userId = req.session.uid;
+        const loggedUser = await User.findById(userId).lean();
+        if (!loggedUser) {
+            return res.status(404).send('Internal Server Error!');
+        }
+        console.log(loggedUser);
+        
         const locals = {
             title: 'Dashboard',
             desc: 'Dashboard for FlameForge API',
@@ -19,6 +26,7 @@ const getDashboard = async (req: Request, res: Response) => {
             messages: req.flash(),
             user: req.session.user,
             role: req.session.role,
+            loggedUser: loggedUser
         }
         res.render('dashboard', locals);
                 

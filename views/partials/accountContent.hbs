@@ -1,7 +1,16 @@
 <div id="content-6">
             <div class="deletion  font-sans">
               <p class="text-2xl font-semibold">Account Info</p>
-
+              <p>Name:</p>
+              <p>{{loggedUser.firstName}} {{loggedUser.lastName}}</p>
+              <p>Email:</p>
+              <p>{{loggedUser.email}}</p>
+              <p>Username:</p>
+              <p>{{loggedUser.username}}</p>
+              {{#if (eq loggedUser.verified false)}}
+              <p>verified</p>
+              {{/if}}
+              
               <p class="text-2xl font-semibold mt-2">Account Deletion</p>
               <p class="mt-3 mb-5 font-sans w-2/4">This action is irreversible and will permanently delete all your account data. Please confirm if you wish to proceed.</p>
               <div class="">

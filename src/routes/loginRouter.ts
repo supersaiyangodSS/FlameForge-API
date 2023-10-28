@@ -4,7 +4,7 @@ import { body } from 'express-validator';
 const router : Router = Router();
 
 const validateUsers = [
-    body('username').notEmpty().withMessage('Username is required'),
+    body('email').isEmail().withMessage('Email is required'),
     body('password').isLength({ min: 8 }).withMessage('Password should be at least 8 characters long')
 ];
 

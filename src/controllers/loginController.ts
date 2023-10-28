@@ -8,8 +8,8 @@ const loginPage = (req: Request, res: Response) => {
 
 const loginUser = async (req: Request, res: Response) => {
     const errors = validationResult(req);
-    const { username, password } = req.body;
-    console.log(`${username} and ${password}`)
+    const { email, password } = req.body;
+    console.log(`${email} and ${password}`)
     console.log(req.body)
     if (!errors.isEmpty()) {
         console.log('validation error')
@@ -18,10 +18,10 @@ const loginUser = async (req: Request, res: Response) => {
         });
     }
     try {
-        const user = await User.findOne({username})
+        const user = await User.findOne({email})
         if (!user) {
             return res.status(404).json({
-                notFound: `${username} does not exits`
+                notFound: `${email} does not exits`
             });
         }
         if (password === user.password) {
@@ -34,6 +34,7 @@ const loginUser = async (req: Request, res: Response) => {
         }
         req.session.user = user.username;
         req.session.role = user.role;
+        req.session.uid = user._id;
         console.log('session ${user.username}') //TODO: Remove Later
         console.log(`session is `, req.session.user);
         return res.status(200).redirect('/dashboard');

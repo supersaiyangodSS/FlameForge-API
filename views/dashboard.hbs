@@ -15,9 +15,7 @@
   </head>
   <body>
     <div id="alertBox" class="alertBox text-white bg-teal-500 px-2 py-2 rounded-lg transition-all duration-300 z-40"></div>
-
     {{> logoutModal}}
-
     <div class="bg-slate-800 fixed top-0 left-0 bottom-0 right-0 z-50 flex justify-center items-center" id="loader">
       <span class="loader"></span>
     </div>
@@ -32,11 +30,11 @@
           <div id="content-data" class="mt-2">
           {{> homeContent}}
 
-          {{> characterContent}}
+{{> characterContent}}
           
-          {{> weaponContent}}
+{{> weaponContent}}
 
-          {{> artifactContent}}
+{{> artifactContent}}
           
           {{> adminControl}}
 
@@ -54,7 +52,6 @@
       </script>
       {{/if}}
     </div>
-
     <script defer type="text/javascript" src="/js/script.js"></script>
   </body>
 </html>
