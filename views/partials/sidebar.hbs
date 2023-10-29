@@ -67,6 +67,11 @@
                   width="40"
                 />Admin Control</button></li>
                 {{/if}}
+                {{#if (eq role 'user')}}
+            <li class="w-full mt-4"><button
+                class="items-center hover:bg-slate-700 rounded-full text-teal-100 py-4 px-4 w-full transition-colors text-left hidden"
+                id="nav-4"></button></li>
+                {{/if}}
           </ul>
 
         </div>

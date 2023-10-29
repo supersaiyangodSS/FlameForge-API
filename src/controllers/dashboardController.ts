@@ -78,4 +78,12 @@ const logoutUser = (req: Request, res: Response) => {
     });
 }
 
-export { getDashboard, uploadCharacterFile, logoutUser };
+const deleteItems = (req: Request, res: Response) => {
+    const {id} = req.params;
+    if (req.session.user && req.session.role === 'admin') {
+        return res.send(`admin: ${id}`);
+    }
+    res.send('not admin')
+}
+
+export { getDashboard, uploadCharacterFile, logoutUser, deleteItems };

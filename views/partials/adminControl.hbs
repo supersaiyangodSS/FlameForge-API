@@ -1,6 +1,6 @@
 {{#if (eq role 'admin')}}
             <div id="content-4">
-              <p>Characters</p>
+              <p class="text-xl">Characters</p>
               {{#each characters}}
               <div class="flex justify-between items-center my-2 py-2 px-4 rounded-lg bg-slate-700">
               <div class="flex justify-between items-center">
@@ -9,8 +9,10 @@
               </div>
               <p class="text-lg ml-2">{{this.name}}</p>
               </div>
-                <a href="/dashboard/delete/{{this._id}}"><button class="btn bg-red-400 px-4 py-2 rounded-lg hover:bg-red-500 transition-colors text-sm">Delete</button></a>
+              <form action="/dashboard/delete/{{this._id}}" method="POST">
+                <button class="btn bg-red-400 px-4 py-2 rounded-lg hover:bg-red-500 transition-colors text-sm" type="submit">Delete</button>
+              </form>
               </div>
               {{/each}}
             </div>
-            {{/if}}
+{{/if}}

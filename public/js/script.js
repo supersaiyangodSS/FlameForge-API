@@ -41,7 +41,6 @@ function loadDefaults() {
     homeContent.style.display = 'block';
 }
 loadDefaults();
-
 function toggleActive(navOrder) {
     for (let i = 1; i <= 5; i++) {
         document.getElementById(`nav-${i}`).classList.remove('light-gray');
@@ -116,15 +115,14 @@ handleFileInputDisplay('uploadFile3', 'file_display3');
 
 
 //test only
-toggleContent(4);
-
+// toggleContent(4);
 
 
 function accountDeleteConfirmation() {
     const deleteBtn = document.getElementById('btn-delete');
     const deleteInput = document.getElementById('input-delete');
     deleteInput.addEventListener('input', () => {
-        if (deleteInput.value === 'DELETE') {
+        if (deleteInput.value === 'DISAPPEAR') {
             deleteBtn.classList.remove('disable-btn');
             deleteBtn.classList.add('deleteAccountBtn');
         }
