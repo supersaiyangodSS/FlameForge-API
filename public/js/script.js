@@ -31,14 +31,21 @@ const adminTitle = 'Admin Control'
 showTitle(characterTitle)
 
 function loadDefaults() {
-    // characters.classList.add('light-gray')
-    showTitle('');
-    charactersContent.style.display = 'none';
-    weaponsContent.style.display = 'none';
-    artifactsContent.style.display = 'none'
-    poepleContent.style.display = 'none';
-    settingsContent.style.display = 'none';
-    homeContent.style.display = 'block';
+    let activeNav = localStorage.getItem('activeNav');
+    let activeContent = localStorage.getItem('activeContent');
+    if (!activeNav || !activeContent) {
+        activeNav = 1;
+        activeContent = 1; 
+    }
+    // showTitle('');
+    // charactersContent.style.display = 'none';
+    // weaponsContent.style.display = 'none';
+    // artifactsContent.style.display = 'none'
+    // poepleContent.style.display = 'none';
+    // settingsContent.style.display = 'none';
+    // homeContent.style.display = 'block';
+    toggleActive(activeNav);
+    toggleContent(activeContent)
 }
 loadDefaults();
 function toggleActive(navOrder) {
@@ -46,6 +53,7 @@ function toggleActive(navOrder) {
         document.getElementById(`nav-${i}`).classList.remove('light-gray');
     }
     document.getElementById(`nav-${navOrder}`).classList.add('light-gray');
+    localStorage.setItem('activeNav', navOrder);
 }
 
 function toggleContent(contentOrder) {
@@ -53,6 +61,7 @@ function toggleContent(contentOrder) {
         document.getElementById(`content-${i}`).style.display = 'none';
     }
     document.getElementById(`content-${contentOrder}`).style.display = 'block';
+    localStorage.setItem('activeContent', contentOrder);
 }
 
 home.addEventListener('click', () => {

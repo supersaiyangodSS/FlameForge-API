@@ -78,12 +78,25 @@ const logoutUser = (req: Request, res: Response) => {
     });
 }
 
-const deleteItems = (req: Request, res: Response) => {
+const deleteCharacter = async (req: Request, res: Response) => {
     const {id} = req.params;
-    if (req.session.user && req.session.role === 'admin') {
-        return res.send(`admin: ${id}`);
-    }
-    res.send('not admin')
+        try {            
+            if (req.session.user && req.session.role === 'admin') {
+                // return res.send(`admin: ${id}`);
+                const deletedCharacter = await Character.findByIdAndRemove(id);
+                if (deletedCharacter) {
+                    // res.send(deletedCharacter);
+                    req.flash('deletedItem', 'Deleted Successfully');
+                    res.redirect('/dashboard')
+                }
+                else {
+                    res.send('Interval server error');
+                }
+            }
+            res.send('not admin')
+        } catch (error) {
+            
+        }
 }
 
-export { getDashboard, uploadCharacterFile, logoutUser, deleteItems };
+export { getDashboard, uploadCharacterFile, logoutUser, deleteCharacter };

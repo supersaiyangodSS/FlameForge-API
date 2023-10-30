@@ -55,6 +55,13 @@
         })
       </script>
       {{/if}}
+      {{#if messages.deletedItem}}
+      <script>
+        window.addEventListener('load', function () {
+          showAlertBox('{{messages.deletedItem}}')
+        })
+      </script>
+      {{/if}}
     </div>
     <script defer type="text/javascript" src="/js/script.js"></script>
   </body>
