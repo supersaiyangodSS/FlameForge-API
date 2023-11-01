@@ -7,6 +7,7 @@ export interface IWeapon extends Document {
     source: string[],
     base: number,
     subStat: string,
+    affix: string,
     passive: string,
     versionRelease: number,
     region: string,

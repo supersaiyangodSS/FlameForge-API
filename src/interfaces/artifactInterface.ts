@@ -11,27 +11,27 @@ export interface IArtifact extends Document {
         flower: {
             title: string,
             piece: string,
-            images: string,
+            icon: string,
         },
         sands: {
             title: string,
             piece: string,
-            image: string,
+            icon: string,
         },
         plume: {
             title: string,
             piece: string,
-            image: string,
+            icon: string,
         },
         circlet: {
             title: string,
             piece: string,
-            image: string,
+            icon: string,
         },
         goblet: {
             title: string,
             piece: string,
-            image: string,
+            icon: string,
         }
     }
 }

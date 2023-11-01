@@ -9,9 +9,12 @@
               </div>
               <p class="text-lg ml-2">{{this.name}}</p>
               </div>
+              <div class="flex">
+              <a href="/dashboard/character/edit/{{this._id}}"><button class="btn mr-2 bg-teal-500 px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors text-sm">Edit</button></a>
               <form action="/dashboard/delete/character/{{this._id}}" method="POST">
                 <button class="btn bg-red-400 px-4 py-2 rounded-lg hover:bg-red-500 transition-colors text-sm" type="submit">Delete</button>
               </form>
+              </div>
               </div>
               {{/each}}
               <p class="text-xl mt-9">Weapons</p>
@@ -23,9 +26,29 @@
               </div>
               <p class="text-lg ml-2">{{this.name}}</p>
               </div>
+              <div class="flex">
+                <a href="/dashboard/character/edit/{{this._id}}"><button class="btn mr-2 bg-teal-500 px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors text-sm">Edit</button></a>
               <form action="/dashboard/delete/weapon/{{this._id}}" method="POST">
                 <button class="btn bg-red-400 px-4 py-2 rounded-lg hover:bg-red-500 transition-colors text-sm" type="submit">Delete</button>
               </form>
+              </div>
+              </div>
+              {{/each}}
+              <p class="text-xl mt-9">Artifacts</p>
+              {{#each artifacts}}
+              <div class="flex justify-between items-center my-2 py-2 px-4 rounded-lg bg-slate-700">
+              <div class="flex justify-between items-center">
+                  <div class="flex justify-center relative icon-card-mini five-star rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-2xl box-border overflow-hidden">
+                  <img width="" src="{{this.fullSet.flower.icon}}" alt="{{this.name}}">
+              </div>
+              <p class="text-lg ml-2">{{this.name}}</p>
+              </div>
+              <div class="flex">
+              <a href="/dashboard/character/edit/{{this._id}}"><button class="btn mr-2 bg-teal-500 px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors text-sm">Edit</button></a>
+              <form action="/dashboard/delete/weapon/{{this._id}}" method="POST">
+                <button class="btn bg-red-400 px-4 py-2 rounded-lg hover:bg-red-500 transition-colors text-sm" type="submit">Delete</button>
+              </form>
+              </div>
               </div>
               {{/each}}
             </div>

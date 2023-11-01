@@ -26,6 +26,10 @@ const weaponSchema = new Schema<IWeapon>({
         type: String,
         required: true,
     },
+    affix: {
+        type: String,
+        required: true,
+    },
     passive: {
         type: String,
         required: true,

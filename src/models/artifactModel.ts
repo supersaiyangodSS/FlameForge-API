@@ -30,7 +30,7 @@ const artifactSchema = new Schema<IArtifact>({
                 type: String,
                 required: true,
             },
-            images: {
+            icon: {
                 type: String,
                 required: true,
             },
@@ -44,7 +44,7 @@ const artifactSchema = new Schema<IArtifact>({
                 type: String,
                 required: true,
             },
-            images: {
+            icon: {
                 type: String,
                 required: true,
             },
@@ -58,7 +58,7 @@ const artifactSchema = new Schema<IArtifact>({
                 type: String,
                 required: true,
             },
-            images: {
+            icon: {
                 type: String,
                 required: true,
             },
@@ -72,7 +72,7 @@ const artifactSchema = new Schema<IArtifact>({
                 type: String,
                 required: true,
             },
-            images: {
+            icon: {
                 type: String,
                 required: true,
             },
@@ -86,7 +86,7 @@ const artifactSchema = new Schema<IArtifact>({
                 type: String,
                 required: true,
             },
-            images: {
+            icon: {
                 type: String,
                 required: true,
             },
