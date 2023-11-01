@@ -58,6 +58,10 @@ const characterSchema = new Schema<ICharacter>({
             type : String,
             required: true,
         },
+        card : {
+            type : String,
+            required: true,
+        },
     },
     model : {
         type: String,

@@ -15,6 +15,7 @@ export interface ICharacter extends Document {
     images: {
         profile: string,
         gacha: string,
+        card: string,
     },
     model: string,
     wikiUrl: string,
