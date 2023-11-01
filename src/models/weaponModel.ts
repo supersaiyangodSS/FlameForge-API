@@ -54,6 +54,10 @@ const weaponSchema = new Schema<IWeapon>({
         awakened: {
             type: String,
             required: true,
+        },
+        gacha: {
+            type: String,
+            required: true,
         }
     },
     wikiUrl: {

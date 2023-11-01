@@ -14,5 +14,19 @@
               </form>
               </div>
               {{/each}}
+              <p class="text-xl mt-9">Weapons</p>
+              {{#each weapons}}
+              <div class="flex justify-between items-center my-2 py-2 px-4 rounded-lg bg-slate-700">
+              <div class="flex justify-between items-center">
+                  <div class="flex justify-center relative icon-card-mini five-star rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-2xl box-border overflow-hidden">
+                  <img width="" src="{{this.images.icon}}" alt="{{this.name}}">
+              </div>
+              <p class="text-lg ml-2">{{this.name}}</p>
+              </div>
+              <form action="/dashboard/delete/weapon/{{this._id}}" method="POST">
+                <button class="btn bg-red-400 px-4 py-2 rounded-lg hover:bg-red-500 transition-colors text-sm" type="submit">Delete</button>
+              </form>
+              </div>
+              {{/each}}
             </div>
 {{/if}}

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import User from '../models/userModel.js';
 import Character from "../models/characterModel.js";
+import Weapon from "../models/weaponModel.js";
 
 const getDashboard = async (req: Request, res: Response) => {
     
@@ -10,6 +11,9 @@ const getDashboard = async (req: Request, res: Response) => {
         ).lean();
         const characters = await Character.find().select(
             '-desc -vision -weapon -versionRelease -birthday -title -constellation -region -affiliation -model -wikiUrl'
+        ).lean();
+        const weapons = await Weapon.find().select(
+            '-versionRelease'
         ).lean();
         const userId = req.session.uid;
         const loggedUser = await User.findById(userId).lean();
@@ -23,6 +27,7 @@ const getDashboard = async (req: Request, res: Response) => {
             desc: 'Dashboard for FlameForge API',
             users: users,
             characters: characters,
+            weapons: weapons,
             messages: req.flash(),
             user: req.session.user,
             role: req.session.role,
@@ -45,6 +50,36 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
             const uploadedData = JSON.parse(req.file.buffer.toString());
             for (const object of uploadedData) {
                 const document = new Character(object);
+                try {
+                    await document.validate();
+                } catch (validationError : any) {
+                    console.error(validationError);
+                    return res.status(400).json({ error: validationError.errors });
+                }
+                const result = await document.save();
+                if (result) {
+                    console.log('File Uploaded');
+                    req.flash("success", "Data uploaded successfully")
+                }
+            }
+            res.redirect('/dashboard');
+        }
+        } catch (error) {
+            console.error(error);
+            
+      res.status(500).json({ error: 'Internal server error', mainError: error});
+    }
+};
+
+const uploadWeaponFile = async (req: Request, res: Response) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: 'No file uploaded' });
+        }
+        if (req.file) {
+            const uploadedData = JSON.parse(req.file.buffer.toString());
+            for (const object of uploadedData) {
+                const document = new Weapon(object);
                 try {
                     await document.validate();
                 } catch (validationError : any) {
@@ -99,4 +134,4 @@ const deleteCharacter = async (req: Request, res: Response) => {
         }
 }
 
-export { getDashboard, uploadCharacterFile, logoutUser, deleteCharacter };
+export { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter };

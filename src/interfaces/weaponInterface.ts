@@ -15,6 +15,7 @@ export interface IWeapon extends Document {
         icon: string,
         original: string,
         awakened: string,
+        gacha: string,
     },
     wikiUrl: string
 }
