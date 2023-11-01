@@ -12,9 +12,9 @@ router.post('/upload/characters', upload.single('jsonCharacterFile'), uploadChar
 router.post('/upload/weapons', upload.single('jsonWeaponFile'), uploadWeaponFile);
 router.post('/upload/artifacts', upload.single('jsonArtifactFile'), uploadArtifactFile);
 
-router.post('/delete/character/:id', deleteCharacter)
-router.post('/delete/weapon/:id', deleteWeapon)
-router.post('/delete/artifact/:id', deleteArtifact)
+router.post('/character/delete/:id', deleteCharacter)
+router.post('/weapon/delete/:id', deleteWeapon)
+router.post('/artifact/delete/:id', deleteArtifact)
 
 router.get('/logout', logoutUser);
 
