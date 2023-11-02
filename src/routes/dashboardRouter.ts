@@ -1,6 +1,6 @@
 import { checkAuth } from "../app.js";
 import { Request, Response, Router } from "express";
-import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, uploadArtifactFile } from '../controllers/dashboardController.js'
+import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, uploadArtifactFile, editCharacter } from '../controllers/dashboardController.js'
 import multer, { StorageEngine, memoryStorage } from 'multer';
 
 const router : Router = Router();
@@ -15,6 +15,8 @@ router.post('/upload/artifacts', upload.single('jsonArtifactFile'), uploadArtifa
 router.post('/character/delete/:id', deleteCharacter)
 router.post('/weapon/delete/:id', deleteWeapon)
 router.post('/artifact/delete/:id', deleteArtifact)
+
+router.get('/character/edit/:id', editCharacter);
 
 router.get('/logout', logoutUser);
 

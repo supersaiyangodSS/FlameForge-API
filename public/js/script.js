@@ -87,7 +87,6 @@ artifacts.addEventListener('click', () => {
     showTitle(artifcatsTitle)
 });
 
-
 if (adminContent && admin) {
     admin.addEventListener('click', () => {
         toggleContent(4);
@@ -105,8 +104,6 @@ settings.addEventListener('click', () => {
     toggleContent(6)
     showTitle(settingsTitle);
 })
-
-
 
 function handleFileInputDisplay(uploadFile, file_display) {
     const fileInput = document.getElementById(uploadFile);

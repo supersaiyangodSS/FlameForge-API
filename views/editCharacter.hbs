@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+<body class="bg-slate-800">
+    <div class="container mx-auto bg-slate-800">
+        <p class="bg-red-400 text-center py-2 my-5 rounded-lg text-slate-800">Important: Making changes to the character data will reflect in the API. Please be cautious when editing.</p>
+    <div class="header-container flex items-center">
+        {{#if character}}
+        <div class="icon-card five-star rounded-lg box-border overflow-hidden m-3 flex justify-center items-center">
+                  <img width="100px" src="{{character.images.profile}}" alt="{{this.name}}">
+                  </div>
+<div>
+        <p class="text-3xl whitespace-nowrap overflow-ellipsis mx-2 text-white">{{character.name}}</p>
+        <p class="text-md whitespace-nowrap overflow-ellipsis mx-2 text-gray-300 mt-2">{{character.desc}}</p>
+</div>
+        {{/if}}
+    </div>
+        {{character}}
+
+        <form action="">
+            <input type="text" name="name" value="{{character.name}}" required>
+        </form>
+    </div>
+</body>
+</html>

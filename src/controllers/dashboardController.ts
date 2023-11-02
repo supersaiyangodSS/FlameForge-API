@@ -23,9 +23,7 @@ const getDashboard = async (req: Request, res: Response) => {
         const loggedUser = await User.findById(userId).lean();
         if (!loggedUser) {
             return res.status(404).send('Internal Server Error!');
-        }
-        console.log(loggedUser);
-        
+        }        
         const locals = {
             title: 'Dashboard',
             desc: 'Dashboard for FlameForge API',
@@ -64,9 +62,9 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
                 const result = await document.save();
                 if (result) {
                     console.log('File Uploaded');
-                    req.flash("success", "Data uploaded successfully")
                 }
             }
+            req.flash("success", "Data uploaded successfully")
             res.redirect('/dashboard');
         }
         } catch (error) {
@@ -94,9 +92,9 @@ const uploadWeaponFile = async (req: Request, res: Response) => {
                 const result = await document.save();
                 if (result) {
                     console.log('File Uploaded');
-                    req.flash("success", "Data uploaded successfully")
                 }
             }
+            req.flash("success", "Data uploaded successfully")
             res.redirect('/dashboard');
         }
         } catch (error) {
@@ -124,9 +122,9 @@ const uploadArtifactFile = async (req: Request, res: Response) => {
                 const result = await document.save();
                 if (result) {
                     console.log('File Uploaded');
-                    req.flash("success", "Data uploaded successfully")
                 }
             }
+            req.flash("success", "Data uploaded successfully")
             res.redirect('/dashboard');
         }
         } catch (error) {
@@ -146,6 +144,32 @@ const logoutUser = (req: Request, res: Response) => {
     res.status(301).redirect('/sign-in');
     }
     });
+}
+
+const editCharacter = async (req: Request, res: Response) => {
+    const {id} = req.params;
+    try {
+        if (req.session.user && req.session.role === 'admin') {
+            const character = await Character.findById(id).select('-__v').lean();
+            if (!character) {
+                return res.send('Character not found')
+            }
+            const locals = {
+                character: character
+            }
+            res.render('editCharacter', locals);
+        }
+        else {
+            const character = await Character.findById(id).select('-__v').lean();
+            const locals = {
+                character: character
+            }
+            res.render('editCharacter', locals);
+            // res.send('Not Admin');
+        }
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 const deleteCharacter = async (req: Request, res: Response) => {
@@ -211,4 +235,4 @@ const deleteArtifact = async (req: Request, res: Response) => {
         }
 }
 
-export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact};
+export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact};
