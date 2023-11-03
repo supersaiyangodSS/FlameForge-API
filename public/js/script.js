@@ -35,7 +35,7 @@ function loadDefaults() {
     let activeContent = localStorage.getItem('activeContent');
     if (!activeNav || !activeContent) {
         activeNav = 1;
-        activeContent = 1; 
+        activeContent = 1;
     }
     // showTitle('');
     // charactersContent.style.display = 'none';

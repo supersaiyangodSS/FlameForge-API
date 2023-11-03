@@ -1,30 +1,150 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <title>Document</title>
 </head>
+
 <body class="bg-slate-800">
-    <div class="container mx-auto bg-slate-800">
-        <p class="bg-red-400 text-center py-2 my-5 rounded-lg text-slate-800">Important: Making changes to the character data will reflect in the API. Please be cautious when editing.</p>
+  <div class="w-10/12 container p-4 mx-auto bg-slate-800">
+    <p class="bg-red-400 text-center py-2 my-5 rounded-lg text-slate-800">Important: Making changes to the character
+      data will reflect in the API.
+      Please be cautious when editing.</p>
     <div class="header-container flex items-center">
-        {{#if character}}
-        <div class="icon-card five-star rounded-lg box-border overflow-hidden m-3 flex justify-center items-center">
-                  <img width="100px" src="{{character.images.profile}}" alt="{{this.name}}">
-                  </div>
-<div>
+      {{#if character}}
+      <div class="icon-card five-star rounded-lg box-border overflow-hidden m-3 flex justify-center items-center">
+        <img width="100px" src="{{character.images.profile}}" alt="{{this.name}}" />
+      </div>
+      <div>
         <p class="text-3xl whitespace-nowrap overflow-ellipsis mx-2 text-white">{{character.name}}</p>
         <p class="text-md whitespace-nowrap overflow-ellipsis mx-2 text-gray-300 mt-2">{{character.desc}}</p>
-</div>
-        {{/if}}
+      </div>
+      {{/if}}
     </div>
-        {{character}}
+    <form class="editForm text-white" action="" method="POST">
+      <div class="flex flex-col items-start">
+        <label for="name" class="font-regular text-sm mt-3">
+          Name</label>
+        <input type="text" name="name" id="name" value="{{character.name}}"
+          class=" p-2 border-t-2 border-b-2 placeholder:opacity-50 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+          required />
 
-        <form action="">
-            <input type="text" name="name" value="{{character.name}}" required>
-        </form>
-    </div>
+        <label for="desc" class="font-regular text-sm mt-3">Description</label>
+        <input type="text" name="desc" id="desc" value="{{character.desc}}"
+          class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+          required />
+
+        <label for="rarity" class="font-regular text-sm mt-3">Rarity</label>
+        <div class="flex justify-center my-2">
+        <input type="radio" class="rarity" name="rarity" id="5" {{#if (eq character.rarity 5)}}checked{{/if}} hidden required>
+        <label for="5">5 Star</label>
+        <input type="radio" class="rarity ml-1" name="rarity" id="4" {{#if (eq character.rarity 4)}}checked{{/if}} hidden required>
+        <label for="4">4 Star</label>
+        </div>
+
+        <label class="myFont my-2 text-xl">Vision</label>
+        <div class="flex my-2">
+
+          <div class="pyro mx-1">
+            <input type="radio" name="vision" class="vision" id="pyro" value="Pyro" required hidden {{#if (eq character.vision "Pyro"
+              )}}checked{{/if}} />
+            <label for="pyro" class="flex items-center p-2">
+              <img src="/assets/images/pyro.png" width="50" alt="pyro">
+              <p class="mx-1">Pyro</p>
+            </label>
+          </div>
+
+          <div class="hydro mx-1">
+            <input type="radio" name="vision" class="vision" id="hydro" value="Hydro" required hidden {{#if (eq
+              character.vision "Hydro" )}}checked{{/if}} />
+            <label for="hydro" class="flex items-center p-2">
+              <img src="/assets/images/hydro.png" width="50" alt="hydro">
+              <p class="mx-1">Hydro</p>
+            </label>
+          </div>
+
+          <div class="anemo mx-1">
+            <input type="radio" name="vision" class="vision" id="anemo" value="anemo" required hidden {{#if (eq
+              character.vision "Anemo" )}}checked{{/if}} />
+            <label for="anemo" class="flex items-center p-2">
+              <img src="/assets/images/anemo.png" width="50" alt="anemo">
+              <p class="mx-1">Anemo</p>
+            </label>
+          </div>
+
+          <div class="electro mx-1">
+            <input type="radio" name="vision" class="vision" id="electro" value="Electro" required hidden {{#if (eq
+              character.vision "Electro" )}}checked{{/if}} />
+            <label for="electro" class="flex items-center p-2">
+              <img src="/assets/images/electro.png" width="50" alt="electro">
+              <p class="mx-1">Electro</p>
+            </label>
+          </div>
+
+          <div class="dendro mx-1">
+            <input type="radio" name="vision"class="vision" id="dendro" value="Dendro" required hidden {{#if (eq
+              character.vision "Dendro" )}}checked{{/if}} />
+            <label for="dendro" class="flex items-center p-2">
+              <img src="/assets/images/dendro.png" width="50" alt="dendro">
+              <p class="mx-1">Dendro</p>
+            </label>
+          </div>
+
+          <div class="cryo mx-1">
+            <input type="radio" name="vision" class="vision" id="cryo" value="Cryo" required hidden {{#if (eq character.vision "Cryo"
+              )}}checked{{/if}} />
+            <label for="cryo" class="flex items-center p-2">
+              <img src="/assets/images/cryo.png" width="50" alt="cryo">
+              <p class="mx-1">Cryo</p>
+            </label>
+          </div>
+
+          <div class="geo mx-1">
+            <input type="radio" name="vision" class="vision" id="geo" value="Geo" required hidden {{#if (eq character.vision "Geo")}}checked{{/if}} />
+            <label for="geo" class="flex items-center p-2">
+            <img src="/assets/images/geo.png" width="50" alt="geo">
+            <p class="mx-1">Geo</p>
+            </label>
+          </div>
+        </div>
+
+        <label for="weapon" class="font-regular text-sm mt-3">Weapon</label>
+        <div class="flex justify-center">
+
+          <div class="polearm mr-4">
+          <input type="radio" class="weapon" name="weapon" id="polearm" value="Polearm" {{#if (eq character.weapon "Polearm")}}checked{{/if}} hidden required>
+          <label for="polearm" class="flex items-center p-2">
+            <img src="/assets/images/Polearm.png" width="50" alt="Polearm">
+            <p class="mx-1">Polearm</p>
+          </label>
+            </div>
+          
+          <div class="bow mr-4">
+          <input type="radio" class="weapon" name="weapon" id="bow" {{#if (eq character.weapon "Bow")}}checked{{/if}} hidden required>
+          <label for="bow" class="flex items-center p-2">
+            <img src="/assets/images/Bow.png" width="50" alt="Bow">
+            <p class="mx-1">Bow</p>
+          </label>
+          </div>
+
+
+        </div>
+
+        <label for="vr" class="font-regular text-sm mt-3">Version Release</label>
+        <input type="text" name="vr" id="vr" value="{{character.versionRelease}}"
+          class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+          required />
+
+
+      </div>
+      <button type="submit" id="login"
+        class="btn py-3 px-6 border-4 border-teal-400 rounded-2xl hover:bg-teal-400 mt-3 font-regular transition-colors ease-linear font-semibold">Save</button>
+
+    </form>
+  </div>
 </body>
+
 </html>
