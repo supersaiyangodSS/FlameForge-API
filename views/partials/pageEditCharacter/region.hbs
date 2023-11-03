@@ -1,0 +1,43 @@
+<label class="myFont my-4 text-lg">Region</label>
+<div class="flex justify-center">
+
+    <div class="mondstadt mr-4">
+          <input type="checkbox" class="region" name="region" id="mondstadt" value="Mondstadt"{{#each character.region}} {{#if (eq this "Mondstadt")}}checked{{/if}} {{/each}} hidden required>
+          <label for="mondstadt" class="flex items-center p-2">
+            <img src="/assets/images/Mondstadt.webp" width="35" alt="Mondstadt">
+            <p class="mx-1">Mondstadt</p>
+          </label>
+    </div>
+
+    <div class="liyue mr-4">
+          <input type="checkbox" class="region" name="region" id="liyue" value="Liyue" {{#each character.region}} {{#if (eq this "Liyue")}}checked{{/if}} {{/each}} hidden required>
+          <label for="liyue" class="flex items-center p-2">
+            <img src="/assets/images/Liyue.webp" width="35" alt="Mondstadt">
+            <p class="mx-1">Liyue</p>
+          </label>
+    </div>
+
+    <div class="inazuma mr-4">
+          <input type="checkbox" class="region" name="region" id="inazuma" value="Inazuma" {{#each character.region}} {{#if (eq this "Inazuma")}}checked{{/if}} {{/each}} hidden required>
+          <label for="inazuma" class="flex items-center p-2">
+            <img src="/assets/images/Inazuma.webp" width="35" alt="Inazuma">
+            <p class="mx-1">Inazuma</p>
+          </label>
+    </div>
+    <div class="sumeru mr-4">
+          <input type="checkbox" class="region" name="region" id="sumeru" value="Sumeru" {{#each character.region}} {{#if (eq this "Sumeru")}}checked{{/if}} {{/each}} hidden required>
+          <label for="sumeru" class="flex items-center p-2">
+            <img src="/assets/images/Sumeru.webp" width="35" alt="Sumeru">
+            <p class="mx-1">Sumeru</p>
+          </label>
+    </div>
+    <div class="fontaine mr-4">
+          <input type="checkbox" class="region" name="region" id="fontaine" value="Fontaine" {{#each character.region}} {{#if (eq this "Fontaine")}}checked{{/if}} {{/each}} hidden required>
+          <label for="fontaine" class="flex items-center p-2">
+            <img src="/assets/images/Fontaine.webp" width="35" alt="Fontaine">
+            <p class="mx-1">Fontaine</p>
+          </label>
+    </div>
+
+
+</div>

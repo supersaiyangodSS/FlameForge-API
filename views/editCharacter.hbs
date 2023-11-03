@@ -30,13 +30,13 @@
     </div>
     <form class="editForm text-white" action="" method="POST">
       <div class="flex flex-col items-start">
-        <label for="name" class="font-regular text-sm mt-3">
+        <label for="name" class="myFont my-4 text-lg">
           Name</label>
         <input type="text" name="name" id="name" value="{{character.name}}"
           class=" p-2 border-t-2 border-b-2 placeholder:opacity-50 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
           required />
 
-        <label for="desc" class="font-regular text-sm mt-3">Description</label>
+        <label for="desc" class="myFont my-4 text-lg">Description</label>
         <input type="text" name="desc" id="desc" value="{{character.desc}}"
           class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
           required />
@@ -54,15 +54,18 @@
 
         {{> pageEditCharacter/vision}}
         {{> pageEditCharacter/weaponType}}
+        {{> pageEditCharacter/region}}
 
         <label for="vr" class="myFont my-4 text-lg">Version Release</label>
         <input type="text" name="vr" id="vr" value="{{character.versionRelease}}"
-          class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
-          required />
-  <label for="weapon" class="myFont my-4 text-xl">Birthday</label>
-  <input type="text" name="birthday" id="desc" value="{{character.birthday}}"
-          class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
-          required />
+          class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />
+
+        <label for="weapon" class="myFont my-4 text-lg">Birthday</label>
+        <input type="text" name="birthday" id="desc" value="{{character.birthday}}" class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />
+
+        <label for="region" class="myFont my-4 text-lg">Region</label>
+        <input type="text" name="birthday" id="desc" value="{{character.region}}" class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />
+        
       </div>
       <button type="submit" id="login"
         class="btn py-3 px-6 border-4 border-teal-400 rounded-2xl hover:bg-teal-400 mt-3 font-regular transition-colors ease-linear font-semibold">Save</button>
