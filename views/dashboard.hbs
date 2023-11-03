@@ -21,7 +21,7 @@
     </div>
     <div class="h-screen flex justify-end">
       <div class="sidebar bg-slate-800 fixed top-0 left-0 h-full w-1/5 p-2 border-gray-600 border-r-2 border-solid flex flex-col justify-between">
-{{> sidebar}}
+{{> dashboard/sidebar}}
       </div>
       <div
         class="main 1/4 w-4/5 overflow-y-auto px-10 py-10 bg-slate-800 text-white" id="content">
@@ -30,21 +30,21 @@
           <div id="content-data" class="mt-2">
           {{> homeContent}}
 
-{{> characterContent}}
+{{> dashboard/characterContent}}
           
-{{> weaponContent}}
+{{> dashboard/weaponContent}}
 
-{{> artifactContent}}
-
-          
-          {{> adminControl}}
+{{> dashboard/artifactContent}}
 
           
-          {{> emptyUser}}
+          {{> dashboard/adminControl}}
 
-          {{> peopleContent}}
           
-          {{> accountContent}}
+          {{> dashboard/emptyUser}}
+
+          {{> dashboard/peopleContent}}
+          
+          {{> dashboard/accountContent}}
         </div>
 
       </div>
