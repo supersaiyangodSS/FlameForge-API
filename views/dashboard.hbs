@@ -15,7 +15,7 @@
   </head>
   <body>
     <div id="alertBox" class="alertBox text-white bg-teal-500 px-2 py-2 rounded-lg transition-all duration-300 z-40"></div>
-    {{> logoutModal}}
+    {{> dashboard/logoutModal}}
     <div class="bg-slate-800 fixed top-0 left-0 bottom-0 right-0 z-50 flex justify-center items-center" id="loader">
       <span class="loader"></span>
     </div>
@@ -28,7 +28,7 @@
         <div class="w-3/4 mx-auto overflow-hidden">
           <p class="text-3xl mb-5" id="heading"></p>
           <div id="content-data" class="mt-2">
-          {{> homeContent}}
+          {{> dashboard/homeContent}}
 
 {{> dashboard/characterContent}}
           
@@ -36,15 +36,13 @@
 
 {{> dashboard/artifactContent}}
 
+{{> dashboard/adminControl}}
           
-          {{> dashboard/adminControl}}
+{{> dashboard/emptyUser}}
 
+{{> dashboard/peopleContent}}
           
-          {{> dashboard/emptyUser}}
-
-          {{> dashboard/peopleContent}}
-          
-          {{> dashboard/accountContent}}
+{{> dashboard/accountContent}}
         </div>
 
       </div>
