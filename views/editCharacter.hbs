@@ -9,6 +9,7 @@
 </head>
 
 <body class="bg-slate-800">
+
   <div class="w-10/12 container p-4 mx-auto bg-slate-800">
     {{> pageEditCharacter/formMain}}
     <form class="editForm text-white" action="" method="POST">
@@ -25,12 +26,16 @@
         {{> pageEditCharacter/images}}
 
       </div>
-  </form>
-        <div class="w-full flex gap-2 mt-5 text-white poppins">
-        <button id="cancelBtn" class="w-full btn py-3 px-6 border-4 border-red-400 rounded-2xl hover:bg-red-400 mt-3 font-regular transition-colors ease-linear font-semibold">Cancel</button>
-        <button type="submit" id="login" class="w-full btn py-3 px-6 border-4 border-teal-400 rounded-2xl hover:bg-teal-400 mt-3 font-regular transition-colors ease-linear font-semibold">Save</button>
+        <div class="w-full flex gap-2 mt-5 text-white poppins justify-center items-center">
+          <button id="cancelBtn" class="w-full btn py-3 px-6 border-4 border-red-400 rounded-2xl hover:bg-red-400 font-regular transition-colors ease-linear font-semibold">Cancel</button>
+          <input type="text" name="confirmSave" id="confirmSave" class="w-full py-3 px-6 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md outline-none focus:border-teal-300 text-center" placeholder="TYPE 'GENSHIN' TO CONFIRM" required />
+          <button type="submit" id="save" class="w-full btn py-3 px-6 border-4 border-teal-400 rounded-2xl hover:bg-teal-400 font-regular transition-colors ease-linear font-semibold disable-save-btn" disabled>Save</button>
         </div>
+  </form>
   </div>
+  <script defer src="/js/editCharacter.js"></script>
 </body>
-
+<footer class="py-5">
+  <p class="text-slate-400 poppins text-xs text-center mt-5">v1.0.0 ~ FlameForge API</p>
+</footer>
 </html>
