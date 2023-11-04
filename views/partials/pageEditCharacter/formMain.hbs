@@ -1,0 +1,14 @@
+<p class="bg-red-400 text-center  py-2 my-5 rounded-lg text-slate-800">Important: Making changes to the character data will reflect in the API. Please be cautious when editing.</p>
+    <div class="header-container flex items-center">
+      {{#if character}}
+      <div class="icon-card overflow-hidden five-star rounded-lg box-border m-3 flex justify-center items-center">
+        <img width="100px" src="{{character.images.profile}}" alt="{{this.name}}" />
+      </div>
+      <div>
+        <p class="text-3xl whitespace-nowrap overflow-ellipsis mx-2 text-white">{{character.name}}</p>
+        {{#if character}}
+        <img src="/assets/images/{{character.vision}}.png" width="30" alt="{{character.vision}}">
+        {{/if}}
+      </div>
+      {{/if}}
+    </div>

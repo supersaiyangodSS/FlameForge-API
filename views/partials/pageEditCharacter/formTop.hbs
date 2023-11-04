@@ -1,0 +1,52 @@
+<div class="flex justify-between w-full">
+          <div class="flex flex-col">
+            <label for="name" class="myFont mt-3 text-lg">Name</label>
+            <input type="text" name="name" id="name" value="{{character.name}}"
+              class=" p-2 border-t-2 border-b-2 placeholder:opacity-50 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+          </div>
+
+          <div class="flex flex-col">
+            <label for="weapon" class="myFont mt-3 text-lg">Birthday</label>
+            <input type="text" name="birthday" id="desc" value="{{character.birthday}}"
+              class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+          </div>
+
+          <div class="flex flex-col">
+            <label for="vr" class="myFont mt-3 text-lg">Version Release</label>
+            <input type="text" name="vr" id="vr" value="{{character.versionRelease}}"
+              class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+          </div>
+
+          <div class="flex flex-col">
+            <label for="model" class="myFont mt-3 text-lg">Model</label>
+            <select id="model" name="model"
+              class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300">
+              <option value="short male" {{#if (eq character.model "short male" )}} selected {{/if}}>short male</option>
+              <option value="medium male" {{#if (eq character.model "medium male" )}} selected {{/if}}>medium male
+              </option>
+              <option value="tall male" {{#if (eq character.model "tall male" )}} selected {{/if}}>tall male</option>
+              <option value="short female" {{#if (eq character.model "short female" )}} selected {{/if}}>short female
+              </option>
+              <option value="medium female" {{#if (eq character.model "medium female" )}} selected {{/if}}>medium female
+              </option>
+              <option value="tall female" {{#if (eq character.model "tall female" )}} selected {{/if}}>tall female
+              </option>
+            </select>
+        </div>
+
+          <div class="flex flex-col">
+             <label for="rarity" class="myFont mt-2 text-lg">Rarity</label>
+        <div class="flex justify-center mt-1">
+          <input type="radio" class="rarity" name="rarity" id="5" {{#if (eq character.rarity 5)}}checked{{/if}} hidden
+            required>
+          <label for="5">5 Star</label>
+          <input type="radio" class="rarity ml-1 " name="rarity" id="4" {{#if (eq character.rarity 4)}}checked{{/if}}
+            hidden required>
+          <label for="4">4 Star</label>
+        </div>
+          </div>
+
+        </div>

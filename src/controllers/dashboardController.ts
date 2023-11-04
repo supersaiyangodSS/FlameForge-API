@@ -161,10 +161,16 @@ const editCharacter = async (req: Request, res: Response) => {
         }
         else {
             const character = await Character.findById(id).select('-__v').lean();
-            const locals = {
-                character: character
+            if (character) {
+                let characterName = character.name;
+                const locals = {
+                    title: characterName,
+                    character: character
+                }
+                res.render('editCharacter', locals);
+            } else {
+                res.send('Invalid Character')
             }
-            res.render('editCharacter', locals);
             // res.send('Not Admin');
         }
     } catch (error) {
