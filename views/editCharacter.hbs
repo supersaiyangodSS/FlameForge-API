@@ -30,46 +30,108 @@
     </div>
     <form class="editForm text-white" action="" method="POST">
       <div class="flex flex-col items-start">
-        <label for="name" class="myFont my-4 text-lg">
-          Name</label>
-        <input type="text" name="name" id="name" value="{{character.name}}"
-          class=" p-2 border-t-2 border-b-2 placeholder:opacity-50 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
-          required />
 
-        <label for="desc" class="myFont my-4 text-lg">Description</label>
+        <div class="flex justify-between w-full">
+
+          <div class="flex flex-col">
+            <label for="name" class="myFont mt-3 text-lg">Name</label>
+            <input type="text" name="name" id="name" value="{{character.name}}"
+              class=" p-2 border-t-2 border-b-2 placeholder:opacity-50 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+          </div>
+
+          <div class="flex flex-col">
+            <label for="weapon" class="myFont mt-3 text-lg">Birthday</label>
+            <input type="text" name="birthday" id="desc" value="{{character.birthday}}"
+              class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+          </div>
+
+          <div class="flex flex-col">
+            <label for="vr" class="myFont mt-3 text-lg">Version Release</label>
+            <input type="text" name="vr" id="vr" value="{{character.versionRelease}}"
+              class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+          </div>
+
+          <div class="flex flex-col">
+            <label for="model" class="myFont mt-3 text-lg">Model</label>
+            <select id="model" name="model"
+              class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300">
+              <option value="short male" {{#if (eq character.model "short male" )}} selected {{/if}}>short male</option>
+              <option value="medium male" {{#if (eq character.model "medium male" )}} selected {{/if}}>medium male
+              </option>
+              <option value="tall male" {{#if (eq character.model "tall male" )}} selected {{/if}}>tall male</option>
+              <option value="short female" {{#if (eq character.model "short female" )}} selected {{/if}}>short female
+              </option>
+              <option value="medium female" {{#if (eq character.model "medium female" )}} selected {{/if}}>medium female
+              </option>
+              <option value="tall female" {{#if (eq character.model "tall female" )}} selected {{/if}}>tall female
+              </option>
+            </select>
+          </div>
+
+          <div class="flex flex-col">
+             <label for="rarity" class="myFont mt-2 text-lg">Rarity</label>
+        <div class="flex justify-center mt-1">
+          <input type="radio" class="rarity" name="rarity" id="5" {{#if (eq character.rarity 5)}}checked{{/if}} hidden
+            required>
+          <label for="5">5 Star</label>
+          <input type="radio" class="rarity ml-1 " name="rarity" id="4" {{#if (eq character.rarity 4)}}checked{{/if}}
+            hidden required>
+          <label for="4">4 Star</label>
+        </div>
+          </div>
+
+        </div>
+
+        <label for="desc" class="myFont mt-3 text-lg">Description</label>
         <input type="text" name="desc" id="desc" value="{{character.desc}}"
           class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
           required />
 
-        <label for="rarity" class="font-regular text-sm mt-3">Rarity</label>
-        <div class="flex justify-center my-2">
-          <input type="radio" class="rarity" name="rarity" id="5" {{#if (eq character.rarity 5)}}checked{{/if}} hidden
-            required>
-          <label for="5">5 Star</label>
-          <input type="radio" class="rarity ml-1" name="rarity" id="4" {{#if (eq character.rarity 4)}}checked{{/if}}
-            hidden required>
-          <label for="4">4 Star</label>
-        </div>
+       
 
 
         {{> pageEditCharacter/vision}}
         {{> pageEditCharacter/weaponType}}
         {{> pageEditCharacter/region}}
+        <div class="flex w-full justify-between gap-2">
 
-        <label for="vr" class="myFont my-4 text-lg">Version Release</label>
-        <input type="text" name="vr" id="vr" value="{{character.versionRelease}}"
-          class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />
+            <div class="flex w-full flex-col items-start">
+              <label for="imgProfile" class="myFont mt-3 text-lg">Profile Icon</label>
+              <input type="text" name="imgProfile" id="imgProfile" value="{{character.images.profile}}" class="w-full resize-none p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />
+              </div>
 
-        <label for="weapon" class="myFont my-4 text-lg">Birthday</label>
-        <input type="text" name="birthday" id="desc" value="{{character.birthday}}" class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />
+            <div class="flex w-full flex-col items-start">
+              <label for="imgCard" class="myFont mt-3 text-lg">Card</label>
+              <input type="text" name="imgCard" id="imgCard" value="{{character.images.card}}" class="w-full resize-none p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />
+            </div>
 
-        <label for="region" class="myFont my-4 text-lg">Region</label>
-        <input type="text" name="birthday" id="desc" value="{{character.region}}" class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />
+            <div class="flex w-full flex-col items-start">
+              <label for="imgGacha" class="myFont mt-3 text-lg">Gacha Art</label>
+              <input type="text" name="imgGacha" id="imgGacha" value="{{character.images.gacha}}" class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />
+            </div>
+
+
+        </div class="hidden">
         
       </div>
-      <button type="submit" id="login"
-        class="btn py-3 px-6 border-4 border-teal-400 rounded-2xl hover:bg-teal-400 mt-3 font-regular transition-colors ease-linear font-semibold">Save</button>
-    </form>
+
+      <div class="img-container flex w-full justify-evenly items-center">
+        <div class="text-center">
+          <img src="{{character.images.card}}" width="230" class="rounded-xl" alt="{{character.name}} Card">
+          <p class="mt-2 font-semibold">Card</p>
+        </div>
+        <div class="text-center">
+          <img src="{{character.images.gacha}}" width="450" alt="{{character.name}} Gacha Art">
+          <p class="mt-2 font-semibold">Gacha</p>
+        </div>
+      </div>
+
+  <button type="submit" id="login" class="btn py-3 px-6 border-4 border-teal-400 rounded-2xl hover:bg-teal-400 mt-3 font-regular transition-colors ease-linear font-semibold">Save</button>
+  </div>
+  </form>
   </div>
 </body>
 
