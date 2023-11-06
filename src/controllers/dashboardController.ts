@@ -154,7 +154,8 @@ const editCharacter = async (req: Request, res: Response) => {
         if (req.session.user && req.session.role === 'admin') {
             const character = await Character.findById(id).select('-__v').lean();
             if (!character) {
-                return res.send('Character not found')
+                req.flash('no character', 'character not found');
+                return res.redirect('/');
             }
             const locals = {
                 character: character
@@ -191,7 +192,8 @@ const saveCharacter = async (req: Request, res: Response) => {
                     errors: errors.array().map((key) => key.msg)
                 });
             }
-            res.send(id);
+            req.flash('error', 'character information updated successfully');
+            return res.redirect('/dashboard');
         }
         else {
             res.send('unauthorized')

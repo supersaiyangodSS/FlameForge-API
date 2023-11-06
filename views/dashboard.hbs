@@ -15,6 +15,7 @@
   </head>
   <body>
     <div id="alertBox" class="alertBox text-white bg-teal-500 px-2 py-2 rounded-lg transition-all duration-300 z-40"></div>
+    <div id="alertBoxError" class="alertBox text-white bg-red-400 px-2 py-2 rounded-lg transition-all duration-300 z-40"></div>
     {{> dashboard/logoutModal}}
     <div class="bg-slate-800 fixed top-0 left-0 bottom-0 right-0 z-50 flex justify-center items-center" id="loader">
       <span class="loader"></span>
@@ -50,6 +51,13 @@
       <script>
         window.addEventListener('load', function () {
           showAlertBox('{{messages.success}}')
+        })
+      </script>
+      {{/if}}
+      {{#if messages.error}}
+      <script>
+        window.addEventListener('load', function () {
+          showAlertErrorBox('{{messages.error}}')
         })
       </script>
       {{/if}}
