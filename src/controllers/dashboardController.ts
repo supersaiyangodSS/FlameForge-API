@@ -3,6 +3,8 @@ import User from '../models/userModel.js';
 import Character from "../models/characterModel.js";
 import Weapon from "../models/weaponModel.js";
 import Artifact from "../models/artifactModel.js";
+import { validationResult } from "express-validator";
+
 
 const getDashboard = async (req: Request, res: Response) => {
     
@@ -178,6 +180,27 @@ const editCharacter = async (req: Request, res: Response) => {
     }
 }
 
+const saveCharacter = async (req: Request, res: Response) => {
+    const {id} = req.params;
+    console.log(req.session);    
+    try {
+        if (req.session.user && req.session.role === 'admin') {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(409).json({
+                    errors: errors.array().map((key) => key.msg)
+                });
+            }
+            res.send(id);
+        }
+        else {
+            res.send('unauthorized')
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 const deleteCharacter = async (req: Request, res: Response) => {
     const {id} = req.params;
         try {            
@@ -241,4 +264,4 @@ const deleteArtifact = async (req: Request, res: Response) => {
         }
 }
 
-export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact};
+export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter};
