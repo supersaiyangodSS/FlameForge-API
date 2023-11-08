@@ -184,7 +184,7 @@ const editCharacter = async (req: Request, res: Response) => {
 const saveCharacter = async (req: Request, res: Response) => {
     const {id} = req.params;
     let titles = req.body.title.split(',');
-    let { name, birthday, vr, model, rarity, desc, vision, weapon , region, imgProfile, imgCard, imgGacha, wikiUrl} = req.body;
+    let { name, birthday, vr, model, rarity, desc, vision, weapon , region, imgProfile, imgCard, imgGacha, wikiUrl, constellation} = req.body;
     try {
         if (req.session.user && req.session.role === 'admin') {
             const errors = validationResult(req);
@@ -221,9 +221,9 @@ const saveCharacter = async (req: Request, res: Response) => {
             if (titles !== existingCharacter.title) {
                 existingCharacter.title = titles;
             }
-            // if (constellation !== existingCharacter.constellation) {
-            //     existingCharacter.constellation = constellation;
-            // }
+            if (constellation !== existingCharacter.constellation) {
+                existingCharacter.constellation = constellation;
+            }
             if (region !== existingCharacter.region) {
                 existingCharacter.region = region;
             }

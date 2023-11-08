@@ -20,6 +20,7 @@ const validateCharacter = [
     body('imgGacha').notEmpty().withMessage('Gacha Art Link is required'),
     body('wikiUrl').notEmpty().withMessage('Wiki Link is required'),
     body('title').notEmpty().withMessage('Title is required'),
+    body('constellation').notEmpty().withMessage('Constellation is required'),
 ];
 
 const upload = multer({ storage: memoryStorage() });

@@ -42,6 +42,7 @@ const linkGacha = document.getElementById('imgGacha');
 
 const title = document.getElementById('title');
 const wikiUrl = document.getElementById('wikiUrl');
+const constellation = document.getElementById('constellation');
 
 saveBtn.addEventListener('click', () => {
     let valid = true;
@@ -71,6 +72,10 @@ saveBtn.addEventListener('click', () => {
     }
     else if (linkGacha == '') {
         showAlertBoxRegister('Invalid Gacha Art Link')
+        valid = false;
+    }
+    else if (constellation == '') {
+        showAlertBoxRegister('Invalid Constellation')
         valid = false;
     }
     else if (wikiUrl == '') {
