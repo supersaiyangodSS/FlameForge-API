@@ -245,9 +245,9 @@ const saveCharacter = async (req: Request, res: Response) => {
             //     existingCharacter.wikiUrl = wikiUrl;
             // }
             const updatedCharacter = await existingCharacter.save();
-            // req.flash('error', 'character information updated successfully');
-            // return res.redirect('/dashboard');
-            return res.send(updatedCharacter);
+            req.flash('success', 'character information updated successfully');
+            return res.redirect('/dashboard');
+            // return res.send(updatedCharacter);
         }
         else {
             res.send('unauthorized')
