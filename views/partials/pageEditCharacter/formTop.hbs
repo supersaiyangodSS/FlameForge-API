@@ -40,10 +40,10 @@
           <div class="flex flex-col">
              <label for="rarity" class="myFont mt-2 text-lg">Rarity</label>
         <div class="flex justify-center mt-1">
-          <input type="radio" class="rarity" name="rarity" id="5" {{#if (eq character.rarity 5)}}checked{{/if}} hidden
+          <input type="radio" class="rarity" name="rarity" id="5" value="5" {{#if (eq character.rarity 5)}}checked{{/if}} hidden
             required>
           <label for="5">5 Star</label>
-          <input type="radio" class="rarity ml-1 " name="rarity" id="4" {{#if (eq character.rarity 4)}}checked{{/if}}
+          <input type="radio" class="rarity ml-1 " name="rarity" id="4" value="4" {{#if (eq character.rarity 4)}}checked{{/if}}
             hidden required>
           <label for="4">4 Star</label>
         </div>

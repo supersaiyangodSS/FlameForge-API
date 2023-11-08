@@ -196,9 +196,58 @@ const saveCharacter = async (req: Request, res: Response) => {
             if (!existingCharacter) {
                 return res.json('no character found');
             }
-
-            req.flash('error', 'character information updated successfully');
-            return res.redirect('/dashboard');
+            if (name !== existingCharacter.name) {
+                existingCharacter.name = name;
+            }
+            if (desc !== existingCharacter.desc) {
+                existingCharacter.desc = desc;
+            }
+            if (rarity !== existingCharacter.rarity) {
+                existingCharacter.rarity = rarity;
+            }
+            if (vision !== existingCharacter.vision) {
+                existingCharacter.vision = vision;
+            }
+            if (weapon !== existingCharacter.weapon) {
+                existingCharacter.weapon = weapon;
+            }
+            if (vr !== existingCharacter.versionRelease) {
+                existingCharacter.versionRelease = vr;
+            }
+            // if (title !== existingCharacter.title) {
+            //     existingCharacter.title = title;
+            // }
+            // if (constellation !== existingCharacter.constellation) {
+            //     existingCharacter.constellation = constellation;
+            // }
+            if (region !== existingCharacter.region) {
+                existingCharacter.region = region;
+            }
+            // if (affiliation !== existingCharacter.affiliation) {
+            //     existingCharacter.affiliation = affiliation;
+            // }
+            if (desc !== existingCharacter.desc) {
+                existingCharacter.desc = desc;
+            }
+            if (imgProfile !== existingCharacter.images.profile) {
+                existingCharacter.images.profile = imgProfile;
+            }
+            if (imgGacha !== existingCharacter.images.gacha) {
+                existingCharacter.images.gacha = imgGacha;
+            }
+            if (imgCard !== existingCharacter.images.card) {
+                existingCharacter.images.card = imgCard;
+            }
+            if (model !== existingCharacter.model) {
+                existingCharacter.model = model;
+            }
+            // if (wikiUrl != existingCharacter.wikiUrl) {
+            //     existingCharacter.wikiUrl = wikiUrl;
+            // }
+            const updatedCharacter = await existingCharacter.save();
+            // req.flash('error', 'character information updated successfully');
+            // return res.redirect('/dashboard');
+            return res.send(updatedCharacter);
         }
         else {
             res.send('unauthorized')
