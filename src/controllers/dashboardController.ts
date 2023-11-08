@@ -183,7 +183,7 @@ const editCharacter = async (req: Request, res: Response) => {
 
 const saveCharacter = async (req: Request, res: Response) => {
     const {id} = req.params;
-    let { name, birthday, vr, model, rarity, desc, vision, weapon , region, imgProfile, imgCard, imgGacha} = req.body;
+    let { name, birthday, vr, model, rarity, desc, vision, weapon , region, imgProfile, imgCard, imgGacha, wikiUrl} = req.body;
     try {
         if (req.session.user && req.session.role === 'admin') {
             const errors = validationResult(req);
@@ -198,6 +198,9 @@ const saveCharacter = async (req: Request, res: Response) => {
             }
             if (name !== existingCharacter.name) {
                 existingCharacter.name = name;
+            }
+            if (birthday !== existingCharacter.birthday) {
+                existingCharacter.birthday = birthday;
             }
             if (desc !== existingCharacter.desc) {
                 existingCharacter.desc = desc;
@@ -241,9 +244,9 @@ const saveCharacter = async (req: Request, res: Response) => {
             if (model !== existingCharacter.model) {
                 existingCharacter.model = model;
             }
-            // if (wikiUrl != existingCharacter.wikiUrl) {
-            //     existingCharacter.wikiUrl = wikiUrl;
-            // }
+            if (wikiUrl != existingCharacter.wikiUrl) {
+                existingCharacter.wikiUrl = wikiUrl;
+            }
             const updatedCharacter = await existingCharacter.save();
             req.flash('success', 'character information updated successfully');
             return res.redirect('/dashboard');

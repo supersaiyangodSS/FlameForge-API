@@ -18,6 +18,7 @@ const validateCharacter = [
     body('imgProfile').notEmpty().withMessage('Profile Picture Link is required'),
     body('imgCard').notEmpty().withMessage('Card Link is required'),
     body('imgGacha').notEmpty().withMessage('Gacha Art Link is required'),
+    body('wikiUrl').notEmpty().withMessage('Wiki Link is required'),
 ];
 
 const upload = multer({ storage: memoryStorage() });

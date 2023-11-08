@@ -40,6 +40,8 @@ const linkProfile = document.getElementById('imgProfile');
 const linkCard = document.getElementById('imgCard');
 const linkGacha = document.getElementById('imgGacha');
 
+const wikiUrl = document.getElementById('wikiUrl');
+
 saveBtn.addEventListener('click', () => {
     let valid = true;
     if (name.value == '') {
@@ -68,6 +70,10 @@ saveBtn.addEventListener('click', () => {
     }
     else if (linkGacha == '') {
         showAlertBoxRegister('Invalid Gacha Art Link')
+        valid = false;
+    }
+    else if (wikiUrl == '') {
+        showAlertBoxRegister('Invalid Wiki Link')
         valid = false;
     }
 })
