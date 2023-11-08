@@ -183,7 +183,7 @@ const editCharacter = async (req: Request, res: Response) => {
 
 const saveCharacter = async (req: Request, res: Response) => {
     const {id} = req.params;
-    console.log(req.session);    
+    let { name, birthday, vr, model, rarity, desc, vision, weapon , region, imgProfile, imgCard, imgGacha} = req.body;
     try {
         if (req.session.user && req.session.role === 'admin') {
             const errors = validationResult(req);
@@ -192,6 +192,11 @@ const saveCharacter = async (req: Request, res: Response) => {
                     errors: errors.array().map((key) => key.msg)
                 });
             }
+            const existingCharacter = await Character.findById(id);
+            if (!existingCharacter) {
+                return res.json('no character found');
+            }
+
             req.flash('error', 'character information updated successfully');
             return res.redirect('/dashboard');
         }
