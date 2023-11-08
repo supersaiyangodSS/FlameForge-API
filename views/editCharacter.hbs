@@ -16,6 +16,24 @@
       <div class="flex flex-col items-start">
         {{> pageEditCharacter/formTop}}
 
+        <div class="flex justify-between w-full gap-2">
+
+        <div class="flex flex-col w-2/4">
+            <label for="title" class="myFont mt-3 text-lg">Title</label>
+            <input type="text" name="title" id="title" value="{{character.title}}"
+              class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+        </div>
+
+        <div class="flex flex-col">
+            <label for="title" class="myFont mt-3 text-lg">Title</label>
+            <input type="text" name="title" id="title" value="{{character.title}}"
+              class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+        </div>
+
+
+        </div>
         <label for="desc" class="myFont mt-3 text-lg">Description</label>
         <input type="text" name="desc" id="desc" value="{{character.desc}}" class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />      
 

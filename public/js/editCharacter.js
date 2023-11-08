@@ -40,6 +40,7 @@ const linkProfile = document.getElementById('imgProfile');
 const linkCard = document.getElementById('imgCard');
 const linkGacha = document.getElementById('imgGacha');
 
+const title = document.getElementById('title');
 const wikiUrl = document.getElementById('wikiUrl');
 
 saveBtn.addEventListener('click', () => {
