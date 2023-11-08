@@ -78,6 +78,10 @@ saveBtn.addEventListener('click', () => {
         showAlertBoxRegister('Invalid Constellation')
         valid = false;
     }
+    else if (affiliation == '') {
+        showAlertBoxRegister('Invalid Affiliations')
+        valid = false;
+    }
     else if (wikiUrl == '') {
         showAlertBoxRegister('Invalid Wiki Link')
         valid = false;
