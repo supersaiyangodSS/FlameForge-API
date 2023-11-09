@@ -45,7 +45,7 @@ const wikiUrl = document.getElementById('wikiUrl');
 const constellation = document.getElementById('constellation');
 const affiliation = document.getElementById('affiliation');
 
-let visions = document.querySelectorAll('input[type="vision"]');
+let visions = document.querySelectorAll('input[name="vision"]');
 let visionSelected = false;
 visions.forEach((vision) => {
     if (vision.checked) {
@@ -53,6 +53,24 @@ visions.forEach((vision) => {
         return
     }
 })
+
+let regions = document.querySelectorAll('input[name="region"]');
+let regionSelected = false;
+regions.forEach((region) => {
+    if (region.checked) {
+        regionSelected = true;
+        return
+    }
+});
+
+let weapons = document.querySelectorAll('input[name="weapon"]');
+let weaponSelected = false;
+weapons.forEach((weapon) => {
+    if (weapon.checked) {
+        weaponSelected = true;
+        return
+    }
+});
 
 saveBtn.addEventListener('click', () => {
     let valid = true;
@@ -88,8 +106,16 @@ saveBtn.addEventListener('click', () => {
         showAlertBoxRegister('Invalid Constellation')
         valid = false;
     }
-    else if (visionSelected === false) {
+    else if (!visionSelected) {
         showAlertBoxRegister('Invalid Vision')
+        valid = false;
+    }
+    else if (!regionSelected) {
+        showAlertBoxRegister('Invalid Region')
+        valid = false;
+    }
+    else if (!weaponSelected) {
+        showAlertBoxRegister('Invalid Weapon Type')
         valid = false;
     }
     else if (affiliation.value == '') {

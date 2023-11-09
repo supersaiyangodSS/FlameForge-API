@@ -1,0 +1,36 @@
+[{
+    "name": "Crimson Witch of Flames",
+    "rarity": [4, 5],
+    "effect": {
+        "twoPc": "Pyro DMG Bonus +15%",
+        "fourPc": "Increases Overloaded and Burning DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by 50% of its starting value for 10s. Max 3 stacks."
+    },
+    "fullSet": {
+        "flower": {
+            "title": "Witch's Flower of Blaze",
+            "piece": "Flower of Life",
+            "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/reliquary/Crimson%2520Witch%2520of%2520Flames/flower_of_life_icon.png"
+        },
+        "sands": {
+            "title": "Witch's End Time",
+            "piece": "Sands of Eon",
+            "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/reliquary/Crimson%2520Witch%2520of%2520Flames/sands_of_eon_icon.png"
+        },
+        "plume": {
+            "title": "Witch's Ever-Burning Plume",
+            "piece": "Plume of Death",
+            "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/reliquary/Crimson%2520Witch%2520of%2520Flames/plume_of_death_icon.png"
+        },
+        "circlet": {
+            "title": "Witch's Scorching Hat",
+            "piece": "Circlet of Logos",
+            "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/reliquary/Crimson%2520Witch%2520of%2520Flames/circlet_of_logos_icon.png"
+        },
+        "goblet": {
+            "title": "Witch's Heart Flames",
+            "piece": "Goblet of Eonothem",
+            "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/reliquary/Crimson%2520Witch%2520of%2520Flames/goblet_of_eonothem_icon.png"
+        }
+    }
+}
+]

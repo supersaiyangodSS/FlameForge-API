@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Zhongli",
+    "desc": "A mysterious expert contracted by the Wangsheng Funeral Parlor. Extremely knowledgeable in all things.",
+    "rarity": 5,
+    "vision": "Geo",
+    "weapon": "Polearm",
+    "versionRelease": 1.1,
+    "birthday": "December 31",
+    "title": [
+      "Vago Mundo"
+    ],
+    "constellation": "Lapis Dei",
+    "region": [
+      "Liyue"
+    ],
+    "affiliation": [
+      "Wangsheng Funeral Parlor"
+    ],
+    "images": {
+      "profile": "https://genshin.honeyhunterworld.com/img/zhongli_030_icon.webp?x76042",
+      "gacha": "https://genshin.honeyhunterworld.com/img/zhongli_030_gacha_splash.webp?x76042",
+      "card": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E9%2592%259F%25E7%25A6%25BB/avatar_header.png"
+    },
+    "model": "tall male",
+    "wikiUrl": "https://genshin-impact.fandom.com/wiki/Zhongli"
+  },
+  {
+    "name": "Xiao",
+    "desc": "The vigilant Yaksha of Liyue, who defends the city against evil spirits and demons.",
+    "rarity": 5,
+    "vision": "Anemo",
+    "weapon": "Polearm",
+    "versionRelease": 1,
+    "birthday": "April 17",
+    "title": [
+      "Alatus Nemeseos"
+    ],
+    "constellation": "Alatus",
+    "region": [
+      "Liyue"
+    ],
+    "affiliation": [
+      "Adepti"
+    ],
+    "images": {
+      "profile": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Xiao_icon.png",
+      "gacha": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E9%25AD%2588/avatar.png",
+      "card": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E9%25AD%2588/avatar_header.jpg"
+    },
+    "model": "tall female",
+    "wikiUrl": "https://genshin-impact.fandom.com/wiki/Xiao"
+  },
+  {
+    "name": "Shenhe",
+    "desc": "An adepti disciple with a most unusual air about her. Having spent much time cultivating in isolation in Liyue's mountains, she has become every bit as cool and distant as the adepti themselves.",
+    "rarity": 5,
+    "vision": "Cryo",
+    "weapon": "Polearm",
+    "versionRelease": 2.4,
+    "birthday": "March 10",
+    "title": [
+      "Lonesome Transcendence"
+    ],
+    "constellation": "Crista Doloris",
+    "region": [
+      "Liyue"
+    ],
+    "affiliation": [
+      "Cloud Retainer's Abode"
+    ],
+    "images": {
+      "profile": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Shenhe_icon.png",
+      "gacha": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E7%2594%25B3%25E9%25B9%25A4/avatar.png",
+      "card": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E7%2594%25B3%25E9%25B9%25A4/avatar_header.jpg"
+    },
+    "model": "tall male",
+    "wikiUrl": "https://genshin-impact.fandom.com/wiki/Shenhe"
+  }
+]
