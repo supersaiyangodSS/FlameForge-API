@@ -9,16 +9,16 @@
 <body class="bg-slate-800">
 
   <div class="w-10/12 container p-4 mx-auto bg-slate-800">
-    {{> pageEditCharacter/formMain}}
+    {{> pageEditWeapon/formMain}}
     <form class="editForm text-white" action="/dashboard/weapon/edit/{{weapon._id}}" method="POST">
       <div class="flex flex-col items-start">
-        {{> pageEditWeapon/formTop}}
+        {{!-- {{> pageEditWeapon/formTop}} --}}
 
         
-        {{> pageEditWeapon/options}}
+        {{!-- {{> pageEditWeapon/options}} --}}
 
-        {{> pageEditWeapon/links}}
-        {{> pageEditWeapon/images}}
+        {{!-- {{> pageEditWeapon/links}} --}}
+        {{!-- {{> pageEditWeapon/images}} --}}
 
       </div>
         <div class="w-full flex gap-2 mt-5 text-white poppins justify-center items-center">
