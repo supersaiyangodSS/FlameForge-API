@@ -24,7 +24,7 @@ confirmSave.addEventListener('input', () => {
     }
 });
 
-const name = document.getElementById('name');
+const characterName = document.getElementById('name');
 const birthDay = document.getElementById('birthday');
 const versionRelease = document.getElementById('vr');
 const model = document.getElementById('model');
@@ -43,46 +43,60 @@ const linkGacha = document.getElementById('imgGacha');
 const title = document.getElementById('title');
 const wikiUrl = document.getElementById('wikiUrl');
 const constellation = document.getElementById('constellation');
+const affiliation = document.getElementById('affiliation');
+
+let visions = document.querySelectorAll('input[type="vision"]');
+let visionSelected = false;
+visions.forEach((vision) => {
+    if (vision.checked) {
+        visionSelected = true;
+        return
+    }
+})
 
 saveBtn.addEventListener('click', () => {
     let valid = true;
-    if (name.value == '') {
+    if (characterName.value == '') {
         showAlertBoxRegister('Invalid Name');
         valid = false;
     }
-    else if (birthDay == '') {
+    else if (birthDay.value == '') {
         showAlertBoxRegister('Invalid BirthDay');
         valid = false;
     }
-    else if (versionRelease == '') {
+    else if (versionRelease.value == '') {
         showAlertBoxRegister('Invalid Version Release')
         valid = false;
     }
-    else if (model == '') {
+    else if (model.value == '') {
         showAlertBoxRegister('Invalid Model')
         valid = false;
     }
-    else if (linkProfile == '') {
+    else if (linkProfile.value == '') {
         showAlertBoxRegister('Invalid Profile Picture Link')
         valid = false;
     }
-    else if (linkCard == '') {
+    else if (linkCard.value == '') {
         showAlertBoxRegister('Invalid Card Picture Link')
         valid = false;
     }
-    else if (linkGacha == '') {
+    else if (linkGacha.value == '') {
         showAlertBoxRegister('Invalid Gacha Art Link')
         valid = false;
     }
-    else if (constellation == '') {
+    else if (constellation.value == '') {
         showAlertBoxRegister('Invalid Constellation')
         valid = false;
     }
-    else if (affiliation == '') {
+    else if (visionSelected === false) {
+        showAlertBoxRegister('Invalid Vision')
+        valid = false;
+    }
+    else if (affiliation.value == '') {
         showAlertBoxRegister('Invalid Affiliations')
         valid = false;
     }
-    else if (wikiUrl == '') {
+    else if (wikiUrl.value == '') {
         showAlertBoxRegister('Invalid Wiki Link')
         valid = false;
     }
