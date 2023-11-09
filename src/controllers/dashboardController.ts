@@ -181,6 +181,36 @@ const editCharacter = async (req: Request, res: Response) => {
     }
 }
 
+const editWeapon = async (req: Request, res: Response) => {
+    const {id} = req.params;
+    try {
+        if (req.session.user && req.session.role === 'admin') {
+            const weapon = await Weapon.findById(id).select('-__v').lean();
+            if(!weapon) {
+                req.flash('error', 'Invalid Weapon id or Weapon not found');
+                return res.redirect('/');
+            }
+            const locals = {
+                weapon: weapon
+            }
+            res.render('editWeapon', locals);
+        }
+        else {
+            const weapon = await Weapon.findById(id).select('-__v').lean();
+            if(!weapon) {
+                req.flash('error', 'Invalid Weapon id or Weapon not found');
+                return res.redirect('/');
+            }
+            const locals = {
+                weapon: weapon
+            }
+            res.render('editWeapon', locals);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const saveCharacter = async (req: Request, res: Response) => {
     const {id} = req.params;
     let titles = req.body.title.split(',');
@@ -325,4 +355,4 @@ const deleteArtifact = async (req: Request, res: Response) => {
         }
 }
 
-export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter};
+export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter};

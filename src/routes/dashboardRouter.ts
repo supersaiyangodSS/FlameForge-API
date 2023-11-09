@@ -1,6 +1,6 @@
 import { checkAuth } from "../app.js";
 import { Request, Response, Router } from "express";
-import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, uploadArtifactFile, editCharacter, saveCharacter } from '../controllers/dashboardController.js'
+import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, uploadArtifactFile, editCharacter, editWeapon, saveCharacter } from '../controllers/dashboardController.js'
 import multer, { StorageEngine, memoryStorage } from 'multer';
 import { body } from 'express-validator';
 
@@ -35,8 +35,10 @@ router.post('/character/delete/:id', deleteCharacter)
 router.post('/weapon/delete/:id', deleteWeapon)
 router.post('/artifact/delete/:id', deleteArtifact)
 
-router.get('/character/edit/:id', editCharacter);
-router.post('/character/edit/:id', checkAuth, validateCharacter, saveCharacter);
+router.get('/character/edit/:id', editCharacter); // edit character page
+router.post('/character/edit/:id', checkAuth, validateCharacter, saveCharacter); // save character
+
+router.get('/weapon/edit/:id', editWeapon); // edit weapon page
 
 router.get('/logout', logoutUser);
 

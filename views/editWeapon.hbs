@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{weapon.name}}</title>
+</head>
+
+<body class="bg-slate-800">
+
+  <div class="w-10/12 container p-4 mx-auto bg-slate-800">
+    {{> pageEditCharacter/formMain}}
+    <form class="editForm text-white" action="/dashboard/weapon/edit/{{weapon._id}}" method="POST">
+      <div class="flex flex-col items-start">
+        {{> pageEditWeapon/formTop}}
+
+        
+        {{> pageEditWeapon/options}}
+
+        {{> pageEditWeapon/links}}
+        {{> pageEditWeapon/images}}
+
+      </div>
+        <div class="w-full flex gap-2 mt-5 text-white poppins justify-center items-center">
+          <a href="/dashboard" id="cancelBtn" class="w-full text-center btn py-3 px-6 border-2 border-red-400 rounded-2xl hover:bg-red-400 font-regular transition-colors ease-linear font-semibold">Cancel</a>
+          <input type="text" name="confirmSave" id="confirmSave" class="w-full py-3 px-6 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-gray-400 rounded-md outline-none focus:border-gray-100 text-center" placeholder="TYPE 'GENSHIN' TO CONFIRM" required />
+          <button type="submit" id="save" class="w-full btn py-3 px-6 border-2 border-teal-400 rounded-2xl hover:bg-teal-400 font-regular transition-colors ease-linear font-semibold disable-save-btn">Save</button>
+        </div>
+  </form>
+  </div>
+  {{!-- <script defer src="/js/editCharacter.js"></script> --}}
+</body>
+<footer class="py-5">
+  <p class="text-slate-400 poppins text-xs text-center mt-5">v1.0.0 ~ FlameForge API</p>
+</footer>
+</html>
