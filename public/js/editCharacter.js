@@ -12,6 +12,14 @@ function showAlertBoxRegister(msg) {
     }, 3000);
 }
 
+
+function hideLoader() {
+    const loader = document.getElementById('loader');
+    loader.style.display = 'none';
+}
+
+window.addEventListener('load', hideLoader);
+
 const saveBtn = document.getElementById('save');
 const confirmSave = document.getElementById('confirmSave');
 
