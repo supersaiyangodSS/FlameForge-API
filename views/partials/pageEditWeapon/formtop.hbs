@@ -98,7 +98,7 @@
       required />
   </div>
 </div>
-{{weapon.region}}
+
 <label class="myFont my-4 text-lg">Region(s)</label>
 <div class="flex justify-center">
 
@@ -142,3 +142,108 @@
 
 
 </div>
+
+<label for="weapon" class="myFont my-4 text-lg">Family</label>
+        <div class="flex justify-center">
+
+          <div class="polearm mr-4">
+          <input type="radio" class="weapon" name="weapon" id="polearm" value="Polearm" {{#if (eq weapon.family "Polearm")}}checked{{/if}} hidden required>
+          <label for="polearm" class="flex items-center p-2">
+            <img src="/assets/images/Polearm.png" width="35" alt="Polearm">
+            <p class="mx-1">Polearm</p>
+          </label>
+            </div>
+          
+          <div class="bow mr-4">
+          <input type="radio" class="weapon" name="weapon" id="bow" {{#if (eq weapon.family "Bow")}}checked{{/if}} hidden required>
+          <label for="bow" class="flex items-center p-2">
+            <img src="/assets/images/Bow.png" width="35" alt="Bow">
+            <p class="mx-1">Bow</p>
+          </label>
+          </div>
+
+          <div class="catalyst mr-4">
+          <input type="radio" class="weapon" name="weapon" id="catalyst" {{#if (eq weapon.family "Catalyst")}}checked{{/if}} hidden required>
+          <label for="catalyst" class="flex items-center p-2">
+            <img src="/assets/images/Catalyst.png" width="35" alt="Catalyst">
+            <p class="mx-1">Catalyst</p>
+          </label>
+          </div>
+
+          <div class="claymore mr-4">
+          <input type="radio" class="weapon" name="weapon" id="claymore" {{#if (eq weapon.family "Claymore")}}checked{{/if}} hidden required>
+          <label for="claymore" class="flex items-center p-2">
+            <img src="/assets/images/Claymore.png" width="35" alt="Claymore">
+            <p class="mx-1">Claymore</p>
+          </label>
+          </div>
+
+          <div class="sword mr-4">
+          <input type="radio" class="weapon" name="weapon" id="sword" {{#if (eq weapon.family "Sword")}}checked{{/if}} hidden required>
+          <label for="sword" class="flex items-center p-2">
+            <img src="/assets/images/Sword.png" width="35" alt="Sword">
+            <p class="mx-1">Sword</p>
+          </label>
+          </div>
+
+
+        </div>
+
+
+<div class="flex justify-between w-full gap-2">
+
+  <div class="flex flex-col w-full">
+    <label for="icon" class="myFont mt-3 text-lg">Icon Link</label>
+    <input type="text" name="icon" id="icon" value="{{weapon.images.icon}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+
+  <div class="flex flex-col w-full">
+    <label for="original" class="myFont mt-3 text-lg">Weapon Image Link</label>
+    <input type="text" name="original" id="original" value="{{weapon.images.original}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+</div>
+
+<div class="flex justify-between w-full gap-2">
+
+  <div class="flex flex-col w-full">
+    <label for="gacha" class="myFont mt-3 text-lg">Gacha Art Link</label>
+    <input type="text" name="gacha" id="gacha" value="{{weapon.images.gacha}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+
+  <div class="flex flex-col w-full">
+    <label for="awakened" class="myFont mt-3 text-lg">Weapon Awakened Image Url</label>
+    <input type="text" name="awakened" id="awakened" value="{{weapon.images.awakened}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+</div>
+
+<div class="flex flex-col w-full">
+    <label for="wikiUrl" class="myFont mt-3 text-lg">Wiki Url</label>
+    <input type="text" name="wikiUrl" id="wikiUrl" value="{{weapon.wikiUrl}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+
+<div class="img-container flex w-full justify-evenly items-center mt-2">
+
+        <div class="text-center">
+          <img src="{{weapon.images.original}}" width="450" alt="{{weapon.name}} Gacha Art">
+          <p class="mt-2 font-semibold">Original</p>
+        </div>
+        <div class="text-center">
+          <img src="{{weapon.images.gacha}}" width="150" class="rounded-xl" alt="{{weapon.name}} Card">
+          <p class="mt-2 font-semibold">Gacha Art</p>
+        </div>
+
+        <div class="text-center">
+          <img src="{{weapon.images.awakened}}" width="450" alt="{{weapon.name}} Gacha Art">
+          <p class="mt-2 font-semibold">Awakened</p>
+        </div>
+      </div>
