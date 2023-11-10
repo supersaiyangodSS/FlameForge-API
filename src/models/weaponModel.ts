@@ -18,11 +18,15 @@ const weaponSchema = new Schema<IWeapon>({
         type: [String],
         required: true,
     },
-    base: {
+    baseAtk: {
         type: Number,
         required: true,
     },
-    subStat: {
+    subStatType: {
+        type: String,
+        required: true,
+    },
+    baseSubStat: {
         type: String,
         required: true,
     },
