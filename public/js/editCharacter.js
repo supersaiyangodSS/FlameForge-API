@@ -1,6 +1,6 @@
 let alertBoxTimer = null;
-function showAlertBoxRegister(msg) {
-    const alertBox = document.getElementById('alertBoxRegister');
+function showAlertBox(msg) {
+    const alertBox = document.getElementById('alertBox');
     alertBox.textContent = msg;
     alertBox.style.top = '3%';
 
@@ -80,58 +80,61 @@ weapons.forEach((weapon) => {
     }
 });
 
-saveBtn.addEventListener('click', () => {
+saveBtn.addEventListener('click', (event) => {
     let valid = true;
     if (characterName.value == '') {
-        showAlertBoxRegister('Invalid Name');
+        showAlertBox('Invalid Name');
         valid = false;
     }
     else if (birthDay.value == '') {
-        showAlertBoxRegister('Invalid BirthDay');
+        showAlertBox('Invalid BirthDay');
         valid = false;
     }
     else if (versionRelease.value == '') {
-        showAlertBoxRegister('Invalid Version Release')
+        showAlertBox('Invalid Version Release')
         valid = false;
     }
     else if (model.value == '') {
-        showAlertBoxRegister('Invalid Model')
+        showAlertBox('Invalid Model')
         valid = false;
     }
     else if (linkProfile.value == '') {
-        showAlertBoxRegister('Invalid Profile Picture Link')
+        showAlertBox('Invalid Profile Picture Link')
         valid = false;
     }
     else if (linkCard.value == '') {
-        showAlertBoxRegister('Invalid Card Picture Link')
+        showAlertBox('Invalid Card Picture Link')
         valid = false;
     }
     else if (linkGacha.value == '') {
-        showAlertBoxRegister('Invalid Gacha Art Link')
+        showAlertBox('Invalid Gacha Art Link')
         valid = false;
     }
     else if (constellation.value == '') {
-        showAlertBoxRegister('Invalid Constellation')
+        showAlertBox('Invalid Constellation')
         valid = false;
     }
     else if (!visionSelected) {
-        showAlertBoxRegister('Invalid Vision')
+        showAlertBox('Invalid Vision')
         valid = false;
     }
     else if (!regionSelected) {
-        showAlertBoxRegister('Invalid Region')
+        showAlertBox('Invalid Region')
         valid = false;
     }
     else if (!weaponSelected) {
-        showAlertBoxRegister('Invalid Weapon Type')
+        showAlertBox('Invalid Weapon Type')
         valid = false;
     }
     else if (affiliation.value == '') {
-        showAlertBoxRegister('Invalid Affiliations')
+        showAlertBox('Invalid Affiliations')
         valid = false;
     }
     else if (wikiUrl.value == '') {
-        showAlertBoxRegister('Invalid Wiki Link')
+        showAlertBox('Invalid Wiki Link')
         valid = false;
+    }
+    if (!valid) {
+        event.preventDefault();
     }
 })
