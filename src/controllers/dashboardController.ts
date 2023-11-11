@@ -292,6 +292,10 @@ const saveCharacter = async (req: Request, res: Response) => {
     }
 }
 
+const saveWeapon = async (req: Request, res: Response) => {
+    
+}
+
 const deleteCharacter = async (req: Request, res: Response) => {
     const {id} = req.params;
         try {            
@@ -355,4 +359,4 @@ const deleteArtifact = async (req: Request, res: Response) => {
         }
 }
 
-export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter};
+export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter, saveWeapon};

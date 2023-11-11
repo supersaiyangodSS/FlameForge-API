@@ -1,6 +1,6 @@
 import { checkAuth } from "../app.js";
 import { Request, Response, Router } from "express";
-import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, uploadArtifactFile, editCharacter, editWeapon, saveCharacter } from '../controllers/dashboardController.js'
+import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, uploadArtifactFile, editCharacter, editWeapon, saveCharacter, saveWeapon } from '../controllers/dashboardController.js'
 import multer, { StorageEngine, memoryStorage } from 'multer';
 import { body } from 'express-validator';
 
@@ -24,6 +24,26 @@ const validateCharacter = [
     body('constellation').notEmpty().withMessage('Constellation is required'),
 ];
 
+const validateWeapon = [
+    body('name').notEmpty().withMessage('Weapon name is required'),
+    body('desc').notEmpty().withMessage('Description is required'),
+    body('rarity').notEmpty().withMessage('Rarity is required'),
+    body('source').notEmpty().withMessage('Source is required'),
+    body('baseAtk').notEmpty().withMessage('Base Attack value is required'),
+    body('subStatType').notEmpty().withMessage('Sub Stat Type is required'),
+    body('baseSubStat').notEmpty().withMessage('Base Stat value is required'),
+    body('affix').notEmpty().withMessage('Weapon Affix is required'),
+    body('passive').notEmpty().withMessage('Weapon Passive is required'),
+    body('versionRelease').notEmpty().withMessage('Version Release is required'),
+    body('region').notEmpty().withMessage('Weapon Region is required'),
+    body('family').notEmpty().withMessage('Weapon Family is required'),
+    body('icon').notEmpty().withMessage('Weapon icon link is required'),
+    body('original').notEmpty().withMessage('Original Weapon image link is required'),
+    body('awakened').notEmpty().withMessage('Awakened Weapon image link is required'),
+    body('gacha').notEmpty().withMessage('Gacha Art link is required'),
+    body('wikiUrl').notEmpty().withMessage('Wiki URL is required'),
+];
+
 const upload = multer({ storage: memoryStorage() });
 
 router.get('/', checkAuth, getDashboard);
@@ -39,6 +59,7 @@ router.get('/character/edit/:id', editCharacter); // edit character page
 router.post('/character/edit/:id', checkAuth, validateCharacter, saveCharacter); // save character
 
 router.get('/weapon/edit/:id', editWeapon); // edit weapon page
+router.post('/weapon/edit/:id', validateWeapon, saveWeapon); // save weapon
 
 router.get('/logout', logoutUser);
 
