@@ -16,7 +16,7 @@ import { eq } from './helpers/helper.js';
 connectDB();
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+export const __dirname = dirname(__filename);
 const app : Express = express();
 const viewsPath = join(__dirname, "../views");
 const layoutPath = join(__dirname, "../views/layouts");

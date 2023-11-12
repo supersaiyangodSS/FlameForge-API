@@ -4,6 +4,9 @@ import Character from "../models/characterModel.js";
 import Weapon from "../models/weaponModel.js";
 import Artifact from "../models/artifactModel.js";
 import { validationResult } from "express-validator";
+import { join } from 'path';
+import { writeFileSync, unlinkSync } from 'fs';
+import { __dirname } from "../app.js";
 
 
 const getDashboard = async (req: Request, res: Response) => {
@@ -190,7 +193,9 @@ const editWeapon = async (req: Request, res: Response) => {
                 req.flash('error', 'Invalid Weapon id or Weapon not found');
                 return res.redirect('/');
             }
+            const weaponName = weapon.name;
             const locals = {
+                title: weaponName,
                 weapon: weapon
             }
             res.render('editWeapon', locals);
@@ -201,7 +206,9 @@ const editWeapon = async (req: Request, res: Response) => {
                 req.flash('error', 'Invalid Weapon id or Weapon not found');
                 return res.redirect('/');
             }
+            const weaponName = weapon.name;
             const locals = {
+                title: weaponName,
                 weapon: weapon
             }
             res.render('editWeapon', locals);
@@ -293,7 +300,12 @@ const saveCharacter = async (req: Request, res: Response) => {
 }
 
 const saveWeapon = async (req: Request, res: Response) => {
-    
+    try {
+        
+    } catch (error) {
+        console.log(error);   
+        return res.status(500).json({ 'error': 'internal server error' })
+    }
 }
 
 const deleteCharacter = async (req: Request, res: Response) => {
@@ -359,4 +371,33 @@ const deleteArtifact = async (req: Request, res: Response) => {
         }
 }
 
-export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter, saveWeapon};
+const downloadCharacters = async (req: Request,  res: Response) => {
+    try {
+        if (req.session.user && req.session.role == 'admin') {
+
+            const characters = await Character.find().select('-_id -__v');
+            if (!characters) {
+                return res.status(404).json({ 'error': "page not found" });
+            }
+            const filename = `character_data_${Date.now()}.json`;
+            const filePath = join(__dirname, '..', 'downloads', filename);
+            
+            writeFileSync(filePath, JSON.stringify(characters, null, 2));
+            res.download(filePath, filename, (err) => {
+            unlinkSync(filePath);
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: 'Internal Server Error' });
+            }
+        })
+    }
+    else {
+        return res.status(400).json({ unauthorized: 'Unauthorized access' })
+    }
+    } catch (error) {
+        console.log(error);
+        res.json(error)
+    }
+}
+
+export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter, saveWeapon, downloadCharacters};
