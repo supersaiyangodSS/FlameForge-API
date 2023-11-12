@@ -7,6 +7,7 @@ import { validationResult } from "express-validator";
 import { join } from 'path';
 import { writeFileSync, unlinkSync } from 'fs';
 import { __dirname } from "../app.js";
+import logger from "../logger.js";
 
 
 const getDashboard = async (req: Request, res: Response) => {
@@ -377,13 +378,15 @@ const downloadCharacters = async (req: Request,  res: Response) => {
 
             const characters = await Character.find().select('-_id -__v');
             if (!characters) {
-                return res.status(404).json({ 'error': "page not found" });
+                return res.render('404');
             }
             const filename = `character_data_${Date.now()}.json`;
             const filePath = join(__dirname, '..', 'downloads', filename);
-            
+
             writeFileSync(filePath, JSON.stringify(characters, null, 2));
+
             res.download(filePath, filename, (err) => {
+            logger.info(`User ${req.session.user} exported characters`)
             unlinkSync(filePath);
             if (err) {
                 console.log(err);
@@ -395,6 +398,7 @@ const downloadCharacters = async (req: Request,  res: Response) => {
         return res.status(400).json({ unauthorized: 'Unauthorized access' })
     }
     } catch (error) {
+        logger.error(`Error in download Characters: ${error}`);
         console.log(error);
         res.json(error)
     }

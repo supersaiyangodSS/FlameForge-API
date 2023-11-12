@@ -10,6 +10,10 @@ const logger = winston.createLogger({
         new transports.File({
             filename: 'logs/index.log',
             level: 'info'
+        }),
+        new transports.File({
+            filename: 'logs/download.log',
+            level: 'info'
         })
     ]
 });

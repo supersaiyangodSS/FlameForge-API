@@ -1,6 +1,9 @@
 {{#if (eq role 'admin')}}
             <div id="content-4">
               <p class="text-xl">Characters</p>
+              <div class="flex my-3">
+                <a class="btn bg-teal-500 py-2 px-4 rounded-lg hover:bg-teal-600" href="/dashboard/characters/download">Export All Characters</a>
+              </div>
               {{#each characters}}
               <div class="flex justify-between items-center my-2 py-2 px-4 rounded-lg bg-slate-700">
               <div class="flex justify-between items-center">
