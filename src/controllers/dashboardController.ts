@@ -301,8 +301,79 @@ const saveCharacter = async (req: Request, res: Response) => {
 }
 
 const saveWeapon = async (req: Request, res: Response) => {
+    const {id} = req.params;
+    let { name, vr, baseAtk, subStatType, baseSubStat, source, desc, affix, passive, region, family, icon, original, gacha, awakened, wikiUrl } = req.body;
     try {
-        
+            if (req.session && req.session.role == 'admin' || 2 == 2) {
+                const errors = validationResult(req);
+                if (!errors.isEmpty()) {
+                    return res.status(409).json({
+                        errors: errors.array().map((key) => key.msg)
+                    });
+                }
+                const existingWeapon = await Weapon.findById(id);
+                if (!existingWeapon) {
+                    return res.send('no weapon found');
+                }
+                if (name !== existingWeapon.name) {
+                    existingWeapon.name = name;
+                }
+                if (vr !== existingWeapon.versionRelease) {
+                    existingWeapon.versionRelease = vr;
+                }
+                if (baseAtk !== existingWeapon.baseAtk) {
+                    existingWeapon.baseAtk = baseAtk;
+                }
+                if (subStatType !== existingWeapon.subStatType) {
+                    existingWeapon.subStatType = subStatType;
+                }
+                if (baseSubStat !== existingWeapon.baseSubStat) {
+                    existingWeapon.baseSubStat = baseSubStat;
+                }
+                if (source !== existingWeapon.source) {
+                    existingWeapon.source = source;
+                }
+                if (subStatType !== existingWeapon.subStatType) {
+                    existingWeapon.subStatType = subStatType;
+                }
+                if (desc !== existingWeapon.desc) {
+                    existingWeapon.desc= desc;
+                }
+                if (affix !== existingWeapon.affix) {
+                    existingWeapon.affix= affix;
+                    
+                }
+                if (passive !== existingWeapon.passive) {
+                    existingWeapon.passive = passive;
+                }
+                if (region !== existingWeapon.region) {
+                    existingWeapon.region = region;
+                }    
+                if (family !== existingWeapon.family) {
+                    existingWeapon.family = family;
+                }   
+                if (icon !== existingWeapon.images.icon) {
+                    existingWeapon.images.icon = icon;
+                }
+                if (original !== existingWeapon.images.original) {
+                    existingWeapon.images.original = original;
+                }
+                if (awakened !== existingWeapon.images.awakened) {
+                    existingWeapon.images.awakened = awakened;
+                }
+                if (gacha !== existingWeapon.images.gacha) {
+                    existingWeapon.images.gacha = gacha;
+                }
+                if (wikiUrl !== existingWeapon.wikiUrl) {
+                    existingWeapon.wikiUrl = wikiUrl;
+                }
+                const updatedWeapon = await existingWeapon.save();
+                req.flash('success', 'weapon information updated successfully');
+                return res.redirect('/dashboard');
+            }
+            else {
+                return res.send('Not authorized');
+            }
     } catch (error) {
         console.log(error);   
         return res.status(500).json({ 'error': 'internal server error' })

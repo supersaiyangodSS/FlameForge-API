@@ -49,26 +49,26 @@ const wikiUrl = document.getElementById('wikiUrl');
 
 let famalies = document.querySelectorAll('input[name="family"]');
 let familySelected = false;
-famalies.forEach((family) => {
-    if (family.checked) {
+famalies.forEach((item) => {
+    if (item.checked) {
         familySelected = true;
         return
     }
 });
 
-let rarities = document.querySelectorAll('input[name="rarity"]');
+let rarity = document.querySelectorAll('input[name="rarity"]');
 let raritySelected = false;
-rarities.forEach((rarity) => {
-    if (rarity.checked) {
-        rarities = true;
+rarity.forEach((item) => {
+    if (item.checked) {
+        raritySelected = true;
         return
     }
 });
 
 let regions = document.querySelectorAll('input[name="region"]');
 let regionSelected = false;
-regions.forEach((region) => {
-    if (region.checked) {
+regions.forEach((item) => {
+    if (item.checked) {
         regionSelected = true;
         return
     }
@@ -138,6 +138,7 @@ saveBtn.addEventListener('click', (event) => {
     }
     else if (!raritySelected) {
         showAlertBox('Invalid Rarity Selected');
+        console.log(raritySelected);
         valid = false;
     }
     else if (!regionSelected) {

@@ -34,7 +34,7 @@ const validateWeapon = [
     body('baseSubStat').notEmpty().withMessage('Base Stat value is required'),
     body('affix').notEmpty().withMessage('Weapon Affix is required'),
     body('passive').notEmpty().withMessage('Weapon Passive is required'),
-    body('versionRelease').notEmpty().withMessage('Version Release is required'),
+    body('vr').notEmpty().withMessage('Version Release is required'),
     body('region').notEmpty().withMessage('Weapon Region is required'),
     body('family').notEmpty().withMessage('Weapon Family is required'),
     body('icon').notEmpty().withMessage('Weapon icon link is required'),

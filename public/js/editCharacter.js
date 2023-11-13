@@ -31,6 +31,14 @@ confirmSave.addEventListener('input', () => {
         saveBtn.classList.add('disable-save-btn')
     }
 });
+window.addEventListener('load', () => {
+    if (confirmSave.value === 'GENSHIN') {
+        saveBtn.classList.remove('disable-save-btn');
+    }
+    else {
+        saveBtn.classList.add('disable-save-btn');
+    }
+})
 
 const characterName = document.getElementById('name');
 const birthDay = document.getElementById('birthday');
