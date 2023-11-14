@@ -217,6 +217,40 @@ const editWeapon = async (req: Request, res: Response) => {
     }
 }
 
+const editArtifact = async (req: Request, res: Response) => {
+    const {id} = req.params;
+    try {
+        if (req.session.user && req.session.role === 'admin') {
+            const artifact = await Artifact.findById(id).select('-__v').lean();
+            if(!artifact) {
+                req.flash('error', 'Invalid Artifact id or Artifact not found');
+                return res.redirect('/');
+            }
+            const artifactName = artifact.name;
+            const locals = {
+                title: artifactName,
+                artifact: artifact
+            }
+            res.render('editArtifact', locals);
+        }
+        else {
+            const artifact = await Artifact.findById(id).select('-__v').lean();
+            if(!artifact) {
+                req.flash('error', 'Invalid Artifact id or Artifact not found');
+                return res.redirect('/');
+            }
+            const artifactName = artifact.name;
+            const locals = {
+                title: artifactName,
+                artifact: artifact
+            }
+            res.render('editArtifact', locals);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const saveCharacter = async (req: Request, res: Response) => {
     const {id} = req.params;
     let titles = req.body.title.split(',');
@@ -537,4 +571,4 @@ const downloadArtifacts = async (req: Request,  res: Response) => {
     }
 }
 
-export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts};
+export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, editArtifact, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts};
