@@ -9,9 +9,7 @@ import { writeFileSync, unlinkSync } from 'fs';
 import { __dirname } from "../app.js";
 import logger from "../logger.js";
 
-
 const getDashboard = async (req: Request, res: Response) => {
-    
     try {
         const users = await User.find().select(
             '-password -token -__v -_id -isTokenUsed -email -createdAt -updatedAt'
@@ -470,6 +468,38 @@ const downloadCharacters = async (req: Request,  res: Response) => {
     }
     } catch (error) {
         logger.error(`Error in download Characters: ${error}`);
+        console.log(error);
+        res.json(error)
+    }
+}
+
+const downloadWeapons = async (req: Request,  res: Response) => {
+    try {
+        if (req.session.user && req.session.role == 'admin') {
+
+            const weapons = await Weapon.find().select('-_id -__v');
+            if (!weapons) {
+                return res.render('404');
+            }
+            const filename = `weapon_data_${Date.now()}.json`;
+            const filePath = join(__dirname, '..', 'downloads', filename);
+
+            writeFileSync(filePath, JSON.stringify(weapons, null, 2));
+
+            res.download(filePath, filename, (err) => {
+            logger.info(`User ${req.session.user} exported weapons`)
+            unlinkSync(filePath);
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: 'Internal Server Error' });
+            }
+        });
+    }
+    else {
+        return res.status(400).json({ unauthorized: 'Unauthorized access' })
+    }
+    } catch (error) {
+        logger.error(`User: ${req.session.user}, Error in Exporting Weapons: ${error}`);
         console.log(error);
         res.json(error)
     }
