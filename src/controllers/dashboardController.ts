@@ -505,4 +505,36 @@ const downloadWeapons = async (req: Request,  res: Response) => {
     }
 }
 
-export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter, saveWeapon, downloadCharacters};
+const downloadArtifacts = async (req: Request,  res: Response) => {
+    try {
+        if (req.session.user && req.session.role == 'admin') {
+
+            const artifacts = await Artifact.find().select('-_id -__v');
+            if (!artifacts) {
+                return res.render('404');
+            }
+            const filename = `artifact_data_${Date.now()}.json`;
+            const filePath = join(__dirname, '..', 'downloads', filename);
+
+            writeFileSync(filePath, JSON.stringify(artifacts, null, 2));
+
+            res.download(filePath, filename, (err) => {
+            logger.info(`User ${req.session.user} exported artifacts`)
+            unlinkSync(filePath);
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: 'Internal Server Error' });
+            }
+        });
+    }
+    else {
+        return res.status(400).json({ unauthorized: 'Unauthorized access' })
+    }
+    } catch (error) {
+        logger.error(`User: ${req.session.user}, Error in Exporting Artifacts: ${error}`);
+        console.log(error);
+        res.json(error)
+    }
+}
+
+export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts};
