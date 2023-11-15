@@ -9,6 +9,7 @@
     <meta name="description" content="{{desc}}" />
     <title>{{title}}</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/mobile.css" />
     <style>
      
     </style>
@@ -21,13 +22,13 @@
       <span class="loader"></span>
     </div>
     <div class="h-screen flex justify-end">
-      <div class="sidebar bg-slate-800 fixed top-0 left-0 h-full w-1/5 p-2 border-gray-600 border-r-2 border-solid flex flex-col justify-between">
+      <div class="sidebar-mob sidebar bg-slate-800 fixed top-0 left-0 h-full w-1/5 p-2 border-gray-600 border-r-2 border-solid flex flex-col justify-between">
 {{> dashboard/sidebar}}
       </div>
       <div
-        class="main 1/4 w-4/5 overflow-y-auto px-10 py-10 bg-slate-800 text-white" id="content">
-        <div class="w-3/4 mx-auto overflow-hidden">
-          <p class="text-3xl mb-5" id="heading"></p>
+        class="main-mob main w-4/5 overflow-y-auto px-10 py-10 bg-slate-800 text-white" id="content">
+        <div class="main-container-mob w-3/4 mx-auto overflow-hidden">
+          <p class="heading-mob text-3xl mb-5" id="heading"></p>
           <div id="content-data" class="mt-2">
           {{> dashboard/homeContent}}
 

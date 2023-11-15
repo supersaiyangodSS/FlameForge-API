@@ -1,14 +1,14 @@
 <div class="characters" id="content-1">
-              <p class="mt-10">Upload as JSON :</p>
+              <p class="mt-10 upload-heading-mob">Upload as JSON :</p>
               <form
                 action="dashboard/upload/characters"
                 method="POST"
                 enctype="multipart/form-data"
-                class="flex justify-between items-center mt-3 mb-10 font-sans border-2 border-teal-500 p-4 rounded-lg"
+                class="upload-main-mob flex justify-between items-center mt-3 mb-10 font-sans border-2 border-teal-500 p-4 rounded-lg"
               >
                 <label
                   for="uploadFile"
-                  class="cursor-pointer border-2 border-teal-400 px-2 py-2 rounded-lg transition-colors hover:bg-teal-400"
+                  class="upload-choose-btn-mob cursor-pointer border-2 border-teal-400 px-2 py-2 rounded-lg transition-colors hover:bg-teal-400"
                 >
                   <input
                     type="file"
@@ -22,17 +22,17 @@
                 <p id="file_display"></p>
                 <button
                   type="submit"
-                  class="flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-lg"
+                  class="upload-choose-file-btn-mob flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-lg"
                 ><span class="material-symbols-outlined mr-1">
                     upload_file
                   </span>
                   Upload</button>
               </form>
-                <p class="my-3">Previously Included Characters - <span class="text-red-400">[DO NOT REPLICATE]</span></p>
-              <div class="icon-card-container my-8 flex flex-wrap">
+                <p class="heading-2-mob my-3">Previously Included Characters - <span class="text-red-400">[DO NOT REPLICATE]</span></p>
+              <div class="icon-card-container-mob icon-card-container my-8 flex flex-wrap">
                 {{#each characters}}
-                <div class=" relative icon-card five-star rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-3xl box-border overflow-hidden m-3 flex justify-center items-center">
-                  <img width="80px" src="{{this.images.profile}}" alt="{{this.name}}">
+                <div class="icon-card-mob relative icon-card five-star rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-3xl box-border overflow-hidden m-3 flex justify-center items-center">
+                  <img class="icon-card-image-mob" width="80px" src="{{this.images.profile}}" alt="{{this.name}}">
                   <p class="bg-white absolute bottom-0 left-0 right-0 text-black text-xs text-center overflow-hidden whitespace-nowrap overflow-ellipsis px-3">{{this.name}}</p>
                   </div>
                 {{/each}}
