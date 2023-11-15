@@ -2,7 +2,6 @@ import { Document } from "mongoose";
 
 export interface IArtifact extends Document {
     name: string,
-    rarity: number[],
     effect: {
         twoPc: string,
         fourPc: string,

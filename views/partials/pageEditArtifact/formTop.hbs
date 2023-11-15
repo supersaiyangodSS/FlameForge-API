@@ -1,72 +1,50 @@
-<div class="flex justify-between w-full">
+<div class="flex justify-between w-full gap-2">
   <div class="flex flex-col w-2/4">
     <label for="name" class=" myFont mt-3 text-lg">Name</label>
-    <input type="text" name="name" id="name" value="{{weapon.name}}"
+    <input type="text" name="name" id="name" value="{{artifact.name}}"
       class=" p-2 border-t-2 border-b-2 placeholder:opacity-50 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
       required />
   </div>
 
-  <div class="flex flex-col">
-
-    <label for="rarity" class="myFont mt-2 text-lg text-center">Rarity</label>
-    <div class="flex justify-center mt-1">
-
-      <input type="radio" class="rarity" name="rarity" id="5" value="5" {{#if (eq weapon.rarity 5)}}checked{{/if}} hidden required>
-      <label for="5">5 Star</label>
-
-      <input type="radio" class="rarity ml-1 " name="rarity" id="4" value="4" {{#if (eq weapon.rarity 4)}}checked{{/if}} hidden required>
-      <label for="4">4 Star</label>
-
-      <input type="radio" class="rarity ml-1 " name="rarity" id="3" value="3" {{#if (eq weapon.rarity 3)}}checked{{/if}} hidden required>
-      <label for="3">3 Star</label>
-
-      <input type="radio" class="rarity ml-1 " name="rarity" id="2" value="2" {{#if (eq weapon.rarity 2)}}checked{{/if}} hidden required>
-      <label for="2">2 Star</label>
-
-      <input type="radio" class="rarity ml-1 " name="rarity" id="1" value="1" {{#if (eq weapon.rarity 1)}}checked{{/if}} hidden required>
-      <label for="1">1 Star</label>
-    </div>
+  <div class="flex flex-col w-2/4">
+    <label for="twoPc" class="myFont mt-3 text-lg">2pc Effect</label>
+    <input type="text" name="twoPc" id="twoPc" value="{{artifact.effect.twoPc}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
   </div>
 
 </div>
 
 
+<div class="flex flex-col w-full">
+  <label for="fourPc" class="myFont mt-3 text-lg">4pc Effect</label>
+  <input type="text" name="fourPc" id="fourPc" value="{{artifact.effect.fourPc}}"
+    class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+    required />
+</div>
 
-<div class="flex justify-between w-full gap-2">
+<div class="flex justify-between items-center gap-2">
 
-  <div class="flex flex-col">
-    <label for="baseAtk" class="myFont mt-3 text-lg">Base ATK</label>
-    <input type="text" name="baseAtk" id="baseAtk" value="{{weapon.baseAtk}}"
-      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+  <div
+    class="p-4 w-2/8 placeholder:opacity-50 bg-slate-700 rounded-md mt-1 mb-3 outline-none">
+    <img src="{{artifact.fullSet.flower.icon}}" class="mb-4" width="100" alt="{{artifact.name}}">
+
+    <label for="flowerTitle" class="myFont mt-3 text-lg">Title</label>
+    <input type="text" name="flowerTitle" id="flowerTitle" value="{{artifact.fullSet.flower.title}}"
+      class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-700 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
       required />
-  </div>
 
-  <div class="flex flex-col">
-    <label for="subStatType" class="myFont mt-3 text-lg">Sub-Stat Type</label>
-    <input type="text" name="subStatType" id="subStatType" value="{{weapon.subStatType}}"
-      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+    <label for="flowerPiece" class="myFont mt-3 text-lg">Piece</label>
+    <input type="text" name="flowerPiece" id="flowerPiece" value="{{artifact.fullSet.flower.piece}}"
+      class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-700 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
       required />
-  </div>
 
-  <div class="flex flex-col">
-    <label for="baseSubStat" class="myFont mt-3 text-lg">Base Sub-Stat</label>
-    <input type="text" name="baseSubStat" id="baseSubStat" value="{{weapon.baseSubStat}}"
-      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
-      required />
-  </div>
-
-  <div class="flex flex-col w-1/3">
-    <label for="source" class="myFont mt-3 text-lg">Source(s)</label>
-    <input type="text" name="source" id="source" value="{{weapon.source}}"
-      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+    <label for="flowerIcon" class="myFont mt-3 text-lg">Icon</label>
+    <input type="text" name="flowerIcon" id="flowerIcon" value="{{artifact.fullSet.flower.icon}}"
+      class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-700 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
       required />
   </div>
 </div>
-
-<label for="desc" class="myFont mt-3 text-lg">Description</label>
-<input type="text" name="desc" id="desc" value="{{weapon.desc}}"
-  class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
-  required />
 
 <div class="flex justify-between w-full gap-2">
 

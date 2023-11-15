@@ -6,10 +6,6 @@ const artifactSchema = new Schema<IArtifact>({
         type: String,
         required: true,
     },
-    rarity: {
-        type: [Number],
-        required: true,
-    },
     effect: {
         twoPc: {
             type: String,
