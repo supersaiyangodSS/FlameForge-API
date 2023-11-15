@@ -3,7 +3,7 @@
 <p class="bg-red-400 text-center  py-2 my-5 rounded-lg text-slate-800">Important: Making changes to the character data will reflect in the API. Please be cautious when editing.</p>
     <div class="header-container flex items-center">
       {{#if artifact}}
-      <div class="icon-card overflow-hidden {{#each artifact.rarity}} {{#if (eq this 5)}} five-star {{/if}} {{#if (eq weapon.rarity 4)}} four-star {{/if}} {{/each}} rounded-lg box-border m-3 flex justify-center items-center">
+      <div class="icon-card overflow-hidden artifacts rounded-lg box-border m-3 flex justify-center items-center">
         <img width="100px" src="{{artifact.fullSet.flower.icon}}" alt="{{artifact.name}}" />
       </div>
       <div>
