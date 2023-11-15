@@ -27,8 +27,9 @@ const artifcatsTitle = artifacts.innerText;
 const peopleTitle = 'People'
 const settingsTitle = 'Settings'
 const adminTitle = 'Admin Control'
+const welcomTitle = 'Welcome To FlameForge'
 
-showTitle(characterTitle)
+showTitle(welcomTitle)
 
 function loadDefaults() {
     let activeNav = localStorage.getItem('activeNav');

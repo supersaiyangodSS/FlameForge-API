@@ -17,3 +17,23 @@ function hideLoader() {
 }
 
 window.addEventListener('load', hideLoader);
+
+const saveBtn = document.getElementById('save');
+const confirmSave = document.getElementById('confirmSave');
+
+confirmSave.addEventListener('input', () => {
+    if(confirmSave.value === 'GENSHIN') {
+        saveBtn.classList.remove('disable-save-btn')
+    }
+    else {
+        saveBtn.classList.add('disable-save-btn')
+    }
+});
+window.addEventListener('load', () => {
+    if (confirmSave.value === 'GENSHIN') {
+        saveBtn.classList.remove('disable-save-btn');
+    }
+    else {
+        saveBtn.classList.add('disable-save-btn');
+    }
+})

@@ -6,50 +6,55 @@
                 data-box-id="code-box-2"
                 data-code="code2"
               >copy</button>
-              <code id="code2">{
-  "name": "string",
-  "desc": "string",
-  "rarity": "number",
-  "source": "string",
-  "secondaryStat": ["string"],
-  "base": "number",
-  "subStat": "string",
-  "affix": "string",
-  "passive": "string",
-  "versionRelease": "number",
-  "region": "string",
-  "family": "string",
-  "images": {
-    "icon": "string",
-    "original": "string",
-    "awakened": "string",
-    "gacha": "string",
-  },
-  "wikiUrl": "string"
-}
-</code>
+              <code id="code2">[{
+    "name": "string",
+    "desc": "string",
+    "rarity": number,
+    "source": [
+      "string"
+    ],
+    "base": number,
+    "subStat": "string",
+    "passive": "string",
+    "versionRelease": number,
+    "region": "string",
+    "family": "string",
+    "wikiUrl": "string",
+    "affix": "string",
+    "baseAtk": number,
+    "baseSubStat": "string",
+    "subStatType": "string",
+    "images": {
+      "icon": "string",
+      "original": "string",
+      "awakened": "string",
+      "gacha": "string"
+    },
+}]</code>
 </pre>
             <p class="my-3">Demo Response :</p>
             <pre class="language-json flex relative">
               <code id="codeBox">{
-  "name": "Primordial Jade Winged-Spear",
-  "desc": "A jade polearm made by the archons, capable of slaying ancient beasts.",
-  "rarity": 5,
-  "source": "wish",
-  "base": "47.54",
-  "subStat": "CRIT Rate",
-  "affix": "Eagle Spear of Justice",
-  "passive": "On hit, increases ATK by 3.2%/3.9%/4.6%/5.3%/6% for 6s. Max 7 stacks. This effect can only occur once every 0.3s. While in possession of the maximum possible stacks, DMG dealt is increased by 12%/15%/18%/21%/24%.",
-  "versionRelease": 1.0,
-  "region": "Liyue",
-  "family": "Polearm",
-  "images": {
-    "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/weapon/%25E5%2592%258C%25E7%2592%259E%25E9%25B8%25A2.png",
-    "original": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/06/24/94376896/edf9c94e3b4dd8fbfab0aeb4820ccc47_278966444220345681.png?x-oss-process=image%2Fformat%2Cwebp",
-    "awakened": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/06/24/94376896/3c3939178a2a01c9aae85692dfd69fb7_1300600320564433131.png?x-oss-process=image%2Fformat%2Cwebp",
-    "gacha": "https://genshin.honeyhunterworld.com/img/i_n13505_gacha_icon.webp?x76042",
-  },
-  "wikiUrl": "https://genshin-impact.fandom.com/wiki/Primordial_Jade_Winged-Spear"
-}
-</code>
+    "name": "Wolf's Gravestone",
+    "desc": "A longsword used by the Wolf Knight. Originally just a heavy sheet of iron given to the knight by a blacksmith from the city, it became endowed with legendary power owing to his friendship with the wolves.",
+    "rarity": 5,
+    "source": [
+      "Wish"
+    ],
+    "baseAtk": 45.94,
+    "subStatType": "Attack Percentage",
+    "baseSubStat": "10.8%",
+    "affix": "Wolfish Tracker",
+    "passive": "Increases ATK by 20%. On hit, attacks against opponents with less than 30% HP increase all party members' ATK by 40% for 12s. Can only occur once every 30s.",
+    "versionRelease": 1,
+    "region": "Mondstadt",
+    "family": "on",
+    "images": {
+      "icon": "https://genshin.honeyhunterworld.com/img/i_n12502.webp?x76042",
+      "original": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/06/23/94376896/fb3f91e32be1e2c79f8ca2f0f4470e49_1703790462380665988.png?x-oss-process=image%2Fformat%2Cwebp",
+      "awakened": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/06/23/94376896/9c001bafc083dea863f7b16a66d3a0bb_6080369703095169637.png?x-oss-process=image%2Fformat%2Cwebp",
+      "gacha": "https://genshin.honeyhunterworld.com/img/i_n12502_gacha_icon.webp?x76042"
+    },
+    "wikiUrl": "https://genshin-impact.fandom.com/wiki/Wolf%27s_Gravestone"
+}</code>
 </pre>
