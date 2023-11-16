@@ -21,8 +21,21 @@
     <div class="bg-slate-800 fixed top-0 left-0 bottom-0 right-0 z-50 flex justify-center items-center" id="loader">
       <span class="loader"></span>
     </div>
+
+  <div class="hamburger bg-slate-700 z-50 p-4 flex justify-between items-center">
+    <div class="flex justify-center items-center">
+    <img src="/assets/images/ult.png" width="40" alt="FlameForge">
+    <p class="text-gray-200 ml-2 text-lg">FlameForge API</p>
+    </div>
+    <button class="flex" id="hamburger-btn">
+    <span class="material-symbols-outlined text-gray-200">
+menu
+</span>
+    </button>
+  </div>
+
     <div class="h-screen flex justify-end">
-      <div class="sidebar-mob sidebar bg-slate-800 fixed top-0 left-0 h-full w-1/5 p-2 border-gray-600 border-r-2 border-solid flex flex-col justify-between">
+      <div id="sidebar-main" class="sidebar-main-mob sidebar-mob sidebar bg-slate-800 fixed top-0 left-0 h-full w-1/5 p-2 border-gray-600 border-r-2 border-solid flex flex-col justify-between">
 {{> dashboard/sidebar}}
       </div>
       <div

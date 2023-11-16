@@ -68,24 +68,28 @@ function toggleContent(contentOrder) {
 home.addEventListener('click', () => {
     toggleContent(0);
     showTitle('');
+    sidebar.classList.toggle('sidebar-mob');
 })
 
 characters.addEventListener('click', () => {
     toggleContent(1);
     toggleActive(1)
     showTitle(characterTitle)
+    sidebar.classList.toggle('sidebar-mob');
 });
 
 weapons.addEventListener('click', () => {
     toggleContent(2);
     toggleActive(2)
     showTitle(weaponsTitle)
+    sidebar.classList.toggle('sidebar-mob');
 });
 
 artifacts.addEventListener('click', () => {
     toggleContent(3);
     toggleActive(3)
     showTitle(artifcatsTitle)
+    sidebar.classList.toggle('sidebar-mob');
 });
 
 if (adminContent && admin) {
@@ -93,17 +97,20 @@ if (adminContent && admin) {
         toggleContent(4);
         toggleActive(4)
         showTitle(adminTitle);
+        sidebar.classList.toggle('sidebar-mob');
     })
 }
 
 people.addEventListener('click', () => {
     toggleContent(5);
     showTitle(peopleTitle);
+    sidebar.classList.toggle('sidebar-mob');
 });
 
 settings.addEventListener('click', () => {
     toggleContent(6)
     showTitle(settingsTitle);
+    sidebar.classList.toggle('sidebar-mob');
 })
 
 function handleFileInputDisplay(uploadFile, file_display) {
@@ -212,3 +219,10 @@ const navLogoutBtn = document.getElementById('nav-logout');
 navLogoutBtn.addEventListener('click', () => {
     loginModal.style.display = 'block';
 });
+
+const hamburgerBtn = document.getElementById('hamburger-btn')
+const sidebar = document.getElementById('sidebar-main')
+
+hamburgerBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('sidebar-mob');
+})
