@@ -9,8 +9,8 @@
   <div class="flex justify-between items-center my-2 py-2 px-4 rounded-lg bg-slate-700">
     <div class="flex justify-between items-center">
       <div
-        class=" relative icon-card-mini {{#if (eq this.rarity 5)}} five-star {{/if}} {{#if (eq this.rarity 4)}} four-star {{/if}} rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-2xl box-border overflow-hidden">
-        <img width="90px" src="{{this.images.profile}}" alt="{{this.name}}">
+        class="icon-container-main relative icon-card-mini {{#if (eq this.rarity 5)}} five-star {{/if}} {{#if (eq this.rarity 4)}} four-star {{/if}} rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-2xl box-border overflow-hidden">
+        <img src="{{this.images.profile}}" alt="{{this.name}}">
       </div>
       <p class="text-lg ml-2 overflow-hidden whitespace-nowrap overflow-ellipsis w-28 sm:w-full">{{this.name}}</p>
     </div>
@@ -37,8 +37,8 @@ delete_forever
   <div class="flex justify-between items-center my-2 py-2 px-4 rounded-lg bg-slate-700">
     <div class="flex justify-between items-center">
       <div
-        class="flex justify-center relative icon-card-mini {{#if (eq this.rarity 5)}} five-star {{/if}} {{#if (eq this.rarity 4)}} four-star {{/if}} rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-2xl box-border overflow-hidden">
-        <img width="" src="{{this.images.icon}}" alt="{{this.name}}">
+        class="icon-container-main flex justify-center relative icon-card-mini {{#if (eq this.rarity 5)}} five-star {{/if}} {{#if (eq this.rarity 4)}} four-star {{/if}} rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-2xl box-border overflow-hidden">
+        <img src="{{this.images.icon}}" alt="{{this.name}}">
       </div>
       <p class="text-lg ml-2 overflow-hidden whitespace-nowrap overflow-ellipsis w-28 sm:w-full">{{this.name}}</p>
     </div>
@@ -65,8 +65,8 @@ delete_forever
   <div class="flex justify-between items-center my-2 py-2 px-4 rounded-lg bg-slate-700">
     <div class="flex justify-between items-center">
       <div
-        class="flex justify-center relative icon-card-mini artifacts rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-2xl box-border overflow-hidden">
-        <img width="" src="{{this.fullSet.flower.icon}}" alt="{{this.name}}">
+        class="icon-container-main flex justify-center relative icon-card-mini artifacts rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-2xl box-border overflow-hidden">
+        <img src="{{this.fullSet.flower.icon}}" alt="{{this.name}}">
       </div>
       <p class="text-lg ml-2 overflow-hidden whitespace-nowrap overflow-ellipsis w-28 sm:w-full">{{this.name}}</p>
     </div>
