@@ -1,6 +1,6 @@
     {{!-- FORM HEAD --}}
 
-<p class="bg-red-400 text-center  py-2 my-5 rounded-lg text-slate-800">Important: Making changes to the character data will reflect in the API. Please be cautious when editing.</p>
+<p class="edit-warning bg-red-400 text-center py-2 my-5 rounded-lg text-slate-800">Important: Making changes to the character data will reflect in the API. Please be cautious when editing.</p>
     <div class="header-container flex items-center">
       {{#if character}}
       <div class="icon-card overflow-hidden {{#if (eq character.rarity 5)}} five-star {{/if}} {{#if (eq character.rarity 4)}} four-star {{/if}} rounded-lg box-border m-3 flex justify-center items-center">

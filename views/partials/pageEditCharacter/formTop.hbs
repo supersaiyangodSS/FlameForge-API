@@ -1,4 +1,4 @@
-<div class="flex justify-between w-full">
+{{!-- this --}}<div class="form-top-mob flex justify-between w-full">
           <div class="flex flex-col">
             <label for="name" class="myFont mt-3 text-lg">Name</label>
             <input type="text" name="name" id="name" value="{{character.name}}"
@@ -39,7 +39,7 @@
 
           <div class="flex flex-col">
              <label for="rarity" class="myFont mt-2 text-lg">Rarity</label>
-        <div class="flex justify-center mt-1">
+{{!-- this --}}        <div class="flex justify-start lg:justify-center mt-1">
           <input type="radio" class="rarity" name="rarity" id="5" value="5" {{#if (eq character.rarity 5)}}checked{{/if}} hidden
             required>
           <label for="5">5 Star</label>
@@ -51,23 +51,23 @@
 
         </div>
 
-        <div class="flex justify-between w-full gap-2">
+{{!-- this --}}        <div class="form-top-mob flex justify-between w-full gap-2">
 
-        <div class="flex flex-col w-1/3">
+        <div class="flex flex-col w-full lg:w-1/3">
             <label for="title" class="myFont mt-3 text-lg">Title(s)</label>
             <input type="text" name="title" id="title" value="{{character.title}}"
               class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
               required />
         </div>
 
-        <div class="flex flex-col w-1/3">
+        <div class="flex flex-col w-full lg:w-1/3">
             <label for="affiliation" class="myFont mt-3 text-lg">Affiliation(s)</label>
             <input type="text" name="affiliation" id="affiliation" value="{{character.affiliation}}"
               class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
               required />
         </div>
 
-        <div class="flex flex-col w-1/4">
+        <div class="flex flex-col w-full lg:w-1/4">
             <label for="constellation" class="myFont mt-3 text-lg">Constellation</label>
             <input type="text" name="constellation" id="constellation" value="{{character.constellation}}"
               class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"

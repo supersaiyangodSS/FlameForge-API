@@ -1,5 +1,5 @@
 <label class="myFont my-4 text-lg">Vision</label>
-        <div class="flex justify-center">
+{{!-- this --}}<div class="flex justify-center flex-wrap gap-2">
 
           <div class="pyro mx-1">
             <input type="radio" name="vision" class="vision" id="pyro" value="Pyro" required hidden {{#if (eq character.vision "Pyro"
@@ -65,7 +65,7 @@
         </div>
 
         <label for="weapon" class="myFont my-4 text-lg">Weapon</label>
-        <div class="flex justify-center">
+{{!-- this --}}<div class="flex flex-wrap gap-2 justify-center">
 
           <div class="polearm mr-4">
           <input type="radio" class="weapon" name="weapon" id="polearm" value="Polearm" {{#if (eq character.weapon "Polearm")}}checked{{/if}} hidden required>
@@ -111,7 +111,7 @@
         </div>
 
 <label class="myFont my-4 text-lg">Region(s)</label>
-<div class="flex justify-center">
+{{!-- this --}}<div class="flex flex-wrap gap-2 justify-center">
 
     <div class="mondstadt mr-4">
           <input type="checkbox" class="region" name="region" id="mondstadt" value="Mondstadt"{{#each character.region}} {{#if (eq this "Mondstadt")}}checked{{/if}} {{/each}} hidden >
