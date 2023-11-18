@@ -1,10 +1,10 @@
     {{!-- FORM HEAD --}}
 
-<p class="edit-warning bg-red-400 text-center py-2 my-5 rounded-lg text-slate-800">Important: Making changes to the character data will reflect in the API. Please be cautious when editing.</p>
+<p class="edit-warning bg-red-400 text-center p-2 my-5 rounded-lg text-slate-800">Important: Making changes to the character data will reflect in the API. Please be cautious when editing.</p>
     <div class="header-container flex items-center">
       {{#if character}}
       <div class="icon-card overflow-hidden {{#if (eq character.rarity 5)}} five-star {{/if}} {{#if (eq character.rarity 4)}} four-star {{/if}} rounded-lg box-border m-3 flex justify-center items-center">
-        <img width="100px" src="{{character.images.profile}}" alt="{{this.name}}" />
+        <img width="100" src="{{character.images.profile}}" alt="{{this.name}}" />
       </div>
       <div>
         <p class="text-3xl whitespace-nowrap overflow-ellipsis mx-2 text-white">{{character.name}}</p>

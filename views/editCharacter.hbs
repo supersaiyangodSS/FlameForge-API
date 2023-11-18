@@ -15,7 +15,7 @@
     <div id="alertBox" class="alertBox text-white bg-teal-500 px-2 py-2 rounded-lg transition-all duration-300 z-40"></div>
     <div id="alertBoxError" class="alertBox text-white bg-red-400 px-2 py-2 rounded-lg transition-all duration-300 z-40"></div>
 
-  <div class="edit-main-container w-10/12 container p-4 mx-auto bg-slate-800 flex flex-col">
+{{!-- this --}}  <div class="edit-main-container w-10/12 container p-4 mx-auto bg-slate-800 flex flex-col">
     {{> pageEditCharacter/formMain}}
     <form class="editForm text-white" action="/dashboard/character/edit/{{character._id}}" method="POST">
       <div class="flex flex-col items-start">

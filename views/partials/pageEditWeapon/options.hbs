@@ -1,6 +1,6 @@
 
 <label class="myFont my-4 text-lg">Region(s)</label>
-<div class="flex justify-center">
+<div class="flex justify-center flex-wrap gap-2">
 
     <div class="mondstadt mr-4">
           <input type="checkbox" class="region" name="region" id="mondstadt" value="Mondstadt" {{#if (eq weapon.region "Mondstadt")}}checked{{/if}} hidden >
@@ -44,7 +44,7 @@
 </div>
 
 <label for="weapon" class="myFont my-4 text-lg">Family</label>
-        <div class="flex justify-center">
+        <div class="flex justify-center flex-wrap gap-2">
 
           <div class="polearm mr-4">
           <input type="radio" class="weapon" name="family" id="polearm" value="Polearm" {{#if (eq weapon.family "Polearm")}}checked{{/if}} hidden required>
