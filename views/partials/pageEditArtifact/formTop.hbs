@@ -1,12 +1,12 @@
-<div class="flex justify-between w-full gap-2">
-  <div class="flex flex-col w-2/4">
+<div class="form-top-mob flex justify-between w-full gap-2">
+  <div class="flex flex-col w-full lg:w-2/4">
     <label for="name" class=" myFont mt-3 text-lg">Name</label>
     <input type="text" name="name" id="name" value="{{artifact.name}}"
       class=" p-2 border-t-2 border-b-2 placeholder:opacity-50 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
       required />
   </div>
 
-  <div class="flex flex-col w-2/4">
+  <div class="flex flex-col w-full lg:w-2/4">
     <label for="twoPc" class="myFont mt-3 text-lg">2pc Effect</label>
     <input type="text" name="twoPc" id="twoPc" value="{{artifact.effect.twoPc}}"
       class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
@@ -25,7 +25,7 @@
 
 <div class="flex justify-evenly items-center gap-2 flex-wrap mt-4">
    <div
-    class="p-4 w-96 placeholder:opacity-50 bg-slate-700 rounded-md mt-1 mb-3 outline-none">
+    class="p-4 border-box w-80 lg:w-96 placeholder:opacity-50 bg-slate-700 rounded-md mt-1 mb-3 outline-none">
     <img src="{{artifact.fullSet.flower.icon}}" class="mb-4" width="100" alt="{{artifact.fullSet.flower.title}}">
 
     <label for="flowerTitle" class="myFont mt-3 text-lg">Title</label>
@@ -45,7 +45,7 @@
   </div>
 
   <div
-    class="p-4 w-96 placeholder:opacity-50 bg-slate-700 rounded-md mt-1 mb-3 outline-none">
+    class="p-4 border-box w-80 lg:w-96 placeholder:opacity-50 bg-slate-700 rounded-md mt-1 mb-3 outline-none">
     <img src="{{artifact.fullSet.sands.icon}}" class="mb-4" width="100" alt="{{artifact.fullSet.sands.title}}">
 
     <label for="sandsTitle" class="myFont mt-3 text-lg">Title</label>
@@ -65,7 +65,7 @@
   </div>
 
   <div
-    class="p-4 w-96 placeholder:opacity-50 bg-slate-700 rounded-md mt-1 mb-3 outline-none">
+    class="p-4 border-box w-80 lg:w-96 placeholder:opacity-50 bg-slate-700 rounded-md mt-1 mb-3 outline-none">
     <img src="{{artifact.fullSet.plume.icon}}" class="mb-4" width="100" alt="{{artifact.fullSet.plume.title}}">
 
     <label for="plumeTitle" class="myFont mt-3 text-lg">Title</label>
@@ -85,7 +85,7 @@
   </div>
 
   <div
-    class="p-4 w-96 placeholder:opacity-50 bg-slate-700 rounded-md mt-1 mb-3 outline-none">
+    class="p-4 border-box w-80 lg:w-96 placeholder:opacity-50 bg-slate-700 rounded-md mt-1 mb-3 outline-none">
     <img src="{{artifact.fullSet.circlet.icon}}" class="mb-4" width="100" alt="{{artifact.fullSet.circlet.title}}">
 
     <label for="circletTitle" class="myFont mt-3 text-lg">Title</label>
@@ -105,7 +105,7 @@
   </div>
 
   <div
-    class="p-4 w-96 placeholder:opacity-50 bg-slate-700 rounded-md mt-1 mb-3 outline-none">
+    class="p-4 border-box w-80 lg:w-96 placeholder:opacity-50 bg-slate-700 rounded-md mt-1 mb-3 outline-none">
     <img src="{{artifact.fullSet.goblet.icon}}" class="mb-4" width="100" alt="{{artifact.fullSet.goblet.title}}">
 
     <label for="gobletTitle" class="myFont mt-3 text-lg">Title</label>

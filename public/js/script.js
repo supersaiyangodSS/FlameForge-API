@@ -1,3 +1,4 @@
+const body = document.body;
 const characters = document.getElementById('nav-1');
 const weapons = document.getElementById('nav-2');
 const artifacts = document.getElementById('nav-3');
@@ -84,6 +85,7 @@ home.addEventListener('click', () => {
     toggleContent(0);
     showTitle('');
     sidebar.classList.toggle('sidebar-mob');
+    body.classList.toggle('body-overflow');
 })
 
 characters.addEventListener('click', () => {
@@ -91,6 +93,7 @@ characters.addEventListener('click', () => {
     toggleActive(1)
     showTitle(characterTitle)
     sidebar.classList.toggle('sidebar-mob');
+    body.classList.toggle('body-overflow');
 });
 
 weapons.addEventListener('click', () => {
@@ -98,6 +101,7 @@ weapons.addEventListener('click', () => {
     toggleActive(2)
     showTitle(weaponsTitle)
     sidebar.classList.toggle('sidebar-mob');
+    body.classList.toggle('body-overflow');
 });
 
 artifacts.addEventListener('click', () => {
@@ -105,6 +109,7 @@ artifacts.addEventListener('click', () => {
     toggleActive(3)
     showTitle(artifcatsTitle)
     sidebar.classList.toggle('sidebar-mob');
+    body.classList.toggle('body-overflow');
 });
 
 if (adminContent && admin) {
@@ -113,6 +118,7 @@ if (adminContent && admin) {
         toggleActive(4)
         showTitle(adminTitle);
         sidebar.classList.toggle('sidebar-mob');
+        body.classList.toggle('body-overflow');
     })
 }
 
@@ -120,12 +126,14 @@ people.addEventListener('click', () => {
     toggleContent(5);
     showTitle(peopleTitle);
     sidebar.classList.toggle('sidebar-mob');
+    body.classList.toggle('body-overflow');
 });
 
 settings.addEventListener('click', () => {
     toggleContent(6)
     showTitle(settingsTitle);
     sidebar.classList.toggle('sidebar-mob');
+    body.classList.toggle('body-overflow');
 })
 
 function handleFileInputDisplay(uploadFile, file_display) {
@@ -239,5 +247,6 @@ const hamburgerBtn = document.getElementById('hamburger-btn')
 const sidebar = document.getElementById('sidebar-main')
 
 hamburgerBtn.addEventListener('click', () => {
+    body.classList.toggle('body-overflow');
     sidebar.classList.toggle('sidebar-mob');
 })
