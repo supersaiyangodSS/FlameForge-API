@@ -243,3 +243,29 @@ hamburgerBtn.addEventListener('click', () => {
     body.classList.toggle('body-overflow');
     sidebar.classList.toggle('sidebar-mob');
 })
+
+window.addEventListener('load', () => {
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    const confirmModal = document.getElementById('character-delete-confirm-modal');
+    const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+    const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const characterId = this.getAttribute('data-character-id');
+            const form = confirmModal.querySelector('form');
+            form.action = `/dashboard/character/delete/${characterId}`;
+
+            confirmModal.classList.remove('hidden');
+        })
+    });
+
+    confirmDeleteBtn.addEventListener('click', () => {
+        const form = confirmModal.querySelector('form');
+        form.submit();
+    });
+
+    cancelDeleteBtn.addEventListener('click', () => {
+        confirmModal.classList.add('hidden');
+    })
+})

@@ -2,7 +2,8 @@
 <div id="content-4">
   <p class="text-xl">Characters</p>
   <div class="flex my-3">
-    <a class="btn outline-none bg-teal-500 py-2 px-4 rounded-lg hover:bg-teal-600" href="/dashboard/characters/download">Export All
+    <a class="btn outline-none bg-teal-500 py-2 px-4 rounded-lg hover:bg-teal-600"
+      href="/dashboard/characters/download">Export All
       Characters</a>
   </div>
   {{#each characters}}
@@ -16,21 +17,20 @@
     </div>
     <div class="flex">
       <a href="/dashboard/character/edit/{{this._id}}"><button
-          class="flex btn outline-none mr-2 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span class="material-symbols-outlined">
-edit
-</span></button></a>
-      <form action="/dashboard/character/delete/{{this._id}}" method="POST">
-        <button class="flex btn outline-none text-red-400 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"
-          type="submit"><span class="material-symbols-outlined">
-delete_forever
-</span></button>
-      </form>
+          class="flex btn outline-none mr-2 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span
+            class="material-symbols-outlined">
+            edit
+          </span></button></a>
+
+          <button data-character-id="{{this._id}}" class="delete-btn flex btn outline-none text-red-400 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span class="material-symbols-outlined">delete_forever</span></button>
+
     </div>
   </div>
   {{/each}}
   <p class="text-xl mt-9">Weapons</p>
   <div class="flex my-3">
-    <a class="btn outline-none bg-teal-500 py-2 px-4 rounded-lg hover:bg-teal-600" href="/dashboard/weapons/download">Export All
+    <a class="btn outline-none bg-teal-500 py-2 px-4 rounded-lg hover:bg-teal-600"
+      href="/dashboard/weapons/download">Export All
       Weapons</a>
   </div>
   {{#each weapons}}
@@ -44,21 +44,24 @@ delete_forever
     </div>
     <div class="flex">
       <a href="/dashboard/weapon/edit/{{this._id}}"><button
-          class="flex btn outline-none mr-2 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span class="material-symbols-outlined">
-edit
-</span></button></a>
+          class="flex btn outline-none mr-2 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span
+            class="material-symbols-outlined">
+            edit
+          </span></button></a>
       <form action="/dashboard/weapon/delete/{{this._id}}" method="POST">
-        <button class="flex btn outline-none text-red-400 mr-2 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"
+        <button
+          class="flex btn outline-none text-red-400 mr-2 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"
           type="submit"><span class="material-symbols-outlined">
-delete_forever
-</span></button>
+            delete_forever
+          </span></button>
       </form>
     </div>
   </div>
   {{/each}}
   <p class="text-xl mt-9">Artifacts</p>
   <div class="flex my-3">
-    <a class="btn outline-none bg-teal-500 py-2 px-4 rounded-lg hover:bg-teal-600" href="/dashboard/artifacts/download">Export All
+    <a class="btn outline-none bg-teal-500 py-2 px-4 rounded-lg hover:bg-teal-600"
+      href="/dashboard/artifacts/download">Export All
       Artifacts</a>
   </div>
   {{#each artifacts}}
@@ -72,17 +75,34 @@ delete_forever
     </div>
     <div class="flex">
       <a href="/dashboard/artifact/edit/{{this._id}}"><button
-          class="flex btn outline-none mr-2 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span class="material-symbols-outlined">
-edit
-</span></button></a>
+          class="flex btn outline-none mr-2 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span
+            class="material-symbols-outlined">
+            edit
+          </span></button></a>
       <form action="/dashboard/artifact/delete/{{this._id}}" method="POST">
-        <button class="flex btn outline-none text-red-400 mr-2 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"
+        <button
+          class="flex btn outline-none text-red-400 mr-2 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"
           type="submit"><span class="material-symbols-outlined">
-delete_forever
-</span></button>
+            delete_forever
+          </span></button>
       </form>
     </div>
   </div>
   {{/each}}
+
+  <div id="character-delete-confirm-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden">
+    <div class="flex items-center justify-center h-screen">
+          <form action="" method="POST" class="flex justify-center">
+      <div class="bg-slate-800 p-4 w-11/12 lg:w-96 rounded-lg poppins">
+        <p>Are you sure you want to delete this character?</p>
+        <div class="flex gap-2 mt-2">
+        <button class="w-full" type="button" id="cancelDeleteBtn">Cancel</button>
+        <button class="w-full bg-red-400 px-4 py-2 rounded-lg" id="confirmDeleteBtn">Confirm</button>
+        </div>
+          </form>
+      </div>
+    </div>
+
+  </div>
 </div>
 {{/if}}
