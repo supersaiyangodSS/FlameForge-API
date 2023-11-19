@@ -18,20 +18,6 @@ const adminContent = document.getElementById('content-4');
 const poepleContent = document.getElementById('content-5');
 const settingsContent = document.getElementById('content-6');
 
-window.addEventListener('click', () => {
-    let audio = document.getElementById('myAudio');
-    let playBtn = document.getElementById('playBtn');
-
-    playBtn.addEventListener('click', () => {
-        audio.play();
-    })
-
-    audio.addEventListener('ended', () => {
-        audio.currentTime = 0;
-        audio.play();
-    })
-})
-  
 
 function showTitle(title) {
     heading.innerText = title;
