@@ -18,6 +18,13 @@ const adminContent = document.getElementById('content-4');
 const poepleContent = document.getElementById('content-5');
 const settingsContent = document.getElementById('content-6');
 
+const documentHeight = () => {
+    const doc = document.documentElement
+    doc.style.setProperty('--doc-height', `${window.innerHeight}`)
+}
+window.addEventListener('resize', documentHeight)
+documentHeight();
+
 
 function showTitle(title) {
     heading.innerText = title;

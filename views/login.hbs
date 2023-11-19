@@ -6,11 +6,15 @@
     <meta name="description" content="{{desc}}">
     <title>{{title}}</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
-<body class="flex justify-center items-center bg-slate-800 text-white poppins font-regular">
+<body>
+
     <div id="alertBoxLogin" class="alertBox text-white bg-teal-500 p-4 rounded-lg transition-all duration-300 z-40"></div>
-<div class="font flex w-96 items-center justify-center h-screen">
-    <form id="loginForm" action="/sign-in" method="POST" class="login-form flex flex-col p-10 rounded-3xl w-full box-border bg-slate-700 shadow-lg border-e-4 border-l-4 border-teal-400">
+
+<div class="flex w-96 mx-auto items-center justify-center h-screen ">
+
+    <form id="loginForm" action="/sign-in" method="POST" class="login-form flex flex-col p-10 rounded-3xl w-11/12 lg:w-full box-border bg-slate-700 shadow-lg border-e-4 border-l-4 border-teal-400 text-white poppins">
     <img src="/assets/images/xiao-main.png" width="250" class="mx-auto" alt="">
         <label for="email" class="font-regular text-sm mt-3">Email</label>
         <input type="email" name="email" id="email" class="p-2 border-t-2 border-b-2 placeholder:opacity-50 bg-slate-700 border-teal-700 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="dawnwinery@gmail.com" required>
