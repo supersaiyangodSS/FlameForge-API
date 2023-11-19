@@ -21,8 +21,9 @@
             class="material-symbols-outlined">
             edit
           </span></button></a>
-
+          <form action="/dashboard/character/delete/{{this._id}}" method="POST">
           <button data-character-id="{{this._id}}" class="delete-btn flex btn outline-none text-red-400 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span class="material-symbols-outlined">delete_forever</span></button>
+          </form>
 
     </div>
   </div>
@@ -48,13 +49,11 @@
             class="material-symbols-outlined">
             edit
           </span></button></a>
-      <form action="/dashboard/weapon/delete/{{this._id}}" method="POST">
-        <button
-          class="flex btn outline-none text-red-400 mr-2 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"
-          type="submit"><span class="material-symbols-outlined">
-            delete_forever
-          </span></button>
-      </form>
+
+       <form action="/dashboard/weapon/delete/{{this._id}}" method="POST">
+          <button data-character-id="{{this._id}}" class="delete-btn flex btn outline-none text-red-400 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span class="material-symbols-outlined">delete_forever</span></button>
+          </form>
+
     </div>
   </div>
   {{/each}}
@@ -79,30 +78,16 @@
             class="material-symbols-outlined">
             edit
           </span></button></a>
-      <form action="/dashboard/artifact/delete/{{this._id}}" method="POST">
-        <button
-          class="flex btn outline-none text-red-400 mr-2 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"
-          type="submit"><span class="material-symbols-outlined">
-            delete_forever
-          </span></button>
-      </form>
+
+ <form action="/dashboard/artifact/delete/{{this._id}}" method="POST">
+          <button data-character-id="{{this._id}}" class="delete-btn flex btn outline-none text-red-400 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span class="material-symbols-outlined">delete_forever</span></button>
+          </form>
+
     </div>
   </div>
   {{/each}}
 
-  <div id="character-delete-confirm-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden">
-    <div class="flex items-center justify-center h-screen">
-          <form action="" method="POST" class="flex justify-center">
-      <div class="bg-slate-800 p-4 w-11/12 lg:w-96 rounded-lg poppins">
-        <p>Are you sure you want to delete this character?</p>
-        <div class="flex gap-2 mt-2">
-        <button class="w-full" type="button" id="cancelDeleteBtn">Cancel</button>
-        <button class="w-full bg-red-400 px-4 py-2 rounded-lg" id="confirmDeleteBtn">Confirm</button>
-        </div>
-          </form>
-      </div>
-    </div>
-
+  
   </div>
 </div>
 {{/if}}

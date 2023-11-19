@@ -421,15 +421,15 @@ const deleteCharacter = async (req: Request, res: Response) => {
                 if (deletedCharacter) {
                     // res.send(deletedCharacter);
                     req.flash('deletedItem', 'Deleted Successfully');
-                    res.redirect('/dashboard')
+                    return res.redirect('/dashboard')
                 }
                 else {
-                    res.send('Interval server error');
+                    return res.send('Interval server error');
                 }
             }
-            res.send('not admin')
+            return res.send('not admin')
         } catch (error) {
-            
+            return res.send(error)
         }
 }
 
@@ -442,15 +442,15 @@ const deleteWeapon = async (req: Request, res: Response) => {
                 if (deletedWeapon) {
                     // res.send(deletedCharacter);
                     req.flash('deletedItem', 'Deleted Successfully');
-                    res.redirect('/dashboard')
+                    return res.redirect('/dashboard')
                 }
                 else {
-                    res.send('Interval server error');
+                    return res.send('Interval server error');
                 }
             }
-            res.send('not admin')
+            return res.send('not admin')
         } catch (error) {
-            
+            return res.send(error)
         }
 }
 
@@ -463,15 +463,15 @@ const deleteArtifact = async (req: Request, res: Response) => {
                 if (deletedArtifact) {
                     // res.send(deletedCharacter);
                     req.flash('deletedItem', 'Deleted Successfully');
-                    res.redirect('/dashboard')
+                    return res.redirect('/dashboard')
                 }
                 else {
-                    res.send('Interval server error');
+                    return res.send('Interval server error');
                 }
             }
-            res.send('not admin')
+            return res.send('not admin')
         } catch (error) {
-            
+            return res.send(error)
         }
 }
 
