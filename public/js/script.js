@@ -78,6 +78,9 @@ home.addEventListener('click', () => {
     showTitle('');
     sidebar.classList.toggle('sidebar-mob');
         // body.classList.toggle('sm:body-overflow');
+    if (body.classList.contains('body-overflow')) {
+            body.classList.remove('body-overflow')
+        }
 })
 
 characters.addEventListener('click', () => {
@@ -86,6 +89,9 @@ characters.addEventListener('click', () => {
     showTitle(characterTitle)
     sidebar.classList.toggle('sidebar-mob');
     // body.classList.toggle('sm:body-overflow');
+    if (body.classList.contains('body-overflow')) {
+        body.classList.remove('body-overflow')
+    }
 });
 
 weapons.addEventListener('click', () => {
@@ -94,6 +100,9 @@ weapons.addEventListener('click', () => {
     showTitle(weaponsTitle)
     sidebar.classList.toggle('sidebar-mob');
     // body.classList.toggle('sm:body-overflow');
+    if (body.classList.contains('body-overflow')) {
+        body.classList.remove('body-overflow')
+    }
 });
 
 artifacts.addEventListener('click', () => {
@@ -102,6 +111,9 @@ artifacts.addEventListener('click', () => {
     showTitle(artifcatsTitle)
     sidebar.classList.toggle('sidebar-mob');
     // body.classList.toggle('sm:body-overflow');
+    if (body.classList.contains('body-overflow')) {
+        body.classList.remove('body-overflow')
+    }
 });
 
 if (adminContent && admin) {
@@ -111,6 +123,9 @@ if (adminContent && admin) {
         showTitle(adminTitle);
         sidebar.classList.toggle('sidebar-mob');
         // body.classList.toggle('sm:body-overflow');
+        if (body.classList.contains('body-overflow')) {
+            body.classList.remove('body-overflow')
+        }
     })
 }
 
@@ -119,6 +134,9 @@ people.addEventListener('click', () => {
     showTitle(peopleTitle);
     sidebar.classList.toggle('sidebar-mob');
     // body.classList.toggle('sm:body-overflow');
+    if (body.classList.contains('body-overflow')) {
+        body.classList.remove('body-overflow')
+    }
 });
 
 settings.addEventListener('click', () => {
@@ -126,6 +144,9 @@ settings.addEventListener('click', () => {
     showTitle(settingsTitle);
     sidebar.classList.toggle('sidebar-mob');
     // body.classList.toggle('sm:body-overflow');
+    if (body.classList.contains('body-overflow')) {
+        body.classList.remove('body-overflow')
+    }
 });
 
 function handleFileInputDisplay(uploadFile, file_display) {
