@@ -18,12 +18,7 @@ const adminContent = document.getElementById('content-4');
 const poepleContent = document.getElementById('content-5');
 const settingsContent = document.getElementById('content-6');
 
-const documentHeight = () => {
-    const doc = document.documentElement
-    doc.style.setProperty('--doc-height', `${window.innerHeight}`)
-}
-window.addEventListener('resize', documentHeight)
-documentHeight();
+
 
 
 function showTitle(title) {
@@ -78,7 +73,7 @@ home.addEventListener('click', () => {
     toggleContent(0);
     showTitle('');
     sidebar.classList.toggle('sidebar-mob');
-    body.classList.toggle('body-overflow');
+        // body.classList.toggle('body-overflow');
 })
 
 characters.addEventListener('click', () => {
@@ -86,7 +81,7 @@ characters.addEventListener('click', () => {
     toggleActive(1)
     showTitle(characterTitle)
     sidebar.classList.toggle('sidebar-mob');
-    body.classList.toggle('body-overflow');
+    // body.classList.toggle('body-overflow');
 });
 
 weapons.addEventListener('click', () => {
@@ -94,7 +89,7 @@ weapons.addEventListener('click', () => {
     toggleActive(2)
     showTitle(weaponsTitle)
     sidebar.classList.toggle('sidebar-mob');
-    body.classList.toggle('body-overflow');
+    // body.classList.toggle('body-overflow');
 });
 
 artifacts.addEventListener('click', () => {
@@ -102,7 +97,7 @@ artifacts.addEventListener('click', () => {
     toggleActive(3)
     showTitle(artifcatsTitle)
     sidebar.classList.toggle('sidebar-mob');
-    body.classList.toggle('body-overflow');
+    // body.classList.toggle('body-overflow');
 });
 
 if (adminContent && admin) {
@@ -111,7 +106,7 @@ if (adminContent && admin) {
         toggleActive(4)
         showTitle(adminTitle);
         sidebar.classList.toggle('sidebar-mob');
-        body.classList.toggle('body-overflow');
+        // body.classList.toggle('body-overflow');
     })
 }
 
@@ -119,14 +114,14 @@ people.addEventListener('click', () => {
     toggleContent(5);
     showTitle(peopleTitle);
     sidebar.classList.toggle('sidebar-mob');
-    body.classList.toggle('body-overflow');
+    // body.classList.toggle('body-overflow');
 });
 
 settings.addEventListener('click', () => {
     toggleContent(6)
     showTitle(settingsTitle);
     sidebar.classList.toggle('sidebar-mob');
-    body.classList.toggle('body-overflow');
+    // body.classList.toggle('body-overflow');
 })
 
 function handleFileInputDisplay(uploadFile, file_display) {

@@ -1,30 +1,27 @@
-<div id="content-5">
+<div id="content-5" class="w-full lg:w-9/12 mx-auto">
   {{#if (eq role 'admin')}}
-            {{#each users}}
-            
-                   <div
-            class="my-4 card card-long flex items-center w-full rounded-full py-2 px-4 mt-3 relative border-2 border-white">
-            <div class="overlay absolute top-0 left-0 right-0 bottom-0 bg-black opacity-20 z-0 rounded-full"></div>
-            <div class="pfp z-10">
-              <div class="rounded-full bg-teal-700 border-white border-4 border-solid">
-                <img
-                  src="assets/images/pfp/{{this.profilePic}}.webp"
-                  alt="profile-pic"
-                  width="75"
-                  height="75"
-                  class="rounded-full"
-                />
-              </div>
-            </div>
-            <div class="info ml-4 text-white z-10">
-              <p class="text-xl">{{username}}</p>
-              <p class="desc text-md mt-1 font-thin">~ {{role}}</p>
-            </div>
-          </div>
-            {{/each}}
-{{/if}}
+  {{#each users}}
 
-{{#if (eq role 'user')}}
-  <p class="text-center lg:text-left mt-2 bg-red-400 p-2 rounded-md">This exclusive page grants access to advanced features and confidential details accessible only to administrators.</p>
-{{/if}}
-          </div>
+  <div
+    class="my-4 card card-long flex items-center rounded-full w-full py-2 px-4 mt-3 relative border-2 border-white">
+    <div class="overlay absolute top-0 left-0 right-0 bottom-0 bg-black opacity-20 z-0 rounded-full"></div>
+    <div class="pfp z-10">
+      <div class="rounded-full bg-teal-700 border-white border-4 border-solid">
+        <img src="assets/images/pfp/{{this.profilePic}}.webp" alt="profile-pic" width="75" height="75"
+          class="rounded-full" />
+      </div>
+    </div>
+    <div class="info ml-4 text-white z-10">
+      <p class="text-xl">{{username}}</p>
+      <p class="desc text-md mt-1 font-thin">~ {{role}}</p>
+    </div>
+  </div>
+  {{/each}}
+  {{/if}}
+
+  {{#if (eq role 'user')}}
+  <p class="text-center lg:text-left mt-2 bg-red-400 p-2 rounded-md">This exclusive page grants access to advanced
+    features and confidential details accessible only to administrators.</p>
+  {{/if}}
+
+</div>
