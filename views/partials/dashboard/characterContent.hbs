@@ -20,7 +20,7 @@
   <div class="icon-card-container-mob icon-card-container my-8 flex flex-wrap">
     {{#each characters}}
     <div
-      class="icon-card-mob relative icon-card five-star rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-3xl box-border overflow-hidden m-3 flex justify-center items-center">
+      class="icon-card-mob relative icon-card {{#if (eq this.rarity 5)}} five-star {{/if}} {{#if (eq this.rarity 4)}} four-star {{/if}} rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-3xl box-border overflow-hidden m-3 flex justify-center items-center">
       <img class="icon-card-image-mob" width="90" src="{{this.images.profile}}" alt="{{this.name}}">
       <p
         class="bg-white absolute bottom-0 left-0 right-0 text-black text-xs text-center overflow-hidden whitespace-nowrap overflow-ellipsis px-3">
