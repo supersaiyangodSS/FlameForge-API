@@ -15,11 +15,8 @@ const charactersContent = document.getElementById('content-1');
 const weaponsContent = document.getElementById('content-2');
 const artifactsContent = document.getElementById('content-3');
 const adminContent = document.getElementById('content-4');
-const poepleContent = document.getElementById('content-5');
+const peopleContent = document.getElementById('content-5');
 const settingsContent = document.getElementById('content-6');
-
-
-
 
 function showTitle(title) {
     heading.innerText = title;
@@ -35,22 +32,28 @@ const welcomTitle = 'Welcome To FlameForge'
 
 showTitle(welcomTitle)
 
+// function loadDefaults() {
+//     let activeNav = localStorage.getItem('activeNav');
+//     let activeContent = localStorage.getItem('activeContent');
+//     if (!activeNav || !activeContent) {
+//         activeNav = 1;
+//         activeContent = 1;
+//     }
+//     // showTitle('');
+//     // charactersContent.style.display = 'none';
+//     // weaponsContent.style.display = 'none';
+//     // artifactsContent.style.display = 'none'
+//     // poepleContent.style.display = 'none';
+//     // settingsContent.style.display = 'none';
+//     // homeContent.style.display = 'block';
+//     toggleActive(activeNav);
+//     toggleContent(activeContent)
+// }
 function loadDefaults() {
-    let activeNav = localStorage.getItem('activeNav');
-    let activeContent = localStorage.getItem('activeContent');
-    if (!activeNav || !activeContent) {
-        activeNav = 1;
-        activeContent = 1;
-    }
-    // showTitle('');
-    // charactersContent.style.display = 'none';
-    // weaponsContent.style.display = 'none';
-    // artifactsContent.style.display = 'none'
-    // poepleContent.style.display = 'none';
-    // settingsContent.style.display = 'none';
-    // homeContent.style.display = 'block';
+    let activeNav = localStorage.getItem('activeNav') || 1;
+    let activeContent = localStorage.getItem('activeContent') || 1;
     toggleActive(activeNav);
-    toggleContent(activeContent)
+    toggleContent(activeContent);
 }
 loadDefaults();
 function toggleActive(navOrder) {
@@ -69,11 +72,12 @@ function toggleContent(contentOrder) {
     localStorage.setItem('activeContent', contentOrder);
 }
 
+
 home.addEventListener('click', () => {
     toggleContent(0);
     showTitle('');
     sidebar.classList.toggle('sidebar-mob');
-        // body.classList.toggle('body-overflow');
+        // body.classList.toggle('sm:body-overflow');
 })
 
 characters.addEventListener('click', () => {
@@ -81,7 +85,7 @@ characters.addEventListener('click', () => {
     toggleActive(1)
     showTitle(characterTitle)
     sidebar.classList.toggle('sidebar-mob');
-    // body.classList.toggle('body-overflow');
+    // body.classList.toggle('sm:body-overflow');
 });
 
 weapons.addEventListener('click', () => {
@@ -89,7 +93,7 @@ weapons.addEventListener('click', () => {
     toggleActive(2)
     showTitle(weaponsTitle)
     sidebar.classList.toggle('sidebar-mob');
-    // body.classList.toggle('body-overflow');
+    // body.classList.toggle('sm:body-overflow');
 });
 
 artifacts.addEventListener('click', () => {
@@ -97,7 +101,7 @@ artifacts.addEventListener('click', () => {
     toggleActive(3)
     showTitle(artifcatsTitle)
     sidebar.classList.toggle('sidebar-mob');
-    // body.classList.toggle('body-overflow');
+    // body.classList.toggle('sm:body-overflow');
 });
 
 if (adminContent && admin) {
@@ -106,7 +110,7 @@ if (adminContent && admin) {
         toggleActive(4)
         showTitle(adminTitle);
         sidebar.classList.toggle('sidebar-mob');
-        // body.classList.toggle('body-overflow');
+        // body.classList.toggle('sm:body-overflow');
     })
 }
 
@@ -114,15 +118,15 @@ people.addEventListener('click', () => {
     toggleContent(5);
     showTitle(peopleTitle);
     sidebar.classList.toggle('sidebar-mob');
-    // body.classList.toggle('body-overflow');
+    // body.classList.toggle('sm:body-overflow');
 });
 
 settings.addEventListener('click', () => {
     toggleContent(6)
     showTitle(settingsTitle);
     sidebar.classList.toggle('sidebar-mob');
-    // body.classList.toggle('body-overflow');
-})
+    // body.classList.toggle('sm:body-overflow');
+});
 
 function handleFileInputDisplay(uploadFile, file_display) {
     const fileInput = document.getElementById(uploadFile);
