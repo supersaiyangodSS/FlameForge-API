@@ -16,17 +16,268 @@
     <div id="alertBoxError" class="alertBox text-white bg-red-400 px-2 py-2 rounded-lg transition-all duration-300 z-40"></div>
 
   <div class="edit-main-container w-10/12 container p-4 mx-auto bg-slate-800">
-    {{> pageEditWeapon/formMain}}
+        {{!-- FORM HEAD --}}
+
+<p class="bg-red-400 text-center p-2 my-5 rounded-lg text-slate-800">Important: Making changes to the character data will reflect in the API. Please be cautious when editing.</p>
+    <div class="header-container flex items-center">
+      {{#if weapon}}
+      <div class="icon-card overflow-hidden {{#if (eq weapon.rarity 5)}} five-star {{/if}} {{#if (eq weapon.rarity 4)}} four-star {{/if}} rounded-lg box-border m-3 flex justify-center items-center">
+        <img width="100" src="{{weapon.images.icon}}" alt="{{weapon.name}}" />
+      </div>
+      <div>
+        <p class="text-3xl overflow-hidden whitespace-nowrap overflow-ellipsis w-48 sm:w-full mx-2 text-white">{{weapon.name}}</p>
+        {{#if weapon}}
+        <img src="/assets/images/{{weapon.family}}.png" width="30" alt="{{weapon.family}}">
+        {{/if}}
+      </div>
+      {{/if}}
+    </div>
+    
     <form class="editForm text-white" action="/dashboard/weapon/edit/{{weapon._id}}" method="POST">
       <div class="flex flex-col items-start">
         
-        {{> pageEditWeapon/formTop}}
+        <div class="form-top-mob flex justify-between w-full">
+  <div class="flex flex-col w-full lg:w-2/4">
+    <label for="name" class=" myFont mt-3 text-lg">Name</label>
+    <input type="text" name="name" id="name" value="{{weapon.name}}"
+      class=" p-2 border-t-2 border-b-2 placeholder:opacity-50 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+
+  <div class="flex flex-col">
+    <label for="vr" class="myFont mt-3 text-lg">Version Release</label>
+    <input type="text" name="vr" id="vr" value="{{weapon.versionRelease}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+
+  <div class="flex flex-col">
+
+    <label for="rarity" class="myFont my-2 text-lg text-left lg:text-center">Rarity</label>
+    <div class="flex justify-start text-center lg:justify-center mt-1">
+
+      <input type="radio" class="rarity" name="rarity" id="5" value="5" {{#if (eq weapon.rarity 5)}}checked{{/if}} hidden required>
+      <label for="5">5 Star</label>
+
+      <input type="radio" class="rarity ml-1 " name="rarity" id="4" value="4" {{#if (eq weapon.rarity 4)}}checked{{/if}} hidden required>
+      <label for="4">4 Star</label>
+
+      <input type="radio" class="rarity ml-1 " name="rarity" id="3" value="3" {{#if (eq weapon.rarity 3)}}checked{{/if}} hidden required>
+      <label for="3">3 Star</label>
+
+      <input type="radio" class="rarity ml-1 " name="rarity" id="2" value="2" {{#if (eq weapon.rarity 2)}}checked{{/if}} hidden required>
+      <label for="2">2 Star</label>
+
+      <input type="radio" class="rarity ml-1 " name="rarity" id="1" value="1" {{#if (eq weapon.rarity 1)}}checked{{/if}} hidden required>
+      <label for="1">1 Star</label>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="form-top-mob flex justify-between w-full lg:gap-2">
+
+  <div class="flex flex-col">
+    <label for="baseAtk" class="myFont mt-3 text-lg">Base ATK</label>
+    <input type="text" name="baseAtk" id="baseAtk" value="{{weapon.baseAtk}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+
+  <div class="flex flex-col">
+    <label for="subStatType" class="myFont mt-3 text-lg">Sub-Stat Type</label>
+    <input type="text" name="subStatType" id="subStatType" value="{{weapon.subStatType}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+
+  <div class="flex flex-col">
+    <label for="baseSubStat" class="myFont mt-3 text-lg">Base Sub-Stat</label>
+    <input type="text" name="baseSubStat" id="baseSubStat" value="{{weapon.baseSubStat}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+
+  <div class="flex flex-col w-full lg:w-1/3">
+    <label for="source" class="myFont mt-3 text-lg">Source(s)</label>
+    <input type="text" name="source" id="source" value="{{weapon.source}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+</div>
+
+<label for="desc" class="myFont mt-3 text-lg">Description</label>
+<input type="text" name="desc" id="desc" value="{{weapon.desc}}"
+  class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+  required />
+
+<div class="form-top-mob flex justify-between w-full lg:gap-2">
+
+  <div class="flex flex-col w-full lg:w-1/4">
+    <label for="affix" class="myFont mt-3 text-lg">Affix</label>
+    <input type="text" name="affix" id="affix" value="{{weapon.affix}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+
+  <div class="flex flex-col w-full lg:w-2/3">
+    <label for="passive" class="myFont mt-3 text-lg">Passive</label>
+    <input type="text" name="passive" id="passive" value="{{weapon.passive}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+</div>
      
-        {{> pageEditWeapon/options}}
+        
+<label class="myFont my-4 text-lg">Region(s)</label>
+<div class="flex justify-center flex-wrap gap-2">
 
-        {{> pageEditWeapon/links}}
+    <div class="mondstadt mr-4">
+          <input type="checkbox" class="region" name="region" id="mondstadt" value="Mondstadt" {{#if (eq weapon.region "Mondstadt")}}checked{{/if}} hidden >
+          <label for="mondstadt" class="flex items-center p-2">
+            <img src="/assets/images/Mondstadt.webp" width="35" alt="Mondstadt">
+            <p class="mx-1">Mondstadt</p>
+          </label>
+    </div>
 
-        {{> pageEditWeapon/images}}
+    <div class="liyue mr-4">
+          <input type="checkbox" class="region" name="region" id="liyue" value="Liyue" {{#if (eq weapon.region "Liyue")}}checked{{/if}} hidden >
+          <label for="liyue" class="flex items-center p-2">
+            <img src="/assets/images/Liyue.webp" width="35" alt="Liyue">
+            <p class="mx-1">Liyue</p>
+          </label>
+    </div>
+
+    <div class="inazuma mr-4">
+          <input type="checkbox" class="region" name="region" id="inazuma" value="Inazuma" {{#if (eq weapon.region "Inazuma")}}checked{{/if}} hidden >
+          <label for="inazuma" class="flex items-center p-2">
+            <img src="/assets/images/Inazuma.webp" width="35" alt="Inazuma">
+            <p class="mx-1">Inazuma</p>
+          </label>
+    </div>
+    <div class="sumeru mr-4">
+          <input type="checkbox" class="region" name="region" id="sumeru" value="Sumeru" {{#if (eq weapon.region "Sumeru")}}checked{{/if}} hidden >
+          <label for="sumeru" class="flex items-center p-2">
+            <img src="/assets/images/Sumeru.webp" width="35" alt="Sumeru">
+            <p class="mx-1">Sumeru</p>
+          </label>
+    </div>
+    <div class="fontaine mr-4">
+          <input type="checkbox" class="region" name="region" id="fontaine" value="Fontaine" {{#if (eq weapon.region "Fontaine")}}checked{{/if}} hidden >
+          <label for="fontaine" class="flex items-center p-2">
+            <img src="/assets/images/Fontaine.webp" width="35" alt="Fontaine">
+            <p class="mx-1">Fontaine</p>
+          </label>
+    </div>
+
+
+</div>
+
+<label for="weapon" class="myFont my-4 text-lg">Family</label>
+        <div class="flex justify-center flex-wrap gap-2">
+
+          <div class="polearm mr-4">
+          <input type="radio" class="weapon" name="family" id="polearm" value="Polearm" {{#if (eq weapon.family "Polearm")}}checked{{/if}} hidden required>
+          <label for="polearm" class="flex items-center p-2">
+            <img src="/assets/images/Polearm.png" width="35" alt="Polearm">
+            <p class="mx-1">Polearm</p>
+          </label>
+            </div>
+          
+          <div class="bow mr-4">
+          <input type="radio" class="weapon" name="family" id="bow" value="Bow" {{#if (eq weapon.family "Bow")}}checked{{/if}} hidden required>
+          <label for="bow" class="flex items-center p-2">
+            <img src="/assets/images/Bow.png" width="35" alt="Bow">
+            <p class="mx-1">Bow</p>
+          </label>
+          </div>
+
+          <div class="catalyst mr-4">
+          <input type="radio" class="weapon" name="family" id="catalyst" value="Catalyst" {{#if (eq weapon.family "Catalyst")}}checked{{/if}} hidden required>
+          <label for="catalyst" class="flex items-center p-2">
+            <img src="/assets/images/Catalyst.png" width="35" alt="Catalyst">
+            <p class="mx-1">Catalyst</p>
+          </label>
+          </div>
+
+          <div class="claymore mr-4">
+          <input type="radio" class="weapon" name="family" id="claymore" value="Claymore" {{#if (eq weapon.family "Claymore")}}checked{{/if}} hidden required>
+          <label for="claymore" class="flex items-center p-2">
+            <img src="/assets/images/Claymore.png" width="35" alt="Claymore">
+            <p class="mx-1">Claymore</p>
+          </label>
+          </div>
+
+          <div class="sword mr-4">
+          <input type="radio" class="weapon" name="family" id="sword" value="Sword" {{#if (eq weapon.family "Sword")}}checked{{/if}} hidden required>
+          <label for="sword" class="flex items-center p-2">
+            <img src="/assets/images/Sword.png" width="35" alt="Sword">
+            <p class="mx-1">Sword</p>
+          </label>
+          </div>
+
+
+        </div>
+
+        <div class="flex justify-between flex-wrap w-full lg:gap-2">
+
+  <div class="flex flex-col w-full">
+    <label for="icon" class="myFont mt-3 text-lg">Icon Link</label>
+    <input type="text" name="icon" id="icon" value="{{weapon.images.icon}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+
+  <div class="flex flex-col w-full">
+    <label for="original" class="myFont mt-3 text-lg">Weapon Image Link</label>
+    <input type="text" name="original" id="original" value="{{weapon.images.original}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+</div>
+
+<div class="flex justify-between flex-wrap w-full lg:gap-2">
+
+  <div class="flex flex-col w-full">
+    <label for="gacha" class="myFont mt-3 text-lg">Gacha Art Link</label>
+    <input type="text" name="gacha" id="gacha" value="{{weapon.images.gacha}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+
+  <div class="flex flex-col w-full">
+    <label for="awakened" class="myFont mt-3 text-lg">Weapon Awakened Image Url</label>
+    <input type="text" name="awakened" id="awakened" value="{{weapon.images.awakened}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+</div>
+
+<div class="flex flex-col w-full">
+    <label for="wikiUrl" class="myFont mt-3 text-lg">Wiki Url</label>
+    <input type="text" name="wikiUrl" id="wikiUrl" value="{{weapon.wikiUrl}}"
+      class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+      required />
+  </div>
+
+        <div class="img-container flex-col flex w-full justify-evenly items-center mt-2">
+
+        <div class="text-center">
+          <img src="{{weapon.images.original}}" width="450" alt="{{weapon.name}} Gacha Art">
+          <p class="mt-2 font-semibold">Original</p>
+        </div>
+        <div class="text-center">
+          <img src="{{weapon.images.gacha}}" width="150" class="rounded-xl" alt="{{weapon.name}} Card">
+          <p class="mt-2 font-semibold">Gacha Art</p>
+        </div>
+
+        <div class="text-center">
+          <img src="{{weapon.images.awakened}}" width="450" alt="{{weapon.name}} Gacha Art">
+          <p class="mt-2 font-semibold">Awakened</p>
+        </div>
+</div>
 
       </div>
         <div class="w-full flex flex-wrap gap-2 mt-5 text-white poppins justify-center items-center">

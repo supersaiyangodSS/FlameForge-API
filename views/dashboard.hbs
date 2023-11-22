@@ -1,62 +1,67 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="{{desc}}" />
-    <title>{{title}}</title>
-    {{!-- <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/mobile.css" /> --}}
-    <style>
-     
-    </style>
-  </head>
-  <body>
-    <div id="alertBox" class="alertBox text-white bg-teal-500 px-2 py-2 rounded-lg transition-all duration-300 z-40"></div>
-    <div id="alertBoxError" class="alertBox text-white bg-red-400 px-2 py-2 rounded-lg transition-all duration-300 z-40"></div>
-    {{> dashboard/logoutModal}}
-    <div class="bg-slate-800 fixed top-0 left-0 bottom-0 right-0 z-50 flex justify-center items-center" id="loader">
-      <span class="loader"></span>
-    </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="{{desc}}" />
+  <title>{{title}}</title>
+  {{!--
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/mobile.css" /> --}}
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div id="alertBox" class="alertBox text-white bg-teal-500 px-2 py-2 rounded-lg transition-all duration-300 z-40">
+  </div>
+  <div id="alertBoxError" class="alertBox text-white bg-red-400 px-2 py-2 rounded-lg transition-all duration-300 z-40">
+  </div>
+  {{> dashboard/logoutModal}}
+  <div class="bg-slate-800 fixed top-0 left-0 bottom-0 right-0 z-50 flex justify-center items-center" id="loader">
+    <span class="loader"></span>
+  </div>
   <div class="hamburger bg-slate-700 lg:hidden z-50 p-4 flex justify-between items-center">
     <div class="flex justify-center items-center">
-    <img src="/assets/images/ult.png" width="40" alt="FlameForge">
-    <p class="text-gray-200 ml-2 text-lg">FlameForge API</p>
+      <img src="/assets/images/ult.png" width="40" alt="FlameForge">
+      <p class="text-gray-200 ml-2 text-lg">FlameForge API</p>
     </div>
     <button class="flex" id="hamburger-btn">
-    <span class="material-symbols-outlined text-gray-200">
-menu
-</span>
+      <span class="material-symbols-outlined text-gray-200">
+        menu
+      </span>
     </button>
   </div>
 
-    <div class="h-screen flex justify-end">
-      <div id="sidebar-main" class="sidebar-main-mob sidebar-mob sidebar bg-slate-800 fixed top-0 left-0 h-full w-1/5 p-2 border-gray-600 border-r-2 border-solid flex flex-col justify-between">
-{{> dashboard/sidebar}}
-      </div>
-      <div
-        class="main-mob main w-4/5 overflow-y-visible px-10 py-10 bg-slate-800 text-white" id="content">
-        <div class="main-container-mob w-3/4 mx-auto overflow-hidden">
-          <p class="heading-mob text-3xl mb-5" id="heading"></p>
-          <div id="content-data" class="mt-2">
+  <div class="h-screen flex justify-end">
+    <div id="sidebar-main"
+      class="sidebar-main-mob sidebar-mob sidebar bg-slate-800 fixed top-0 left-0 h-full w-1/5 p-2 border-gray-600 border-r-2 border-solid flex flex-col justify-between">
+      {{> dashboard/sidebar}}
+    </div>
+    <div class="main-mob main w-4/5 overflow-y-visible px-10 py-10 bg-slate-800 text-white" id="content">
+      <div class="main-container-mob w-3/4 mx-auto overflow-hidden">
+        <p class="heading-mob text-3xl mb-5" id="heading"></p>
+        <div id="content-data" class="mt-2">
           {{> dashboard/homeContent}}
 
-{{> dashboard/characterContent}}
-          
-{{> dashboard/weaponContent}}
+          {{> dashboard/characterContent}}
 
-{{> dashboard/artifactContent}}
+          {{> dashboard/weaponContent}}
 
-{{> dashboard/adminControl}}
-          
-{{> dashboard/emptyUser}}
+          {{> dashboard/artifactContent}}
 
-{{> dashboard/peopleContent}}
-          
-{{> dashboard/accountContent}}
+          {{> dashboard/adminControl}}
+
+          {{#if (eq role 'user')}}
+          <div id="content-4"></div>
+          {{/if}}
+
+          {{> dashboard/peopleContent}}
+
+          {{> dashboard/accountContent}}
         </div>
 
       </div>
@@ -83,5 +88,6 @@ menu
       {{/if}}
     </div>
     <script defer type="text/javascript" src="/js/script.js"></script>
-  </body>
+</body>
+
 </html>

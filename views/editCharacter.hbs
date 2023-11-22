@@ -16,15 +16,296 @@
     <div id="alertBoxError" class="alertBox text-white bg-red-400 px-2 py-2 rounded-lg transition-all duration-300 z-40"></div>
 
 {{!-- this --}}  <div class="edit-main-container w-10/12 container p-4 mx-auto bg-slate-800 flex flex-col">
-    {{> pageEditCharacter/formMain}}
+    <p class="edit-warning bg-red-400 text-center p-2 my-5 rounded-lg text-slate-800">Important: Making changes to the character data will reflect in the API. Please be cautious when editing.</p>
+    <div class="header-container flex items-center">
+      {{#if character}}
+      <div class="icon-card overflow-hidden {{#if (eq character.rarity 5)}} five-star {{/if}} {{#if (eq character.rarity 4)}} four-star {{/if}} rounded-lg box-border m-3 flex justify-center items-center">
+        <img width="100" src="{{character.images.profile}}" alt="{{this.name}}" />
+      </div>
+      <div>
+        <p class="text-3xl overflow-hidden whitespace-nowrap overflow-ellipsis w-48 sm:w-full mx-2 text-white">{{character.name}}</p>
+        {{#if character}}
+        <img src="/assets/images/{{character.vision}}.png" width="30" alt="{{character.vision}}">
+        {{/if}}
+      </div>
+      {{/if}}
+    </div>
+    
     <form class="editForm text-white" action="/dashboard/character/edit/{{character._id}}" method="POST">
       <div class="flex flex-col items-start">
-        {{> pageEditCharacter/formTop}}
-        
-        {{> pageEditCharacter/options}}
+        {{!-- this --}}<div class="form-top-mob flex justify-between w-full">
+          <div class="flex flex-col">
+            <label for="name" class="myFont mt-3 text-lg">Name</label>
+            <input type="text" name="name" id="name" value="{{character.name}}"
+              class=" p-2 border-t-2 border-b-2 placeholder:opacity-50 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+          </div>
 
-        {{> pageEditCharacter/links}}
-        {{> pageEditCharacter/images}}
+          <div class="flex flex-col">
+            <label for="desc" class="myFont mt-3 text-lg">Birthday</label>
+            <input type="text" name="birthday" id="birthday" value="{{character.birthday}}"
+              class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+          </div>
+
+          <div class="flex flex-col">
+            <label for="vr" class="myFont mt-3 text-lg">Version Release</label>
+            <input type="text" name="vr" id="vr" value="{{character.versionRelease}}"
+              class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+          </div>
+
+          <div class="flex flex-col">
+            <label for="model" class="myFont mt-3 text-lg">Model</label>
+            <select id="model" name="model"
+              class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300">
+              <option value="short male" {{#if (eq character.model "short male" )}} selected {{/if}}>short male</option>
+              <option value="medium male" {{#if (eq character.model "medium male" )}} selected {{/if}}>medium male
+              </option>
+              <option value="tall male" {{#if (eq character.model "tall male" )}} selected {{/if}}>tall male</option>
+              <option value="short female" {{#if (eq character.model "short female" )}} selected {{/if}}>short female
+              </option>
+              <option value="medium female" {{#if (eq character.model "medium female" )}} selected {{/if}}>medium female
+              </option>
+              <option value="tall female" {{#if (eq character.model "tall female" )}} selected {{/if}}>tall female
+              </option>
+            </select>
+        </div>
+
+          <div class="flex flex-col">
+             <label for="rarity" class="myFont mt-2 text-lg">Rarity</label>
+{{!-- this --}}        <div class="flex justify-start lg:justify-center mt-1">
+          <input type="radio" class="rarity" name="rarity" id="5" value="5" {{#if (eq character.rarity 5)}}checked{{/if}} hidden
+            required>
+          <label for="5">5 Star</label>
+          <input type="radio" class="rarity ml-1 " name="rarity" id="4" value="4" {{#if (eq character.rarity 4)}}checked{{/if}}
+            hidden required>
+          <label for="4">4 Star</label>
+        </div>
+          </div>
+
+        </div>
+
+{{!-- this --}}        <div class="form-top-mob flex justify-between w-full gap-2">
+
+        <div class="flex flex-col w-full lg:w-1/3">
+            <label for="title" class="myFont mt-3 text-lg">Title(s)</label>
+            <input type="text" name="title" id="title" value="{{character.title}}"
+              class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+        </div>
+
+        <div class="flex flex-col w-full lg:w-1/3">
+            <label for="affiliation" class="myFont mt-3 text-lg">Affiliation(s)</label>
+            <input type="text" name="affiliation" id="affiliation" value="{{character.affiliation}}"
+              class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+        </div>
+
+        <div class="flex flex-col w-full lg:w-1/4">
+            <label for="constellation" class="myFont mt-3 text-lg">Constellation</label>
+            <input type="text" name="constellation" id="constellation" value="{{character.constellation}}"
+              class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"
+              required />
+        </div>
+        </div>
+
+        <label for="desc" class="myFont mt-3 text-lg">Description</label>
+        <input type="text" name="desc" id="desc" value="{{character.desc}}" class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />      
+
+        
+        <label class="myFont my-4 text-lg">Vision</label>
+{{!-- this --}}<div class="flex justify-center flex-wrap gap-2">
+
+          <div class="pyro mx-1">
+            <input type="radio" name="vision" class="vision" id="pyro" value="Pyro" required hidden {{#if (eq character.vision "Pyro"
+              )}}checked{{/if}} />
+            <label for="pyro" class="flex items-center p-2">
+              <img src="/assets/images/pyro.png" width="35" alt="pyro">
+              <p class="mx-1">Pyro</p>
+            </label>
+          </div>
+
+          <div class="hydro mx-1">
+            <input type="radio" name="vision" class="vision" id="hydro" value="Hydro" required hidden {{#if (eq
+              character.vision "Hydro" )}}checked{{/if}} />
+            <label for="hydro" class="flex items-center p-2">
+              <img src="/assets/images/hydro.png" width="35" alt="hydro">
+              <p class="mx-1">Hydro</p>
+            </label>
+          </div>
+
+          <div class="anemo mx-1">
+            <input type="radio" name="vision" class="vision" id="anemo" value="anemo" required hidden {{#if (eq
+              character.vision "Anemo" )}}checked{{/if}} />
+            <label for="anemo" class="flex items-center p-2">
+              <img src="/assets/images/anemo.png" width="35" alt="anemo">
+              <p class="mx-1">Anemo</p>
+            </label>
+          </div>
+
+          <div class="electro mx-1">
+            <input type="radio" name="vision" class="vision" id="electro" value="Electro" required hidden {{#if (eq
+              character.vision "Electro" )}}checked{{/if}} />
+            <label for="electro" class="flex items-center p-2">
+              <img src="/assets/images/electro.png" width="35" alt="electro">
+              <p class="mx-1">Electro</p>
+            </label>
+          </div>
+
+          <div class="dendro mx-1">
+            <input type="radio" name="vision"class="vision" id="dendro" value="Dendro" required hidden {{#if (eq
+              character.vision "Dendro" )}}checked{{/if}} />
+            <label for="dendro" class="flex items-center p-2">
+              <img src="/assets/images/dendro.png" width="35" alt="dendro">
+              <p class="mx-1">Dendro</p>
+            </label>
+          </div>
+
+          <div class="cryo mx-1">
+            <input type="radio" name="vision" class="vision" id="cryo" value="Cryo" required hidden {{#if (eq character.vision "Cryo"
+              )}}checked{{/if}} />
+            <label for="cryo" class="flex items-center p-2">
+              <img src="/assets/images/cryo.png" width="35" alt="cryo">
+              <p class="mx-1">Cryo</p>
+            </label>
+          </div>
+
+          <div class="geo mx-1">
+            <input type="radio" name="vision" class="vision" id="geo" value="Geo" required hidden {{#if (eq character.vision "Geo")}}checked{{/if}} />
+            <label for="geo" class="flex items-center p-2">
+            <img src="/assets/images/geo.png" width="35" alt="geo">
+            <p class="mx-1">Geo</p>
+            </label>
+          </div>
+        </div>
+
+        <label for="weapon" class="myFont my-4 text-lg">Weapon</label>
+{{!-- this --}}<div class="flex flex-wrap gap-2 justify-center">
+
+          <div class="polearm mr-4">
+          <input type="radio" class="weapon" name="weapon" id="polearm" value="Polearm" {{#if (eq character.weapon "Polearm")}}checked{{/if}} hidden required>
+          <label for="polearm" class="flex items-center p-2">
+            <img src="/assets/images/Polearm.png" width="35" alt="Polearm">
+            <p class="mx-1">Polearm</p>
+          </label>
+            </div>
+          
+          <div class="bow mr-4">
+          <input type="radio" class="weapon" name="weapon" id="bow" {{#if (eq character.weapon "Bow")}}checked{{/if}} hidden required>
+          <label for="bow" class="flex items-center p-2">
+            <img src="/assets/images/Bow.png" width="35" alt="Bow">
+            <p class="mx-1">Bow</p>
+          </label>
+          </div>
+
+          <div class="catalyst mr-4">
+          <input type="radio" class="weapon" name="weapon" id="catalyst" {{#if (eq character.weapon "Catalyst")}}checked{{/if}} hidden required>
+          <label for="catalyst" class="flex items-center p-2">
+            <img src="/assets/images/Catalyst.png" width="35" alt="Catalyst">
+            <p class="mx-1">Catalyst</p>
+          </label>
+          </div>
+
+          <div class="claymore mr-4">
+          <input type="radio" class="weapon" name="weapon" id="claymore" {{#if (eq character.weapon "Claymore")}}checked{{/if}} hidden required>
+          <label for="claymore" class="flex items-center p-2">
+            <img src="/assets/images/Claymore.png" width="35" alt="Claymore">
+            <p class="mx-1">Claymore</p>
+          </label>
+          </div>
+
+          <div class="sword mr-4">
+          <input type="radio" class="weapon" name="weapon" id="sword" {{#if (eq character.weapon "Sword")}}checked{{/if}} hidden required>
+          <label for="sword" class="flex items-center p-2">
+            <img src="/assets/images/Sword.png" width="35" alt="Sword">
+            <p class="mx-1">Sword</p>
+          </label>
+          </div>
+
+
+        </div>
+
+<label class="myFont my-4 text-lg">Region(s)</label>
+{{!-- this --}}<div class="flex flex-wrap gap-2 justify-center">
+
+    <div class="mondstadt mr-4">
+          <input type="checkbox" class="region" name="region" id="mondstadt" value="Mondstadt"{{#each character.region}} {{#if (eq this "Mondstadt")}}checked{{/if}} {{/each}} hidden >
+          <label for="mondstadt" class="flex items-center p-2">
+            <img src="/assets/images/Mondstadt.webp" width="35" alt="Mondstadt">
+            <p class="mx-1">Mondstadt</p>
+          </label>
+    </div>
+
+    <div class="liyue mr-4">
+          <input type="checkbox" class="region" name="region" id="liyue" value="Liyue" {{#each character.region}} {{#if (eq this "Liyue")}}checked{{/if}} {{/each}} hidden >
+          <label for="liyue" class="flex items-center p-2">
+            <img src="/assets/images/Liyue.webp" width="35" alt="Mondstadt">
+            <p class="mx-1">Liyue</p>
+          </label>
+    </div>
+
+    <div class="inazuma mr-4">
+          <input type="checkbox" class="region" name="region" id="inazuma" value="Inazuma" {{#each character.region}} {{#if (eq this "Inazuma")}}checked{{/if}} {{/each}} hidden >
+          <label for="inazuma" class="flex items-center p-2">
+            <img src="/assets/images/Inazuma.webp" width="35" alt="Inazuma">
+            <p class="mx-1">Inazuma</p>
+          </label>
+    </div>
+    <div class="sumeru mr-4">
+          <input type="checkbox" class="region" name="region" id="sumeru" value="Sumeru" {{#each character.region}} {{#if (eq this "Sumeru")}}checked{{/if}} {{/each}} hidden >
+          <label for="sumeru" class="flex items-center p-2">
+            <img src="/assets/images/Sumeru.webp" width="35" alt="Sumeru">
+            <p class="mx-1">Sumeru</p>
+          </label>
+    </div>
+    <div class="fontaine mr-4">
+          <input type="checkbox" class="region" name="region" id="fontaine" value="Fontaine" {{#each character.region}} {{#if (eq this "Fontaine")}}checked{{/if}} {{/each}} hidden >
+          <label for="fontaine" class="flex items-center p-2">
+            <img src="/assets/images/Fontaine.webp" width="35" alt="Fontaine">
+            <p class="mx-1">Fontaine</p>
+          </label>
+    </div>
+</div>
+
+        {{!-- this --}}<div class="flex w-full justify-between flex-wrap gap-2">
+
+            <div class="flex w-full flex-col items-start">
+              <label for="imgProfile" class="myFont mt-3 text-lg">Profile Icon</label>
+              <input type="text" name="imgProfile" id="imgProfile" value="{{character.images.profile}}" class="w-full resize-none p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />
+            </div>
+
+            <div class="flex w-full flex-col items-start">
+              <label for="imgCard" class="myFont mt-3 text-lg">Card</label>
+              <input type="text" name="imgCard" id="imgCard" value="{{character.images.card}}" class="w-full resize-none p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />
+            </div>
+
+            
+        </div>
+
+{{!-- this --}}<div class="flex w-full justify-between flex-wrap gap-2">
+          <div class="flex w-full flex-col items-start">
+              <label for="imgGacha" class="myFont mt-3 text-lg">Gacha Art</label>
+              <input type="text" name="imgGacha" id="imgGacha" value="{{character.images.gacha}}" class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" required />
+            </div>
+
+            <div class="flex w-full flex-col items-start">
+              <label for="wikiUrl" class="myFont mt-3 text-lg">Wiki URL</label>
+              <input type="text" name="wikiUrl" id="wikiUrl" value="{{character.wikiUrl}}" class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300"> 
+            </div>
+        </div>
+
+
+        <div class="img-container flex w-full flex-wrap justify-center lg:justify-evenly items-center mt-2">
+        <div class="text-center">
+          <img src="{{character.images.card}}" width="230" class="rounded-xl" alt="{{character.name}} Card">
+          <p class="mt-2 font-semibold">Card</p>
+        </div>
+        <div class="text-center">
+          <img src="{{character.images.gacha}}" width="450" alt="{{character.name}} Gacha Art">
+          <p class="mt-2 font-semibold">Gacha</p>
+        </div>
+      </div>
 
       </div>
 {{!-- this --}}<div class="w-full flex flex-wrap gap-2 mt-5 text-white poppins justify-center items-center">
