@@ -74,9 +74,9 @@ app.use(( req : Request , res : Response , next : NextFunction ) => {
 
 export function checkAuth ( req: Request, res: Response, next: NextFunction ) {
     req.session.user = 'SSJ'; //temp
-    req.session.role = 'admin' //temp
+    // req.session.role = 'admin' //temp
     req.session.uid = '652d769c66a10078cfe90d9a' //temp
-    // req.session.role = 'user' //temp
+    req.session.role = 'user' //temp
     if (req.session && req.session.user) {
         console.log(`
         user: ${req.session.user}
