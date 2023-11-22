@@ -1,5 +1,5 @@
 {{#if (eq role 'admin')}}
-<div id="content-4">
+<section id="content-4">
   <p class="text-xl">Characters</p>
   <div class="flex my-3">
     <a class="btn outline-none bg-teal-500 py-2 px-4 rounded-lg hover:bg-teal-600"
@@ -21,9 +21,11 @@
             class="material-symbols-outlined">
             edit
           </span></button></a>
-          <form action="/dashboard/character/delete/{{this._id}}" method="POST">
-          <button data-character-id="{{this._id}}" class="delete-btn flex btn outline-none text-red-400 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span class="material-symbols-outlined">delete_forever</span></button>
-          </form>
+      <form action="/dashboard/character/delete/{{this._id}}" method="POST">
+        <button data-character-id="{{this._id}}"
+          class="delete-btn flex btn outline-none text-red-400 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span
+            class="material-symbols-outlined">delete_forever</span></button>
+      </form>
     </div>
   </div>
   {{/each}}
@@ -49,9 +51,11 @@
             edit
           </span></button></a>
 
-       <form action="/dashboard/weapon/delete/{{this._id}}" method="POST">
-          <button data-character-id="{{this._id}}" class="delete-btn flex btn outline-none text-red-400 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span class="material-symbols-outlined">delete_forever</span></button>
-          </form>
+      <form action="/dashboard/weapon/delete/{{this._id}}" method="POST">
+        <button data-character-id="{{this._id}}"
+          class="delete-btn flex btn outline-none text-red-400 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span
+            class="material-symbols-outlined">delete_forever</span></button>
+      </form>
 
     </div>
   </div>
@@ -78,15 +82,16 @@
             edit
           </span></button></a>
 
- <form action="/dashboard/artifact/delete/{{this._id}}" method="POST">
-          <button data-character-id="{{this._id}}" class="delete-btn flex btn outline-none text-red-400 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span class="material-symbols-outlined">delete_forever</span></button>
-          </form>
+      <form action="/dashboard/artifact/delete/{{this._id}}" method="POST">
+        <button data-character-id="{{this._id}}"
+          class="delete-btn flex btn outline-none text-red-400 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span
+            class="material-symbols-outlined">delete_forever</span></button>
+      </form>
 
     </div>
   </div>
   {{/each}}
 
-  
-  </div>
-</div>
+
+</section>
 {{/if}}
