@@ -168,8 +168,8 @@ handleFileInputDisplay('uploadFile3', 'file_display3');
 // toggleContent(4);
 
 
+const deleteBtn = document.getElementById('btn-delete');
 function accountDeleteConfirmation() {
-    const deleteBtn = document.getElementById('btn-delete');
     const deleteInput = document.getElementById('input-delete');
     deleteInput.addEventListener('input', () => {
         if (deleteInput.value === 'DISAPPEAR') {
@@ -182,6 +182,34 @@ function accountDeleteConfirmation() {
         }
     });
 }
+
+function accountDelete() {
+    const customUrl = 'http://localhost:4000/dashboard/delete' //TEMP
+    fetch(customUrl, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Account Deleted Successfully', data);
+        alert(data)
+    })
+    .catch(error => {
+        console.error('Error during delete request:', error);
+        alert(error)
+    });
+}
+
+deleteBtn.addEventListener('click', () => {
+    accountDelete();
+});
 
 let alertBoxTimer;
 function showAlertBox(msg) {

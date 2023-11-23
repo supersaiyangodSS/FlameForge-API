@@ -44,7 +44,16 @@ const getDashboard = async (req: Request, res: Response) => {
                 
     } catch (error) {
         console.log(error);
-        
+        res.json(error);
+    }
+}
+
+const deleteUser = async (req: Request, res: Response) => {
+    try {
+        res.send('delete account');
+    } catch (error) {
+        console.log(error);
+        res.json(error);
     }
 }
 
@@ -571,4 +580,4 @@ const downloadArtifacts = async (req: Request,  res: Response) => {
     }
 }
 
-export { getDashboard, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, editArtifact, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts};
+export { getDashboard, deleteUser, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, editArtifact, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts};
