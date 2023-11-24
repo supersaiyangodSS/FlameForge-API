@@ -69,6 +69,6 @@ router.get('/weapons/download', downloadWeapons);
 router.get('/artifacts/download', downloadArtifacts);
 
 router.get('/logout', logoutUser);
-router.delete('/delete', deleteUser);
+router.delete('/delete/:id', deleteUser);
 
 export default router;

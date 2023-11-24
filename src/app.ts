@@ -96,4 +96,10 @@ app.get('/', ( req : Request , res : Response) => {
     });
 });
 
+app.get('*', ( req: Request , res : Response) => {
+    res.render('404', {
+        title: '404! Not Found!'
+    })
+});
+
 export { app }

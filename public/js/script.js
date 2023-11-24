@@ -183,32 +183,19 @@ function accountDeleteConfirmation() {
     });
 }
 
-function accountDelete() {
-    const customUrl = 'http://localhost:4000/dashboard/delete' //TEMP
-    fetch(customUrl, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        if (!response) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Account Deleted Successfully', data);
-        alert(data)
-    })
-    .catch(error => {
-        console.error('Error during delete request:', error);
-        alert(error)
-    });
+const deleteAccount = async () => {
+    const userId = deleteBtn.dataset.userid;
+    try {
+        const response = await axios.delete(`http://localhost:4000/dashboard/delete/${userId}`);
+        console.log(response.data);
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 deleteBtn.addEventListener('click', () => {
-    accountDelete();
+    deleteAccount()
 });
 
 let alertBoxTimer;

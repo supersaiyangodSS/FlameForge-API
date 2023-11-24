@@ -50,10 +50,10 @@ const getDashboard = async (req: Request, res: Response) => {
 
 const deleteUser = async (req: Request, res: Response) => {
     try {
-        res.send('delete account');
+        let id = req.params.id;
+        res.json({ message: `Account deleted successfully ${id}` });
     } catch (error) {
-        console.log(error);
-        res.json(error);
+        res.status(500).json({ error: `Internal Server Error` });
     }
 }
 
