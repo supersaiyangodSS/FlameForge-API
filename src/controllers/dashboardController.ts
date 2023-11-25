@@ -57,9 +57,14 @@ const getDashboard = async (req: Request, res: Response) => {
 const deleteUser = async (req: Request, res: Response) => {
     try {
         let id = req.params.id;
-        res.json({ message: `Account deleted successfully ${id}` });
+        const deletedUser = await User.findByIdAndDelete(id);
+        if (!deletedUser) {
+            return res.status(404).json({ message: `user does not exist!` });
+        }
+        res.json({ message: `Account deleted successfully` });
     } catch (error) {
         res.status(500).json({ error: `Internal Server Error` });
+        console.log(error);        
     }
 }
 

@@ -8,10 +8,10 @@
     </div>
     <div class="info ml-4 text-white z-10">
       {{#if user}}
-      <p class="text-xl">{{user}}</p>
+      <p class="text-xl">{{loggedUser.username}}</p>
       {{/if}}
       {{#if role}}
-      <p class="desc text-sm mt-1 font-thin">{{role}}</p>
+      <p class="desc text-sm mt-1 font-thin">{{loggedUser.role}}</p>
       {{/if}}
     </div>
   </div>

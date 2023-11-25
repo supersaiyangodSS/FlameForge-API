@@ -186,9 +186,18 @@ function accountDeleteConfirmation() {
 const deleteAccount = async () => {
     const userId = deleteBtn.dataset.userid;
     try {
-        const response = await axios.delete(`http://localhost:4000/dashboard/delete/${userId}`);
-        console.log(response.data);
-        console.log(response);
+        // const response = await axios.delete(`http://localhost:4000/dashboard/delete/${userId}`);
+        const response = await axios.delete(`/dashboard/delete/${userId}`);
+        const status = response.status;
+        if (status === 404) {
+            return showAlertBox('User does not exists!')
+        }
+        if (status === 200) {
+            window.location.href = '/sign-in';
+        }
+        else {
+            showAlertBox('Internal Server Error!');
+        }
     } catch (error) {
         console.error(error);
     }
