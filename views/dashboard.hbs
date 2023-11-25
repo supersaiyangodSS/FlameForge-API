@@ -24,6 +24,21 @@
   <div class="bg-slate-800 fixed top-0 left-0 bottom-0 right-0 z-50 flex justify-center items-center" id="loader">
     <span class="loader"></span>
   </div>
+
+
+ <div class="delete-modal-mob modal hidden z-50 poppins" id="modal-delete-character">
+      <div class="modal-card bg-slate-800 text-white p-4 w-11/12 lg:w-96 rounded-lg poppins">
+        <p class="text-2xl font-semibold">Confirm Deletion</p>
+        <p class="mt-2 mb-5">Are You Sure You Want to Delete this Character?</p>
+        <div class="flex justify-center">
+          <button id="btn-delete-character-modal-close" class="btn-delete-character-modal-close px-2 py-2 w-full rounded-lg mr-2">Cancel</button>
+          <form class="w-full" method="POST" id="character-delete-form">
+        <button type="submit" id="btn-modal-delete" class="w-full px-2 py-2 rounded-lg bg-red-400 hover:bg-red-500 transition-colors">Yes, Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
   <div class="hamburger bg-slate-700 lg:hidden z-50 p-4 flex justify-between items-center">
     <div class="flex justify-center items-center">
       <img src="/assets/images/ult.png" width="40" alt="FlameForge">
@@ -248,11 +263,14 @@
             class="material-symbols-outlined">
             edit
           </span></button></a>
-      <form action="/dashboard/character/delete/{{this._id}}" method="POST">
-        <button data-character-id="{{this._id}}"
-          class="delete-btn flex btn outline-none text-red-400 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm"><span
-            class="material-symbols-outlined">delete_forever</span></button>
-      </form>
+
+          {{!-- <form action="/dashboard/character/delete/{{this._id}}" method="POST"> --}}
+        <button class="delete-btn delete-character-btn flex btn outline-none text-red-400 opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-colors text-sm" data-characterid="{{this._id}}">
+          <span class="material-symbols-outlined">delete_forever</span>
+        </button>
+      {{!-- </form> --}}
+
+      
     </div>
   </div>
   {{/each}}

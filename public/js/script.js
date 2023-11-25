@@ -77,10 +77,10 @@ home.addEventListener('click', () => {
     toggleContent(0);
     showTitle('');
     sidebar.classList.toggle('sidebar-mob');
-        // body.classList.toggle('sm:body-overflow');
+    // body.classList.toggle('sm:body-overflow');
     if (body.classList.contains('body-overflow')) {
-            body.classList.remove('body-overflow')
-        }
+        body.classList.remove('body-overflow')
+    }
 })
 
 characters.addEventListener('click', () => {
@@ -206,7 +206,7 @@ function showAlertBox(msg) {
     if (alertBoxTimer) {
         clearInterval(alertBoxTimer);
     }
-    alertBoxTimer= setInterval(() => {
+    alertBoxTimer = setInterval(() => {
         alertBox.style.top = '-50%';
         clearInterval(alertBoxTimer)
     }, 3000);
@@ -220,7 +220,7 @@ function showAlertErrorBox(msg) {
     if (alertBoxErrorTimer) {
         clearInterval(alertBoxErrorTimer);
     }
-    alertBoxErrorTimer= setInterval(() => {
+    alertBoxErrorTimer = setInterval(() => {
         alertBox.style.top = '-50%';
         clearInterval(alertBoxErrorTimer)
     }, 3000);
@@ -236,12 +236,12 @@ copyButtons.forEach(button => {
         const codeId = button.getAttribute('data-code');
         const codeToCopy = document.getElementById(codeId).innerText;
         navigator.clipboard.writeText(codeToCopy)
-        .then(() => {
-            showAlertBox('Code copied to clipboard');
-        })
-        .catch(err => {
-            showAlertBox('Could not copy to clipboard', err);
-        });
+            .then(() => {
+                showAlertBox('Code copied to clipboard');
+            })
+            .catch(err => {
+                showAlertBox('Could not copy to clipboard', err);
+            });
     })
 });
 
@@ -277,32 +277,30 @@ const sidebar = document.getElementById('sidebar-main')
 hamburgerBtn.addEventListener('click', () => {
     body.classList.toggle('body-overflow');
     sidebar.classList.toggle('sidebar-mob');
-})
+});
 
-window.addEventListener('load', () => {
+const deleteCharacterBtns = document.querySelectorAll('.delete-character-btn');
+const modalDeleteCharacter = document.getElementById('modal-delete-character');
+const confirmDeleteBtn = document.getElementById('btn-modal-delete');
 
-        const deleteButtons = document.querySelectorAll('.delete-btn');
-        const confirmModal = document.getElementById('character-delete-confirm-modal');
-        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
-        const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+deleteCharacterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        console.log('btn');
+        modalDeleteCharacter.classList.remove('hidden');
+        const cancelModal = modalDeleteCharacter.querySelector('.btn-delete-character-modal-close');
         
-        deleteButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const characterId = this.getAttribute('data-character-id');
-            const form = confirmModal.querySelector('form');
-            form.action = `/dashboard/character/delete/${characterId}`;
-            
-            confirmModal.classList.remove('hidden');
-        })
-    });
-    
-    confirmDeleteBtn.addEventListener('click', () => {
-        const form = confirmModal.querySelector('form');
-        form.submit();
-    });
-    
-    cancelDeleteBtn.addEventListener('click', () => {
-        confirmModal.classList.add('hidden');
-    })
+        const characterId = btn.dataset.characterid;
+        const customUrl = `/dashboard/character/delete/${characterId}`;
 
-})
+        const form = modalDeleteCharacter.querySelector('#character-delete-form');
+        form.action = customUrl;
+
+        confirmDeleteBtn.addEventListener('click', () => {
+            form.submit();
+        });
+
+        cancelModal.addEventListener('click', () => {
+            modalDeleteCharacter.classList.add('hidden');
+        });
+    });
+});

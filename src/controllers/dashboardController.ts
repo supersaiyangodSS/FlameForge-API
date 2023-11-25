@@ -423,7 +423,7 @@ const saveWeapon = async (req: Request, res: Response) => {
 
 const deleteCharacter = async (req: Request, res: Response) => {
     const {id} = req.params;
-        try {            
+        try {
             if (req.session.user && req.session.role === 'admin') {
                 // return res.send(`admin: ${id}`);
                 const deletedCharacter = await Character.findByIdAndRemove(id);
