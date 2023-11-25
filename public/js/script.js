@@ -304,3 +304,53 @@ deleteCharacterBtns.forEach((btn) => {
         });
     });
 });
+
+const deleteWeaponBtns = document.querySelectorAll('.delete-weapon-btn');
+const modalDeleteWeapon = document.getElementById('modal-delete-weapon');
+const confirmDeleteBtnWeapon = document.getElementById('btn-modal-delete-weapon');
+
+deleteWeaponBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        modalDeleteWeapon.classList.remove('hidden');
+        const cancelModal = modalDeleteWeapon.querySelector('.btn-delete-weapon-modal-close');
+        
+        const weaponId = btn.dataset.weaponid;
+        const customUrl = `/dashboard/weapon/delete/${weaponId}`;
+
+        const form = modalDeleteWeapon.querySelector('#weapon-delete-form');
+        form.action = customUrl;
+
+        confirmDeleteBtnWeapon.addEventListener('click', () => {
+            form.submit();
+        });
+
+        cancelModal.addEventListener('click', () => {
+            modalDeleteWeapon.classList.add('hidden');
+        });
+    });
+});
+
+const deleteArtifactBtns = document.querySelectorAll('.delete-artifact-btn');
+const modalDeleteArtifact = document.getElementById('modal-delete-artifact');
+const confirmDeleteBtnArtifact = document.getElementById('btn-modal-delete-artifact');
+
+deleteArtifactBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        modalDeleteArtifact.classList.remove('hidden');
+        const cancelModal = modalDeleteArtifact.querySelector('.btn-delete-artifact-modal-close');
+        
+        const artifactId = btn.dataset.artifactid;
+        const customUrl = `/dashboard/artifact/delete/${artifactId}`;
+
+        const form = modalDeleteArtifact.querySelector('#artifact-delete-form');
+        form.action = customUrl;
+
+        confirmDeleteBtnArtifact.addEventListener('click', () => {
+            form.submit();
+        });
+
+        cancelModal.addEventListener('click', () => {
+            modalDeleteArtifact.classList.add('hidden');
+        });
+    });
+});
