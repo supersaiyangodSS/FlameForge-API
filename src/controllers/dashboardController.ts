@@ -17,17 +17,20 @@ const getDashboard = async (req: Request, res: Response) => {
         const characters = await Character.find().select(
             '-desc -vision -weapon -versionRelease -birthday -title -constellation -region -affiliation -model -wikiUrl'
         ).lean();
+        const characterCount = await Character.countDocuments();
         const weapons = await Weapon.find().select(
             '-versionRelease'
         ).lean();
+        const weaponCount = await Weapon.countDocuments();
         const artifacts = await Artifact.find().select(
             '-versionRelease'
         ).lean();
+        const artifactCount = await Artifact.countDocuments();
         const userId = req.session.uid;
         const loggedUser = await User.findById(userId).lean();
         if (!loggedUser) {
             return res.status(404).send('Internal Server Error!');
-        }        
+        }
         const locals = {
             title: 'Dashboard',
             desc: 'Dashboard for FlameForge API',
@@ -38,10 +41,13 @@ const getDashboard = async (req: Request, res: Response) => {
             messages: req.flash(),
             user: req.session.user,
             role: req.session.role,
-            loggedUser: loggedUser
+            loggedUser: loggedUser,
+            characterCount,
+            weaponCount,
+            artifactCount
         }
         res.render('dashboard', locals);
-                
+
     } catch (error) {
         console.log(error);
         res.json(error);
@@ -68,7 +74,7 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
                 const document = new Character(object);
                 try {
                     await document.validate();
-                } catch (validationError : any) {
+                } catch (validationError: any) {
                     console.error(validationError);
                     return res.status(400).json({ error: validationError.errors });
                 }
@@ -80,10 +86,10 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
             req.flash("success", "Data uploaded successfully")
             res.redirect('/dashboard');
         }
-        } catch (error) {
-            console.error(error);
-            
-      res.status(500).json({ error: 'Internal server error', mainError: error});
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({ error: 'Internal server error', mainError: error });
     }
 };
 
@@ -98,7 +104,7 @@ const uploadWeaponFile = async (req: Request, res: Response) => {
                 const document = new Weapon(object);
                 try {
                     await document.validate();
-                } catch (validationError : any) {
+                } catch (validationError: any) {
                     console.error(validationError);
                     return res.status(400).json({ error: validationError.errors });
                 }
@@ -110,10 +116,10 @@ const uploadWeaponFile = async (req: Request, res: Response) => {
             req.flash("success", "Data uploaded successfully")
             res.redirect('/dashboard');
         }
-        } catch (error) {
-            console.error(error);
-            
-      res.status(500).json({ error: 'Internal server error', mainError: error});
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({ error: 'Internal server error', mainError: error });
     }
 };
 
@@ -128,7 +134,7 @@ const uploadArtifactFile = async (req: Request, res: Response) => {
                 const document = new Artifact(object);
                 try {
                     await document.validate();
-                } catch (validationError : any) {
+                } catch (validationError: any) {
                     console.error(validationError);
                     return res.status(400).json({ error: validationError.errors });
                 }
@@ -140,27 +146,27 @@ const uploadArtifactFile = async (req: Request, res: Response) => {
             req.flash("success", "Data uploaded successfully")
             res.redirect('/dashboard');
         }
-        } catch (error) {
-            console.error(error);
-            
-      res.status(500).json({ error: 'Internal server error', mainError: error});
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({ error: 'Internal server error', mainError: error });
     }
 };
 
 const logoutUser = (req: Request, res: Response) => {
     req.session.destroy((err) => {
-    if (err) {
-        console.error('Error destroying session', err);
-    }
-    else {
-        console.log('session destroyed successfully')
-    res.status(301).redirect('/sign-in');
-    }
+        if (err) {
+            console.error('Error destroying session', err);
+        }
+        else {
+            console.log('session destroyed successfully')
+            res.status(301).redirect('/sign-in');
+        }
     });
 }
 
 const editCharacter = async (req: Request, res: Response) => {
-    const {id} = req.params;
+    const { id } = req.params;
     try {
         if (req.session.user && req.session.role === 'admin') {
             const character = await Character.findById(id).select('-__v').lean();
@@ -193,11 +199,11 @@ const editCharacter = async (req: Request, res: Response) => {
 }
 
 const editWeapon = async (req: Request, res: Response) => {
-    const {id} = req.params;
+    const { id } = req.params;
     try {
         if (req.session.user && req.session.role === 'admin') {
             const weapon = await Weapon.findById(id).select('-__v').lean();
-            if(!weapon) {
+            if (!weapon) {
                 req.flash('error', 'Invalid Weapon id or Weapon not found');
                 return res.redirect('/');
             }
@@ -210,7 +216,7 @@ const editWeapon = async (req: Request, res: Response) => {
         }
         else {
             const weapon = await Weapon.findById(id).select('-__v').lean();
-            if(!weapon) {
+            if (!weapon) {
                 req.flash('error', 'Invalid Weapon id or Weapon not found');
                 return res.redirect('/');
             }
@@ -227,11 +233,11 @@ const editWeapon = async (req: Request, res: Response) => {
 }
 
 const editArtifact = async (req: Request, res: Response) => {
-    const {id} = req.params;
+    const { id } = req.params;
     try {
         if (req.session.user && req.session.role === 'admin') {
             const artifact = await Artifact.findById(id).select('-__v').lean();
-            if(!artifact) {
+            if (!artifact) {
                 req.flash('error', 'Invalid Artifact id or Artifact not found');
                 return res.redirect('/');
             }
@@ -244,7 +250,7 @@ const editArtifact = async (req: Request, res: Response) => {
         }
         else {
             const artifact = await Artifact.findById(id).select('-__v').lean();
-            if(!artifact) {
+            if (!artifact) {
                 req.flash('error', 'Invalid Artifact id or Artifact not found');
                 return res.redirect('/');
             }
@@ -261,10 +267,10 @@ const editArtifact = async (req: Request, res: Response) => {
 }
 
 const saveCharacter = async (req: Request, res: Response) => {
-    const {id} = req.params;
+    const { id } = req.params;
     let titles = req.body.title.split(',');
     let affiliations = req.body.affiliation.split(',');
-    let { name, birthday, vr, model, rarity, desc, vision, weapon , region, imgProfile, imgCard, imgGacha, wikiUrl, constellation} = req.body;
+    let { name, birthday, vr, model, rarity, desc, vision, weapon, region, imgProfile, imgCard, imgGacha, wikiUrl, constellation } = req.body;
     try {
         if (req.session.user && req.session.role === 'admin') {
             const errors = validationResult(req);
@@ -342,149 +348,149 @@ const saveCharacter = async (req: Request, res: Response) => {
 }
 
 const saveWeapon = async (req: Request, res: Response) => {
-    const {id} = req.params;
+    const { id } = req.params;
     let { name, vr, baseAtk, subStatType, baseSubStat, source, desc, affix, passive, region, family, icon, original, gacha, awakened, wikiUrl } = req.body;
     try {
-            if (req.session && req.session.role == 'admin' || 2 == 2) {
-                const errors = validationResult(req);
-                if (!errors.isEmpty()) {
-                    return res.status(409).json({
-                        errors: errors.array().map((key) => key.msg)
-                    });
-                }
-                const existingWeapon = await Weapon.findById(id);
-                if (!existingWeapon) {
-                    return res.send('no weapon found');
-                }
-                if (name !== existingWeapon.name) {
-                    existingWeapon.name = name;
-                }
-                if (vr !== existingWeapon.versionRelease) {
-                    existingWeapon.versionRelease = vr;
-                }
-                if (baseAtk !== existingWeapon.baseAtk) {
-                    existingWeapon.baseAtk = baseAtk;
-                }
-                if (subStatType !== existingWeapon.subStatType) {
-                    existingWeapon.subStatType = subStatType;
-                }
-                if (baseSubStat !== existingWeapon.baseSubStat) {
-                    existingWeapon.baseSubStat = baseSubStat;
-                }
-                if (source !== existingWeapon.source) {
-                    existingWeapon.source = source;
-                }
-                if (subStatType !== existingWeapon.subStatType) {
-                    existingWeapon.subStatType = subStatType;
-                }
-                if (desc !== existingWeapon.desc) {
-                    existingWeapon.desc= desc;
-                }
-                if (affix !== existingWeapon.affix) {
-                    existingWeapon.affix= affix;
-                    
-                }
-                if (passive !== existingWeapon.passive) {
-                    existingWeapon.passive = passive;
-                }
-                if (region !== existingWeapon.region) {
-                    existingWeapon.region = region;
-                }    
-                if (family !== existingWeapon.family) {
-                    existingWeapon.family = family;
-                }   
-                if (icon !== existingWeapon.images.icon) {
-                    existingWeapon.images.icon = icon;
-                }
-                if (original !== existingWeapon.images.original) {
-                    existingWeapon.images.original = original;
-                }
-                if (awakened !== existingWeapon.images.awakened) {
-                    existingWeapon.images.awakened = awakened;
-                }
-                if (gacha !== existingWeapon.images.gacha) {
-                    existingWeapon.images.gacha = gacha;
-                }
-                if (wikiUrl !== existingWeapon.wikiUrl) {
-                    existingWeapon.wikiUrl = wikiUrl;
-                }
-                const updatedWeapon = await existingWeapon.save();
-                req.flash('success', 'weapon information updated successfully');
-                return res.redirect('/dashboard');
+        if (req.session && req.session.role == 'admin' || 2 == 2) {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(409).json({
+                    errors: errors.array().map((key) => key.msg)
+                });
             }
-            else {
-                return res.send('Not authorized');
+            const existingWeapon = await Weapon.findById(id);
+            if (!existingWeapon) {
+                return res.send('no weapon found');
             }
+            if (name !== existingWeapon.name) {
+                existingWeapon.name = name;
+            }
+            if (vr !== existingWeapon.versionRelease) {
+                existingWeapon.versionRelease = vr;
+            }
+            if (baseAtk !== existingWeapon.baseAtk) {
+                existingWeapon.baseAtk = baseAtk;
+            }
+            if (subStatType !== existingWeapon.subStatType) {
+                existingWeapon.subStatType = subStatType;
+            }
+            if (baseSubStat !== existingWeapon.baseSubStat) {
+                existingWeapon.baseSubStat = baseSubStat;
+            }
+            if (source !== existingWeapon.source) {
+                existingWeapon.source = source;
+            }
+            if (subStatType !== existingWeapon.subStatType) {
+                existingWeapon.subStatType = subStatType;
+            }
+            if (desc !== existingWeapon.desc) {
+                existingWeapon.desc = desc;
+            }
+            if (affix !== existingWeapon.affix) {
+                existingWeapon.affix = affix;
+
+            }
+            if (passive !== existingWeapon.passive) {
+                existingWeapon.passive = passive;
+            }
+            if (region !== existingWeapon.region) {
+                existingWeapon.region = region;
+            }
+            if (family !== existingWeapon.family) {
+                existingWeapon.family = family;
+            }
+            if (icon !== existingWeapon.images.icon) {
+                existingWeapon.images.icon = icon;
+            }
+            if (original !== existingWeapon.images.original) {
+                existingWeapon.images.original = original;
+            }
+            if (awakened !== existingWeapon.images.awakened) {
+                existingWeapon.images.awakened = awakened;
+            }
+            if (gacha !== existingWeapon.images.gacha) {
+                existingWeapon.images.gacha = gacha;
+            }
+            if (wikiUrl !== existingWeapon.wikiUrl) {
+                existingWeapon.wikiUrl = wikiUrl;
+            }
+            const updatedWeapon = await existingWeapon.save();
+            req.flash('success', 'weapon information updated successfully');
+            return res.redirect('/dashboard');
+        }
+        else {
+            return res.send('Not authorized');
+        }
     } catch (error) {
-        console.log(error);   
+        console.log(error);
         return res.status(500).json({ 'error': 'internal server error' })
     }
 }
 
 const deleteCharacter = async (req: Request, res: Response) => {
-    const {id} = req.params;
-        try {
-            if (req.session.user && req.session.role === 'admin') {
-                // return res.send(`admin: ${id}`);
-                const deletedCharacter = await Character.findByIdAndRemove(id);
-                if (deletedCharacter) {
-                    // res.send(deletedCharacter);
-                    req.flash('deletedItem', 'Deleted Successfully');
-                    return res.redirect('/dashboard')
-                }
-                else {
-                    return res.send('Interval server error');
-                }
+    const { id } = req.params;
+    try {
+        if (req.session.user && req.session.role === 'admin') {
+            // return res.send(`admin: ${id}`);
+            const deletedCharacter = await Character.findByIdAndRemove(id);
+            if (deletedCharacter) {
+                // res.send(deletedCharacter);
+                req.flash('deletedItem', 'Deleted Successfully');
+                return res.redirect('/dashboard')
             }
-            return res.send('not admin')
-        } catch (error) {
-            return res.send(error)
+            else {
+                return res.send('Interval server error');
+            }
         }
+        return res.send('not admin')
+    } catch (error) {
+        return res.send(error)
+    }
 }
 
 const deleteWeapon = async (req: Request, res: Response) => {
-    const {id} = req.params;
-        try {            
-            if (req.session.user && req.session.role === 'admin') {
-                // return res.send(`admin: ${id}`);
-                const deletedWeapon = await Weapon.findByIdAndRemove(id);
-                if (deletedWeapon) {
-                    // res.send(deletedCharacter);
-                    req.flash('deletedItem', 'Deleted Successfully');
-                    return res.redirect('/dashboard')
-                }
-                else {
-                    return res.send('Interval server error');
-                }
+    const { id } = req.params;
+    try {
+        if (req.session.user && req.session.role === 'admin') {
+            // return res.send(`admin: ${id}`);
+            const deletedWeapon = await Weapon.findByIdAndRemove(id);
+            if (deletedWeapon) {
+                // res.send(deletedCharacter);
+                req.flash('deletedItem', 'Deleted Successfully');
+                return res.redirect('/dashboard')
             }
-            return res.send('not admin')
-        } catch (error) {
-            return res.send(error)
+            else {
+                return res.send('Interval server error');
+            }
         }
+        return res.send('not admin')
+    } catch (error) {
+        return res.send(error)
+    }
 }
 
 const deleteArtifact = async (req: Request, res: Response) => {
-    const {id} = req.params;
-        try {            
-            if (req.session.user && req.session.role === 'admin') {
-                // return res.send(`admin: ${id}`);
-                const deletedArtifact = await Artifact.findByIdAndRemove(id);
-                if (deletedArtifact) {
-                    // res.send(deletedCharacter);
-                    req.flash('deletedItem', 'Deleted Successfully');
-                    return res.redirect('/dashboard')
-                }
-                else {
-                    return res.send('Interval server error');
-                }
+    const { id } = req.params;
+    try {
+        if (req.session.user && req.session.role === 'admin') {
+            // return res.send(`admin: ${id}`);
+            const deletedArtifact = await Artifact.findByIdAndRemove(id);
+            if (deletedArtifact) {
+                // res.send(deletedCharacter);
+                req.flash('deletedItem', 'Deleted Successfully');
+                return res.redirect('/dashboard')
             }
-            return res.send('not admin')
-        } catch (error) {
-            return res.send(error)
+            else {
+                return res.send('Interval server error');
+            }
         }
+        return res.send('not admin')
+    } catch (error) {
+        return res.send(error)
+    }
 }
 
-const downloadCharacters = async (req: Request,  res: Response) => {
+const downloadCharacters = async (req: Request, res: Response) => {
     try {
         if (req.session.user && req.session.role == 'admin') {
 
@@ -498,17 +504,17 @@ const downloadCharacters = async (req: Request,  res: Response) => {
             writeFileSync(filePath, JSON.stringify(characters, null, 2));
 
             res.download(filePath, filename, (err) => {
-            logger.info(`User ${req.session.user} exported characters`)
-            unlinkSync(filePath);
-            if (err) {
-                console.log(err);
-                res.status(500).json({ error: 'Internal Server Error' });
-            }
-        })
-    }
-    else {
-        return res.status(400).json({ unauthorized: 'Unauthorized access' })
-    }
+                logger.info(`User ${req.session.user} exported characters`)
+                unlinkSync(filePath);
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({ error: 'Internal Server Error' });
+                }
+            })
+        }
+        else {
+            return res.status(400).json({ unauthorized: 'Unauthorized access' })
+        }
     } catch (error) {
         logger.error(`Error in download Characters: ${error}`);
         console.log(error);
@@ -516,7 +522,7 @@ const downloadCharacters = async (req: Request,  res: Response) => {
     }
 }
 
-const downloadWeapons = async (req: Request,  res: Response) => {
+const downloadWeapons = async (req: Request, res: Response) => {
     try {
         if (req.session.user && req.session.role == 'admin') {
 
@@ -530,17 +536,17 @@ const downloadWeapons = async (req: Request,  res: Response) => {
             writeFileSync(filePath, JSON.stringify(weapons, null, 2));
 
             res.download(filePath, filename, (err) => {
-            logger.info(`User ${req.session.user} exported weapons`)
-            unlinkSync(filePath);
-            if (err) {
-                console.log(err);
-                res.status(500).json({ error: 'Internal Server Error' });
-            }
-        });
-    }
-    else {
-        return res.status(400).json({ unauthorized: 'Unauthorized access' })
-    }
+                logger.info(`User ${req.session.user} exported weapons`)
+                unlinkSync(filePath);
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({ error: 'Internal Server Error' });
+                }
+            });
+        }
+        else {
+            return res.status(400).json({ unauthorized: 'Unauthorized access' })
+        }
     } catch (error) {
         logger.error(`User: ${req.session.user}, Error in Exporting Weapons: ${error}`);
         console.log(error);
@@ -548,7 +554,7 @@ const downloadWeapons = async (req: Request,  res: Response) => {
     }
 }
 
-const downloadArtifacts = async (req: Request,  res: Response) => {
+const downloadArtifacts = async (req: Request, res: Response) => {
     try {
         if (req.session.user && req.session.role == 'admin') {
 
@@ -562,17 +568,17 @@ const downloadArtifacts = async (req: Request,  res: Response) => {
             writeFileSync(filePath, JSON.stringify(artifacts, null, 2));
 
             res.download(filePath, filename, (err) => {
-            logger.info(`User ${req.session.user} exported artifacts`)
-            unlinkSync(filePath);
-            if (err) {
-                console.log(err);
-                res.status(500).json({ error: 'Internal Server Error' });
-            }
-        });
-    }
-    else {
-        return res.status(400).json({ unauthorized: 'Unauthorized access' })
-    }
+                logger.info(`User ${req.session.user} exported artifacts`)
+                unlinkSync(filePath);
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({ error: 'Internal Server Error' });
+                }
+            });
+        }
+        else {
+            return res.status(400).json({ unauthorized: 'Unauthorized access' })
+        }
     } catch (error) {
         logger.error(`User: ${req.session.user}, Error in Exporting Artifacts: ${error}`);
         console.log(error);
@@ -580,4 +586,4 @@ const downloadArtifacts = async (req: Request,  res: Response) => {
     }
 }
 
-export { getDashboard, deleteUser, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, editArtifact, logoutUser, deleteCharacter, deleteWeapon , deleteArtifact, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts};
+export { getDashboard, deleteUser, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, editArtifact, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts };
