@@ -1,4 +1,4 @@
-import { checkAuth } from "../app.js";
+import { checkAuth, checkAuthAdmin } from "../app.js";
 import { Request, Response, Router } from "express";
 import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, uploadArtifactFile, editCharacter, editWeapon, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts, editArtifact, deleteUser } from '../controllers/dashboardController.js'
 import multer, { StorageEngine, memoryStorage } from 'multer';
@@ -47,28 +47,28 @@ const validateWeapon = [
 const upload = multer({ storage: memoryStorage() });
 
 router.get('/', checkAuth, getDashboard);
-router.post('/upload/characters', upload.single('jsonCharacterFile'), uploadCharacterFile);
-router.post('/upload/weapons', upload.single('jsonWeaponFile'), uploadWeaponFile);
-router.post('/upload/artifacts', upload.single('jsonArtifactFile'), uploadArtifactFile);
+router.post('/upload/characters', checkAuth, upload.single('jsonCharacterFile'), uploadCharacterFile);
+router.post('/upload/weapons', checkAuth, upload.single('jsonWeaponFile'), uploadWeaponFile);
+router.post('/upload/artifacts', checkAuth, upload.single('jsonArtifactFile'), uploadArtifactFile);
 
-router.post('/character/delete/:id', deleteCharacter)
-router.post('/weapon/delete/:id', deleteWeapon)
-router.post('/artifact/delete/:id', deleteArtifact)
+router.post('/character/delete/:id', checkAuthAdmin, deleteCharacter)
+router.post('/weapon/delete/:id', checkAuthAdmin, deleteWeapon)
+router.post('/artifact/delete/:id', checkAuthAdmin, deleteArtifact)
 
-router.get('/character/edit/:id', editCharacter); // edit character page
-router.post('/character/edit/:id', checkAuth, validateCharacter, saveCharacter); // save character
+router.get('/character/edit/:id', checkAuthAdmin, editCharacter);
+router.post('/character/edit/:id', checkAuthAdmin, validateCharacter, saveCharacter);
 
-router.get('/weapon/edit/:id', editWeapon); // edit weapon page
-router.post('/weapon/edit/:id', validateWeapon, saveWeapon); // save weapon
+router.get('/weapon/edit/:id', checkAuthAdmin, editWeapon);
+router.post('/weapon/edit/:id', checkAuthAdmin, validateWeapon, saveWeapon);
 
-router.get('/artifact/edit/:id', editArtifact); // edit artifact page
-// router.post('/weapon/edit/:id', validateWeapon, saveWeapon); // save artifact
+router.get('/artifact/edit/:id', editArtifact);
+// router.post('/artifact/edit/:id', validateArtifact, saveArtifact); // save artifact
 
-router.get('/characters/download', downloadCharacters);
-router.get('/weapons/download', downloadWeapons);
-router.get('/artifacts/download', downloadArtifacts);
+router.get('/characters/download', checkAuthAdmin, downloadCharacters);
+router.get('/weapons/download', checkAuthAdmin, downloadWeapons);
+router.get('/artifacts/download', checkAuthAdmin, downloadArtifacts);
 
-router.get('/logout', logoutUser);
-router.delete('/delete/:id', deleteUser);
+router.get('/logout', checkAuth, logoutUser);
+router.delete('/delete/:id', checkAuth, deleteUser);
 
 export default router;

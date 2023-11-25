@@ -74,9 +74,9 @@ app.use(( req : Request , res : Response , next : NextFunction ) => {
 
 export function checkAuth ( req: Request, res: Response, next: NextFunction ) {
     req.session.user = 'SSJ'; //temp
-    req.session.role = 'admin' //temp
+    // req.session.role = 'admin' //temp
     req.session.uid = '65605c3a356e36b62997c995' //temp
-    // req.session.role = 'user' //temp
+    req.session.role = 'user' //temp
     if (req.session && req.session.user) {
         console.log(`
         user: ${req.session.user}
@@ -87,6 +87,15 @@ export function checkAuth ( req: Request, res: Response, next: NextFunction ) {
     }
     else {
         res.redirect('sign-in');
+    }
+}
+
+export function checkAuthAdmin (req: Request, res: Response, next: NextFunction) {
+    if (req.session && req.session.role === 'admin') {
+        next();
+    }
+    else {
+        res.redirect('/dashboard');
     }
 }
 
