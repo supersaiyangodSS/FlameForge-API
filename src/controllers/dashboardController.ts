@@ -432,6 +432,90 @@ const saveWeapon = async (req: Request, res: Response) => {
     }
 }
 
+const saveArtifact = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    let { name, twoPc, fourPc, flowerTitle, flowerPiece, flowerIcon, sandsTitle, sandsPiece, sandsIcon, plumeTitle, plumePiece, plumeIcon, circletTitle, circletPiece, circletIcon, gobletTitle, gobletPiece, gobletIcon } = req.body;
+    try {
+        if (req.session.user && req.session.role === 'admin') {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(409).json({
+                    errors: errors.array().map((key) => key.msg)
+                });
+            }
+            const existingArtifact = await Artifact.findById(id);
+            if (!existingArtifact) {
+                return res.json('no artifact found');
+            }
+            if (name !== existingArtifact.name) {
+                existingArtifact.name = name
+            }
+            if (twoPc !== existingArtifact.effect.twoPc) {
+                existingArtifact.effect.twoPc = twoPc
+            }
+            if (fourPc !== existingArtifact.effect.fourPc) {
+                existingArtifact.effect.fourPc = fourPc
+            }
+            if (flowerTitle !== existingArtifact.fullSet.flower.title) {
+                existingArtifact.fullSet.flower.title = flowerTitle
+            }
+            if (flowerPiece !== existingArtifact.fullSet.flower.piece) {
+                existingArtifact.fullSet.flower.piece = flowerPiece
+            }
+            if (flowerIcon !== existingArtifact.fullSet.flower.icon) {
+                existingArtifact.fullSet.flower.icon = flowerIcon
+            }
+            if (sandsTitle !== existingArtifact.fullSet.sands.title) {
+                existingArtifact.fullSet.sands.title = sandsTitle
+            }
+            if (sandsPiece !== existingArtifact.fullSet.sands.piece) {
+                existingArtifact.fullSet.sands.piece = sandsPiece
+            }
+            if (sandsIcon !== existingArtifact.fullSet.sands.icon) {
+                existingArtifact.fullSet.sands.icon = sandsIcon
+            }
+            if (plumeTitle !== existingArtifact.fullSet.plume.title) {
+                existingArtifact.fullSet.plume.title = plumeTitle
+            }
+            if (plumePiece !== existingArtifact.fullSet.plume.piece) {
+                existingArtifact.fullSet.plume.piece = plumePiece
+            }
+            if (plumeIcon !== existingArtifact.fullSet.plume.icon) {
+                existingArtifact.fullSet.plume.icon = plumeIcon
+            }
+            if (circletTitle !== existingArtifact.fullSet.circlet.title) {
+                existingArtifact.fullSet.circlet.title = circletTitle
+            }
+            if (circletPiece !== existingArtifact.fullSet.circlet.piece) {
+                existingArtifact.fullSet.circlet.piece = circletPiece
+            }
+            if (circletIcon !== existingArtifact.fullSet.circlet.icon) {
+                existingArtifact.fullSet.circlet.icon = circletIcon
+            }
+            if (gobletTitle !== existingArtifact.fullSet.goblet.title) {
+                existingArtifact.fullSet.goblet.title = gobletTitle
+            }
+            if (gobletPiece !== existingArtifact.fullSet.goblet.piece) {
+                existingArtifact.fullSet.goblet.piece = gobletPiece
+            }
+            if (gobletIcon !== existingArtifact.fullSet.goblet.icon) {
+                existingArtifact.fullSet.goblet.icon = gobletIcon
+            }
+            const updatedArtifact = await existingArtifact.save();
+            if (!updatedArtifact) {
+                return res.send('error saving the artifact')
+            }
+            req.flash('success', 'artifact information updated successfully');
+            return res.redirect('/dashboard');
+        }
+        else {
+            res.send('unauthorized');
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 const deleteCharacter = async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
@@ -591,4 +675,4 @@ const downloadArtifacts = async (req: Request, res: Response) => {
     }
 }
 
-export { getDashboard, deleteUser, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, editArtifact, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts };
+export { getDashboard, deleteUser, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, editArtifact, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts, saveArtifact };

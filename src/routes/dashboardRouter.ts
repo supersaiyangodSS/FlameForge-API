@@ -1,6 +1,6 @@
 import { checkAuth, checkAuthAdmin } from "../app.js";
 import { Request, Response, Router } from "express";
-import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, uploadArtifactFile, editCharacter, editWeapon, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts, editArtifact, deleteUser } from '../controllers/dashboardController.js'
+import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, uploadArtifactFile, editCharacter, editWeapon, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts, editArtifact, saveArtifact, deleteUser } from '../controllers/dashboardController.js'
 import multer, { StorageEngine, memoryStorage } from 'multer';
 import { body } from 'express-validator';
 
@@ -44,6 +44,27 @@ const validateWeapon = [
     body('wikiUrl').notEmpty().withMessage('Wiki URL is required'),
 ];
 
+const validateArtifact = [
+    body('name').notEmpty().withMessage('Artifact name is required'),
+    body('twoPc').notEmpty().withMessage('Artifact two piece effect is required'),
+    body('fourPc').notEmpty().withMessage('Artifact four piece effect is required'),
+    body('flowerTitle').notEmpty().withMessage('Flower title is required'),
+    body('flowerPiece').notEmpty().withMessage('Flower piece name is required'),
+    body('flowerIcon').notEmpty().withMessage('Flower icon link is required'),
+    body('sandsTitle').notEmpty().withMessage('Sands title is required'),
+    body('sandsPiece').notEmpty().withMessage('Sands piece name is required'),
+    body('sandsIcon').notEmpty().withMessage('Sands icon link is required'),
+    body('plumeTitle').notEmpty().withMessage('Plume title is required'),
+    body('plumePiece').notEmpty().withMessage('Plume piece name is required'),
+    body('plumeIcon').notEmpty().withMessage('Plume icon link is required'),
+    body('circletTitle').notEmpty().withMessage('Circlet title is required'),
+    body('circletPiece').notEmpty().withMessage('Circlet piece name is required'),
+    body('circletIcon').notEmpty().withMessage('Circlet icon link is required'),
+    body('gobletTitle').notEmpty().withMessage('Goblet title is required'),
+    body('gobletPiece').notEmpty().withMessage('Goblet piece name is required'),
+    body('gobletIcon').notEmpty().withMessage('Goblet icon link is required'),
+]
+
 const upload = multer({ storage: memoryStorage() });
 
 router.get('/', checkAuth, getDashboard);
@@ -62,7 +83,7 @@ router.get('/weapon/edit/:id', checkAuthAdmin, editWeapon);
 router.post('/weapon/edit/:id', checkAuthAdmin, validateWeapon, saveWeapon);
 
 router.get('/artifact/edit/:id', editArtifact);
-// router.post('/artifact/edit/:id', validateArtifact, saveArtifact); // save artifact
+router.post('/artifact/edit/:id', validateArtifact, saveArtifact);
 
 router.get('/characters/download', checkAuthAdmin, downloadCharacters);
 router.get('/weapons/download', checkAuthAdmin, downloadWeapons);
