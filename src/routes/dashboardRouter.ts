@@ -4,6 +4,8 @@ import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, delete
 import multer, { StorageEngine, memoryStorage } from 'multer';
 import { body } from 'express-validator';
 
+import { limit } from '../helpers/limiter.js';
+
 const router : Router = Router();
 
 const validateCharacter = [

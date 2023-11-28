@@ -61,7 +61,9 @@ app.use(( req : Request , res : Response , next : NextFunction ) => {
     console.log(`Request Received ${req.method} ${req.hostname} ${req.url} ${req.ip}`);
     next();
 });
-
+app.use((req, res, next) => {
+    const ip = req.ip || req.connection.remoteAddress || 'unknown'
+})
 
 // export const checkAuth = ( req : Request , res : Response, next : NextFunction ) => {
 //     if ( req.session && req.session.user ) {
