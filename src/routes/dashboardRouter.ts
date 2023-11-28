@@ -3,8 +3,7 @@ import { Request, Response, Router } from "express";
 import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, uploadArtifactFile, editCharacter, editWeapon, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts, editArtifact, saveArtifact, deleteUser } from '../controllers/dashboardController.js'
 import multer, { StorageEngine, memoryStorage } from 'multer';
 import { body } from 'express-validator';
-
-import { limit } from '../helpers/limiter.js';
+import { limiter } from "../helpers/limiter.js";
 
 const router : Router = Router();
 
@@ -69,7 +68,7 @@ const validateArtifact = [
 
 const upload = multer({ storage: memoryStorage() });
 
-router.get('/', checkAuth, getDashboard);
+router.get('/', limiter, checkAuth, getDashboard);
 router.post('/upload/characters', checkAuth, upload.single('jsonCharacterFile'), uploadCharacterFile);
 router.post('/upload/weapons', checkAuth, upload.single('jsonWeaponFile'), uploadWeaponFile);
 router.post('/upload/artifacts', checkAuth, upload.single('jsonArtifactFile'), uploadArtifactFile);
