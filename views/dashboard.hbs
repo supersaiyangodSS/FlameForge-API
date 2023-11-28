@@ -276,9 +276,11 @@
     {{#if (eq role 'admin')}}
     <section id="content-4">
 
-      <form id="searchForm">
-        <input type="text" id="searchInput" placeholder="Type here...">
-        <button type="button" id="searchBtn">Search</button>
+      <form id="searchForm" class="flex items-center justify-center">
+        <p type="button" id="searchBtn" class="btn outline-none bg-slate-900 rounded-s-lg p-3 flex"><span class="material-symbols-outlined">
+search
+</span></p>
+        <input type="text" id="searchInput" placeholder="Type here..." class="w-full outline-none p-3 bg-slate-900 rounded-e-lg">
       </form>
 
       <div class="flex flex-col lg:flex-row justify-evenly mt-2 mb-4 poppins gap-2">
