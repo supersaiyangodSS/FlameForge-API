@@ -363,3 +363,54 @@ deleteArtifactBtns.forEach((btn) => {
         });
     });
 });
+
+const isCharacters = document.getElementById('no-characters');
+const isWeapons = document.getElementById('no-weapons');
+const isArtifacts = document.getElementById('no-artifacts');
+const searchBar = document.getElementById('searchInput');
+searchBar.addEventListener('input', () => {
+    const searchTerm = searchBar.value.toLowerCase();
+
+    const characterItems = document.querySelectorAll('.character-list');
+    characterItems.forEach(item => {
+        const characterName = item.querySelector('.character-title').textContent.toLowerCase();
+
+        if (characterName.includes(searchTerm)) {
+            item.style.display = 'flex';
+            isCharacters.classList.add('hidden');
+        }
+        else {
+            item.style.display = 'none';
+            isCharacters.classList.remove('hidden');
+        }
+    });
+
+    const weaponItems = document.querySelectorAll('.weapon-list');
+    weaponItems.forEach(item => {
+        const weaponName = item.querySelector('.weapon-title').textContent.toLowerCase();
+
+        if (weaponName.includes(searchTerm)) {
+            item.style.display = 'flex';
+            isWeapons.classList.add('hidden');
+        }
+        else {
+            item.style.display = 'none';
+            isWeapons.classList.remove('hidden');
+        }
+    });
+
+    const artifactItems = document.querySelectorAll('.artifact-list');
+    artifactItems.forEach(item => {
+        const artifactName = item.querySelector('.artifact-title').textContent.toLowerCase();
+
+        if (artifactName.includes(searchTerm)) {
+            item.style.display = 'flex';
+            isArtifacts.classList.add('hidden');
+        }
+        else {
+            item.style.display = 'none';
+            isArtifacts.classList.remove('hidden');
+        }
+    });
+
+});
