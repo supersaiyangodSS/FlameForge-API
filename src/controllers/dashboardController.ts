@@ -661,12 +661,17 @@ const downloadArtifacts = async (req: Request, res: Response) => {
                 unlinkSync(filePath);
                 if (err) {
                     console.log(err);
-                    res.status(500).json({ error: 'Internal Server Error' });
+                    res.status(500).render('500', {
+                        title: "Internal Server Error!"
+                    });
                 }
             });
         }
         else {
-            return res.status(400).json({ unauthorized: 'Unauthorized access' })
+            return res.status(401).render('500', {
+                title: "Unauthorized"
+            })
+            // fix
         }
     } catch (error) {
         logger.error(`User: ${req.session.user}, Error in Exporting Artifacts: ${error}`);
