@@ -585,7 +585,9 @@ const downloadCharacters = async (req: Request, res: Response) => {
 
             const characters = await Character.find().select('-_id -__v');
             if (!characters) {
-                return res.render('404');
+                return res.status(404).render('404', {
+                    title: "Not Found!"
+                }); 
             }
             const filename = `character_data_${Date.now()}.json`;
             const filePath = join(__dirname, '..', 'downloads', filename);
@@ -593,21 +595,28 @@ const downloadCharacters = async (req: Request, res: Response) => {
             writeFileSync(filePath, JSON.stringify(characters, null, 2));
 
             res.download(filePath, filename, (err) => {
-                logger.info(`User ${req.session.user} exported characters`)
+                logger.silly(`User ${req.session.user} as ${req.session.role} exported characters`)
                 unlinkSync(filePath);
                 if (err) {
                     console.log(err);
-                    res.status(500).json({ error: 'Internal Server Error' });
+                    res.status(500).render('500', {
+                        title: "Internal Server Error!"
+                    });
                 }
             })
         }
         else {
-            return res.status(400).json({ unauthorized: 'Unauthorized access' })
+            logger.silly(`User: ${req.session.user}, Unauthorized access to ${req.url}`);
+            return res.status(401).render('401', {
+                title: "Unauthorized"
+            });
         }
     } catch (error) {
-        logger.error(`Error in download Characters: ${error}`);
+        logger.error(`User: ${req.session.user}, Error occured while exporting artifacts: ${error}`);
         console.log(error);
-        res.json(error)
+        res.status(500).render('500', {
+            title: "Internal Server Error!"
+        });
     }
 }
 
@@ -627,7 +636,7 @@ const downloadWeapons = async (req: Request, res: Response) => {
             writeFileSync(filePath, JSON.stringify(weapons, null, 2));
 
             res.download(filePath, filename, (err) => {
-                logger.info(`User ${req.session.user} as ${req.session.role} exported weapons`)
+                logger.silly(`User ${req.session.user} as ${req.session.role} exported weapons`)
                 unlinkSync(filePath);
                 if (err) {
                     console.log(err);
