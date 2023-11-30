@@ -104,6 +104,25 @@ app.get('/', ( req : Request , res : Response) => {
     });
 });
 
+// fix
+app.get('/401', ( req : Request , res : Response) => {
+    res.render('401', {
+        title: "401! Unauthorized!"
+    });
+});
+// fix
+app.get('/500', ( req : Request , res : Response) => {
+    res.render('500', {
+        title: "500! Internal Server Error!"
+    });
+});
+// fix
+app.get('/404', ( req : Request , res : Response) => {
+    res.render('404', {
+        title: "404! Not Found!"
+    });
+});
+
 app.get('*', ( req: Request , res : Response) => {
     res.render('404', {
         title: '404! Not Found!'
