@@ -649,7 +649,9 @@ const downloadArtifacts = async (req: Request, res: Response) => {
 
             const artifacts = await Artifact.find().select('-_id -__v');
             if (!artifacts) {
-                return res.render('404');
+                return res.status(404).render('404', {
+                    title: "Not Found!"
+                }); 
             }
             const filename = `artifact_data_${Date.now()}.json`;
             const filePath = join(__dirname, '..', 'downloads', filename);
@@ -657,7 +659,7 @@ const downloadArtifacts = async (req: Request, res: Response) => {
             writeFileSync(filePath, JSON.stringify(artifacts, null, 2));
 
             res.download(filePath, filename, (err) => {
-                logger.info(`User ${req.session.user} exported artifacts`)
+                logger.silly(`User: ${req.session.user} as ${req.session.role} exported artifacts`)
                 unlinkSync(filePath);
                 if (err) {
                     console.log(err);
@@ -668,15 +670,17 @@ const downloadArtifacts = async (req: Request, res: Response) => {
             });
         }
         else {
+            logger.silly(`User: ${req.session.user}, Unauthorized access to ${req.url}`);
             return res.status(401).render('401', {
                 title: "Unauthorized"
-            })
-            // fix
+            });
         }
     } catch (error) {
-        logger.error(`User: ${req.session.user}, Error in Exporting Artifacts: ${error}`);
+        logger.error(`User: ${req.session.user}, Error occured while exporting artifacts: ${error}`);
         console.log(error);
-        res.json(error)
+        res.status(500).render('500', {
+            title: "Internal Server Error!"
+        });
     }
 }
 

@@ -9,7 +9,7 @@ const logger = winston.createLogger({
     ),
     transports: [
         new transports.File({
-            filename: 'logs/request.log',
+            filename: 'logs/http/request.log',
             level: 'http'
         }),
         new transports.File({
@@ -21,11 +21,11 @@ const logger = winston.createLogger({
             level: 'error'
         }),
         new transports.File({
-            filename: 'logs/verbose.log',
+            filename: 'logs/verbose/verbose.log',
             level: 'verbose'
         }),
         new transports.File({
-            filename: 'logs/silly.log',
+            filename: 'logs/silly/silly.log',
             level: 'silly'
         })
     ]
