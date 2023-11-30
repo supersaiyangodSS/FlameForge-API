@@ -2,7 +2,6 @@ import winston, {format, transports} from "winston";
 
 
 const logger = winston.createLogger({
-    // level: 'info',
     format: format.combine(
         format.timestamp(),
         format.json()
