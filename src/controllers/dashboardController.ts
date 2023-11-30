@@ -439,13 +439,15 @@ const saveArtifact = async (req: Request, res: Response) => {
         if (req.session.user && req.session.role === 'admin') {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                return res.status(409).json({
-                    errors: errors.array().map((key) => key.msg)
-                });
+                const allErrors = errors.array().map((key) => key.msg);
+                req.flash('error', allErrors);
+                return res.redirect(req.url);
             }
             const existingArtifact = await Artifact.findById(id);
             if (!existingArtifact) {
-                return res.json('no artifact found');
+                return res.status(404).render('404', {
+                    title: "Not Found!",
+                });
             }
             if (name !== existingArtifact.name) {
                 existingArtifact.name = name
@@ -503,16 +505,25 @@ const saveArtifact = async (req: Request, res: Response) => {
             }
             const updatedArtifact = await existingArtifact.save();
             if (!updatedArtifact) {
-                return res.send('error saving the artifact')
+                return res.status(404).render('404', {
+                    title: "Not Found!",
+                });
             }
             req.flash('success', 'artifact information updated successfully');
             return res.redirect('/dashboard');
         }
         else {
-            res.send('unauthorized');
+            logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
+            return res.status(401).render('401', {
+            title: "Unauthorized",
+        });
         }
     } catch (error) {
-        console.error(error);
+        logger.error(`User: ${req.session.user}, Error occured while saving the artifact: ${error}`);
+        console.log(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
     }
 }
 
