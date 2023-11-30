@@ -442,7 +442,7 @@ const saveArtifact = async (req: Request, res: Response) => {
                 // const allErrors = errors.array().map((key) => key.msg);
                 const errorOne = errors.array()[0].msg;
                 req.flash('error', errorOne);
-                return res.redirect(req.url);
+                // return res.redirect(req.url);
             }
             const existingArtifact = await Artifact.findById(id);
             if (!existingArtifact) {
