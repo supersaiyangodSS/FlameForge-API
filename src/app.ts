@@ -5,7 +5,7 @@ import connectDB from './config/database.js';
 import loginRouter from './routes/loginRouter.js';
 import registerRouter from './routes/registerRouter.js';
 import dashboardRouter from "./routes/dashboardRouter.js";
-import logger from './logger.js';
+import logger from './helpers/logger.js';
 import exphbs, { create } from 'express-handlebars';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
