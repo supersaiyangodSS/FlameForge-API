@@ -164,6 +164,20 @@
           <button type="submit" id="save" class="w-full btn py-3 px-6 border-2 border-teal-400 rounded-2xl hover:bg-teal-400 font-regular transition-colors ease-linear font-semibold disable-save-btn">Save</button>
         </div>
   </form>
+  {{#if messages.success}}
+  <script>
+    window.addEventListener('load', function () {
+      showAlertBox('{{messages.success}}')
+    })
+  </script>
+  {{/if}}
+  {{#if messages.error}}
+  <script>
+    window.addEventListener('load', function () {
+      showAlertErrorBox('{{messages.error}}')
+    })
+  </script>
+  {{/if}}
   </div>
   <script defer src="/js/editArtifact.js"></script>
 </body>

@@ -249,7 +249,8 @@ const editArtifact = async (req: Request, res: Response) => {
             const artifactName = artifact.name;
             const locals = {
                 title: artifactName,
-                artifact: artifact
+                artifact: artifact,
+                messages: req.flash()
             }
             res.render('editArtifact', locals);
         }
@@ -442,7 +443,7 @@ const saveArtifact = async (req: Request, res: Response) => {
                 // const allErrors = errors.array().map((key) => key.msg);
                 const errorOne = errors.array()[0].msg;
                 req.flash('error', errorOne);
-                // return res.redirect(req.url);
+                return res.redirect(`/dashboard/${req.url}`);
             }
             const existingArtifact = await Artifact.findById(id);
             if (!existingArtifact) {
