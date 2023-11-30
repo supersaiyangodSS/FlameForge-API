@@ -520,20 +520,25 @@ const deleteCharacter = async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
         if (req.session.user && req.session.role === 'admin') {
-            // return res.send(`admin: ${id}`);
             const deletedCharacter = await Character.findByIdAndRemove(id);
-            if (deletedCharacter) {
-                // res.send(deletedCharacter);
-                req.flash('deletedItem', 'Deleted Successfully');
-                return res.redirect('/dashboard')
+            if (!deletedCharacter) {
+                return res.status(404).render('404', {
+                    title: "Not Found!",
+                });
             }
-            else {
-                return res.send('Interval server error');
-            }
+                req.flash('success', 'Character Deleted Successfully');
+                return res.redirect('/dashboard');
         }
-        return res.send('not admin')
+        logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
+        return res.status(401).render('401', {
+            title: "Unauthorized",
+        });
     } catch (error) {
-        return res.send(error)
+        logger.error(`User: ${req.session.user}, Error occured while deleting the character: ${error}`);
+        console.log(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
     }
 }
 
@@ -555,7 +560,7 @@ const deleteWeapon = async (req: Request, res: Response) => {
             title: "Unauthorized",
         });
     } catch (error) {
-        logger.error(`User: ${req.session.user}, Error occured while deleteing the weapons: ${error}`);
+        logger.error(`User: ${req.session.user}, Error occured while deleting the weapons: ${error}`);
         console.log(error);
         res.status(500).render('500', {
             title: "Internal Server Error!",
@@ -581,7 +586,7 @@ const deleteArtifact = async (req: Request, res: Response) => {
             title: "Unauthorized",
         });
     } catch (error) {
-        logger.error(`User: ${req.session.user}, Error occured while deleteing the artifact: ${error}`);
+        logger.error(`User: ${req.session.user}, Error occured while deleting the artifact: ${error}`);
         console.log(error);
         res.status(500).render('500', {
             title: "Internal Server Error!",
