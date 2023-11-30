@@ -668,7 +668,7 @@ const downloadArtifacts = async (req: Request, res: Response) => {
             });
         }
         else {
-            return res.status(401).render('500', {
+            return res.status(401).render('401', {
                 title: "Unauthorized"
             })
             // fix
