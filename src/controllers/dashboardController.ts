@@ -439,8 +439,9 @@ const saveArtifact = async (req: Request, res: Response) => {
         if (req.session.user && req.session.role === 'admin') {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                const allErrors = errors.array().map((key) => key.msg);
-                req.flash('error', allErrors);
+                // const allErrors = errors.array().map((key) => key.msg);
+                const errorOne = errors.array()[0].msg;
+                req.flash('error', errorOne);
                 return res.redirect(req.url);
             }
             const existingArtifact = await Artifact.findById(id);
