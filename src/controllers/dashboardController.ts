@@ -562,20 +562,25 @@ const deleteArtifact = async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
         if (req.session.user && req.session.role === 'admin') {
-            // return res.send(`admin: ${id}`);
             const deletedArtifact = await Artifact.findByIdAndRemove(id);
-            if (deletedArtifact) {
-                // res.send(deletedCharacter);
-                req.flash('deletedItem', 'Deleted Successfully');
-                return res.redirect('/dashboard')
+            if(!deletedArtifact) {
+                return res.status(500).render('404', {
+                    title: "Not Found!",
+                });
             }
-            else {
-                return res.send('Interval server error');
-            }
+                req.flash('success', 'Artifact Deleted Successfully');
+                return res.redirect('/dashboard');
         }
-        return res.send('not admin')
+        logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
+        return res.status(401).render('401', {
+            title: "Unauthorized",
+        });
     } catch (error) {
-        return res.send(error)
+        logger.error(`User: ${req.session.user}, Error occured while deleteing the artifact: ${error}`);
+        console.log(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
     }
 }
 
@@ -606,7 +611,7 @@ const downloadCharacters = async (req: Request, res: Response) => {
             })
         }
         else {
-            logger.silly(`User: ${req.session.user}, Unauthorized access to ${req.url}`);
+            logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
             return res.status(401).render('401', {
                 title: "Unauthorized"
             });
@@ -647,7 +652,7 @@ const downloadWeapons = async (req: Request, res: Response) => {
             });
         }
         else {
-            logger.silly(`User: ${req.session.user}, Unauthorized access to ${req.url}`);
+            logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
             return res.status(401).render('401', {
                 title: "Unauthorized"
             });
@@ -688,7 +693,7 @@ const downloadArtifacts = async (req: Request, res: Response) => {
             });
         }
         else {
-            logger.silly(`User: ${req.session.user}, Unauthorized access to ${req.url}`);
+            logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
             return res.status(401).render('401', {
                 title: "Unauthorized"
             });
