@@ -377,11 +377,11 @@ searchBar.addEventListener('input', () => {
 
         if (characterName.includes(searchTerm)) {
             item.style.display = 'flex';
-            isCharacters.classList.add('hidden');
+            isCharacters.classList.add('s-hide');
         }
         else {
             item.style.display = 'none';
-            isCharacters.classList.remove('hidden');
+            isCharacters.classList.remove('s-hide');
         }
     });
 
@@ -391,11 +391,11 @@ searchBar.addEventListener('input', () => {
 
         if (weaponName.includes(searchTerm)) {
             item.style.display = 'flex';
-            isWeapons.classList.add('hidden');
+            isWeapons.classList.add('s-hide');
         }
         else {
             item.style.display = 'none';
-            isWeapons.classList.remove('hidden');
+            isWeapons.classList.remove('s-hide');
         }
     });
 
@@ -405,11 +405,11 @@ searchBar.addEventListener('input', () => {
 
         if (artifactName.includes(searchTerm)) {
             item.style.display = 'flex';
-            isArtifacts.classList.add('hidden');
+            isArtifacts.classList.add('s-hide');
         }
         else {
             item.style.display = 'none';
-            isArtifacts.classList.remove('hidden');
+            isArtifacts.classList.remove('s-hide');
         }
     });
 
