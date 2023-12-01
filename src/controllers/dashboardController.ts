@@ -281,13 +281,15 @@ const saveCharacter = async (req: Request, res: Response) => {
         if (req.session.user && req.session.role === 'admin') {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                return res.status(409).json({
-                    errors: errors.array().map((key) => key.msg)
-                });
+                const errorOne = errors.array()[0].msg;
+                req.flash('error', errorOne);
+                return res.redirect(`/dashboard${req.url}`);
             }
             const existingCharacter = await Character.findById(id);
             if (!existingCharacter) {
-                return res.json('no character found');
+                return res.status(404).render('404', {
+                    title: "Not Found!",
+                });
             }
             if (name !== existingCharacter.name) {
                 existingCharacter.name = name;
@@ -341,15 +343,26 @@ const saveCharacter = async (req: Request, res: Response) => {
                 existingCharacter.wikiUrl = wikiUrl;
             }
             const updatedCharacter = await existingCharacter.save();
+            if (!updatedCharacter) {
+                return res.status(404).render('404', {
+                    title: "Not Found!",
+                });
+            }
             req.flash('success', 'character information updated successfully');
             return res.redirect('/dashboard');
-            // return res.send(updatedCharacter);
         }
         else {
-            res.send('unauthorized')
+            logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
+            return res.status(401).render('401', {
+            title: "Unauthorized",
+        });
         }
     } catch (error) {
-        console.error(error);
+        logger.error(`User: ${req.session.user}, Error occured while saving the character: ${error}`);
+        console.log(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
     }
 }
 
