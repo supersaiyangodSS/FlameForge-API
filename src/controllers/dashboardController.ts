@@ -442,8 +442,7 @@ const saveArtifact = async (req: Request, res: Response) => {
             if (!errors.isEmpty()) {
                 const errorOne = errors.array()[0].msg;
                 req.flash('error', errorOne);
-                // req.flash('error', 'test');
-                return res.redirect(`/dashboard/${req.url}`);
+                return res.redirect(`/dashboard${req.url}`);
             }
             const existingArtifact = await Artifact.findById(id);
             if (!existingArtifact) {
