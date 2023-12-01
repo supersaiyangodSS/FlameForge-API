@@ -255,20 +255,17 @@ const editArtifact = async (req: Request, res: Response) => {
             res.render('editArtifact', locals);
         }
         else {
-            const artifact = await Artifact.findById(id).select('-__v').lean();
-            if (!artifact) {
-                req.flash('error', 'Invalid Artifact id or Artifact not found');
-                return res.status(301).redirect('/');
-            }
-            const artifactName = artifact.name;
-            const locals = {
-                title: artifactName,
-                artifact: artifact
-            }
-            res.render('editArtifact', locals);
+            logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
+            return res.status(401).render('401', {
+            title: "Unauthorized",
+            });
         }
     } catch (error) {
+        logger.error(`User: ${req.session.user}, Error occured on editing artifact page: ${error}`);
         console.log(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
     }
 }
 
@@ -542,7 +539,7 @@ const saveArtifact = async (req: Request, res: Response) => {
             logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
             return res.status(401).render('401', {
             title: "Unauthorized",
-        });
+            });
         }
     } catch (error) {
         logger.error(`User: ${req.session.user}, Error occured while saving the artifact: ${error}`);
