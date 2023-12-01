@@ -89,7 +89,7 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
                 }
             }
             req.flash("success", "Data uploaded successfully")
-            res.redirect('/dashboard');
+            res.status(301).redirect('/dashboard');
         }
     } catch (error) {
         console.error(error);
@@ -119,7 +119,7 @@ const uploadWeaponFile = async (req: Request, res: Response) => {
                 }
             }
             req.flash("success", "Data uploaded successfully")
-            res.redirect('/dashboard');
+            res.status(301).redirect('/dashboard');
         }
     } catch (error) {
         console.error(error);
@@ -149,7 +149,7 @@ const uploadArtifactFile = async (req: Request, res: Response) => {
                 }
             }
             req.flash("success", "Data uploaded successfully")
-            res.redirect('/dashboard');
+            res.status(301).redirect('/dashboard');
         }
     } catch (error) {
         console.error(error);
@@ -177,7 +177,7 @@ const editCharacter = async (req: Request, res: Response) => {
             const character = await Character.findById(id).select('-__v').lean();
             if (!character) {
                 req.flash('no character', 'character not found');
-                return res.redirect('/');
+                return res.status(301).redirect('/');
             }
             const locals = {
                 character: character
@@ -210,7 +210,7 @@ const editWeapon = async (req: Request, res: Response) => {
             const weapon = await Weapon.findById(id).select('-__v').lean();
             if (!weapon) {
                 req.flash('error', 'Invalid Weapon id or Weapon not found');
-                return res.redirect('/');
+                return res.status(301).redirect('/');
             }
             const weaponName = weapon.name;
             const locals = {
@@ -223,7 +223,7 @@ const editWeapon = async (req: Request, res: Response) => {
             const weapon = await Weapon.findById(id).select('-__v').lean();
             if (!weapon) {
                 req.flash('error', 'Invalid Weapon id or Weapon not found');
-                return res.redirect('/');
+                return res.status(301).redirect('/');
             }
             const weaponName = weapon.name;
             const locals = {
@@ -244,7 +244,7 @@ const editArtifact = async (req: Request, res: Response) => {
             const artifact = await Artifact.findById(id).select('-__v').lean();
             if (!artifact) {
                 req.flash('error', 'Invalid Artifact id or Artifact not found');
-                return res.redirect('/');
+                return res.status(301).redirect('/');
             }
             const artifactName = artifact.name;
             const locals = {
@@ -258,7 +258,7 @@ const editArtifact = async (req: Request, res: Response) => {
             const artifact = await Artifact.findById(id).select('-__v').lean();
             if (!artifact) {
                 req.flash('error', 'Invalid Artifact id or Artifact not found');
-                return res.redirect('/');
+                return res.status(301).redirect('/');
             }
             const artifactName = artifact.name;
             const locals = {
@@ -283,7 +283,7 @@ const saveCharacter = async (req: Request, res: Response) => {
             if (!errors.isEmpty()) {
                 const errorOne = errors.array()[0].msg;
                 req.flash('error', errorOne);
-                return res.redirect(`/dashboard${req.url}`);
+                return res.status(301).redirect(`/dashboard${req.url}`);
             }
             const existingCharacter = await Character.findById(id);
             if (!existingCharacter) {
@@ -349,7 +349,7 @@ const saveCharacter = async (req: Request, res: Response) => {
                 });
             }
             req.flash('success', 'character information updated successfully');
-            return res.redirect('/dashboard');
+            return res.status(301).redirect('/dashboard');
         }
         else {
             logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
@@ -375,7 +375,7 @@ const saveWeapon = async (req: Request, res: Response) => {
             if (!errors.isEmpty()) {
                 const errorOne = errors.array()[0].msg;
                 req.flash('error', errorOne);
-                return res.redirect(`/dashboard${req.url}`);
+                return res.status(301).redirect(`/dashboard${req.url}`);
             }
             const existingWeapon = await Weapon.findById(id);
             if (!existingWeapon) {
@@ -441,7 +441,7 @@ const saveWeapon = async (req: Request, res: Response) => {
                 });
             }
             req.flash('success', 'weapon information updated successfully');
-            return res.redirect('/dashboard');
+            return res.status(301).redirect('/dashboard');
         }
         else {
             logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
@@ -467,7 +467,7 @@ const saveArtifact = async (req: Request, res: Response) => {
             if (!errors.isEmpty()) {
                 const errorOne = errors.array()[0].msg;
                 req.flash('error', errorOne);
-                return res.redirect(`/dashboard${req.url}`);
+                return res.status(301).redirect(`/dashboard${req.url}`);
             }
             const existingArtifact = await Artifact.findById(id);
             if (!existingArtifact) {
@@ -536,7 +536,7 @@ const saveArtifact = async (req: Request, res: Response) => {
                 });
             }
             req.flash('success', 'artifact information updated successfully');
-            return res.redirect('/dashboard');
+            return res.status(301).redirect('/dashboard');
         }
         else {
             logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
@@ -564,7 +564,7 @@ const deleteCharacter = async (req: Request, res: Response) => {
                 });
             }
                 req.flash('success', 'Character Deleted Successfully');
-                return res.redirect('/dashboard');
+                return res.status(301).redirect('/dashboard');
         }
         logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
         return res.status(401).render('401', {
@@ -590,7 +590,7 @@ const deleteWeapon = async (req: Request, res: Response) => {
                 });
             }
                 req.flash('success', 'Weapon Deleted Successfully');
-                return res.redirect('/dashboard');
+                return res.status(301).redirect('/dashboard');
         }
         logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
         return res.status(401).render('401', {
@@ -616,7 +616,7 @@ const deleteArtifact = async (req: Request, res: Response) => {
                 });
             }
                 req.flash('success', 'Artifact Deleted Successfully');
-                return res.redirect('/dashboard');
+                return res.status(301).redirect('/dashboard');
         }
         logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
         return res.status(401).render('401', {
