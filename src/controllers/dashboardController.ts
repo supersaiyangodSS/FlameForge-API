@@ -357,16 +357,18 @@ const saveWeapon = async (req: Request, res: Response) => {
     const { id } = req.params;
     let { name, vr, baseAtk, subStatType, baseSubStat, source, desc, affix, passive, region, family, icon, original, gacha, awakened, wikiUrl } = req.body;
     try {
-        if (req.session && req.session.role == 'admin' || 2 == 2) {
+        if (req.session && req.session.role == 'admin') {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                return res.status(409).json({
-                    errors: errors.array().map((key) => key.msg)
-                });
+                const errorOne = errors.array()[0].msg;
+                req.flash('error', errorOne);
+                return res.redirect(`/dashboard${req.url}`);
             }
             const existingWeapon = await Weapon.findById(id);
             if (!existingWeapon) {
-                return res.send('no weapon found');
+                return res.status(404).render('404', {
+                    title: "Not Found!",
+                });
             }
             if (name !== existingWeapon.name) {
                 existingWeapon.name = name;
@@ -394,7 +396,6 @@ const saveWeapon = async (req: Request, res: Response) => {
             }
             if (affix !== existingWeapon.affix) {
                 existingWeapon.affix = affix;
-
             }
             if (passive !== existingWeapon.passive) {
                 existingWeapon.passive = passive;
@@ -421,15 +422,26 @@ const saveWeapon = async (req: Request, res: Response) => {
                 existingWeapon.wikiUrl = wikiUrl;
             }
             const updatedWeapon = await existingWeapon.save();
+            if (!updatedWeapon) {
+                return res.status(404).render('404', {
+                    title: "Not Found!"
+                });
+            }
             req.flash('success', 'weapon information updated successfully');
             return res.redirect('/dashboard');
         }
         else {
-            return res.send('Not authorized');
+            logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
+            return res.status(401).render('401', {
+            title: "Unauthorized",
+        });
         }
     } catch (error) {
+        logger.error(`User: ${req.session.user}, Error occured while saving the weapon: ${error}`);
         console.log(error);
-        return res.status(500).json({ 'error': 'internal server error' })
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
     }
 }
 
@@ -608,7 +620,7 @@ const deleteArtifact = async (req: Request, res: Response) => {
 
 const downloadCharacters = async (req: Request, res: Response) => {
     try {
-        if (req.session.user && req.session.role == 'admin') {
+        if (req.session.user && req.session.role === 'admin') {
 
             const characters = await Character.find().select('-_id -__v');
             if (!characters) {
@@ -649,7 +661,7 @@ const downloadCharacters = async (req: Request, res: Response) => {
 
 const downloadWeapons = async (req: Request, res: Response) => {
     try {
-        if (req.session.user && req.session.role == 'admin') {
+        if (req.session.user && req.session.role === 'admin') {
 
             const weapons = await Weapon.find().select('-_id -__v');
             if (!weapons) {
@@ -690,8 +702,7 @@ const downloadWeapons = async (req: Request, res: Response) => {
 
 const downloadArtifacts = async (req: Request, res: Response) => {
     try {
-        if (req.session.user && req.session.role == 'admin') {
-
+        if (req.session.user && req.session.role === 'admin') {
             const artifacts = await Artifact.find().select('-_id -__v');
             if (!artifacts) {
                 return res.status(404).render('404', {
