@@ -176,30 +176,29 @@ const editCharacter = async (req: Request, res: Response) => {
         if (req.session.user && req.session.role === 'admin') {
             const character = await Character.findById(id).select('-__v').lean();
             if (!character) {
-                req.flash('no character', 'character not found');
+                req.flash('error', 'Invalid Character id or Character not found!');
                 return res.status(301).redirect('/');
             }
+            const characterName = character.name;
             const locals = {
-                character: character
+                title: characterName,
+                character: character,
+                messages: req.flash()
             }
             res.render('editCharacter', locals);
         }
         else {
-            const character = await Character.findById(id).select('-__v').lean();
-            if (character) {
-                let characterName = character.name;
-                const locals = {
-                    title: characterName,
-                    character: character
-                }
-                res.render('editCharacter', locals);
-            } else {
-                res.send('Invalid Character')
-            }
-            // res.send('Not Admin');
+            logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
+            return res.status(401).render('401', {
+            title: "Unauthorized",
+            });
         }
     } catch (error) {
-        console.error(error);
+        logger.error(`User: ${req.session.user}, Error occured on editing character page: ${error}`);
+        console.log(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
     }
 }
 
@@ -243,7 +242,7 @@ const editArtifact = async (req: Request, res: Response) => {
         if (req.session.user && req.session.role === 'admin') {
             const artifact = await Artifact.findById(id).select('-__v').lean();
             if (!artifact) {
-                req.flash('error', 'Invalid Artifact id or Artifact not found');
+                req.flash('error', 'Invalid Artifact id or Artifact not found!');
                 return res.status(301).redirect('/');
             }
             const artifactName = artifact.name;
