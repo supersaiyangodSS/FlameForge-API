@@ -30,4 +30,14 @@ const logger = winston.createLogger({
     ]
 });
 
-export default logger;
+const apiLogger = winston.createLogger({
+    transports: [
+        new winston.transports.File({ filename: 'logs/api/apiCalls.log' }),
+    ],
+    format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json()
+    ),
+});
+
+export { logger, apiLogger };
