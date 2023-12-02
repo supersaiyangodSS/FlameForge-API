@@ -12,6 +12,19 @@ function showAlertBox(msg) {
     }, 3000);
 }
 
+let alertBoxErrorTimer;
+function showAlertErrorBox(msg) {
+    const alertBox = document.getElementById('alertBoxError');
+    alertBox.textContent = msg;
+    alertBox.style.top = '3%'
+    if (alertBoxErrorTimer) {
+        clearInterval(alertBoxErrorTimer);
+    }
+    alertBoxErrorTimer = setInterval(() => {
+        alertBox.style.top = '-50%';
+        clearInterval(alertBoxErrorTimer)
+    }, 3000);
+}
 
 function hideLoader() {
     const loader = document.getElementById('loader');
