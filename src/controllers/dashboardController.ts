@@ -7,7 +7,7 @@ import { validationResult } from "express-validator";
 import { join } from 'path';
 import { writeFileSync, unlinkSync } from 'fs';
 import { __dirname } from "../app.js";
-import logger from "../helpers/logger.js";
+import { logger } from "../helpers/logger.js";
 
 const getDashboard = async (req: Request, res: Response) => {
     try {
