@@ -161,10 +161,13 @@ const uploadArtifactFile = async (req: Request, res: Response) => {
 const logoutUser = (req: Request, res: Response) => {
     req.session.destroy((err) => {
         if (err) {
-            console.error('Error destroying session', err);
+        logger.error(`User: ${req.session.user}, Error occured on editing artifact page: ${err}`);
+        console.log(err);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
         }
         else {
-            console.log('session destroyed successfully')
             res.status(301).redirect('/sign-in');
         }
     });
