@@ -131,7 +131,8 @@ const uploadWeaponFile = async (req: Request, res: Response) => {
 const uploadArtifactFile = async (req: Request, res: Response) => {
     try {
         if (!req.file) {
-            return res.status(400).json({ error: 'No file uploaded' });
+            req.flash('error', 'no files selected!');
+            return res.status(301).redirect('/dashboard')
         }
         if (req.file) {
             const uploadedData = JSON.parse(req.file.buffer.toString());

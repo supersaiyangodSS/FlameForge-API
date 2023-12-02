@@ -414,3 +414,43 @@ searchBar.addEventListener('input', () => {
     });
 
 });
+
+const showUploadBtn = () => {
+    const fileInputCharacter = document.getElementById('uploadFile');
+    const uploadCharacterBtn = document.getElementById('uploadCharacter');
+    
+    fileInputCharacter.addEventListener('input', () => {
+        if (fileInputCharacter.files.length > 0) {
+            uploadCharacterBtn.classList.remove('s-disable');
+        }
+        else {
+            uploadCharacterBtn.classList.add('s-disable');
+        }
+    });
+
+    const fileInputWeapon = document.getElementById('uploadFile2');
+    const uploadWeaponBtn = document.getElementById('uploadWeapon');
+    
+    fileInputWeapon.addEventListener('input', () => {
+        if (fileInputWeapon.files.length > 0) {
+            uploadWeaponBtn.classList.remove('s-disable');
+        }
+        else {
+            uploadWeaponBtn.classList.add('s-disable');
+        }
+    });
+
+    const fileInputArtifact = document.getElementById('uploadFile3');
+    const uploadArtifactBtn = document.getElementById('uploadArtifact');
+    
+    fileInputArtifact.addEventListener('input', () => {
+        if (fileInputArtifact.files.length > 0) {
+            uploadArtifactBtn.classList.remove('s-disable');
+        }
+        else {
+            uploadArtifactBtn.classList.add('s-disable');
+        }
+    });
+}
+
+window.addEventListener('load', showUploadBtn);
