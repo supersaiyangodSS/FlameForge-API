@@ -208,31 +208,29 @@ const editWeapon = async (req: Request, res: Response) => {
         if (req.session.user && req.session.role === 'admin') {
             const weapon = await Weapon.findById(id).select('-__v').lean();
             if (!weapon) {
-                req.flash('error', 'Invalid Weapon id or Weapon not found');
+                req.flash('error', 'Invalid Weapon id or Weapon not found!');
                 return res.status(301).redirect('/');
             }
             const weaponName = weapon.name;
             const locals = {
                 title: weaponName,
-                weapon: weapon
+                weapon: weapon,
+                messages: req.flash()
             }
             res.render('editWeapon', locals);
         }
         else {
-            const weapon = await Weapon.findById(id).select('-__v').lean();
-            if (!weapon) {
-                req.flash('error', 'Invalid Weapon id or Weapon not found');
-                return res.status(301).redirect('/');
-            }
-            const weaponName = weapon.name;
-            const locals = {
-                title: weaponName,
-                weapon: weapon
-            }
-            res.render('editWeapon', locals);
+            logger.silly(`User: ${req.session.user}, Attempt unauthorized access to ${req.url}`);
+            return res.status(401).render('401', {
+            title: "Unauthorized",
+            });
         }
     } catch (error) {
+        logger.error(`User: ${req.session.user}, Error occured on editing weapon page: ${error}`);
         console.log(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
     }
 }
 
