@@ -29,7 +29,10 @@ const getDashboard = async (req: Request, res: Response) => {
         const userId = req.session.uid;
         const loggedUser = await User.findById(userId).lean();
         if (!loggedUser) {
-            return res.status(404).send('Internal Server Error!');
+            logger.error(`User: ${req.session.user}, Error no logged user!`);
+            res.status(500).render('500', {
+                title: "Internal Server Error!",
+            });
         }
         const locals = {
             title: 'Dashboard',
@@ -49,8 +52,11 @@ const getDashboard = async (req: Request, res: Response) => {
         res.render('dashboard', locals);
 
     } catch (error) {
+        logger.error(`User: ${req.session.user}, Error occured on dashboard page: ${error}`);
         console.log(error);
-        res.json(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
     }
 }
 
@@ -69,7 +75,7 @@ const deleteUser = async (req: Request, res: Response) => {
         console.log(error);
         res.status(500).render('500', {
             title: "Internal Server Error!",
-        });      
+        });  
     }
 }
 
