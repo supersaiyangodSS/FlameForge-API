@@ -4,6 +4,8 @@ import { validationResult } from 'express-validator';
 import { hash } from 'bcrypt';
 import sendEmail from "../helpers/mailer.js";
 import { randomBytes } from 'crypto';
+import Setting from "../models/settingsModel.js";
+import { logger } from "../helpers/logger.js";
 
 const saltRounds : number = 10;
 
@@ -12,6 +14,30 @@ const generateToken = () => {
 }
 
 const registerPage = async (req: Request, res: Response) => {
+    try {
+        let allSett = await Setting.findOne({ settingType: 'global' });
+        if (!allSett) {
+            logger.error(`Error fetching settings!`);
+            return res.status(500).render('500', {
+                title: "Internal Server Error!",
+            });
+        }
+        if (allSett.registerRoute === false) {
+            return res.status(401).render('401', {
+                title: "Unauthorized",
+            });
+        }
+        return res.render('register', {
+            title: "FlameForgeAPI Sign Up",
+            messages: req.flash()
+        })
+    } catch (error) {
+        logger.error(`Error occured on register page: ${error}`);
+        console.log(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
+    }
     res.render('register', {
         title: 'FlameForgeAPI Sign Up'
     })
@@ -23,26 +49,21 @@ const addUser = async (req: Request, res: Response) => {
     const verificationToken : string = generateToken();
     const verificationLink : string = `http://localhost:4000/sign-up/verify?token=${verificationToken}`;
     if (!errors.isEmpty()) {
-        return res.status(409).json({
-            errors: errors.array().map((key) => key.msg)
-        })
+        const errorOne = errors.array()[0].msg;
+            req.flash('error', errorOne);
+            return res.status(301).redirect(`/sign-up`);
     }
     try {
         const user = await User.findOne({ $or: [{email}, {username}] });
         if (user) {
             if (user.email === email) {
-                return res.status(409).json({
-                    conflict: `${email} already exists`
-                })
+                req.flash('error', 'Email Already Exists!');
+                return res.status(301).redirect('/sign-up');
             }
             if (user.username === username) {
-                return res.status(409).json({
-                    conflict: `${username} already exists`
-                })
+                req.flash('error', 'Username Already Exists!');
+                return res.status(301).redirect('/sign-up');
             }
-            return res.status(200).json({
-                conflict: `${email} already exists!`
-            })
         }
         try {
             const subject : string = 'Email Verification';
@@ -54,10 +75,11 @@ const addUser = async (req: Request, res: Response) => {
             await sendEmail(email, subject, mailBody);
         }
         catch (error) {
-            console.error(error);
-            return res.status(500).json({
-                error: 'Failed to send mail, try again later'
-            })
+        logger.error(`Error occured while sending the verification email: ${error}`);
+        console.log(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
         }
         const hashedPassword : string = await hash(password, saltRounds);
         const newUser = new User({
@@ -69,15 +91,13 @@ const addUser = async (req: Request, res: Response) => {
             token: verificationToken,
         });
         await newUser.save();
-        res.status(200).json({
-            newUser: `User created successfully: ${firstName} ${lastName} ${email}`
-        });
+        req.flash('success', 'Account created successfully!');
+        res.status(301).redirect('/sign-in');
     }
-    catch (e) {
-        res.status(500).json({
-            error: "Internal Server Error"
+    catch (error) {
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
         });
-        console.error(e);
     }
 }
 
@@ -89,20 +109,23 @@ const verifyUser = async (req: Request, res: Response) => {
             isTokenUsed: false,
         });
         if (!user) {
-           return res.status(404).json({
-               error: 'Invalid or Expired Token'
-           });
+            return res.status(404).render('404', {
+                title: "Not Found!",
+            });
         }
         user.verified = true,
             user.isTokenUsed = true,
             user.token = generateToken();
         await user.save();
-        return res.status(200).json({
-            message: 'User verified successfully'
-        });
+        req.flash('success', 'User verified successfully!');
+        return res.status(301).redirect('/sign-in');
     }
     catch (error) {
-        console.error(error);
+        logger.error(`User: ${req.session.user}, Error occured while varifying the user!`);
+        console.log(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
     }
 }
 
