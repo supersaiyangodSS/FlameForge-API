@@ -8,7 +8,10 @@
 </head>
 <body>
 
-    <div id="alertBoxRegister" class="alertBox text-white bg-teal-500 p-4 rounded-lg transition-all duration-300 z-40"></div>
+<div id="alertBox" class="alertBox text-white bg-teal-500 px-2 py-2 rounded-lg transition-all duration-300 z-40">
+  </div>
+  <div id="alertBoxError" class="alertBox text-white bg-red-400 px-2 py-2 rounded-lg transition-all duration-300 z-40">
+  </div>
 
 <div class="font flex w-96 items-center justify-center mx-auto overflow-hidden sidebar-main form-container">
 
@@ -34,6 +37,21 @@
         <input type="password" name="confirmPassword" id="confirmPassword" class="p-2 border-t-2 border-b-2 bg-slate-700 placeholder:opacity-50 border-teal-700 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="jean@123" required>
         <button type="submit" class="btn py-3 border-4 rounded-2xl border-teal-400 hover:bg-teal-400 mt-3 font-regular transition-colors ease-linear font-semibold">Sign Up</button>
     </form>
+
+    {{#if messages.success}}
+  <script>
+    window.addEventListener('load', function () {
+      showAlertBox('{{messages.success}}')
+    })
+  </script>
+  {{/if}}
+  {{#if messages.error}}
+  <script>
+    window.addEventListener('load', function () {
+      showAlertErrorBox('{{messages.error}}')
+    })
+  </script>
+  {{/if}}
 </div>
 <script defer src="/js/register.js"></script>
 </body>

@@ -20,16 +20,23 @@
         <input type="password" name="password" id="password" class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-700 border-teal-700 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="jean@123" required>
         <button type="submit" id="login" class="btn py-3 border-4 border-teal-400 rounded-2xl hover:bg-teal-400 mt-3 font-regular transition-colors ease-linear font-semibold">Log In</button>
     </form>
-</div>
 
-{{#if messages.success}}
+    
+    {{#if messages.success}}
   <script>
     window.addEventListener('load', function () {
-      showAlertBoxLogin('{{messages.success}}')
+      showAlertBox('{{messages.success}}')
     })
   </script>
   {{/if}}
-
+  {{#if messages.error}}
+  <script>
+    window.addEventListener('load', function () {
+      showAlertErrorBox('{{messages.error}}')
+    })
+  </script>
+  {{/if}}
+</div>
 <script defer src="/js/login.js"></script>
 </body>
 </html>
