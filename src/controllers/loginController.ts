@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import User from '../models/userModel.js';
 import { validationResult } from 'express-validator';
 import { logger } from "../helpers/logger.js";
+import { compare } from 'bcrypt';
 
 const loginPage = (req: Request, res: Response) => {
     res.render('login', {
@@ -13,8 +14,6 @@ const loginPage = (req: Request, res: Response) => {
 const loginUser = async (req: Request, res: Response) => {
     const errors = validationResult(req);
     const { email, password } = req.body;
-    console.log(`${email} and ${password}`)
-    console.log(req.body)
     if (!errors.isEmpty()) {
         const errorOne = errors.array()[0].msg;
         req.flash('error', errorOne);
@@ -26,7 +25,8 @@ const loginUser = async (req: Request, res: Response) => {
             req.flash('error', 'User does not exist!');
             return res.status(301).redirect('/sign-in');
         }
-        if (password === user.password) {
+        const validPassword = await compare(password, user.password);
+        if (!validPassword) {
             req.flash('error', 'Wrong Username or Password!');
             return res.status(301).redirect('/sign-in');
         }
