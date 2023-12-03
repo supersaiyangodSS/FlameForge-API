@@ -123,6 +123,15 @@ app.get('/404', ( req : Request , res : Response) => {
     });
 });
 
+app.get('/test', ( req : Request , res : Response) => {
+    res.render('emailSent', {
+        title: "Email Sent Successully!",
+        email: "vedantsapalkar99@gmail.com"
+    });
+});
+
+
+
 app.get('*', ( req: Request , res : Response) => {
     res.render('404', {
         title: '404! Not Found!'
