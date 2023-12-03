@@ -10,8 +10,10 @@ import { __dirname } from "../app.js";
 import { logger } from "../helpers/logger.js";
 
 const getDashboard = async (req: Request, res: Response) => {
-    try {
-        const users = await User.find().select(
+    if (req.session && req.session.user) {
+
+        try {
+            const users = await User.find().select(
             '-password -token -__v -_id -isTokenUsed -email -createdAt -updatedAt'
         ).lean();
         const characters = await Character.find().select(
@@ -49,15 +51,17 @@ const getDashboard = async (req: Request, res: Response) => {
             weaponCount,
             artifactCount
         }
-        res.render('dashboard', locals);
+        return res.render('dashboard', locals);
 
     } catch (error) {
         logger.error(`User: ${req.session.user}, Error occured on dashboard page: ${error}`);
         console.log(error);
-        res.status(500).render('500', {
+        return res.status(500).render('500', {
             title: "Internal Server Error!",
         });
     }
+}
+res.status(301).redirect('/sign-in');
 }
 
 const deleteUser = async (req: Request, res: Response) => {
