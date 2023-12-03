@@ -116,8 +116,9 @@ const verifyUser = async (req: Request, res: Response) => {
         user.isTokenUsed = true,
         user.token = generateToken();
         await user.save();
-        req.flash('success', 'User verified successfully!');
-        return res.status(301).redirect('/sign-in');
+        return res.status(200).render('emailVerified', {
+            email: user.email
+        }); 
     }
     catch (error) {
         logger.error(`User: ${req.session.user}, Error occured while varifying the user!`);
