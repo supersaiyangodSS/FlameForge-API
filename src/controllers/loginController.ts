@@ -3,7 +3,10 @@ import User from '../models/userModel.js';
 import { validationResult } from 'express-validator';
 
 const loginPage = (req: Request, res: Response) => {
-    res.render('login');
+    res.render('login', {
+        title: 'FlameForgeAPI Login',
+        messages: req.flash(),
+    });
 }
 
 const loginUser = async (req: Request, res: Response) => {

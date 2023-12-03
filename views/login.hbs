@@ -21,6 +21,15 @@
         <button type="submit" id="login" class="btn py-3 border-4 border-teal-400 rounded-2xl hover:bg-teal-400 mt-3 font-regular transition-colors ease-linear font-semibold">Log In</button>
     </form>
 </div>
+
+{{#if messages.success}}
+  <script>
+    window.addEventListener('load', function () {
+      showAlertBoxLogin('{{messages.success}}')
+    })
+  </script>
+  {{/if}}
+
 <script defer src="/js/login.js"></script>
 </body>
 </html>
