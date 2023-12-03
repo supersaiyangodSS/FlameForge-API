@@ -38,9 +38,6 @@ const registerPage = async (req: Request, res: Response) => {
             title: "Internal Server Error!",
         });
     }
-    res.render('register', {
-        title: 'FlameForgeAPI Sign Up'
-    })
 }
 
 const addUser = async (req: Request, res: Response) => {
@@ -114,8 +111,8 @@ const verifyUser = async (req: Request, res: Response) => {
             });
         }
         user.verified = true,
-            user.isTokenUsed = true,
-            user.token = generateToken();
+        user.isTokenUsed = true,
+        user.token = generateToken();
         await user.save();
         req.flash('success', 'User verified successfully!');
         return res.status(301).redirect('/sign-in');
