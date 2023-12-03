@@ -1,5 +1,5 @@
 let alertBoxTimer;
-function showAlertBoxLogin(msg, ) {
+function showAlertBoxLogin(msg) {
     const alertBox = document.getElementById('alertBoxLogin');
     alertBox.textContent = msg;
     alertBox.style.top = '3%'
