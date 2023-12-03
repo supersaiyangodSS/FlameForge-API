@@ -72,11 +72,11 @@ const addUser = async (req: Request, res: Response) => {
             await sendEmail(email, subject, mailBody);
         }
         catch (error) {
-        logger.error(`Error occured while sending the verification email: ${error}`);
-        console.log(error);
-        res.status(500).render('500', {
-            title: "Internal Server Error!",
-        });
+            logger.error(`Error occured while sending the verification email: ${error}`);
+            console.log(error);
+            res.status(500).render('500', {
+                title: "Internal Server Error!",
+            });
         }
         const hashedPassword : string = await hash(password, saltRounds);
         const newUser = new User({
@@ -88,8 +88,10 @@ const addUser = async (req: Request, res: Response) => {
             token: verificationToken,
         });
         await newUser.save();
-        req.flash('success', 'Account created successfully!');
-        res.status(301).redirect('/sign-in');
+        return res.status(200).render('emailSent', {
+            title: "Email Sent Successfully!",
+            email,
+        })
     }
     catch (error) {
         res.status(500).render('500', {
