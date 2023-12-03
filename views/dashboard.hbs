@@ -464,6 +464,14 @@ search
             {{!--
           </form> --}}
         </div>
+        {{#if (eq role 'admin')}}
+        <p class="my-2">Register Route</p>
+        <label class="switch">
+          <input type="checkbox" name="registerRoute" id="registerRoute">
+          <span class="slider"></span>
+        </label>
+        {{/if}}
+
       </div>
     </section>
   </div>
