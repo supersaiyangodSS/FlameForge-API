@@ -59,12 +59,17 @@ const deleteUser = async (req: Request, res: Response) => {
         let id = req.params.id;
         const deletedUser = await User.findByIdAndDelete(id);
         if (!deletedUser) {
-            return res.status(404).json({ message: `user does not exist!` });
+            req.flash('error', 'User does not exist!');
+            return res.status(301).redirect('/dashboard');
         }
-        res.json({ message: `Account deleted successfully` });
+        req.flash('success', 'Account Deleted Successfully!');
+        return res.status(301).redirect('/sign-in');
     } catch (error) {
-        res.status(500).json({ error: `Internal Server Error` });
-        console.log(error);        
+        logger.error(`User: ${req.session.user}, Error occured while uploading artifact page: ${error}`);
+        console.log(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });      
     }
 }
 
@@ -99,7 +104,7 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
             req.flash("success", "Data uploaded successfully")
             res.status(301).redirect('/dashboard');
     } catch (error) {
-        logger.error(`User: ${req.session.user}, Error occured while uploading artifact page: ${error}`);
+        logger.error(`User: ${req.session.user}, Error occured while uploading character: ${error}`);
         console.log(error);
         res.status(500).render('500', {
             title: "Internal Server Error!",
