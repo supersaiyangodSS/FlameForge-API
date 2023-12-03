@@ -101,30 +101,39 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
 const uploadWeaponFile = async (req: Request, res: Response) => {
     try {
         if (!req.file) {
-            return res.status(400).json({ error: 'No file uploaded' });
+            req.flash('error', 'no files selected!');
+            return res.status(301).redirect('/dashboard')
         }
-        if (req.file) {
-            const uploadedData = JSON.parse(req.file.buffer.toString());
+            let uploadedData;
+            try {
+                uploadedData = JSON.parse(req.file.buffer.toString());
+            } catch (jsonError) {
+                req.flash('error', 'JSON Syntax Error!');
+                return res.status(301).redirect('/dashboard');
+            }
             for (const object of uploadedData) {
                 const document = new Weapon(object);
                 try {
                     await document.validate();
                 } catch (validationError: any) {
-                    console.error(validationError);
-                    return res.status(400).json({ error: validationError.errors });
+                    req.flash('error', 'Please Provide Valid Data!');
+                    return res.status(301).redirect('/dashboard');
                 }
                 const result = await document.save();
-                if (result) {
-                    console.log('File Uploaded');
+                if (!result) {
+                    logger.error(`User: ${req.session.user}, Error occured while saving the weapon`);
+                    req.flash('error', 'An Error Occured While Saving the Data!');
+                    return res.status(301).redirect('/dashboard');
                 }
             }
             req.flash("success", "Data uploaded successfully")
             res.status(301).redirect('/dashboard');
-        }
     } catch (error) {
-        console.error(error);
-
-        res.status(500).json({ error: 'Internal server error', mainError: error });
+        logger.error(`User: ${req.session.user}, Error occured while uploading weapon: ${error}`);
+        console.log(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
     }
 };
 
