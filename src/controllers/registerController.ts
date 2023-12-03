@@ -12,7 +12,9 @@ const generateToken = () => {
 }
 
 const registerPage = async (req: Request, res: Response) => {
-    res.render('register')
+    res.render('register', {
+        title: 'FlameForgeAPI Sign Up'
+    })
 }
 
 const addUser = async (req: Request, res: Response) => {
