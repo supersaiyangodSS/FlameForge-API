@@ -65,7 +65,7 @@ const deleteUser = async (req: Request, res: Response) => {
         req.flash('success', 'Account Deleted Successfully!');
         return res.status(301).redirect('/sign-in');
     } catch (error) {
-        logger.error(`User: ${req.session.user}, Error occured while uploading artifact page: ${error}`);
+        logger.error(`User: ${req.session.user}, Error occured while deleting user account: ${error}`);
         console.log(error);
         res.status(500).render('500', {
             title: "Internal Server Error!",
