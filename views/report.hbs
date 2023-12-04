@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="text-white main-body">
+    <div class="absolute rounded-md box-border not-found-container poppins flex flex-col justify-center iteme bg-slate-900 px-5 py-10  w-11/12 sm:w-96">
+    
+    <p class="text-2xl text-teal-500 font-semibold">Report</p>
+    <p class="text-gray-400 w-full mt-2">Help us keep things smooth. Report any hiccups or share your suggestions by filling out the form below.</p>
+
+    <form action="/report" method="POST" class="flex flex-col text-white">
+    <label class="mt-2" for="name">Name</label>
+    <input class="bg-slate-800 mt-1 p-2 outline-none rounded-md" type="text" name="name" id="name" placeholder="John Doe" required>
+
+    <label class="mt-2" for="email">Email</label>
+    <input class="bg-slate-800 mt-1 p-2 outline-none rounded-md" type="email" name="email" id="email" placeholder="pheonix@gmail.com" required>
+
+    <label class="mt-2" for="errorUrl">URL</label>
+    <input class="bg-slate-800 mt-1 p-2 outline-none rounded-md" type="url" name="text" id="errorUrl" placeholder="Provide the URL where the error occurred" required>
+    
+    <label class="mt-2" for="message">Message</label>
+    <textarea class="bg-slate-800 mt-1 w-full p-2 outline-none resize-none rounded-md" name="message" id="" rows="4" placeholder="Explain the error here" required></textarea>
+
+    <button class="bg-teal-500 rounded-md mt-4 py-3 transition-colors hover:bg-teal-600" type="submit">Send</button>
+    </form>
+    </div>
+</body>
+</body>
+</html>

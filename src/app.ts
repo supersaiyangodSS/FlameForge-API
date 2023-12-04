@@ -5,6 +5,7 @@ import connectDB from './config/database.js';
 import loginRouter from './routes/loginRouter.js';
 import registerRouter from './routes/registerRouter.js';
 import dashboardRouter from "./routes/dashboardRouter.js";
+import miscRouter from './routes/miscRouter.js';
 import { logger } from './helpers/logger.js';
 import exphbs, { create } from 'express-handlebars';
 import { join, dirname } from 'path';
@@ -56,6 +57,7 @@ app.set('views', viewsPath);
 app.use('/sign-in', loginRouter);
 app.use('/sign-up', registerRouter);
 app.use('/dashboard', dashboardRouter);
+app.use('/misc', miscRouter);
 app.use(( req : Request , res : Response , next : NextFunction ) => {
     logger.info(`Request Received ${req.method} ${req.hostname} ${req.url} ${req.ip}`);
     console.log(`Request Received ${req.method} ${req.hostname} ${req.url} ${req.ip}`);
@@ -127,6 +129,12 @@ app.get('/test', ( req : Request , res : Response) => {
     res.render('emailSent', {
         title: "Email Sent Successully!",
         email: "vedantsapalkar99@gmail.com"
+    });
+});
+
+app.get('/report', ( req : Request , res : Response) => {
+    res.render('report', {
+        title: "Report Portal",
     });
 });
 
