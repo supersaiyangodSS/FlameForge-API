@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { reportPage, sendReport } from '../controllers/miscController.js';
+import { modifySettings, reportPage, sendReport } from '../controllers/miscController.js';
 import { body } from 'express-validator';
 const router : Router = Router();
 
@@ -13,5 +13,8 @@ const validateReport = [
 router.route('/report')
     .get(reportPage)
     .post(validateReport, sendReport);
+
+router.route('/setting')
+    .post(modifySettings);
 
 export default router;

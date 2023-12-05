@@ -3,6 +3,7 @@ import Report from '../models/reportModel.js';
 import { logger } from '../helpers/logger.js';
 import { validationResult } from "express-validator";
 import sendEmail from "../helpers/mailer.js";
+import Setting from "../models/settingsModel.js";
 
 const reportPage = (req: Request, res: Response) => {
     res.render('report', {
@@ -54,4 +55,26 @@ const sendReport = async (req: Request, res: Response) => {
     }
 }
 
-export { reportPage, sendReport };
+const modifySettings = async (req: Request, res: Response) => {
+    try {
+        let switchState = req.body.registerRoute;
+        if (!switchState) {
+            switchState = false;
+        }
+        console.log(switchState);
+        const gotSetting = await Setting.updateOne({ settingType: 'global' }, { $set: { registerRoute: switchState}});
+        logger.silly(`User: ${req.session.user}, changed settings`);
+        req.flash('success', 'Settings Saved Successfully!');
+        return res.status(301).redirect('/dashboard');
+
+
+    } catch (error) {
+        logger.error(`User: ${req.session.user}, Error occured on dashboard page: ${error}`);
+        console.log(error);
+        return res.status(500).render('500', {
+            title: "Internal Server Error!",
+        })
+    }
+}
+
+export { reportPage, sendReport, modifySettings };
