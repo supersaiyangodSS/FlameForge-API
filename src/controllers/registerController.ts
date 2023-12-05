@@ -22,21 +22,21 @@ const registerPage = async (req: Request, res: Response) => {
                 title: "Internal Server Error!",
             });
         }
-        if (allSett.registerRoute === false) {
+        if (allSett.registerRoute == false) {
             return res.status(401).render('401', {
                 title: "Unauthorized",
             });
         }
-        return res.render('register', {
+        return res.status(200).render('register', {
             title: "FlameForgeAPI Sign Up",
             messages: req.flash()
-        })
-    } catch (error) {
-        logger.error(`Error occured on register page: ${error}`);
-        console.log(error);
-        res.status(500).render('500', {
-            title: "Internal Server Error!",
         });
+    } catch (error) {
+            logger.error(`Error occured on register page: ${error}`);
+            console.log(error);
+            res.status(500).render('500', {
+                title: "Internal Server Error!",
+            });
     }
 }
 
