@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import {loginPage, loginUser} from '../controllers/loginController.js';
 import { body } from 'express-validator';
+import { formLimiter, limiter } from '../helpers/limiter.js';
 const router : Router = Router();
 
 const validateUsers = [
@@ -9,8 +10,7 @@ const validateUsers = [
 ];
 
 router.route('/')
-    .get(loginPage)
-    .post(validateUsers, loginUser)
-
+    .get(limiter, loginPage)
+    .post(validateUsers, formLimiter, loginUser)
 
 export default router;

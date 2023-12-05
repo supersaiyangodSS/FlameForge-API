@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import {addUser, registerPage, verifyUser} from "../controllers/registerController.js";
 import { body } from 'express-validator'
+import { formLimiter, limiter } from '../helpers/limiter.js';
 const router : Router = Router();
 
 const validateUser = [
@@ -19,9 +20,9 @@ const validateUser = [
 ]
 
 router.route('/')
-    .get(registerPage)
-    .post(validateUser, addUser)
+    .get(limiter, registerPage)
+    .post(formLimiter, validateUser, addUser)
 
-router.get('/verify', verifyUser);
+router.get('/verify', formLimiter, verifyUser);
 
 export default router;

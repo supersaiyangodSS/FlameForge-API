@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import { modifySettings, reportPage, sendReport } from '../controllers/miscController.js';
 import { body } from 'express-validator';
+import { formLimiter, limiter } from '../helpers/limiter.js';
+import { checkAuthAdmin } from '../app.js';
 const router : Router = Router();
 
 const validateReport = [
@@ -11,10 +13,10 @@ const validateReport = [
 ]
 
 router.route('/report')
-    .get(reportPage)
-    .post(validateReport, sendReport);
+    .get(limiter, reportPage)
+    .post(validateReport, formLimiter, sendReport);
 
 router.route('/setting')
-    .post(modifySettings);
+    .post(formLimiter, checkAuthAdmin, modifySettings);
 
 export default router;
