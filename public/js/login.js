@@ -47,3 +47,16 @@ form.addEventListener('submit', (e) => {
     }
 });
 
+const showPasswordBtn = document.getElementById('showPasswordBtn');
+const showHideIcon = document.querySelector('.show-hide-icon');
+
+showPasswordBtn.addEventListener('click', () => {
+    if(showHideIcon.textContent == 'visibility_off') {
+        showHideIcon.textContent = 'visibility';
+        passwordInput.type = 'text';
+    }
+    else {
+        showHideIcon.textContent = 'visibility_off';
+        passwordInput.type = 'password';
+    }
+})

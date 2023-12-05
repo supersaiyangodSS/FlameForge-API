@@ -64,7 +64,22 @@ form.addEventListener('submit', (e) => {
     }
     if (!valid) {
         e.preventDefault();
-        // e.stopPropagation();
     }
     console.log('Register');
+});
+
+const showPasswordBtn = document.getElementById('showPasswordBtn');
+const showHideIcon = document.querySelector('.show-hide-icon');
+
+showPasswordBtn.addEventListener('click', () => {
+    if (showHideIcon.textContent == 'visibility_off') {
+        showHideIcon.textContent = 'visibility';
+        password.type = 'text'
+        confirmPassword.type = 'text'
+    }
+    else {
+        showHideIcon.textContent = 'visibility_off';
+        password.type = 'password';
+        confirmPassword.type = 'password'
+    }
 });
