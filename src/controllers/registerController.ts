@@ -27,6 +27,7 @@ const registerPage = async (req: Request, res: Response) => {
                 title: "Unauthorized",
             });
         }
+        logger.silly(`${req.ip} requested Registration Page`)
         return res.status(200).render('register', {
             title: "FlameForgeAPI Sign Up",
             messages: req.flash()
