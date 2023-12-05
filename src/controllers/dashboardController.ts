@@ -8,6 +8,7 @@ import { join } from 'path';
 import { writeFileSync, unlinkSync } from 'fs';
 import { __dirname } from "../app.js";
 import { logger } from "../helpers/logger.js";
+import Setting from "../models/settingsModel.js";
 
 const getDashboard = async (req: Request, res: Response) => {
     if (req.session && req.session.user) {
@@ -28,6 +29,7 @@ const getDashboard = async (req: Request, res: Response) => {
             '-versionRelease'
         ).lean();
         const artifactCount = await Artifact.countDocuments();
+        const settings = await Setting.findOne({ settingType: 'global' }).lean()
         const userId = req.session.uid;
         const loggedUser = await User.findById(userId).lean();
         if (!loggedUser) {
@@ -49,7 +51,9 @@ const getDashboard = async (req: Request, res: Response) => {
             loggedUser: loggedUser,
             characterCount,
             weaponCount,
-            artifactCount
+            artifactCount,
+            settings
+
         }
         return res.render('dashboard', locals);
 
