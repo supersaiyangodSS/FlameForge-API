@@ -6,7 +6,7 @@ import { compare } from 'bcrypt';
 
 const loginPage = (req: Request, res: Response) => {
     res.render('login', {
-        title: 'FlameForgeAPI Login',
+        title: 'Login',
         messages: req.flash(),
     }); 
 }
