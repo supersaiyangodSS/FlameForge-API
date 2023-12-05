@@ -32,7 +32,12 @@
         <label for="username" class="font-regular text-sm mt-3">Username</label>
         <input type="text" name="username" id="username" class="p-2 border-t-2 border-b-2 bg-slate-700 border-teal-700 placeholder:opacity-50 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="pheonix" required>
         <label for="password" class="font-regular text-sm mt-3">Password</label>
-        <input type="password" name="password" id="password" class="p-2 border-t-2 border-b-2 bg-slate-700 border-teal-700 placeholder:opacity-50 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="jean@123" required>
+        <div class="relative">
+        <input type="password" name="password" id="password" class=" w-full p-2 border-t-2 border-b-2 bg-slate-700 border-teal-700 placeholder:opacity-50 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="jean@123" required>
+        <button type="button" id="showPasswordBtn" class="absolute text-slate-400 right-2 top-2 rounded-full bg-slate-700 p-1.5 flex">
+          <span class="material-symbols-outlined show-hide-icon">visibility_off</span>
+        </button>
+        </div>
         <label for="confirmPassword" class="font-regular text-sm mt-3">Confirm Password</label>
         <input type="password" name="confirmPassword" id="confirmPassword" class="p-2 border-t-2 border-b-2 bg-slate-700 placeholder:opacity-50 border-teal-700 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="jean@123" required>
         <button type="submit" class="btn py-3 border-4 rounded-2xl border-teal-400 hover:bg-teal-400 mt-3 font-regular transition-colors ease-linear font-semibold">Sign Up</button>

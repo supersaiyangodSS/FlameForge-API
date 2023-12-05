@@ -20,7 +20,12 @@
         <label for="email" class="font-regular text-sm mt-3">Email</label>
         <input type="email" name="email" id="email" class="p-2 border-t-2 border-b-2 placeholder:opacity-50 bg-slate-700 border-teal-700 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="dawnwinery@gmail.com" required>
         <label for="password" class="font-regular text-sm mt-3">Password</label>
-        <input type="password" name="password" id="password" class="p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-700 border-teal-700 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="jean@123" required>
+        <div class="relative">
+        <input type="password" name="password" id="password" class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-700 border-teal-700 rounded-md mt-1 mb-3 outline-none focus:border-teal-300" placeholder="jean@123" required>
+        <button type="button" id="showPasswordBtn" class="absolute text-slate-400 right-2 top-2 rounded-full bg-slate-700 p-1.5 flex">
+          <span class="material-symbols-outlined show-hide-icon">visibility_off</span>
+        </button>
+        </div>
         <button type="submit" id="login" class="btn py-3 border-4 border-teal-400 rounded-2xl hover:bg-teal-400 mt-3 font-regular transition-colors ease-linear font-semibold">Log In</button>
     </form>
 
