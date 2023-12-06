@@ -54,12 +54,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(sessions);
 app.use(flash());
-app.use(cors())
+app.use(cors({
+    origin: "http://localhost:4000"
+}))
 app.use(express.static('public'));
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'", 'code.jquery.com', 'cdnjs.cloudflare.com'],
+        scriptSrc: ["'self'", 'code.jquery.com', 'cdnjs.cloudflare.com'],
         styleSrc: ["'self'", 'fonts.googleapis.com', 'cdnjs.cloudflare.com'],
         fontSrc: ["'self'", 'fonts.gstatic.com', 'cdnjs.cloudflare.com'],
         imgSrc: ["'self'", 'data:', '*'], // change to main images src for api and assets
@@ -73,14 +75,18 @@ app.use(helmet.contentSecurityPolicy({
 }));
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 app.use(helmet.frameguard({ action: 'sameorigin' }));
-// app.use(helmet.hsts({
-//     maxAge: 31536000,
-//     includeSubDomains: true,
-//     preload: true
-// }))
+app.use(helmet.hsts({
+    maxAge: 31536000,
+    includeSubDomains: true,
+    preload: true
+}))
 app.use(helmet.hidePoweredBy());
 app.use(helmet.noSniff());
 app.use(helmet.xssFilter());
+app.use((req, res, next) => {
+    res.setHeader('Permissions-policy', '');
+    next();
+});
 
 app.set('views', viewsPath);
 app.use('/sign-in', loginRouter);
