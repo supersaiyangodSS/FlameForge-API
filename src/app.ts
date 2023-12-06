@@ -14,6 +14,8 @@ import { randomBytes } from 'crypto';
 import session from 'express-session';
 import flash from 'connect-flash';
 import { eq } from './helpers/helper.js';
+import cors from 'cors';
+import helmet from 'helmet';
 connectDB();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -52,7 +54,34 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(sessions);
 app.use(flash());
+app.use(cors())
 app.use(express.static('public'));
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", 'code.jquery.com', 'cdnjs.cloudflare.com'],
+        styleSrc: ["'self'", 'fonts.googleapis.com', 'cdnjs.cloudflare.com'],
+        fontSrc: ["'self'", 'fonts.gstatic.com', 'cdnjs.cloudflare.com'],
+        imgSrc: ["'self'", 'data:', '*'], // change to main images src for api and assets
+        connectSrc: ["'self'", 'fonts.googleapis.com', 'cdnjs.cloudflare.com'],
+        manifestSrc: ["'self'"],
+        workerSrc: ["'self'", 'blob:'],
+        frameAncestors: ["'self'"],
+        formAction: ["'self'"],
+        frameSrc: ["'self'", 'cdnjs.cloudflare.com']
+    }
+}));
+app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
+app.use(helmet.frameguard({ action: 'sameorigin' }));
+// app.use(helmet.hsts({
+//     maxAge: 31536000,
+//     includeSubDomains: true,
+//     preload: true
+// }))
+app.use(helmet.hidePoweredBy());
+app.use(helmet.noSniff());
+app.use(helmet.xssFilter());
+
 app.set('views', viewsPath);
 app.use('/sign-in', loginRouter);
 app.use('/sign-up', registerRouter);
