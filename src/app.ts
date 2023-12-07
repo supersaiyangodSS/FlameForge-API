@@ -61,8 +61,8 @@ app.use(express.static('public'));
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", 'code.jquery.com', 'cdnjs.cloudflare.com'],
-        styleSrc: ["'self'", 'fonts.googleapis.com', 'cdnjs.cloudflare.com'],
+        scriptSrc: ["'self'", "'unsafe-inline'", 'code.jquery.com', 'cdnjs.cloudflare.com', 'cdn.jsdeliver.net', '*'], // FIXME:
+        styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com', 'cdnjs.cloudflare.com'],
         fontSrc: ["'self'", 'fonts.gstatic.com', 'cdnjs.cloudflare.com'],
         imgSrc: ["'self'", 'data:', '*'], // change to main images src for api and assets
         connectSrc: ["'self'", 'fonts.googleapis.com', 'cdnjs.cloudflare.com'],
