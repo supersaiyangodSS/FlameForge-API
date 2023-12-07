@@ -6,10 +6,8 @@ const home = document.getElementById('nav-0');
 const admin = document.getElementById('nav-4');
 const people = document.getElementById('nav-5');
 const settings = document.getElementById('nav-6');
-
 const contentData = document.getElementById('content-data');
 const heading = document.getElementById('heading');
-
 const homeContent = document.getElementById('content-0');
 const charactersContent = document.getElementById('content-1');
 const weaponsContent = document.getElementById('content-2');
@@ -17,6 +15,26 @@ const artifactsContent = document.getElementById('content-3');
 const adminContent = document.getElementById('content-4');
 const peopleContent = document.getElementById('content-5');
 const settingsContent = document.getElementById('content-6');
+const closeBtn = document.getElementById('btn-modal-close');
+const loginModal = document.getElementById('modal');
+const navLogoutBtn = document.getElementById('nav-logout');
+const isCharacters = document.getElementById('no-characters');
+const isWeapons = document.getElementById('no-weapons');
+const isArtifacts = document.getElementById('no-artifacts');
+const searchBar = document.getElementById('searchInput');
+const deleteArtifactBtns = document.querySelectorAll('.delete-artifact-btn');
+const modalDeleteArtifact = document.getElementById('modal-delete-artifact');
+const confirmDeleteBtnArtifact = document.getElementById('btn-modal-delete-artifact');
+const deleteWeaponBtns = document.querySelectorAll('.delete-weapon-btn');
+const modalDeleteWeapon = document.getElementById('modal-delete-weapon');
+const confirmDeleteBtnWeapon = document.getElementById('btn-modal-delete-weapon');
+const deleteCharacterBtns = document.querySelectorAll('.delete-character-btn');
+const modalDeleteCharacter = document.getElementById('modal-delete-character');
+const confirmDeleteBtn = document.getElementById('btn-modal-delete');
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const sidebar = document.getElementById('sidebar-main');
+const copyButtons = document.querySelectorAll('.copyBtn');
+const deleteBtn = document.getElementById('btn-delete');
 
 function showTitle(title) {
     heading.innerText = title;
@@ -25,37 +43,19 @@ function showTitle(title) {
 const characterTitle = characters.innerText;
 const weaponsTitle = weapons.innerText;
 const artifcatsTitle = artifacts.innerText;
-const peopleTitle = 'People'
-const settingsTitle = 'Settings'
-const adminTitle = 'Admin Control'
-const welcomTitle = 'Welcome To FlameForge'
+const peopleTitle = 'People';
+const settingsTitle = 'Settings';
+const adminTitle = 'Admin Control';
+const welcomTitle = 'Welcome To FlameForge';
 
-showTitle(welcomTitle)
 
-// function loadDefaults() {
-//     let activeNav = localStorage.getItem('activeNav');
-//     let activeContent = localStorage.getItem('activeContent');
-//     if (!activeNav || !activeContent) {
-//         activeNav = 1;
-//         activeContent = 1;
-//     }
-//     // showTitle('');
-//     // charactersContent.style.display = 'none';
-//     // weaponsContent.style.display = 'none';
-//     // artifactsContent.style.display = 'none'
-//     // poepleContent.style.display = 'none';
-//     // settingsContent.style.display = 'none';
-//     // homeContent.style.display = 'block';
-//     toggleActive(activeNav);
-//     toggleContent(activeContent)
-// }
 function loadDefaults() {
     let activeNav = localStorage.getItem('activeNav') || 1;
     let activeContent = localStorage.getItem('activeContent') || 1;
     toggleActive(activeNav);
     toggleContent(activeContent);
 }
-loadDefaults();
+
 function toggleActive(navOrder) {
     for (let i = 1; i <= 5; i++) {
         document.getElementById(`nav-${i}`).classList.remove('light-gray');
@@ -72,23 +72,20 @@ function toggleContent(contentOrder) {
     localStorage.setItem('activeContent', contentOrder);
 }
 
-
 home.addEventListener('click', () => {
     toggleContent(0);
     showTitle('');
     sidebar.classList.toggle('sidebar-mob');
-    // body.classList.toggle('sm:body-overflow');
     if (body.classList.contains('body-overflow')) {
         body.classList.remove('body-overflow')
     }
-})
+});
 
 characters.addEventListener('click', () => {
     toggleContent(1);
     toggleActive(1)
     showTitle(characterTitle)
     sidebar.classList.toggle('sidebar-mob');
-    // body.classList.toggle('sm:body-overflow');
     if (body.classList.contains('body-overflow')) {
         body.classList.remove('body-overflow')
     }
@@ -99,7 +96,6 @@ weapons.addEventListener('click', () => {
     toggleActive(2)
     showTitle(weaponsTitle)
     sidebar.classList.toggle('sidebar-mob');
-    // body.classList.toggle('sm:body-overflow');
     if (body.classList.contains('body-overflow')) {
         body.classList.remove('body-overflow')
     }
@@ -110,7 +106,6 @@ artifacts.addEventListener('click', () => {
     toggleActive(3)
     showTitle(artifcatsTitle)
     sidebar.classList.toggle('sidebar-mob');
-    // body.classList.toggle('sm:body-overflow');
     if (body.classList.contains('body-overflow')) {
         body.classList.remove('body-overflow')
     }
@@ -122,7 +117,6 @@ if (adminContent && admin) {
         toggleActive(4)
         showTitle(adminTitle);
         sidebar.classList.toggle('sidebar-mob');
-        // body.classList.toggle('sm:body-overflow');
         if (body.classList.contains('body-overflow')) {
             body.classList.remove('body-overflow')
         }
@@ -133,7 +127,6 @@ people.addEventListener('click', () => {
     toggleContent(5);
     showTitle(peopleTitle);
     sidebar.classList.toggle('sidebar-mob');
-    // body.classList.toggle('sm:body-overflow');
     if (body.classList.contains('body-overflow')) {
         body.classList.remove('body-overflow')
     }
@@ -143,7 +136,6 @@ settings.addEventListener('click', () => {
     toggleContent(6)
     showTitle(settingsTitle);
     sidebar.classList.toggle('sidebar-mob');
-    // body.classList.toggle('sm:body-overflow');
     if (body.classList.contains('body-overflow')) {
         body.classList.remove('body-overflow')
     }
@@ -156,19 +148,9 @@ function handleFileInputDisplay(uploadFile, file_display) {
     fileInput.addEventListener('change', (e) => {
         const fileName = e.target.files[0].name;
         fileDisplay.innerText = fileName;
-    })
+    });
 }
 
-handleFileInputDisplay('uploadFile', 'file_display');
-handleFileInputDisplay('uploadFile2', 'file_display2');
-handleFileInputDisplay('uploadFile3', 'file_display3');
-
-
-//test only
-// toggleContent(4);
-
-
-const deleteBtn = document.getElementById('btn-delete');
 function accountDeleteConfirmation() {
     const deleteInput = document.getElementById('input-delete');
     deleteInput.addEventListener('input', () => {
@@ -186,7 +168,6 @@ function accountDeleteConfirmation() {
 const deleteAccount = async () => {
     const userId = deleteBtn.dataset.userid;
     try {
-        // const response = await axios.delete(`http://localhost:4000/dashboard/delete/${userId}`);
         const response = await axios.delete(`/dashboard/delete/${userId}`);
         const status = response.status;
         if (status === 404) {
@@ -203,11 +184,9 @@ const deleteAccount = async () => {
     }
 }
 
-deleteBtn.addEventListener('click', () => {
-    deleteAccount()
-});
+let alertBoxTimer = null;
+let alertBoxErrorTimer = null;
 
-let alertBoxTimer;
 function showAlertBox(msg) {
     const alertBox = document.getElementById('alertBox');
     alertBox.textContent = msg;
@@ -217,11 +196,9 @@ function showAlertBox(msg) {
     }
     alertBoxTimer = setInterval(() => {
         alertBox.style.top = '-50%';
-        clearInterval(alertBoxTimer)
     }, 3000);
 }
 
-let alertBoxErrorTimer;
 function showAlertErrorBox(msg) {
     const alertBox = document.getElementById('alertBoxError');
     alertBox.textContent = msg;
@@ -231,17 +208,11 @@ function showAlertErrorBox(msg) {
     }
     alertBoxErrorTimer = setInterval(() => {
         alertBox.style.top = '-50%';
-        clearInterval(alertBoxErrorTimer)
     }, 3000);
 }
 
-// test
-
-const copyButtons = document.querySelectorAll('.copyBtn');
-
 copyButtons.forEach(button => {
     button.addEventListener('click', () => {
-
         const codeId = button.getAttribute('data-code');
         const codeToCopy = document.getElementById(codeId).innerText;
         navigator.clipboard.writeText(codeToCopy)
@@ -251,46 +222,29 @@ copyButtons.forEach(button => {
             .catch(err => {
                 showAlertBox('Could not copy to clipboard', err);
             });
-    })
+    });
 });
-
-
-accountDeleteConfirmation();
 
 function hideLoader() {
     const loader = document.getElementById('loader');
     loader.style.display = 'none';
 }
 
-window.addEventListener('load', hideLoader);
-
 function hideModal() {
     const modal = document.getElementById('modal');
     modal.style.display = 'none';
 }
 
-const closeBtn = document.getElementById('btn-modal-close');
-closeBtn.addEventListener('click', () => {
-    hideModal();
-});
-
-const loginModal = document.getElementById('modal');
-const navLogoutBtn = document.getElementById('nav-logout');
 navLogoutBtn.addEventListener('click', () => {
     loginModal.style.display = 'block';
 });
 
-const hamburgerBtn = document.getElementById('hamburger-btn')
-const sidebar = document.getElementById('sidebar-main')
 
 hamburgerBtn.addEventListener('click', () => {
     body.classList.toggle('body-overflow');
     sidebar.classList.toggle('sidebar-mob');
 });
 
-const deleteCharacterBtns = document.querySelectorAll('.delete-character-btn');
-const modalDeleteCharacter = document.getElementById('modal-delete-character');
-const confirmDeleteBtn = document.getElementById('btn-modal-delete');
 
 deleteCharacterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -314,9 +268,6 @@ deleteCharacterBtns.forEach((btn) => {
     });
 });
 
-const deleteWeaponBtns = document.querySelectorAll('.delete-weapon-btn');
-const modalDeleteWeapon = document.getElementById('modal-delete-weapon');
-const confirmDeleteBtnWeapon = document.getElementById('btn-modal-delete-weapon');
 
 deleteWeaponBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -339,10 +290,6 @@ deleteWeaponBtns.forEach((btn) => {
     });
 });
 
-const deleteArtifactBtns = document.querySelectorAll('.delete-artifact-btn');
-const modalDeleteArtifact = document.getElementById('modal-delete-artifact');
-const confirmDeleteBtnArtifact = document.getElementById('btn-modal-delete-artifact');
-
 deleteArtifactBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
         modalDeleteArtifact.classList.remove('hidden');
@@ -364,10 +311,7 @@ deleteArtifactBtns.forEach((btn) => {
     });
 });
 
-const isCharacters = document.getElementById('no-characters');
-const isWeapons = document.getElementById('no-weapons');
-const isArtifacts = document.getElementById('no-artifacts');
-const searchBar = document.getElementById('searchInput');
+
 searchBar.addEventListener('input', () => {
     const searchTerm = searchBar.value.toLowerCase();
 
@@ -453,4 +397,21 @@ const showUploadBtn = () => {
     });
 }
 
-window.addEventListener('load', showUploadBtn);
+deleteBtn.addEventListener('click', () => {
+    deleteAccount()
+});
+
+closeBtn.addEventListener('click', () => {
+    hideModal();
+});
+
+window.addEventListener('load', () => {
+    showUploadBtn()
+    loadDefaults();
+    showTitle(welcomTitle)
+    handleFileInputDisplay('uploadFile', 'file_display');
+    handleFileInputDisplay('uploadFile2', 'file_display2');
+    handleFileInputDisplay('uploadFile3', 'file_display3');
+    accountDeleteConfirmation();
+    hideLoader();
+});

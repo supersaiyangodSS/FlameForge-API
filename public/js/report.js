@@ -1,4 +1,6 @@
-let alertBoxTimer;
+let alertBoxTimer = null;
+let alertBoxErrorTimer = null;
+
 function showAlertBox(msg) {
     const alertBox = document.getElementById('alertBox');
     alertBox.textContent = msg;
@@ -8,11 +10,9 @@ function showAlertBox(msg) {
     }
     alertBoxTimer = setInterval(() => {
         alertBox.style.top = '-50%';
-        clearInterval(alertBoxTimer)
     }, 3000);
 }
 
-let alertBoxErrorTimer;
 function showAlertErrorBox(msg) {
     const alertBox = document.getElementById('alertBoxError');
     alertBox.textContent = msg;
@@ -22,7 +22,6 @@ function showAlertErrorBox(msg) {
     }
     alertBoxErrorTimer = setInterval(() => {
         alertBox.style.top = '-50%';
-        clearInterval(alertBoxErrorTimer)
     }, 3000);
 }
 

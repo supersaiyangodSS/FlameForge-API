@@ -1,4 +1,6 @@
 let alertBoxTimer = null;
+let alertBoxErrorTimer = null;
+
 function showAlertBox(msg) {
     const alertBox = document.getElementById('alertBox');
     alertBox.textContent = msg;
@@ -12,17 +14,16 @@ function showAlertBox(msg) {
     }, 3000);
 }
 
-let alertBoxErrorTimer;
 function showAlertErrorBox(msg) {
     const alertBox = document.getElementById('alertBoxError');
     alertBox.textContent = msg;
     alertBox.style.top = '3%'
+
     if (alertBoxErrorTimer) {
         clearInterval(alertBoxErrorTimer);
     }
     alertBoxErrorTimer = setInterval(() => {
         alertBox.style.top = '-50%';
-        clearInterval(alertBoxErrorTimer)
     }, 3000);
 }
 
@@ -44,31 +45,25 @@ confirmSave.addEventListener('input', () => {
         saveBtn.classList.add('disable-save-btn')
     }
 });
-window.addEventListener('load', () => {
+
     if (confirmSave.value === 'GENSHIN') {
         saveBtn.classList.remove('disable-save-btn');
     }
     else {
         saveBtn.classList.add('disable-save-btn');
     }
-})
 
 const characterName = document.getElementById('name');
 const birthDay = document.getElementById('birthday');
 const versionRelease = document.getElementById('vr');
 const model = document.getElementById('model');
-
 const fiveStar = document.getElementsByName('rarity');
-
 const desc = document.getElementById('desc');
 const vision = document.getElementsByName('vision');
 const weapon = document.getElementsByName('weapon')
-// const region = document.getElementsByName('region')
-
 const linkProfile = document.getElementById('imgProfile');
 const linkCard = document.getElementById('imgCard');
 const linkGacha = document.getElementById('imgGacha');
-
 const title = document.getElementById('title');
 const wikiUrl = document.getElementById('wikiUrl');
 const constellation = document.getElementById('constellation');
@@ -158,4 +153,4 @@ saveBtn.addEventListener('click', (event) => {
     if (!valid) {
         event.preventDefault();
     }
-})
+});

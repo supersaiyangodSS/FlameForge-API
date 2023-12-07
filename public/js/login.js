@@ -1,4 +1,6 @@
-let alertBoxTimer;
+let alertBoxTimer = null;
+let alertBoxErrorTimer = null;
+
 function showAlertBox(msg) {
     const alertBox = document.getElementById('alertBox');
     alertBox.textContent = msg;
@@ -8,11 +10,9 @@ function showAlertBox(msg) {
     }
     alertBoxTimer = setInterval(() => {
         alertBox.style.top = '-50%';
-        clearInterval(alertBoxTimer)
     }, 3000);
 }
 
-let alertBoxErrorTimer;
 function showAlertErrorBox(msg) {
     const alertBox = document.getElementById('alertBoxError');
     alertBox.textContent = msg;
@@ -22,13 +22,11 @@ function showAlertErrorBox(msg) {
     }
     alertBoxErrorTimer = setInterval(() => {
         alertBox.style.top = '-50%';
-        clearInterval(alertBoxErrorTimer)
     }, 3000);
-}
+} 
 
 const form = document.getElementById('loginForm');
 const loginBtn = document.getElementById('login');
-
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 
@@ -39,8 +37,8 @@ form.addEventListener('submit', (e) => {
         valid = false;
     }
     else if (password === '' || passwordInput.value.length < 8) {
-            showAlertBoxLogin('Password should be atleast 8 characters long');
-            valid = false;
+        showAlertBoxLogin('Password should be atleast 8 characters long');
+        valid = false;
     }
     else if (!valid) {
         e.preventDefault();
@@ -51,7 +49,7 @@ const showPasswordBtn = document.getElementById('showPasswordBtn');
 const showHideIcon = document.querySelector('.show-hide-icon');
 
 showPasswordBtn.addEventListener('click', () => {
-    if(showHideIcon.textContent == 'visibility_off') {
+    if (showHideIcon.textContent == 'visibility_off') {
         showHideIcon.textContent = 'visibility';
         passwordInput.type = 'text';
     }
@@ -59,4 +57,4 @@ showPasswordBtn.addEventListener('click', () => {
         showHideIcon.textContent = 'visibility_off';
         passwordInput.type = 'password';
     }
-})
+});
