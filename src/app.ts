@@ -6,6 +6,7 @@ import loginRouter from './routes/loginRouter.js';
 import registerRouter from './routes/registerRouter.js';
 import dashboardRouter from "./routes/dashboardRouter.js";
 import miscRouter from './routes/miscRouter.js';
+import apiRouter from './api/routes/apiRouter.js';
 import { logger } from './helpers/logger.js';
 import exphbs, { create } from 'express-handlebars';
 import { join, dirname } from 'path';
@@ -93,6 +94,7 @@ app.use('/sign-in', loginRouter);
 app.use('/sign-up', registerRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/misc', miscRouter);
+app.use('/api/v1/', apiRouter);
 app.use(( req : Request , res : Response , next : NextFunction ) => {
     logger.info(`Request Received ${req.method} ${req.hostname} ${req.url} ${req.ip}`);
     console.log(`Request Received ${req.method} ${req.hostname} ${req.url} ${req.ip}`);
@@ -136,34 +138,8 @@ export function checkAuthAdmin (req: Request, res: Response, next: NextFunction)
 }
 
 app.get('/', ( req : Request , res : Response) => {
-    res.render('home', {
+    res.render('homepage', {
         title: "Homepage"
-    });
-});
-
-// fix
-app.get('/401', ( req : Request , res : Response) => {
-    res.render('401', {
-        title: "401! Unauthorized!"
-    });
-});
-// fix
-app.get('/500', ( req : Request , res : Response) => {
-    res.render('500', {
-        title: "500! Internal Server Error!"
-    });
-});
-// fix
-app.get('/404', ( req : Request , res : Response) => {
-    res.render('404', {
-        title: "404! Not Found!"
-    });
-});
-
-app.get('/test', ( req : Request , res : Response) => {
-    res.render('emailSent', {
-        title: "Email Sent Successully!",
-        email: "vedantsapalkar99@gmail.com"
     });
 });
 
@@ -172,8 +148,6 @@ app.get('/report', ( req : Request , res : Response) => {
         title: "Report Portal",
     });
 });
-
-
 
 app.get('*', ( req: Request , res : Response) => {
     res.render('404', {
