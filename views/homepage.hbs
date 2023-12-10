@@ -9,20 +9,55 @@
 
 <body class="bg-red-400">
     <div class="main-container flex poppins">
-        
-        <div id="sidebar" class="w-1/6 fixed top-0 left-0 bottom-0 bg-gray-200 border-r-2 border-slate-400">
-            <p class="title text-2xl text-center my-4 font-semibold">FlameForge API</p>
 
-            <ul class="my-2 mx-2">
-                <li class="py-2 font-semibold">Characters</li>
-                <ul>
-                    <li class="my-3 ml-4"><a class="hover:text-emerald-400" href="#">Fetch a Character</a></li>
-                    <li class="my-2 ml-4"><a class="hover:text-emerald-400" href="#">Fetch All Characters</a></li>
+        <div id="sidebar" class="w-full md:w-1/6 flex flex-col justify-between fixed top-0 left-0 bottom-0 bg-gray-200 border-r-2 border-slate-400 py-4">
+
+            <div>
+
+            <div class="flex justify-evenly items-center bg-gray-800 mx-2 p-2 rounded-lg">
+                <p class="title text-2xl text-center text-gray-200 font-semibold">FlameForge API</p>
+            </div>
+                <ul class="mb-2 mx-2 p-2">
+                    <li class=" font-semibold uppercase">Characters</li>
+                    <ul >
+                        <li class="my-3 ml-4"><a class="hover:text-emerald-400" href="#fetch-single-character">Fetch
+                                Single Character</a></li>
+                        <li class="my-2 ml-4"><a class="hover:text-emerald-400" href="#fetch-all-characters">Fetch All
+                                Characters</a></li>
+                    </ul>
+
+                    <li class="mt-4 font-semibold">Weapons</li>
+                    <ul >
+                        <li class="my-3 ml-4"><a class="hover:text-emerald-400" href="#fetch-single-weapon">Fetch Single
+                                Weapon</a></li>
+                        <li class="my-2 ml-4"><a class="hover:text-emerald-400" href="#fetch-all-weapons">Fetch All
+                                Weapons</a></li>
+                    </ul>
+
+                    <li class="mt-4 font-semibold">Artifacts</li>
+                    <ul>
+                        <li class="my-3 ml-4"><a class="hover:text-emerald-400" href="#fetch-single-artifact">Fetch
+                                Single Artifact</a></li>
+                        <li class="my-2 ml-4"><a class="hover:text-emerald-400" href="#fetch-all-artifacts">Fetch All
+                                Artifacts</a></li>
+                    </ul>
                 </ul>
-            </ul>
+            </div>
+
+                <ul class="bg-gray-300 mx-2 mt-4 p-2 rounded-lg text-gray-600">
+                    {{!-- <li class="font-semibold pt-4">Contribution</li> --}}
+                    <ul>
+                        <li class="my-3 ml-4"><a class="hover:text-emerald-400 flex items-center" href="#"><i
+                                    class="fas fa-wrench mr-2 text-lg"></i>Dashboard Programm</a></li>
+                        <li class="my-3 ml-4"><a class="hover:text-emerald-400" href="#"><i
+                                    class="fab fa-github mr-2 text-lg"></i>Github</a></li>
+                    </ul>
+                    <p class="text-slate-500 poppins text-xs text-center py-4">v1.0.0 ~ FlameForge API</p>
+                </ul>
+
         </div>
 
-        <div id="content" class="w-5/6 fixed top-0 bottom-0 right-0 bg-emerald-300">
+        <div id="content" class="1/6 md:w-5/6 fixed top-0 bottom-0 right-0 bg-emerald-300">
             test
         </div>
 
