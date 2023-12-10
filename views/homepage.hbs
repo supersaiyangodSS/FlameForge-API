@@ -9,12 +9,21 @@
 
 <body class="bg-red-400">
     <div class="main-container flex poppins">
-        <div id="sidebar" class="w-1/5 fixed top-0 left-0 bottom-0 bg-gray-200 border-r-2 border-slate-400">
-            <p class="title text-center">FlameForge API</p>
+        
+        <div id="sidebar" class="w-1/6 fixed top-0 left-0 bottom-0 bg-gray-200 border-r-2 border-slate-400">
+            <p class="title text-2xl text-center my-4 font-semibold">FlameForge API</p>
 
-            <ul>
-                <li>Characters</li>
+            <ul class="my-2 mx-2">
+                <li class="py-2 font-semibold">Characters</li>
+                <ul>
+                    <li class="my-3 ml-4"><a class="hover:text-emerald-400" href="#">Fetch a Character</a></li>
+                    <li class="my-2 ml-4"><a class="hover:text-emerald-400" href="#">Fetch All Characters</a></li>
+                </ul>
             </ul>
+        </div>
+
+        <div id="content" class="w-5/6 fixed top-0 bottom-0 right-0 bg-emerald-300">
+            test
         </div>
 
     </div>
