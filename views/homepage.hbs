@@ -7,38 +7,46 @@
     <title>{{title}}</title>
 </head>
 
-<body class="bg-red-400">
-    <div class="main-container flex poppins">
+<body>
+    <div class="main-container flex poppins text-sm main-homepage">
 
-        <div id="sidebar" class="w-full md:w-1/6 flex flex-col justify-between fixed top-0 left-0 bottom-0 bg-gray-200 border-r-2 border-slate-400 py-4">
+        <nav class="md:hidden fixed top-0 left-0 right-0 bg-gray-800 z-40 flex justify-between items-center p-4">
+            <p class="text-emerald-300 text-2xl font-semibold">FlameForge</p>
+            <button id="hamburger-btn"><span class="material-symbols-outlined text-3xl text-gray-300">menu</span></button>
+        </nav>
+
+        <div id="sidebar" class="hidden md:flex w-full md:w-1/6 flex-col justify-between fixed top-0 left-0 bottom-0 bg-gray-200 border-r-2 border-gray-400 py-4 z-50 box-border">
 
             <div>
 
-            <div class="flex justify-evenly items-center bg-gray-800 mx-2 p-2 rounded-lg">
-                <p class="title text-2xl text-center text-gray-200 font-semibold">FlameForge API</p>
+            <div class="flex justify-evenly items-center bg-gray-800 mx-2 p-4 rounded-t-lg">
+                <div class="text-center">
+                <p class="title text-2xl text-emerald-300 font-semibold">FlameForge API</p>
+                <p class="text-xs text-gray-200 mt-1">Unleash the Genshin Impact API (unofficial)</p>
+                </div>
             </div>
-                <ul class="mb-2 mx-2 p-2">
-                    <li class=" font-semibold uppercase">Characters</li>
-                    <ul >
-                        <li class="my-3 ml-4"><a class="hover:text-emerald-400" href="#fetch-single-character">Fetch
+                <ul class="mx-2 p-4 bg-gray-900 rounded-b-lg text-white overflow-y-auto relative">
+                    <li class="mt-2 font-semibold uppercase text-xl border-b-2 border-emerald-300 text-emerald-300">Characters</li>
+                    <ul>
+                        <li class="my-3 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center" href="#fetch-single-character"><span class="material-symbols-outlined">keyboard_arrow_right</span>Fetch
                                 Single Character</a></li>
-                        <li class="my-2 ml-4"><a class="hover:text-emerald-400" href="#fetch-all-characters">Fetch All
+                        <li class="my-2 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center" href="#fetch-all-characters"><span class="material-symbols-outlined">keyboard_arrow_right</span>Fetch All
                                 Characters</a></li>
                     </ul>
 
-                    <li class="mt-4 font-semibold">Weapons</li>
+                    <li class="mt-6 font-semibold uppercase text-xl  border-b-2 border-emerald-300 text-emerald-300">Weapons</li>
                     <ul >
-                        <li class="my-3 ml-4"><a class="hover:text-emerald-400" href="#fetch-single-weapon">Fetch Single
+                        <li class="my-3 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center" href="#fetch-single-weapon"><span class="material-symbols-outlined">keyboard_arrow_right</span>Fetch Single
                                 Weapon</a></li>
-                        <li class="my-2 ml-4"><a class="hover:text-emerald-400" href="#fetch-all-weapons">Fetch All
+                        <li class="my-2 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center" href="#fetch-all-weapons"><span class="material-symbols-outlined">keyboard_arrow_right</span>Fetch All
                                 Weapons</a></li>
                     </ul>
 
-                    <li class="mt-4 font-semibold">Artifacts</li>
+                    <li class="mt-6 font-semibold uppercase text-xl border-b-2 border-emerald-300 text-emerald-300">Artifacts</li>
                     <ul>
-                        <li class="my-3 ml-4"><a class="hover:text-emerald-400" href="#fetch-single-artifact">Fetch
+                        <li class="my-3 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center" href="#fetch-single-artifact"><span class="material-symbols-outlined">keyboard_arrow_right</span>Fetch
                                 Single Artifact</a></li>
-                        <li class="my-2 ml-4"><a class="hover:text-emerald-400" href="#fetch-all-artifacts">Fetch All
+                        <li class="my-2 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center" href="#fetch-all-artifacts"><span class="material-symbols-outlined">keyboard_arrow_right</span>Fetch All
                                 Artifacts</a></li>
                     </ul>
                 </ul>
@@ -47,21 +55,31 @@
                 <ul class="bg-gray-300 mx-2 mt-4 p-2 rounded-lg text-gray-600">
                     {{!-- <li class="font-semibold pt-4">Contribution</li> --}}
                     <ul>
-                        <li class="my-3 ml-4"><a class="hover:text-emerald-400 flex items-center" href="#"><i
-                                    class="fas fa-wrench mr-2 text-lg"></i>Dashboard Programm</a></li>
-                        <li class="my-3 ml-4"><a class="hover:text-emerald-400" href="#"><i
+                    
+                        <li class="my-3 ml-4"><a class="hover:text-gray-800 flex items-center" href="#"><i
+                                    class="fas fa-wrench mr-2 text-lg"></i>Dashboard Program</a></li>
+                        <li class="my-3 ml-4"><a class="hover:text-gray-800" href="#"><i
                                     class="fab fa-github mr-2 text-lg"></i>Github</a></li>
                     </ul>
+                    {{!-- <div> --}}
                     <p class="text-slate-500 poppins text-xs text-center py-4">v1.0.0 ~ FlameForge API</p>
+                    {{!-- </div> --}}
                 </ul>
+                    <button id="hamburger-btn-close" class="mt-2 mb-2 bg-gray-800 flex md:hidden p-2 rounded-lg text-emerald-300 fixed right-10 bottom-10 nav-links"><span class="material-symbols-outlined">cancel</span></button>
 
         </div>
 
-        <div id="content" class="1/6 md:w-5/6 fixed top-0 bottom-0 right-0 bg-emerald-300">
-            test
+        <div id="content" class="1/6 md:w-5/6 fixed top-0 bottom-0 right-0 bg-gray-200 overflow-y-auto py-4 mt-16 md:mt-0">
+            <div class="content-container w-full md:w-3/5 px-4 mx-auto">
+                <h2 id="fetch-single-character" class="text-2xl font-semibold text-slate-700">Fetch Single Character</h2>
+                <pre class="language-js">
+<code class="bg-slate-500">http://localhost:4000/character/</code></pre>
+                <p class="text-sm">This API is an independent project and is not officially endorsed by miHoYo/Hoyoverse for Genshin Impact. All copyrights for images and data belong to miHoYo.</p>
+            </div>
         </div>
 
     </div>
+    <script defer src="/js/homepage.js"></script>
 </body>
 
 </html>
