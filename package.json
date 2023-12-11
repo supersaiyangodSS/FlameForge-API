@@ -9,7 +9,7 @@
     "server": "nodemon ./dist/server.js -e js,ts,hbs",
     "build": "npx tailwindcss -i ./src/styles/input.css -o ./public/css/style.css --watch",
     "ts-watch": "tsc -w",
-    "main": "tsc"
+    "make": "tsc"
   },
   "keywords": [
     "Genshin Impact",
