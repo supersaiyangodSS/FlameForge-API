@@ -1,9 +1,10 @@
 import { checkAuth, checkAuthAdmin } from "../app.js";
 import { Router } from "express";
-import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, uploadArtifactFile, editCharacter, editWeapon, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts, editArtifact, saveArtifact, deleteUser } from '../controllers/dashboardController.js'
+import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, uploadArtifactFile, editCharacter, editWeapon, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts, editArtifact, saveArtifact, deleteUser, uploadCharacterImage } from '../controllers/dashboardController.js'
 import multer, { memoryStorage } from 'multer';
 import { body } from 'express-validator';
 import { formLimiter, limiter } from "../helpers/limiter.js";
+import cloudinary from 'cloudinary';
 
 const router : Router = Router();
 
@@ -89,6 +90,8 @@ router.post('/artifact/edit/:id', limiter, checkAuthAdmin, validateArtifact, sav
 router.get('/characters/download', formLimiter, checkAuthAdmin, downloadCharacters);
 router.get('/weapons/download', formLimiter, checkAuthAdmin, downloadWeapons);
 router.get('/artifacts/download', formLimiter, checkAuthAdmin, downloadArtifacts);
+
+router.post('/upload/image/character', uploadCharacterImage);
 
 router.get('/logout', formLimiter, checkAuth, logoutUser);
 router.delete('/delete/:id', formLimiter, checkAuth, deleteUser);

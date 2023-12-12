@@ -26,6 +26,7 @@
     "@types/request-ip": "^0.0.41",
     "bcrypt": "^5.1.1",
     "browser-sync": "^2.29.3",
+    "cloudinary": "^1.41.0",
     "connect-flash": "^0.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
