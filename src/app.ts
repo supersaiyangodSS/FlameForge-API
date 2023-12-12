@@ -17,6 +17,7 @@ import flash from 'connect-flash';
 import { eq } from './helpers/helper.js';
 import cors from 'cors';
 import helmet from 'helmet';
+import cloudinary from 'cloudinary';
 connectDB();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -85,6 +86,13 @@ app.use(( req : Request , res : Response , next : NextFunction ) => {
     logger.info(`Request Received ${req.method} ${req.hostname} ${req.url} ${req.ip}`);
     console.log(`Request Received ${req.method} ${req.hostname} ${req.url} ${req.ip}`);
     next();
+});
+
+cloudinary.v2.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+  secure: true,
 });
 
 // export const checkAuth = ( req : Request , res : Response, next : NextFunction ) => {
