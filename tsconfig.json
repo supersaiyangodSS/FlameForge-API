@@ -11,7 +11,8 @@
     "allowJs": true,
     "baseUrl": "./src",
     "typeRoots": ["./types"],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "useUnknownInCatchVariables": false
   },
   "include": ["src/**/*.ts"],
 }
