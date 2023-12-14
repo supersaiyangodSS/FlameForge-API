@@ -6,6 +6,7 @@ const home = document.getElementById('nav-0');
 const admin = document.getElementById('nav-4');
 const people = document.getElementById('nav-5');
 const settings = document.getElementById('nav-6');
+const images = document.getElementById('nav-7');
 const contentData = document.getElementById('content-data');
 const heading = document.getElementById('heading');
 const homeContent = document.getElementById('content-0');
@@ -15,6 +16,7 @@ const artifactsContent = document.getElementById('content-3');
 const adminContent = document.getElementById('content-4');
 const peopleContent = document.getElementById('content-5');
 const settingsContent = document.getElementById('content-6');
+const imagesContent = document.getElementById('content-7');
 const closeBtn = document.getElementById('btn-modal-close');
 const loginModal = document.getElementById('modal');
 const navLogoutBtn = document.getElementById('nav-logout');
@@ -45,6 +47,7 @@ const weaponsTitle = weapons.innerText;
 const artifcatsTitle = artifacts.innerText;
 const peopleTitle = 'People';
 const settingsTitle = 'Settings';
+const imagesTitle = 'Image Uploader';
 const adminTitle = 'Admin Control';
 const welcomTitle = 'Welcome To FlameForge';
 
@@ -52,12 +55,15 @@ const welcomTitle = 'Welcome To FlameForge';
 function loadDefaults() {
     let activeNav = localStorage.getItem('activeNav') || 1;
     let activeContent = localStorage.getItem('activeContent') || 1;
+    let activeHeading = localStorage.getItem('activeHeader');
+    console.log(activeHeading);
+    showTitle(activeHeading)
     toggleActive(activeNav);
     toggleContent(activeContent);
 }
 
 function toggleActive(navOrder) {
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 7; i++) {
         document.getElementById(`nav-${i}`).classList.remove('light-gray');
     }
     document.getElementById(`nav-${navOrder}`).classList.add('light-gray');
@@ -65,7 +71,7 @@ function toggleActive(navOrder) {
 }
 
 function toggleContent(contentOrder) {
-    for (let i = 0; i <= 6; i++) {
+    for (let i = 0; i <= 7; i++) {
         document.getElementById(`content-${i}`).style.display = 'none';
     }
     document.getElementById(`content-${contentOrder}`).style.display = 'block';
@@ -75,6 +81,7 @@ function toggleContent(contentOrder) {
 home.addEventListener('click', () => {
     toggleContent(0);
     showTitle('');
+    localStorage.setItem('activeHeader', '');
     sidebar.classList.toggle('sidebar-mob');
     if (body.classList.contains('body-overflow')) {
         body.classList.remove('body-overflow')
@@ -85,6 +92,7 @@ characters.addEventListener('click', () => {
     toggleContent(1);
     toggleActive(1)
     showTitle(characterTitle)
+    localStorage.setItem('activeHeader', characterTitle);
     sidebar.classList.toggle('sidebar-mob');
     if (body.classList.contains('body-overflow')) {
         body.classList.remove('body-overflow')
@@ -95,6 +103,7 @@ weapons.addEventListener('click', () => {
     toggleContent(2);
     toggleActive(2)
     showTitle(weaponsTitle)
+    localStorage.setItem('activeHeader', weaponsTitle);
     sidebar.classList.toggle('sidebar-mob');
     if (body.classList.contains('body-overflow')) {
         body.classList.remove('body-overflow')
@@ -105,6 +114,18 @@ artifacts.addEventListener('click', () => {
     toggleContent(3);
     toggleActive(3)
     showTitle(artifcatsTitle)
+    localStorage.setItem('activeHeader', artifcatsTitle);
+    sidebar.classList.toggle('sidebar-mob');
+    if (body.classList.contains('body-overflow')) {
+        body.classList.remove('body-overflow')
+    }
+});
+
+images.addEventListener('click', () => {
+    toggleContent(7);
+    toggleActive(7);
+    showTitle(imagesTitle);
+    localStorage.setItem('activeHeader', imagesTitle);
     sidebar.classList.toggle('sidebar-mob');
     if (body.classList.contains('body-overflow')) {
         body.classList.remove('body-overflow')
@@ -116,6 +137,7 @@ if (adminContent && admin) {
         toggleContent(4);
         toggleActive(4)
         showTitle(adminTitle);
+        localStorage.setItem('activeHeader', adminTitle);
         sidebar.classList.toggle('sidebar-mob');
         if (body.classList.contains('body-overflow')) {
             body.classList.remove('body-overflow')
@@ -126,6 +148,7 @@ if (adminContent && admin) {
 people.addEventListener('click', () => {
     toggleContent(5);
     showTitle(peopleTitle);
+    localStorage.setItem('activeHeader', peopleTitle);
     sidebar.classList.toggle('sidebar-mob');
     if (body.classList.contains('body-overflow')) {
         body.classList.remove('body-overflow')
@@ -135,11 +158,14 @@ people.addEventListener('click', () => {
 settings.addEventListener('click', () => {
     toggleContent(6)
     showTitle(settingsTitle);
+    localStorage.setItem('activeHeader', settingsTitle);
     sidebar.classList.toggle('sidebar-mob');
     if (body.classList.contains('body-overflow')) {
         body.classList.remove('body-overflow')
     }
 });
+
+
 
 function handleFileInputDisplay(uploadFile, file_display) {
     const fileInput = document.getElementById(uploadFile);
@@ -408,7 +434,7 @@ closeBtn.addEventListener('click', () => {
 window.addEventListener('load', () => {
     showUploadBtn()
     loadDefaults();
-    showTitle(welcomTitle)
+    // showTitle(welcomTitle)
     handleFileInputDisplay('uploadFile', 'file_display');
     handleFileInputDisplay('uploadFile2', 'file_display2');
     handleFileInputDisplay('uploadFile3', 'file_display3');
