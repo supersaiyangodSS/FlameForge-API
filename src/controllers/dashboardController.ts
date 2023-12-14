@@ -9,6 +9,7 @@ import { writeFileSync, unlinkSync } from 'fs';
 import { __dirname } from "../app.js";
 import { logger } from "../helpers/logger.js";
 import Setting from "../models/settingsModel.js";
+import cloudinary from 'cloudinary';
 
 const getDashboard = async (req: Request, res: Response) => {
     if (req.session && req.session.user) {
@@ -125,6 +126,47 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
         });
     }
 };
+
+const uploadCharacterImage = async (req: Request, res: Response) => {
+    try {
+        const url = req.body.characterImage;
+        const urls = url.split(',');
+        if (!url) {
+            return res.status(404).render('404', {
+                title: "Not Found!",
+            });
+        }
+
+        const uploadedUrls = [];
+
+        const folder = 'FlameForge/characters';
+        const publicId = `character${Date.now()}`
+        const options = {
+            public_id: publicId,
+            folder: folder
+        };
+
+        for (const link of urls) {
+            const result = await cloudinary.v2.uploader.upload(link, options);
+            uploadedUrls.push(result.url);
+        }
+                
+        req.flash('success', 'Image Uploaded Successfully!');
+        req.flash('link', uploadedUrls);
+        return res.redirect('/dashboard');
+        
+    } catch (error) {    
+        if (error.http_code == '404' || error.http_code) {
+            req.flash('error', 'Invalid Image Link Provided!');
+            return res.redirect('/dashboard');
+        }
+        logger.error(`User: ${req.session.user}, Error occured while uploading character image: ${error}`);
+        console.log(error);
+        res.status(500).render('500', {
+            title: "Internal Server Error!",
+        });
+    }
+}
 
 const uploadWeaponFile = async (req: Request, res: Response) => {
     try {
@@ -796,4 +838,4 @@ const downloadArtifacts = async (req: Request, res: Response) => {
     }
 }
 
-export { getDashboard, deleteUser, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, editArtifact, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts, saveArtifact };
+export { getDashboard, deleteUser, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, editArtifact, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts, saveArtifact, uploadCharacterImage };

@@ -184,22 +184,17 @@
                 </span>
                 Upload</button>
             </form>
-            <p class="heading-2-mob my-3">Previously Included Characters <br> <span class="text-red-400">[DO NOT
-                REPLICATE]</span>
-            </p>
+
+            <p class="heading-2-mob my-3">Previously Included Characters <br> <span class="text-red-400">[DO NOT REPLICATE]</span></p>
             <div class="icon-card-container-mob icon-card-container my-8 flex flex-wrap">
               {{#each characters}}
-              <div
-                class="icon-card-mob relative icon-card {{#if (eq this.rarity 5)}} five-star {{/if}} {{#if (eq this.rarity 4)}} four-star {{/if}} rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-3xl box-border overflow-hidden m-3 flex justify-center items-center">
+              <div class="icon-card-mob relative icon-card {{#if (eq this.rarity 5)}} five-star {{/if}} {{#if (eq this.rarity 4)}} four-star {{/if}} rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-3xl box-border overflow-hidden m-3 flex justify-center items-center">
                 <img class="icon-card-image-mob" width="90" src="{{this.images.profile}}" alt="{{this.name}}">
-                <p
-                  class="bg-white absolute bottom-0 left-0 right-0 text-black text-xs text-center overflow-hidden whitespace-nowrap overflow-ellipsis px-3">
-                  {{this.name}}
-                  </p>
+                <p class="bg-white absolute bottom-0 left-0 right-0 text-black text-xs text-center overflow-hidden whitespace-nowrap overflow-ellipsis px-3">{{this.name}}</p>
               </div>
-              
               {{/each}}
             </div>
+              
  {{> dashboard/codeCharacterSnippet}}
           </section>
           {{!--
@@ -481,6 +476,22 @@ search
         {{/if}}
 
       </div>
+    </section>
+
+    <section id="content-7">
+      <form class="flex flex-col" action="dashboard/upload/image/character" method="POST">
+            <p class="p-2 mt-2 poppins bg-red-400 rounded-lg">Insert the direct image URL below to upload it to our server. You will receive a direct link to the image, which should be used in your JSON as the image link. Please ensure that you use the correct field for each section (weapon, character, artifacts) to avoid mismatched images.</p>
+            
+
+            <input type="url" class="resize-none poppins bg-slate-900 text-white rounded-lg border-2 border-teal-500 mt-2 rounded-bl-none rounded-br-none md:rounded-br-lg outline-none p-4" rows="10" cols="20" type="url" name="characterImage" id="characterImage" placeholder="Paste direct image link here" required>
+            <button type="submit" id="uploadCharacterImage" class="self-start poppins upload-choose-file-btn-mob flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-b-lg">
+                <span class="material-symbols-outlined mr-1">upload_file</span>
+                Upload
+            </button>
+            </form>
+
+            <textarea class="my-4 p-4 rounded-lg bg-gray-900 w-full resize-none outline-none poppins text-sm" placeholder="URL will appear here">{{#if messages.link}}{{messages.link}}{{/if}}</textarea>
+            <img class="mx-auto mb-5" src="{{#if messages.link}}{{messages.link}}{{else}}/assets/images/placeholder.webp{{/if}}" alt="image" width="500" height="300"/>
     </section>
   </div>
 
