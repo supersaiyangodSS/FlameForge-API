@@ -487,9 +487,9 @@ search
               <p class="flex mt-2"><span class="material-symbols-outlined mr-2">task_alt</span>Ensure the correct field usage for each section (weapon, character, artifacts) to avoid mismatched images.</p>
             </div>
             <div id="imageBtnContainer" class="poppins my-4 flex md:block justify-center">
-              <input type="radio" class="radioBtns" name="uploadType" value="characterImage" id="uploadCharacterImage" checked="checked"><label class="px-4 py-2 mx-2 rounded-lg" for="uploadCharacterImage">Character</label>
-              <input type="radio" class="radioBtns" name="uploadType" value="weaponImage" id="uploadWeaponImage"><label class="px-4 py-2 mx-2 rounded-lg" for="uploadWeaponImage">Weapon</label>
-              <input type="radio" class="radioBtns" name="uploadType" value="artifactImage" id="uploadArtifactImage"><label class="px-4 py-2 mx-2 rounded-lg" for="uploadArtifactImage">Artifact</label>
+              <input type="radio" class="radioBtns" name="uploadType" value="character" id="uploadCharacterImage" checked="checked"><label class="px-4 py-2 mx-2 rounded-lg cursor-pointer" for="uploadCharacterImage">Character</label>
+              <input type="radio" class="radioBtns" name="uploadType" value="weapon" id="uploadWeaponImage"><label class="px-4 py-2 mx-2 rounded-lg cursor-pointer" for="uploadWeaponImage">Weapon</label>
+              <input type="radio" class="radioBtns" name="uploadType" value="artifact" id="uploadArtifactImage"><label class="px-4 py-2 mx-2 rounded-lg cursor-pointer" for="uploadArtifactImage">Artifact</label>
             </div>
             <input type="url" class="resize-none poppins bg-slate-900 text-white rounded-lg border-2 border-teal-500 mt-2 rounded-bl-none rounded-br-none md:rounded-br-lg outline-none p-4" rows="10" cols="20" type="url" name="characterImage" id="characterImage" placeholder="Paste direct image link here" required>
             <button type="submit" id="uploadCharacterImage" class="self-start poppins upload-choose-file-btn-mob flex bg-teal-500 p-2 hover:bg-teal-600 font-semibold transition-colors rounded-b-lg">
@@ -499,7 +499,7 @@ search
             </form>
 
             <textarea class="my-4 p-4 rounded-lg bg-slate-900 w-full h-40 md:h-full resize-none outline-none poppins text-sm" placeholder="Server URL will appear here">{{#if messages.link}}{{messages.link}}{{/if}}</textarea>
-            <img class="mx-auto mb-5" src="{{#if messages.link}}{{messages.link}}{{else}}/assets/images/placeholder.webp{{/if}}" alt="image" width="500" height="300"/>
+            <img class="mx-auto mb-5" src="{{#if messages.link}}{{messages.link}}{{else}}/assets/images/placeholder.webp{{/if}}" alt="image" width="600" height="300"/>
     </section>
   </div>
 
