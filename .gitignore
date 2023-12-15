@@ -3,5 +3,5 @@ node_modules/
 todo.md
 dist/
 logs/
-/public/css/
+/public/css/style.css
 .idea
