@@ -127,7 +127,7 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
     }
 };
 
-const uploadCharacterImage = async (req: Request, res: Response) => {
+const uploadImage = async (req: Request, res: Response) => {
     try {
         const url = req.body.characterImage;
         const urls = url.split(',');
@@ -157,10 +157,11 @@ const uploadCharacterImage = async (req: Request, res: Response) => {
         
     } catch (error) {    
         if (error.http_code == '404' || error.http_code) {
+            logger.error(`User: ${req.session.user},  uploaded invalid image link: ${error}`);
             req.flash('error', 'Invalid Image Link Provided!');
             return res.redirect('/dashboard');
         }
-        logger.error(`User: ${req.session.user}, Error occured while uploading character image: ${error}`);
+        logger.error(`User: ${req.session.user}, Error occured while uploading image: ${error}`);
         console.log(error);
         res.status(500).render('500', {
             title: "Internal Server Error!",
@@ -838,4 +839,4 @@ const downloadArtifacts = async (req: Request, res: Response) => {
     }
 }
 
-export { getDashboard, deleteUser, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, editArtifact, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts, saveArtifact, uploadCharacterImage };
+export { getDashboard, deleteUser, uploadCharacterFile, uploadWeaponFile, uploadArtifactFile, editCharacter, editWeapon, editArtifact, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts, saveArtifact, uploadImage };

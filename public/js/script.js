@@ -423,6 +423,26 @@ const showUploadBtn = () => {
     });
 }
 
+function handleRadioButtonClick(event) {
+    const selectedValue = event.target.id;
+    localStorage.setItem('selectedUploadType', selectedValue);
+}
+
+const radioBtns = document.querySelectorAll('.radioBtns');
+
+radioBtns.forEach(btn => {
+    btn.addEventListener('click', handleRadioButtonClick);
+});
+
+const storedUploadType = localStorage.getItem('selectedUploadType');
+if (storedUploadType) {
+    const selectedRadioBtn = document.getElementById(storedUploadType);
+    if (selectedRadioBtn) {
+        selectedRadioBtn.checked = true;
+    }
+}
+
+
 deleteBtn.addEventListener('click', () => {
     deleteAccount()
 });
