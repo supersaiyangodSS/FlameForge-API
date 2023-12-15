@@ -130,14 +130,11 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
 const uploadImage = async (req: Request, res: Response) => {
     try {
         const url = req.body.characterImage;
-        const urls = url.split(',');
         if (!url) {
             return res.status(404).render('404', {
                 title: "Not Found!",
             });
         }
-
-        const uploadedUrls = [];
 
         const folder = 'FlameForge/characters';
         const publicId = `character${Date.now()}`
@@ -146,15 +143,12 @@ const uploadImage = async (req: Request, res: Response) => {
             folder: folder
         };
 
-        for (const link of urls) {
-            const result = await cloudinary.v2.uploader.upload(link, options);
-            uploadedUrls.push(result.url);
-        }
-                
-        req.flash('success', 'Image Uploaded Successfully!');
-        req.flash('link', uploadedUrls);
-        return res.redirect('/dashboard');
+        const result = await cloudinary.v2.uploader.upload(url, options);
+        console.log(result);
         
+        req.flash('success', 'Image Uploaded Successfully!');
+        req.flash('link', result.url);
+        return res.redirect('/dashboard');
     } catch (error) {    
         if (error.http_code == '404' || error.http_code) {
             logger.error(`User: ${req.session.user},  uploaded invalid image link: ${error}`);
