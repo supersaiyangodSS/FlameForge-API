@@ -1,0 +1,82 @@
+@media screen and (max-width: 800px) {
+    .sidebar-mob {
+        display: none;
+    }
+    .sidebar-main-mob {
+        width: 100%;
+        position: fixed;
+        z-index: 500;
+        overflow: hidden;
+    }
+    /* .sidebar-mob {
+        display: none;
+    } */
+    .main-mob {
+        width: 100%;
+        padding: 0;
+    }
+    .heading-mob {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+    .upload-heading-mob {
+        margin-top: 5px; 
+    }
+    .upload-main-mob {
+        flex-direction: column;
+        margin: 15px 0;
+    }
+    .main-container-mob {
+        width: 100%;
+        padding: 10px 20px;
+    }
+    .upload-choose-btn-mob {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .upload-choose-file-btn-mob {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    .heading-2-mob {
+        margin: 15px 0 0 0;
+        text-align: center;
+    }
+    .icon-card-container-mob {
+        margin: 15px 0;
+        justify-content: center;
+    }
+    .icon-card-mob {
+        margin: 5px;
+        width: 70px;
+        height: 70px;
+    }
+    .icon-card-image-mob {
+        width: 70px;
+    }
+    .font-mob {
+        font-size: 10px;
+    }
+    .logout-modal-mob {
+        z-index: 501;
+    }
+    .setting-delete-btn {
+        margin-top: 10px;
+    }
+    .setting-account-deletion {
+        width: 100%;
+    }
+    .edit-main-container {
+        width: 100%;
+        padding: 10px 15px;
+        margin: 0;
+        overflow: hidden;
+    }
+    .form-top-mob {
+        flex-direction: column;
+    }
+}
+
