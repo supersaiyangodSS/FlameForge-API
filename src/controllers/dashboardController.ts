@@ -130,22 +130,31 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
 const uploadImage = async (req: Request, res: Response) => {
     try {
         const url = req.body.characterImage;
+        const uploadImageCategory = req.body.uploadType;
+        console.log(uploadImageCategory);
+        
         if (!url) {
             return res.status(404).render('404', {
                 title: "Not Found!",
             });
         }
-
-        const folder = 'FlameForge/characters';
-        const publicId = `character${Date.now()}`
+        if (!uploadImageCategory) {
+            req.flash('error', 'Invalid category selected!');
+            return res.redirect('/dashboard');
+        }
+        if (uploadImageCategory != 'character' && uploadImageCategory != 'weapon' && uploadImageCategory != 'artifact') {
+            logger.error(`User: ${req.session.user},  might tampered with data input while uploading images`);
+            req.flash('error', 'Invalid Data Type or Data Tampering');
+            return res.redirect('/dashboard');
+        }
+        
+        const folder = `FlameForge/${uploadImageCategory}s`;
+        const publicId = `${uploadImageCategory}${Date.now()}`
         const options = {
             public_id: publicId,
             folder: folder
         };
-
         const result = await cloudinary.v2.uploader.upload(url, options);
-        console.log(result);
-        
         req.flash('success', 'Image Uploaded Successfully!');
         req.flash('link', result.url);
         return res.redirect('/dashboard');
