@@ -110,11 +110,9 @@ export function checkAuth ( req: Request, res: Response, next: NextFunction ) {
     req.session.uid = '656cb6377894b27a8cd470cc' //temp
     // req.session.role = 'user' //temp
     if (req.session && req.session.user) {
-        console.log(`
-        user: ${req.session.user}
-        role: ${req.session.role}
-        uid: ${req.session.uid}
-        `);
+        console.log(`   user: ${req.session.user}
+    role: ${req.session.role}
+    uid: ${req.session.uid}`);
         next();
     }
     else {
