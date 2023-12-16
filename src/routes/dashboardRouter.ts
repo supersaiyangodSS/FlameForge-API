@@ -3,8 +3,7 @@ import { Router } from "express";
 import { getDashboard, uploadCharacterFile, uploadWeaponFile, logoutUser, deleteCharacter, deleteWeapon, deleteArtifact, uploadArtifactFile, editCharacter, editWeapon, saveCharacter, saveWeapon, downloadCharacters, downloadWeapons, downloadArtifacts, editArtifact, saveArtifact, deleteUser, uploadImage } from '../controllers/dashboardController.js'
 import multer, { memoryStorage } from 'multer';
 import { body } from 'express-validator';
-import { formLimiter, limiter } from "../helpers/limiter.js";
-import cloudinary from 'cloudinary';
+import { formLimiter, imageUploadLimiter, limiter } from "../helpers/limiter.js";
 
 const router : Router = Router();
 
@@ -91,7 +90,7 @@ router.get('/characters/download', formLimiter, checkAuthAdmin, downloadCharacte
 router.get('/weapons/download', formLimiter, checkAuthAdmin, downloadWeapons);
 router.get('/artifacts/download', formLimiter, checkAuthAdmin, downloadArtifacts);
 
-router.post('/upload/image/', uploadImage);
+router.post('/upload/image/', imageUploadLimiter, uploadImage);
 
 router.get('/logout', formLimiter, checkAuth, logoutUser);
 router.delete('/delete/:id', formLimiter, checkAuth, deleteUser);
