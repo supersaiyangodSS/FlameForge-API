@@ -20,3 +20,11 @@ export const formLimiter = rateLimit({
     }
 });
 
+export const imageUploadLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 30,
+    message: "Too many requests please try again later.",
+    keyGenerator : (req: Request) => {
+        return requestIp.getClientIp(req) || 'unknown'
+    }
+});
