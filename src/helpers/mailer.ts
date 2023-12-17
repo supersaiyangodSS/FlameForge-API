@@ -11,7 +11,7 @@ const transporter = createTransport({
 
 async function sendEmail(email: string, subject: string, mailBody: string) {
     const mailOptions = {
-        from: 'vedantsapalkar99@gmail.com',
+        from: process.env.MY_EMAIL,
         to: email,
         subject,
         html: mailBody
