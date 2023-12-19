@@ -282,23 +282,21 @@ search
       <div class="flex flex-col lg:flex-row justify-evenly mt-2 mb-4 poppins gap-2">
         <div class="character-count text-center bg-slate-900 w-full py-5 rounded-lg">
           <p class="text-5xl font-bold text-teal-400">{{characterCount}}</p>
-          <p class="mb-2">characters</p>
+          <p class="mb-2 font-semibold">characters</p>
+          <a class="mb-2 text-teal-400" href="/dashboard/characters/download">export</a>
         </div>
         <div class="character-count text-center bg-slate-900 w-full py-5 rounded-lg">
           <p class="text-5xl font-bold text-teal-400">{{weaponCount}}</p>
           <p class="mb-2">weapons</p>
+          <a class="mb-2 text-teal-400" href="/dashboard/weapons/download">export</a>
         </div>
         <div class="character-count text-center bg-slate-900 w-full py-5 rounded-lg">
           <p class="text-5xl font-bold text-teal-400">{{artifactCount}}</p>
           <p class="mb-2">artifacts</p>
+          <a class="mb-2 text-teal-400" href="/dashboard/artifacts/download">export</a>
         </div>
       </div>
       <p class="text-xl">Characters</p>
-      <div class="flex my-3">
-        <a class="btn outline-none bg-teal-500 py-2 px-4 rounded-lg hover:bg-teal-600"
-          href="/dashboard/characters/download">Export All
-          Characters</a>
-      </div>
       <p class="s-hide poppins text-center" id="no-characters">No Characters Found</p>
       {{#each characters}}
       <div class="character-list flex justify-between items-center my-2 py-2 px-4 rounded-lg bg-slate-700">
@@ -330,11 +328,6 @@ search
       </div>
       {{/each}}
       <p class="text-xl mt-9">Weapons</p>
-      <div class="flex my-3">
-        <a class="btn outline-none bg-teal-500 py-2 px-4 rounded-lg hover:bg-teal-600"
-          href="/dashboard/weapons/download">Export All
-          Weapons</a>
-      </div>
       <p class="s-hide poppins text-center" id="no-weapons">No Weapons Found</p>
       {{#each weapons}}
       <div class="weapon-list flex justify-between items-center my-2 py-2 px-4 rounded-lg bg-slate-700">
@@ -362,12 +355,7 @@ search
       </div>
       {{/each}}
       <p class="text-xl mt-9">Artifacts</p>
-      <div class="flex my-3">
-        <a class="btn outline-none bg-teal-500 py-2 px-4 rounded-lg hover:bg-teal-600"
-          href="/dashboard/artifacts/download">Export All
-          Artifacts</a>
-      </div>
-        <p class="s-hide poppins text-center" id="no-artifacts">No Artifacts Found</p>
+      <p class="s-hide poppins text-center" id="no-artifacts">No Artifacts Found</p>
       
       {{#each artifacts}}
       <div class="artifact-list flex justify-between items-center my-2 py-2 px-4 rounded-lg bg-slate-700">
