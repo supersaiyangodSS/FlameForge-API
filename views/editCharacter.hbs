@@ -61,23 +61,6 @@
           </div>
 
           <div class="flex flex-col">
-            <label for="model" class="myFont mt-3 text-lg">Model</label>
-            <select id="model" name="model"
-              class="w-full p-2 border-t-2 placeholder:opacity-50 border-b-2 bg-slate-800 border-teal-600 rounded-md mt-1 mb-3 outline-none focus:border-teal-300">
-              <option value="short male" {{#if (eq character.model "short male" )}} selected {{/if}}>short male</option>
-              <option value="medium male" {{#if (eq character.model "medium male" )}} selected {{/if}}>medium male
-              </option>
-              <option value="tall male" {{#if (eq character.model "tall male" )}} selected {{/if}}>tall male</option>
-              <option value="short female" {{#if (eq character.model "short female" )}} selected {{/if}}>short female
-              </option>
-              <option value="medium female" {{#if (eq character.model "medium female" )}} selected {{/if}}>medium female
-              </option>
-              <option value="tall female" {{#if (eq character.model "tall female" )}} selected {{/if}}>tall female
-              </option>
-            </select>
-          </div>
-
-          <div class="flex flex-col">
             <label for="rarity" class="myFont mt-2 text-lg">Rarity</label>
             {{!-- this --}} <div class="flex justify-start lg:justify-center mt-1">
               <input type="radio" class="rarity" name="rarity" id="5" value="5" {{#if (eq character.rarity

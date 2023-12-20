@@ -438,9 +438,6 @@ const saveCharacter = async (req: Request, res: Response) => {
             if (imgCard !== existingCharacter.images.card) {
                 existingCharacter.images.card = imgCard;
             }
-            if (model !== existingCharacter.model) {
-                existingCharacter.model = model;
-            }
             if (wikiUrl != existingCharacter.wikiUrl) {
                 existingCharacter.wikiUrl = wikiUrl;
             }

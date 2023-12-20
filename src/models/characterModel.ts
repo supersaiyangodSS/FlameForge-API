@@ -63,10 +63,6 @@ const characterSchema = new Schema<ICharacter>({
             required: true,
         },
     },
-    model : {
-        type: String,
-        required: true,
-    },
     wikiUrl : {
         type: String,
         required: true,
