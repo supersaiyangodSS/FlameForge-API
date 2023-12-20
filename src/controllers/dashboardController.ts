@@ -122,6 +122,10 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
     } catch (error) {
         logger.error(`User: ${req.session.user}, Error occured while uploading character: ${error}`);
         console.log(error);
+        if (error instanceof TypeError && error.message.includes('not iterable')) {
+            req.flash('error', 'Please provide the file as an array by wrapping the JSON data in square brackets.')
+            return res.redirect('/dashboard');
+        }
         res.status(500).render('500', {
             title: "Internal Server Error!",
         });
@@ -205,6 +209,10 @@ const uploadWeaponFile = async (req: Request, res: Response) => {
             res.status(301).redirect('/dashboard');
     } catch (error) {
         logger.error(`User: ${req.session.user}, Error occured while uploading weapon: ${error}`);
+        if (error instanceof TypeError && error.message.includes('not iterable')) {
+            req.flash('error', 'Please provide the file as an array by wrapping the JSON data in square brackets.')
+            return res.redirect('/dashboard');
+        }
         console.log(error);
         res.status(500).render('500', {
             title: "Internal Server Error!",
@@ -244,6 +252,10 @@ const uploadArtifactFile = async (req: Request, res: Response) => {
             res.status(301).redirect('/dashboard');
     } catch (error) {
         logger.error(`User: ${req.session.user}, Error occured while uploading artifact page: ${error}`);
+        if (error instanceof TypeError && error.message.includes('not iterable')) {
+            req.flash('error', 'Please provide the file as an array by wrapping the JSON data in square brackets.')
+            return res.redirect('/dashboard');
+        }
         console.log(error);
         res.status(500).render('500', {
             title: "Internal Server Error!",
