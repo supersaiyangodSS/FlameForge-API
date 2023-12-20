@@ -106,6 +106,7 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
                 try {
                     await document.validate();
                 } catch (validationError: any) {
+                    return res.send(validationError)
                     req.flash('error', 'Please Provide Valid Data!');
                     return res.status(301).redirect('/dashboard');
                 }
