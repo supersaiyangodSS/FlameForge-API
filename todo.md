@@ -1,0 +1,445 @@
+# Finalizing API Dashboard
+- [*] connection db file
+- [*] login router
+- [*] register router
+- [*] logger file
+- [*] characters
+- [*] weapon
+- [*] artifacts
+- [*] sort characters demo + syntax
+- [*] sort weapons demo + syntax
+- [*] sort artifacts demo + syntax
+- [*] character edit
+- [*] logout confirmation modal
+- [*] handle logout request
+- [*] delete account option
+- [*] delete account enter email option + modal
+- [*] delete account confirmation model
+- [*] handle delete account request
+- [*] change base to baseAtk
+- [*] change subStat to subStatType
+- [*] add sub baseSubStat
+- [*] add affix
+- [*] name
+- [*] desc
+- [*] rarity
+- [*] source
+- [*] baseAtk
+- [*] subStatType
+- [*] baseSubStat
+- [*] affix
+- [*] passive
+- [*] versionRelease
+- [*] region
+- [*] family
+    - [*] images
+        - [*] icon
+        - [*] original
+        - [*] awakened
+        - [*] gacha
+- [*] wikiUrl
+- [*] fix syntax and demo code
+- [*] logout modal finish
+- [*] clean all link:css
+- [*] make version partial
+- [*] fix weapon icon box
+- [*] responsive
+    - [*] characters
+    - [*] weapons
+    - [*] artifacts
+    - [*] edit character
+    - [*] edit weapon
+    - [*] edit artifact
+    - [*] register page
+    - [*] login page
+- [*] remove music functionality
+- [*] add delete modal
+- [*] clean redundant HBS code
+- [*] 404 page
+- [*] add count to the admin panel
+- [*] fix /delete route
+- [*] finalize all controllers
+    - [*] getDashboard
+    - [*] deleteUser
+    - [*] uploadCharacterFile
+    - [*] uploadWeaponFile
+    - [*] uploadArtifactFile
+    - [*] logoutUser
+    - [*] editCharacter
+    - [*] editWeapon
+    - [*] editArtifact
+    - [*] saveCharacter
+    - [*] saveWeapon
+    - [*] saveArtifact
+    - [*] deleteCharacter
+    - [*] deleteWeapon
+    - [*] deleteArtifact
+    - [*] downloadCharacters
+    - [*] downloadWeapons
+    - [*] downloadArtifacts
+- [*] error /report route
+- [*] anemo vision checkup
+- [*] dashboard or dashboard/
+- [*] fix xiao profiles
+- [*] javascript validation for report form 
+- [*] add search bar to the admin panel
+- [*] add artifact validation to router
+- [*] admin checkAuth
+- [*] add checkAuth and checkAuthAdmin to routes
+- [*] clear redundant assets
+- [*] change assets to /assets
+- [*] check all routers
+    - [*] register
+    - [*] misc
+    - [*] login
+    - [*] dashboard
+- [*] show/hide password
+    - [*] register
+    - [*] login
+- [*] finilize scripts
+    - [*] editArtifact
+    - [*] editCharacter
+    - [*] editWeapon
+    - [*] login
+    - [*] register
+    - [*] report
+    - [*] script
+- [*] registration page invite only access
+- [*] add logs to all request and actions
+- [*] add limiter to all actions
+- [*] convert png to webp
+- [*] helmet
+- [*] CORS
+- [*] add image upload limiter
+- [*] add image uplaod feature
+    - [*] characters
+    - [*] weapons
+    - [*] artifacts
+- [] recheck app.ts
+- [] add DRY to script.js
+- [] feed data
+    - [] characters
+    - [] weapons
+    - [] artifacts
+- [*] vision/gnosis fix
+- [*] iterable JSON file error handle
+- [] json upload error handling
+- [] hoyowiki count scraper
+    - [] characters
+    - [] weapons
+    - [] artifacts
+
+# Data
+
+    - [] artifacts
+        - [] adventurer
+        - [] blizzard strayer
+        - [] brave heart
+        - [] husk of opulent dreams
+        - [] tenacity of the milelith
+        - [] tiny miracle
+        - [] thundering fury
+        - [] defender's will
+        - [] scholar
+        - [] thundersoother
+        - [] lucky dog
+        - [] archaic petra
+        - [] berserker
+        - [] instructor
+        - [] noblesse oblige
+        - [] echoes of the offering
+        - [] bloodstained chivalry
+        - [] mertial artist
+        - [] heart of depth
+        - [] the exile
+        - [] wanderer's troupe
+        - [] ocean-hued clam
+        - [] lavawalker
+        - [] traveling doctor
+        - [] crimson witch of flames
+        - [] prayers for destiny
+        - [] prayers to springtime
+        - [] prayers for illumination
+        - [] prayers for wisdom
+        - [] emblem of severed fate
+        - [] viridescent venerer
+        - [] pale flame
+        - [] resolution of sojourner
+        - [] maiden beloved
+        - [] gladiator's finale
+        - [] gambler
+        - [] vermillion hereafter
+        - [] shimenawa's reminiscence
+        - [] retracing bolide
+        - [] deepwood memories
+        - [] glided dreams
+        - [] flower of paradise lost
+        - [] desert pavilion chronicle
+        - [] nymph's dream
+        - [] vourukasha's glow
+        - [] marechaussee hunter
+        - [] golden troupe
+
+    - [] Characters
+        - [] gaming - SOON
+        - [] xianyun - SOON
+        - [] cheveruse - SOON
+        - [] navia
+        - [] charlotte
+        - [] furina
+        - [] neuvillette
+        - [] wriothesley
+        - [] freminet
+        - [] lyney
+        - [] lynette
+        - [] kirara
+        - [] baizhu
+        - [] kaveh
+        - [] dehya
+        - [] mika
+        - [] alhaitham
+        - [] yaoyao
+        - [] wanderer
+        - [] faruzan
+        - [] layla
+        - [] nahida
+        - [] candace
+        - [] cyno
+        - [] nilou
+        - [] dori
+        - [] collie
+        - [] tighnari
+        - [] shikanoin heizou
+        - [] kuki shinobu
+        - [] yelan
+        - [] xiao
+        - [] xiangling
+        - [] raiden shogun
+        - [] razor
+        - [] albedo
+        - [] zhongli
+        - [] chongyun
+        - [] diona
+        - [] diluc
+        - [] tartaglia
+        - [] xinyan
+        - [] noelle
+        - [] xingqiu
+        - [] fischl
+        - [] mona
+        - [] arataki itto
+        - [] barbara
+        - [] hu tao
+        - [] rosaria
+        - [] kamisato ayaka
+        - [] kamisato ayato
+        - [] sucrose
+        - [] shenhe
+        - [] ganyu
+        - [] jean
+        - [] bennett
+        - [] sangonomiya kokomi
+        - [] yanfei
+        - [] venti
+        - [] kaedehara kazuha
+        - [] sayu
+        - [] traveler
+        - [] traveler (anemo)
+        - [] traveler (electro)
+        - [] traveler (hydro)
+        - [] traveler (geo)
+        - [] thoma
+        - [] yoimiya
+        - [] amber
+        - [] aloy
+        - [] klee
+        - [] beidou
+        - [] keqing
+        - [] kaeya
+        - [] ningguang
+        - [] yae miko
+        - [] eula
+        - [] gorou
+        - [] yun jin
+        - [] kujou sara
+        - [] lisa
+        - [] qiqi
+
+    - [] Weapons
+        - [] verdict
+        - [] sword of narzissenkreuz
+        - [] splendor of tranquil waters
+        - [] cashflow supervision
+        - [] tome of the eternal flow
+        - [] ballad of the boundless blue
+        - [] range gauge
+        - [] prospector's drill
+        - [] portable power saw
+        - [] the dockhand's assistant
+        - [] sacrificial jade
+        - [] scion of the blazing sun
+        - [] ballad of the fjords
+        - [] talking stick
+        - [] wolf-fang
+        - [] fleuve cedre ferryman
+        - [] flowing purity
+        - [] song of stillness
+        - [] rightful reward
+        - [] tidal shadow
+        - [] finale of the deep
+        - [] the first great magic
+        - [] ibis piercer
+        - [] jadefall's splendor
+        - [] beacon of the reed sea
+        - [] mailed flower
+        - [] light of foliar incision
+        - [] talaytullah's remembrance
+        - [] toukabou shigure
+        - [] a thousand floating dreams
+        - [] wandering evenstar
+        - [] xiphos' moonlight
+        - [] key of khaj-nisut
+        - [] staff of the scarlet sands
+        - [] makhaira aquamarine
+        - [] missive windspear
+        - [] forest regalia
+        - [] king's squire
+        - [] fruit of fulfillment
+        - [] moopiercer
+        - [] sapwood blade
+        - [] end of the line
+        - [] hunter's path
+        - [] kagotsurube isshin
+        - [] fading twilight
+        - [] aqua simulacra
+        - [] dragonspine spear
+        - [] black tassel
+        - [] blackcliff longsword
+        - [] blackcliff agate
+        - [] blackcliff slasher
+        - [] blackcliff warbow
+        - [] blackcliff pole
+        - [] the black sword
+        - [] harbinger of dawn
+        - [] raven bow
+        - [] magic guide
+        - [] thundering pulse
+        - [] skyrider sword
+        - [] skyrider greatsword
+        - [] auila favonia
+        - [] windblume ode
+        - [] mistsplitter reforged
+        - [] snow-tombed starsilver
+        - [] rainslasher
+        - [] sword of descension
+        - [] amos' bow
+        - [] silver sword
+        - [] iron sting
+        - [] ferrous shadow
+        - [] iron point
+        - [] halberd
+        - [] compound bow
+        - [] the bell
+        - [] cinnabar spindle
+        - [] redhorn stonethresher
+        - [] vortex vanquisher
+        - [] prototype amber
+        - [] prototype crescent
+        - [] prototype starglitter
+        - [] prototype rancour
+        - [] prototype archaic
+        - [] oathsworn eye
+        - [] waster greatsword
+        - [] thrilling tales of dragon slayers
+        - [] favonius lance
+        - [] favonius codex
+        - [] favonius warbow
+        - [] favonius greatsword
+        - [] favonius sword
+        - [] luxurious sea-lord
+        - [] serpent spine
+        - [] engulfing lightning
+        - [] the viridescent hunt
+        - [] freedom-sworn
+        - [] festering desire
+        - [] emerald orb
+        - [] the stringless
+        - [] elegy for the end
+        - [] the flute
+        - [] sacrificial fragment
+        - [] sacrificial bow
+        - [] sacrificial greatsword
+        - [] sacrificial sword
+        - [] sharpshooter's oath
+        - [] kagura's verity
+        - [] primordial jade cutter
+        - [] hamayumi
+        - [] white iron greatsword
+        - [] hakushin ring
+        - [] white tassel
+        - [] whiteblind
+        - [] twin nephrite
+        - [] hunter's bow
+        - [] wolf's gravestone
+        - [] the widsith
+        - [] crescent pike
+        - [] haran geppaku futsu
+        - [] bloodrtainted greatsword
+        - [] katsuragikiri nagamasa
+        - [] song of broken pines
+        - [] mouun's moon
+        - [] dark iron sword
+        - [] the alley flash
+        - [] wine and song
+        - [] alley hunter
+        - [] eye of perception
+        - [] dull blade
+        - [] the unforged
+        - [] traveler's handy sword
+        - [] beginner's protector
+        - [] wavebreaker's fin
+        - [] summit shaper
+        - [] predator
+        - [] staff of homa
+        - [] akoumaru
+        - [] calamity queller
+        - [] frostbearer
+        - [] slingshot
+        - [] rust
+        - [] otherwordly story
+        - [] mitternachts waltz
+        - [] memory of dust
+        - [] royal bow
+        - [] royal longsword
+        - [] royal grimoire
+        - [] royal spear
+        - [] royal greatsword
+        - [] apprentice's notes
+        - [] skyward spine
+        - [] skyward harp
+        - [] skyward atlas
+        - [] skyward blade
+        - [] skyward pride
+        - [] amenoma kageuchi
+        - [] lost praer to the sacred winds
+        - [] dodoco tales
+        - [] kitain cross spear
+        - [] primordial jade winged-spear
+        - [] fillet blade
+        - [] pocket grimoire
+        - [] recurve bow
+        - [] seasoned hunter's bow
+        - [] lithic spear
+        - [] lithic blade
+        - [] lion's roar
+        - [] dragon's bane
+        - [] solar pearl
+        - [] cool steel
+        - [] deathmatch
+        - [] polar star
+        - [] messenger
+        - [] old merc's pal
+        - [] debate club
+        - [] everlasting moonglow
+        - [] mappa mare
+        - [] the catch
