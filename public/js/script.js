@@ -56,7 +56,6 @@ function loadDefaults() {
     let activeNav = localStorage.getItem('activeNav') || 1;
     let activeContent = localStorage.getItem('activeContent') || 1;
     let activeHeading = localStorage.getItem('activeHeader');
-    console.log(activeHeading);
     showTitle(activeHeading)
     toggleActive(activeNav);
     toggleContent(activeContent);
@@ -274,7 +273,7 @@ hamburgerBtn.addEventListener('click', () => {
 
 deleteCharacterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-        console.log('btn');
+        
         modalDeleteCharacter.classList.remove('hidden');
         const cancelModal = modalDeleteCharacter.querySelector('.btn-delete-character-modal-close');
         
