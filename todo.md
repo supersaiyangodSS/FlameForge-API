@@ -116,18 +116,17 @@
     - [*] weapons
     - [*] artifacts
 - [] recheck app.ts
-- [] add DRY to script.js
 - [] feed data
     - [] characters
     - [] weapons
     - [] artifacts
 - [*] vision/gnosis fix
 - [*] iterable JSON file error handle
-- [] json upload error handling
-- [] hoyowiki count scraper
-    - [] characters
-    - [] weapons
-    - [] artifacts
+- [*] json upload error handling
+- [*] hoyowiki count scraper
+    - [*] characters
+    - [*] weapons
+    - [*] artifacts
 
 # Data
 
