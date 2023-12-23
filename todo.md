@@ -183,18 +183,18 @@
         - [] gaming - SOON
         - [] xianyun - SOON
         - [] cheveruse - SOON
-        - [] navia
-        - [] charlotte
-        - [] furina
-        - [] neuvillette
-        - [] wriothesley
-        - [] freminet
-        - [] lyney
-        - [] lynette
-        - [] kirara
-        - [] baizhu
-        - [] kaveh
-        - [] dehya
+        - [*] navia
+        - [*] charlotte
+        - [*] furina
+        - [*] neuvillette
+        - [*] wriothesley
+        - [*] freminet
+        - [*] lyney
+        - [*] lynette
+        - [*] kirara
+        - [*] baizhu
+        - [*] kaveh
+        - [*] dehya
         - [] mika
         - [] alhaitham
         - [] yaoyao
@@ -213,7 +213,7 @@
         - [] yelan
         - [] xiao
         - [] xiangling
-        - [] raiden shogun
+        - [*] raiden shogun
         - [] razor
         - [] albedo
         - [] zhongli
@@ -228,7 +228,7 @@
         - [] mona
         - [] arataki itto
         - [] barbara
-        - [] hu tao
+        - [*] hu tao
         - [] rosaria
         - [] kamisato ayaka
         - [] kamisato ayato
@@ -243,10 +243,6 @@
         - [] kaedehara kazuha
         - [] sayu
         - [] traveler
-        - [] traveler (anemo)
-        - [] traveler (electro)
-        - [] traveler (hydro)
-        - [] traveler (geo)
         - [] thoma
         - [] yoimiya
         - [] amber
