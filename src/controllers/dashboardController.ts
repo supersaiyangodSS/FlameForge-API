@@ -106,7 +106,13 @@ const uploadCharacterFile = async (req: Request, res: Response) => {
                 try {
                     await document.validate();
                 } catch (validationError: any) {
-                    return res.send(validationError)
+                    const filedsToCheck = ['name', 'birthday', 'constellation', 'title', 'vision', 'affiliation', 'versionRelease', 'images', 'desc', 'wikiUrl', 'rarity', 'weapon', 'region', 'images.gacha', 'images.card', 'images.profile'];
+                    filedsToCheck.forEach(field => {
+                        if (validationError.errors[field]) {
+                            req.flash('error', `Invalid ${field.charAt(0).toUpperCase() + field.slice(1)}!`);
+                            return res.redirect('/dashboard');
+                        }
+                    })
                     req.flash('error', 'Please Provide Valid Data!');
                     return res.status(301).redirect('/dashboard');
                 }
@@ -195,6 +201,13 @@ const uploadWeaponFile = async (req: Request, res: Response) => {
                 try {
                     await document.validate();
                 } catch (validationError: any) {
+                    const filedsToCheck = ['name', 'desc', 'rarity', 'source', 'passive', 'versionRelease', 'region', 'family', 'wikiUrl', 'affix', 'baseAtk', 'baseSubStat', 'images', 'images.icon', 'images.original', 'images.awakened', 'images.gacha'];
+                    filedsToCheck.forEach(field => {
+                        if (validationError.errors[field]) {
+                            req.flash('error', `Invalid ${field.charAt(0).toUpperCase() + field.slice(1)}!`);
+                            return res.redirect('/dashboard');
+                        }
+                    })
                     req.flash('error', 'Please Provide Valid Data!');
                     return res.status(301).redirect('/dashboard');
                 }
@@ -238,6 +251,13 @@ const uploadArtifactFile = async (req: Request, res: Response) => {
                 try {
                     await document.validate();
                 } catch (validationError: any) {
+                    const filedsToCheck = ['name', 'effect', 'effect.twoPc', 'effect.fourPc', 'fullSet', 'fullSet.flower', 'fullSet.flower.title', 'fullSet.flower.piece', 'fullSet.flower.icon', 'fullSet.sands', 'fullSet.sands.title', 'fullSet.sands.piece', 'fullSet.sands.icon', 'fullSet.plume', 'fullSet.plume.title', 'fullSet.plume.piece', 'fullSet.plume.icon', 'fullSet.circlet', 'fullSet.circlet.title', 'fullSet.circlet.piece', 'fullSet.circlet.icon', 'fullSet.goblet', 'fullSet.goblet.title', 'fullSet.goblet.piece', 'fullSet.goblet.icon'];
+                    filedsToCheck.forEach(field => {
+                        if (validationError.errors[field]) {
+                            req.flash('error', `Invalid ${field.charAt(0).toUpperCase() + field.slice(1)}!`);
+                            return res.redirect('/dashboard');
+                        }
+                    })
                     req.flash('error', 'Please Provide Valid Data!');
                     return res.status(301).redirect('/dashboard');
                 }
