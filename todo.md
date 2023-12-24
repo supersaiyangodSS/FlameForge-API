@@ -195,14 +195,14 @@
         - [*] baizhu
         - [*] kaveh
         - [*] dehya
-        - [] mika
-        - [] alhaitham
-        - [] yaoyao
-        - [] wanderer
-        - [] faruzan
-        - [] layla
-        - [] nahida
-        - [] candace
+        - [*] mika
+        - [*] alhaitham
+        - [*] yaoyao
+        - [*] wanderer
+        - [*] faruzan
+        - [*] layla
+        - [*] nahida
+        - [*] candace
         - [] cyno
         - [] nilou
         - [] dori
