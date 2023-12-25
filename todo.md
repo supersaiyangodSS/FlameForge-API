@@ -203,9 +203,9 @@
         - [*] layla
         - [*] nahida
         - [*] candace
-        - [] cyno
-        - [] nilou
-        - [] dori
+        - [*] cyno
+        - [*] nilou
+        - [*] dori
         - [] collie
         - [] tighnari
         - [] shikanoin heizou
