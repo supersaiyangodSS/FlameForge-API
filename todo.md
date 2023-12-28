@@ -206,59 +206,59 @@
         - [*] cyno
         - [*] nilou
         - [*] dori
-        - [] collie
-        - [] tighnari
-        - [] shikanoin heizou
-        - [] kuki shinobu
-        - [] yelan
-        - [] xiao
-        - [] xiangling
+        - [*] collie
+        - [*] tighnari
+        - [*] shikanoin heizou
+        - [*] kuki shinobu
+        - [*] yelan
+        - [*] xiao
+        - [*] xiangling
         - [*] raiden shogun
-        - [] razor
-        - [] albedo
-        - [] zhongli
-        - [] chongyun
-        - [] diona
-        - [] diluc
-        - [] tartaglia
-        - [] xinyan
-        - [] noelle
-        - [] xingqiu
-        - [] fischl
-        - [] mona
-        - [] arataki itto
-        - [] barbara
+        - [*] razor
+        - [*] albedo
+        - [*] zhongli
+        - [*] chongyun
+        - [*] diona
+        - [*] diluc
+        - [*] tartaglia
+        - [*] xinyan
+        - [*] noelle
+        - [*] xingqiu
+        - [*] fischl
+        - [*] mona
+        - [*] arataki itto
+        - [*] barbara
         - [*] hu tao
-        - [] rosaria
-        - [] kamisato ayaka
-        - [] kamisato ayato
-        - [] sucrose
-        - [] shenhe
-        - [] ganyu
-        - [] jean
-        - [] bennett
-        - [] sangonomiya kokomi
-        - [] yanfei
-        - [] venti
-        - [] kaedehara kazuha
-        - [] sayu
-        - [] traveler
-        - [] thoma
-        - [] yoimiya
-        - [] amber
-        - [] aloy
-        - [] klee
-        - [] beidou
-        - [] keqing
-        - [] kaeya
-        - [] ningguang
-        - [] yae miko
-        - [] eula
-        - [] gorou
-        - [] yun jin
-        - [] kujou sara
-        - [] lisa
-        - [] qiqi
+        - [*] rosaria
+        - [*] kamisato ayaka
+        - [*] kamisato ayato
+        - [*] sucrose
+        - [*] shenhe
+        - [*] ganyu
+        - [*] jean
+        - [*] bennett
+        - [*] sangonomiya kokomi
+        - [*] yanfei
+        - [*] venti
+        - [*] kaedehara kazuha
+        - [*] sayu
+        - [*] traveler
+        - [*] thoma
+        - [*] yoimiya
+        - [*] amber
+        - [*] aloy
+        - [*] klee
+        - [*] beidou
+        - [*] keqing
+        - [*] kaeya
+        - [*] ningguang
+        - [*] yae miko
+        - [*] eula
+        - [*] gorou
+        - [*] yun jin
+        - [*] kujou sara
+        - [*] lisa
+        - [*] qiqi
 
     - [] Weapons
         - [] verdict
