@@ -189,6 +189,18 @@ pre {
   background: linear-gradient(120deg, #635989 , #896fab);
 }
 
+.three-star {
+  background: linear-gradient(120deg, #577495 , #548eb2);
+}
+
+.two-star {
+  background: linear-gradient(120deg, #4d6e66 , #528c6f);
+}
+
+.one-star {
+  background: linear-gradient(120deg, #60646b , #848383);
+}
+
 .artifacts {
   background: linear-gradient(120deg, #383d49 , #475264);
 }
