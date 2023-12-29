@@ -222,7 +222,7 @@
           <div class="icon-card-container-mob icon-card-container my-8 flex flex-wrap">
             {{#each weapons}}
             <div
-              class="icon-card-mob relative icon-card {{#if (eq this.rarity 5)}} five-star {{/if}} {{#if (eq this.rarity 4)}} four-star {{/if}}  rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-3xl box-border overflow-hidden m-3 flex justify-center items-center">
+              class="icon-card-mob relative icon-card {{#if (eq this.rarity 5)}} five-star {{/if}} {{#if (eq this.rarity 4)}} four-star {{/if}} {{#if (eq this.rarity 3)}} three-star {{/if}}  {{#if (eq this.rarity 2)}} two-star {{/if}} {{#if (eq this.rarity 1)}} one-star {{/if}}  rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-3xl box-border overflow-hidden m-3 flex justify-center items-center">
               <img width="90" class="icon-card-image-mob" src="{{this.images.icon}}" alt="{{this.name}}">
               <p
                 class="bg-white absolute bottom-0 left-0 right-0 text-black text-xs text-center overflow-hidden whitespace-nowrap overflow-ellipsis px-3">
@@ -302,7 +302,7 @@ search
       <div class="character-list flex justify-between items-center my-2 py-2 px-4 rounded-lg bg-slate-700">
         <div class="flex justify-between items-center">
           <div
-            class="icon-container-main relative icon-card-mini {{#if (eq this.rarity 5)}} five-star {{/if}} {{#if (eq this.rarity 4)}} four-star {{/if}} rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-2xl box-border overflow-hidden">
+            class="icon-container-main relative icon-card-mini {{#if (eq this.rarity 5)}} five-star {{/if}} {{#if (eq this.rarity 4)}} four-star {{/if}}{{#if (eq this.rarity 4)}} four-star {{/if}} rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-2xl box-border overflow-hidden">
             <img src="{{this.images.profile}}" alt="{{this.name}}">
           </div>
           <p class="character-title text-lg ml-2 overflow-hidden whitespace-nowrap overflow-ellipsis w-28 sm:w-full">{{this.name}}</p>
@@ -333,7 +333,7 @@ search
       <div class="weapon-list flex justify-between items-center my-2 py-2 px-4 rounded-lg bg-slate-700">
         <div class="flex justify-between items-center">
           <div
-            class="icon-container-main flex justify-center relative icon-card-mini {{#if (eq this.rarity 5)}} five-star {{/if}} {{#if (eq this.rarity 4)}} four-star {{/if}} rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-2xl box-border overflow-hidden">
+            class="icon-container-main flex justify-center relative icon-card-mini {{#if (eq this.rarity 5)}} five-star {{/if}} {{#if (eq this.rarity 4)}} four-star {{/if}}{{#if (eq this.rarity 4)}} four-star {{/if}} {{#if (eq this.rarity 3)}} three-star {{/if}}  {{#if (eq this.rarity 2)}} two-star {{/if}} {{#if (eq this.rarity 1)}} one-star {{/if}}   rounded-tr-lg rounded-bl-lg rounded-tl-lg rounded-br-2xl box-border overflow-hidden">
             <img src="{{this.images.icon}}" alt="{{this.name}}">
           </div>
           <p class="weapon-title text-lg ml-2 overflow-hidden whitespace-nowrap overflow-ellipsis w-28 sm:w-full">{{this.name}}</p>
