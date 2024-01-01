@@ -81,7 +81,7 @@ app.use('/sign-in', loginRouter);
 app.use('/sign-up', registerRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/misc', miscRouter);
-app.use('/api/v1/', apiRouter);
+app.use('/api', apiRouter);
 app.use(( req : Request , res : Response , next : NextFunction ) => {
     logger.info(`Request Received ${req.method} ${req.hostname} ${req.url} ${req.ip}`);
     console.log(`Request Received ${req.method} ${req.hostname} ${req.url} ${req.ip}`);
