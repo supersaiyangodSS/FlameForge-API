@@ -11,3 +11,46 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
 - run ```npm install```
 - run ```npm run make```
 - run ```npm run start```
+
+# Get random character
+
+    GET /api/character
+    GET /api/character?infoSize=full
+
+# Get single character by name
+    
+    GET /api/character?name=character-name
+    GET /api/character?name=character-name&infoSize=full
+
+# Get all characters
+
+    GET /api/characters
+    GET /api/characters?infoSize=full
+
+## Get all characters by vision
+
+    GET /api/characters?vision=specify-vision
+    GET /api/characters?vision=specify-vision&infoSize=full
+
+    [pyro, hydro, anemo, electro, dendro, cryo, geo]
+
+## Get all characters by region
+
+    GET /api/characters?region=specify-region
+    GET /api/characters?region=specify-region&infoSize=full
+
+    [mondstadt, liyue-harbor, inazuma-city, sumeru, fontaine]
+
+## Get all characters by rarity
+
+    GET /api/characters?rarity=5
+    GET /api/characters?rarity=5&infoSize=full
+
+    [4, 5]
+
+## Get all characters by weapon type
+
+    GET /api/characters?weapon=claymore
+    GET /api/characters?weapon=claymore&infoSize=full
+
+    [sword, claymore, polearm, bow, catalyst]
