@@ -11,6 +11,15 @@ export const limiter = rateLimit({
     }
 });
 
+export const apiLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000,
+    max: 1000,
+    message: "Too many requests, please try again later.",
+    keyGenerator : (req : Request) => {
+        return requestIp.getClientIp(req) || 'unknown'
+    }
+});
+
 export const formLimiter = rateLimit({
     windowMs: 5 * 60 * 1000,
     max: 8,
