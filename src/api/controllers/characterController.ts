@@ -60,8 +60,11 @@ const getSingleCharacter = async (req: Request, res: Response) => {
         return res.json(minimalCharacterData)
 
     } catch (error) {
+        if (error.reason.code === 'ERR_ASSERTION') {
+            return res.json({ error: 'invalid input value'})
+        }
         apiLogger.error('API call error', {
-            endpoint: `/api/character?name=${req.query.name}`,
+            endpoint: `/api/character`,
             method: 'GET',
             ip: ip,
             error: error.message
@@ -199,9 +202,12 @@ const getAllCharacters = async (req: Request, res: Response) => {
 
         return res.json(minimalCharacterData);
     } catch (error) {
+        if (error.reason.code === 'ERR_ASSERTION') {
+            return res.json({ error: 'invalid input value'})
+        }
         console.log(error);
         apiLogger.error('API call error', {
-            endpoint: `/api/character?name=${req.query.name}`,
+            endpoint: `/api/characters`,
             method: 'GET',
             ip: ip,
             error: error.message
