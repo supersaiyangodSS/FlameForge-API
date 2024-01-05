@@ -12,17 +12,19 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
 - run ```npm run make```
 - run ```npm run start```
 
-# Get random character
+# Character
+
+## Get random character
 
     GET /api/character
     GET /api/character?infoSize=full
 
-# Get single character by name
+## Get single character by name
     
     GET /api/character?name=character-name
     GET /api/character?name=character-name&infoSize=full
 
-# Get all characters
+## Get all characters
 
     GET /api/characters
     GET /api/characters?infoSize=full
@@ -54,3 +56,47 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
     GET /api/characters?weapon=claymore&infoSize=full
 
     [sword, claymore, polearm, bow, catalyst]
+
+# Artifacts
+
+## Get Random Artifact
+
+    GET /api/artifact
+    GET /api/artifact?infoSize=full
+
+## Get single artifact by name
+
+    GET /api/artifact?name=crimson-witch-of-flames
+    GET /api/artifact?name=crimson-witch-of-flames?infoSize=full
+
+## Get all artifacts
+
+    GET /api/artifacts
+    GET /api/artifacts?infoSize=full
+
+# Character
+
+## Get random weapon
+
+    GET /api/weapon
+    GET /api/weapon?infoSize=full
+
+## Get single weapon by name
+
+    GET /api/weapon?name=the-unforged
+    GET /api/weapon?name=the-unforged&infoSize=full
+
+## Get all weapons 
+
+    GET /api/weapons
+    GET /api/weapons?infoSize=full
+
+## Get all weapons by rarity
+
+    GET /api/weapons?rarity=4
+    GET /api/weapons?rarity=4&infoSize=full
+
+## Get all weapons by category
+
+    GET /api/weapons?family=claymore
+    GET /api/weapons?family=claymore&infoSize=full
