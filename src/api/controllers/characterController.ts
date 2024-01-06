@@ -40,24 +40,26 @@ const getSingleCharacter = async (req: Request, res: Response) => {
                 { $sample: { size: 1 } },
                 { $project: { __v: 0, _id: 0 } }
             ])
+            const characterObj = fullCharacterData[0];
             apiLogger.verbose('API call successful', {
                 endpoint: `/api/character&infoSize=full`,
                 method: 'GET',
                 ip: ip
             })
-            return res.json(fullCharacterData);
+            return res.json(characterObj);
         }
 
         const minimalCharacterData = await Character.aggregate([
             { $sample: { size: 1 } },
             { $project: { __v: 0, _id: 0, versionRelease: 0, birthday: 0, title: 0, 'images.card': 0, 'images.gacha': 0, wikiUrl: 0, affiliation: 0, constellation: 0 } }
         ])
+        const characterObj = minimalCharacterData[0];
         apiLogger.verbose('API call successful', {
             endpoint: `/api/character`,
             method: 'GET',
             ip: ip
         })
-        return res.json(minimalCharacterData)
+        return res.json(characterObj)
 
     } catch (error) {
         if (error.reason.code === 'ERR_ASSERTION') {
