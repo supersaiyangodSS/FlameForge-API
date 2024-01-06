@@ -50,12 +50,13 @@ const getSingleWeapon = async (req: Request, res: Response) => {
             { $sample: { size: 1 } },
             { $project: { __v: 0, _id: 0, '-images.original': 0, '-images.awakened': 0, '-images.gacha': 0, source: 0, baseSubStat: 0, affix: 0, passive: 0, versionRelease: 0, region: 0, wikiUrl: 0} }
         ])
+        const weaponObj = minimalWeaponData[0];
         apiLogger.verbose('API call successful', {
             endpoint: `/api/weapon`,
             method: 'GET',
             ip: ip
         })
-        return res.json(minimalWeaponData)
+        return res.json(weaponObj)
 
     } catch (error) {
         if (error.reason.code === 'ERR_ASSERTION') {
