@@ -358,7 +358,7 @@ input:checked + .slider:before {
   }
 } 
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
@@ -366,4 +366,4 @@ input:checked + .slider:before {
 ::-webkit-scrollbar-thumb {
   background: #26A69A;
   border-radius: 3px;
-}
+} */
