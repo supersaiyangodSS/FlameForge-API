@@ -12,69 +12,220 @@
 
         <nav class="md:hidden fixed top-0 left-0 right-0 bg-gray-800 z-40 flex justify-between items-center p-4">
             <p class="text-emerald-300 text-2xl font-semibold">FlameForge</p>
-            <button id="hamburger-btn"><span class="material-symbols-outlined text-3xl text-gray-300">menu</span></button>
+            <button id="hamburger-btn"><span
+                    class="material-symbols-outlined text-3xl text-gray-300">menu</span></button>
         </nav>
 
-        <div id="sidebar" class="hidden md:flex w-full md:w-1/6 flex-col justify-between fixed top-0 left-0 bottom-0 bg-gray-200 border-r-2 border-gray-400 py-4 z-50 box-border">
+        <div id="sidebar"
+            class="hidden md:flex w-full md:w-1/6 flex-col justify-between fixed top-0 left-0 bottom-0 bg-gray-200 border-r-2 border-gray-300 py-4 z-50 box-border">
 
             <div>
 
-            <div class="flex justify-evenly items-center bg-gray-800 mx-2 p-4 rounded-t-lg">
-                <div class="text-center">
-                <p class="title text-2xl text-emerald-300 font-semibold">FlameForge API</p>
-                <p class="text-xs text-gray-200 mt-1">Unleash the Genshin Impact API (unofficial)</p>
+                <div class="flex justify-evenly items-center bg-gray-800 mx-2 p-4 rounded-t-lg">
+                    <div class="text-center">
+                        <p class="title text-2xl text-emerald-300 font-semibold">FlameForge API</p>
+                        <p class="text-xs text-gray-200 mt-1">Unleash the Genshin Impact API (unofficial)</p>
+                    </div>
                 </div>
-            </div>
                 <ul class="mx-2 p-4 bg-gray-900 rounded-b-lg text-white overflow-y-auto relative">
-                    <li class="mt-2 font-semibold uppercase text-xl border-b-2 border-emerald-300 text-emerald-300">Characters</li>
+                    <li class="mt-2 font-semibold uppercase text-xl border-b-2 border-emerald-300 text-emerald-300">
+                        Characters</li>
                     <ul>
-                        <li class="my-3 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center" href="#fetch-single-character"><span class="material-symbols-outlined">keyboard_arrow_right</span>Fetch
+                        <li class="my-3 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center"
+                                href="#fetch-single-character"><span
+                                    class="material-symbols-outlined">keyboard_arrow_right</span>Fetch
                                 Single Character</a></li>
-                        <li class="my-2 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center" href="#fetch-all-characters"><span class="material-symbols-outlined">keyboard_arrow_right</span>Fetch All
+                        <li class="my-2 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center"
+                                href="#fetch-all-characters"><span
+                                    class="material-symbols-outlined">keyboard_arrow_right</span>Fetch All
                                 Characters</a></li>
                     </ul>
 
-                    <li class="mt-6 font-semibold uppercase text-xl  border-b-2 border-emerald-300 text-emerald-300">Weapons</li>
-                    <ul >
-                        <li class="my-3 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center" href="#fetch-single-weapon"><span class="material-symbols-outlined">keyboard_arrow_right</span>Fetch Single
+                    <li class="mt-6 font-semibold uppercase text-xl  border-b-2 border-emerald-300 text-emerald-300">
+                        Weapons</li>
+                    <ul>
+                        <li class="my-3 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center"
+                                href="#fetch-single-weapon"><span
+                                    class="material-symbols-outlined">keyboard_arrow_right</span>Fetch Single
                                 Weapon</a></li>
-                        <li class="my-2 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center" href="#fetch-all-weapons"><span class="material-symbols-outlined">keyboard_arrow_right</span>Fetch All
+                        <li class="my-2 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center"
+                                href="#fetch-all-weapons"><span
+                                    class="material-symbols-outlined">keyboard_arrow_right</span>Fetch All
                                 Weapons</a></li>
                     </ul>
 
-                    <li class="mt-6 font-semibold uppercase text-xl border-b-2 border-emerald-300 text-emerald-300">Artifacts</li>
+                    <li class="mt-6 font-semibold uppercase text-xl border-b-2 border-emerald-300 text-emerald-300">
+                        Artifacts</li>
                     <ul>
-                        <li class="my-3 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center" href="#fetch-single-artifact"><span class="material-symbols-outlined">keyboard_arrow_right</span>Fetch
+                        <li class="my-3 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center"
+                                href="#fetch-single-artifact"><span
+                                    class="material-symbols-outlined">keyboard_arrow_right</span>Fetch
                                 Single Artifact</a></li>
-                        <li class="my-2 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center" href="#fetch-all-artifacts"><span class="material-symbols-outlined">keyboard_arrow_right</span>Fetch All
+                        <li class="my-2 ml-4"><a class="hover:text-emerald-300 nav-links flex items-center"
+                                href="#fetch-all-artifacts"><span
+                                    class="material-symbols-outlined">keyboard_arrow_right</span>Fetch All
                                 Artifacts</a></li>
                     </ul>
                 </ul>
             </div>
 
-                <ul class="bg-gray-300 mx-2 mt-4 p-2 rounded-lg text-gray-600">
-                    {{!-- <li class="font-semibold pt-4">Contribution</li> --}}
-                    <ul>
-                    
-                        <li class="my-3 ml-4"><a class="hover:text-gray-800 flex items-center" href="#"><i
-                                    class="fas fa-wrench mr-2 text-lg"></i>Dashboard Program</a></li>
-                        <li class="my-3 ml-4"><a class="hover:text-gray-800" href="#"><i
-                                    class="fab fa-github mr-2 text-lg"></i>Github</a></li>
-                    </ul>
-                    {{!-- <div> --}}
-                    <p class="text-slate-500 poppins text-xs text-center py-4">v1.0.0 ~ FlameForge API</p>
-                    {{!-- </div> --}}
+            <ul class="bg-gray-300 mx-2 mt-4 p-2 rounded-lg text-gray-600">
+                {{!-- <li class="font-semibold pt-4">Contribution</li> --}}
+                <ul>
+
+                    <li class="my-3 ml-4"><a class="hover:text-gray-800 flex items-center" href="#"><i
+                                class="fas fa-wrench mr-2 text-lg"></i>Dashboard Program</a></li>
+                    <li class="my-3 ml-4"><a class="hover:text-gray-800" href="#"><i
+                                class="fab fa-github mr-2 text-lg"></i>Github</a></li>
                 </ul>
-                    <button id="hamburger-btn-close" class="mt-2 mb-2 bg-gray-800 flex md:hidden p-2 rounded-lg text-emerald-300 fixed right-10 bottom-10 nav-links"><span class="material-symbols-outlined">cancel</span></button>
+                {{!-- <div> --}}
+                    <p class="text-slate-500 poppins text-xs text-center py-4">v1.0.0 ~ FlameForge API</p>
+                    {{!--
+                </div> --}}
+            </ul>
+            <button id="hamburger-btn-close"
+                class="mt-2 mb-2 bg-gray-800 flex md:hidden p-2 rounded-lg text-emerald-300 fixed right-10 bottom-10 nav-links"><span
+                    class="material-symbols-outlined">cancel</span></button>
 
         </div>
 
-        <div id="content" class="1/6 md:w-5/6 fixed top-0 bottom-0 right-0 bg-gray-200 overflow-y-auto py-4 mt-16 md:mt-0">
+        <div id="content"
+            class="1/6 md:w-5/6 fixed left-0 md:left-auto top-0 bottom-0 right-0 bg-gray-200 overflow-y-auto py-4 mt-16 md:mt-0">
+
             <div class="content-container w-full md:w-3/5 px-4 mx-auto">
-                <h2 id="fetch-single-character" class="text-2xl font-semibold text-slate-700">Fetch Single Character</h2>
-                <pre class="language-js">
-<code class="bg-slate-500">http://localhost:4000/character/</code></pre>
-                <p class="text-sm">This API is an independent project and is not officially endorsed by miHoYo/Hoyoverse for Genshin Impact. All copyrights for images and data belong to miHoYo.</p>
+
+            <h2 id="character" class="text-2xl font-semibold text-slate-700 mb-2">FlameForge API</h2>
+            <p class="text-sm">This API is an independent project and is not officially endorsed by Hoyoverse
+                    for Genshin Impact. All copyrights for images and data belong to Hoyoverse.</p>
+
+            <h2 id="json-notes" class="font-semibold text-lg text-slate-700 mt-5 mb-2">JSON Notes</h2>
+            <p>
+                <ul class="ml-5 list-disc">
+                    <li class="mb-3">Any property (except arrays or objects) whose value does not exist or undetermined, will be <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1" >-</span></li>
+                    <li>Any <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1" >baseSubStat</span> property whose value does not exist or undetermined, will be <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1" >0</span></li>
+                </ul>
+            </p>
+
+            <h2 id="root-url" class="font-semibold text-lg text-slate-700 mt-5 mb-2">Root URL</h2>
+                <pre class="language-http"><code class="bg-slate-500">http://localhost:4000</code></pre>
+                <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
+                    role="alert">
+                    <div class="flex">
+                        <div class="py-1">
+                            <svg class="fill-current h-6 w-6 text-teal-500 mr-4"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path
+                                    d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                            </svg>
+                            </div>
+                        <div class="flex my-auto">
+                            <p class="text-md text-md">The <span class="font-bold">'infoSize=full'</span> parameter is
+                                optional. If provided, it will return additional data.</p>
+                        </div>
+                    </div>
+                </div>
+
+                {{!-- <h2 id="character" class="text-2xl font-semibold text-slate-700 my-5 mb-2">Characters</h2> --}}
+                <h2 id="fetch-random-character" class="font-semibold text-lg text-slate-700 mt-5 mb-2">Fetch Random Character</h2>
+                
+                {{!-- <p class="bg-emerald-300">GET</p> --}}
+                <div class="bg-teal-100 rounded-md text-teal-700 px-2 py-1 shadow-md inline-flex" role="alert"><p class="text-md font-bold font-mono">GET</p></div>
+
+                <pre class="language-http"><code>http://localhost:4000/character</code></pre>
+                
+
+                <p id="fetch-single-character-payload-1" class="text-lg text-slate-700 mt-5">Payload:</p>
+
+                <div class="router-container w-full overflow-hidden">
+                    <pre class="language-json w-full flex relative"><code class="bg-slate-500">{
+    "name": "Kaeya",
+    "desc": "An accomplished swordsman and a strategic thinker in the Knights of Favonius, rumored to hail from beyond Mondstadt.",
+    "rarity": 4,
+    "vision": "Cryo",
+    "weapon": "Sword",
+    "region": [
+        "Mondstadt"
+    ],
+    "images": {
+        "profile": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703759781/FlameForge/characters/character1703759786700.webp"
+    }
+}</code></pre>
+<p class="text-lg text-slate-700 mt-5">additional data :</p=>
+                    <pre
+                        class="language-http w-full"><code class="bg-slate-500">http://localhost:4000/character?infoSize=full</code></pre>
+<p class="text-lg text-slate-700 mt-5">Payload :</p>
+                    <pre class="language-json"><code class="bg-slate-500">{
+    "name": "Kaeya",
+    "desc": "An accomplished swordsman and a strategic thinker in the Knights of Favonius, rumored to hail from beyond Mondstadt.",
+    "rarity": 4,
+    "vision": "Cryo",
+    "weapon": "Sword",
+    "versionRelease": 1,
+    "birthday": "11/30",
+    "title": [
+        "Frostwind Swordsman"
+    ],
+    "constellation": "Pavo Ocellus",
+    "region": [
+        "Mondstadt"
+    ],
+    "affiliation": [
+        "Knights of Favonius"
+    ],
+    "images": {
+        "profile": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703759781/FlameForge/characters/character1703759786700.webp",
+        "gacha": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703759759/FlameForge/characters/character1703759763740.png",
+        "card": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703759769/FlameForge/characters/character1703759774869.jpg"
+    },
+    "wikiUrl": "https://wiki.hoyolab.com/pc/genshin/entry/9"
+}</code></pre>
+
+<h2 id="fetch-random-character" class="font-semibold text-lg text-slate-700 mt-5 mb-2">Fetch Single Character by Name</h2>
+<div class="bg-teal-100 rounded-md text-teal-700 px-2 py-1 shadow-md inline-flex" role="alert"><p class="text-md font-bold font-mono">GET</p></div>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/character?name=diluc</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">{
+    "name": "Diluc",
+    "images": {
+        "profile": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703522202/FlameForge/characters/character1703522222447.webp"
+    },
+    "desc": "The tycoon of a winery empire in Mondstadt, unmatched in every possible way.",
+    "rarity": 5,
+    "vision": "Pyro",
+    "weapon": "Claymore",
+    "region": [
+        "Mondstadt"
+    ]
+}</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Additional Data: :</p>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/character?name=diluc&infoSize=full</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">{
+    "name": "Diluc",
+    "images": {
+        "profile": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703522202/FlameForge/characters/character1703522222447.webp",
+        "gacha": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703522178/FlameForge/characters/character1703522198754.png",
+        "card": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703522191/FlameForge/characters/character1703522210301.jpg"
+    },
+    "desc": "The tycoon of a winery empire in Mondstadt, unmatched in every possible way.",
+    "rarity": 5,
+    "vision": "Pyro",
+    "weapon": "Claymore",
+    "versionRelease": 1,
+    "birthday": "4/30",
+    "title": [
+        "The Dark Side of Dawn"
+    ],
+    "constellation": "Noctua",
+    "region": [
+        "Mondstadt"
+    ],
+    "affiliation": [
+        "Dawn Winery"
+    ],
+    "wikiUrl": "https://wiki.hoyolab.com/pc/genshin/entry/43"
+}</code></pre>
+                </div>
             </div>
         </div>
 
