@@ -989,6 +989,52 @@
 }</code></pre>
 </div>
 
+
+<div id="fetch-weapon-by-name">
+<h2 class="font-semibold text-lg text-slate-700 mt-5 mb-2">Fetch Weapon by Name</h2>
+<div class="bg-teal-100 rounded-md text-teal-700 px-2 py-1 shadow-md inline-flex" role="alert"><p class="text-md font-bold font-mono">GET</p></div>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/weapon?name=the-unforged</code></pre>
+    
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">{
+    "name": "The Unforged",
+    "images": {
+        "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703960135/FlameForge/weapons/weapon1703960146124.webp"
+    },
+    "desc": "Capable of driving away evil spirits and wicked people alike, this edgeless claymore seems to possess divine might.",
+    "rarity": 5,
+    "baseAtk": 45.94,
+    "subStatType": "Attack %",
+    "family": "Claymore"
+}</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Additional Data:</p>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/weapon?name=the-unforged&infoSize=full</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">{
+    "name": "The Unforged",
+    "images": {
+        "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703960135/FlameForge/weapons/weapon1703960146124.webp",
+        "original": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703960144/FlameForge/weapons/weapon1703960154411.png",
+        "awakened": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703960152/FlameForge/weapons/weapon1703960162873.png",
+        "gacha": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703960161/FlameForge/weapons/weapon1703960171815.webp"
+    },
+    "desc": "Capable of driving away evil spirits and wicked people alike, this edgeless claymore seems to possess divine might.",
+    "rarity": 5,
+    "source": [
+        "Event Wish Exclusive"
+    ],
+    "baseAtk": 45.94,
+    "subStatType": "Attack %",
+    "baseSubStat": "10.8",
+    "affix": "Golden Majesty",
+    "passive": "Increases Shield Strength by 20%. Scoring hits on opponents increases ATK by 4% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.",
+    "versionRelease": 1.1,
+    "region": "Liyue",
+    "family": "Claymore",
+    "wikiUrl": "https://genshin.honeyhunterworld.com/i_n12504/?lang=EN"
+}</code></pre>
+</div>
+
                 </div>
             </div>
         </div>
