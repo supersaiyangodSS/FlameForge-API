@@ -1035,6 +1035,92 @@
 }</code></pre>
 </div>
 
+
+<div id="fetch-all-weapons">
+<h2 class="font-semibold text-lg text-slate-700 mt-5 mb-2">Fetch All Weapons</h2>
+<div class="bg-teal-100 rounded-md text-teal-700 px-2 py-1 shadow-md inline-flex" role="alert"><p class="text-md font-bold font-mono">GET</p></div>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/weapons</code></pre>
+    
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">[
+    {
+        "name": "Fleuve Cendre Ferryman",
+        "images": {
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867805/FlameForge/weapons/weapon1703867813195.webp"
+        },
+        "desc": "A handy length of abandoned copper pipe that was once used as a weapon. It was famous — or infamous, depending — in some circles.",
+        "rarity": 4,
+        "baseAtk": 42.4,
+        "subStatType": "Energy Recharge %",
+        "family": "Sword"
+    },
+    {
+        "name": "Light of Foliar Incision",
+        "images": {
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867857/FlameForge/weapons/weapon1703867865942.webp"
+        },
+        "desc": "This gilded blade was made using precious white branches. It was once used to destroy countless poisons that infested the forest.",
+        "rarity": 5,
+        "baseAtk": 44.34,
+        "subStatType": "Critical Damage %",
+        "family": "Sword"
+    },
+    ...
+]</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Additional Data:</p>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/weapons?infoSize=full</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">[
+    {
+        "name": "Fleuve Cendre Ferryman",
+        "images": {
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867805/FlameForge/weapons/weapon1703867813195.webp",
+            "original": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867817/FlameForge/weapons/weapon1703867824838.png",
+            "awakened": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867829/FlameForge/weapons/weapon1703867837492.png",
+            "gacha": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867841/FlameForge/weapons/weapon1703867849178.webp"
+        },
+        "desc": "A handy length of abandoned copper pipe that was once used as a weapon. It was famous — or infamous, depending — in some circles.",
+        "rarity": 4,
+        "source": [
+            "Exchange at the Fontaine Fishing Association"
+        ],
+        "baseAtk": 42.4,
+        "subStatType": "Energy Recharge %",
+        "baseSubStat": "10",
+        "affix": "Ironbone",
+        "passive": "Increases Elemental Skill CRIT Rate by 8%. Additionally, increases Energy Recharge by 16% for 5s after using an Elemental Skill.",
+        "versionRelease": 4,
+        "region": "Fontaine",
+        "family": "Sword",
+        "wikiUrl": "https://genshin.honeyhunterworld.com/i_n11426/?lang=EN"
+    },
+    {
+        "name": "Light of Foliar Incision",
+        "images": {
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867857/FlameForge/weapons/weapon1703867865942.webp",
+            "original": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867867/FlameForge/weapons/weapon1703867875675.png",
+            "awakened": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867880/FlameForge/weapons/weapon1703867887327.png",
+            "gacha": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867891/FlameForge/weapons/weapon1703867899678.webp"
+        },
+        "desc": "This gilded blade was made using precious white branches. It was once used to destroy countless poisons that infested the forest.",
+        "rarity": 5,
+        "source": [
+            "Event Wish Exclusive"
+        ],
+        "baseAtk": 44.34,
+        "subStatType": "Critical Damage %",
+        "baseSubStat": "19.2",
+        "affix": "Whitemoon Bristle",
+        "passive": "CRIT Rate is increased by 4%. After Normal Attacks deal Elemental DMG, the Foliar Incision effect will be obtained, increasing DMG dealt by Normal Attacks and Elemental Skills by 120% of Elemental Mastery. This effect will disappear after 28 DMG instances or 12s. You can obtain Foliar Incision once every 12s.",
+        "versionRelease": 3.4,
+        "region": "Sumeru",
+        "family": "Sword",
+        "wikiUrl": "https://genshin.honeyhunterworld.com/i_n11512/?lang=EN"
+    },
+    ...
+]</code></pre>
+</div>
+
                 </div>
             </div>
         </div>
