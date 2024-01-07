@@ -794,7 +794,7 @@
     },
 }</code></pre>
     <p class="text-lg text-slate-700 mt-5">Additional Data:</p>
-    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/artifact?name=pale-flame&infoSize=full</code></pre>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/artifact?name=pale-flame?infoSize=full</code></pre>
     <p class="text-lg text-slate-700 mt-5">Payload :</p>
     <pre class="language-json"><code class="bg-slate-500">{
     "name": "Pale Flame",
@@ -830,6 +830,115 @@
         }
     }
 }</code></pre>
+</div>
+
+<div id="fetch-all-artifacts">
+<h2 class="font-semibold text-lg text-slate-700 mt-5 mb-2">Fetch All Artifacts</h2>
+<div class="bg-teal-100 rounded-md text-teal-700 px-2 py-1 shadow-md inline-flex" role="alert"><p class="text-md font-bold font-mono">GET</p></div>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/artifacts</code></pre>
+    
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">[
+    {
+        "name": "Song of Days Past",
+        "effect": {
+            "twoPc": "Healing Bonus +15%.",
+            "fourPc": "When the equipping character heals a party member, the Yearning effect will be created for 6s, which records the total amount of healing provided (including overflow healing). When the duration expires, the Yearning effect will be transformed into the \"Waves of Days Past\" effect: When your active party member hits an opponent with a Normal Attack, Charged Attack, Plunging Attack, Elemental Skill, or Elemental Burst, the DMG dealt will be increased by 8% of the total healing amount recorded by the Yearning effect. The \"Waves of Days Past\" effect is removed after it has taken effect 5 times or after 10s. A single instance of the Yearning effect can record up to 15,000 healing, and only a single instance can exist at once, but it can record the healing from multiple equipping characters. Equipping characters on standby can still trigger this effect."
+        },
+        "fullSet": {
+            "flower": {
+                "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703784997/FlameForge/artifacts/artifact1703785002905.webp"
+            }
+        },
+    },
+    {
+        "name": "Nighttime Whispers in the Echoing Woods",
+        "effect": {
+            "twoPc": "ATK +18%.",
+            "fourPc": "After using an Elemental Skill, gain a 20% Geo DMG Bonus for 10s. While under a shield granted by the Crystallize reaction, the above effect will be increased by 150%, and this additional increase disappears 1s after that shield is lost."
+        },
+        "fullSet": {
+            "flower": {
+                "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703785323/FlameForge/artifacts/artifact1703785329021.webp"
+            }
+        },
+    },
+    ...
+]</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Additional Data:</p>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/artifacts?infoSize=full</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">[
+    {
+        "name": "Song of Days Past",
+        "effect": {
+            "twoPc": "Healing Bonus +15%.",
+            "fourPc": "When the equipping character heals a party member, the Yearning effect will be created for 6s, which records the total amount of healing provided (including overflow healing). When the duration expires, the Yearning effect will be transformed into the \"Waves of Days Past\" effect: When your active party member hits an opponent with a Normal Attack, Charged Attack, Plunging Attack, Elemental Skill, or Elemental Burst, the DMG dealt will be increased by 8% of the total healing amount recorded by the Yearning effect. The \"Waves of Days Past\" effect is removed after it has taken effect 5 times or after 10s. A single instance of the Yearning effect can record up to 15,000 healing, and only a single instance can exist at once, but it can record the healing from multiple equipping characters. Equipping characters on standby can still trigger this effect."
+        },
+        "fullSet": {
+            "flower": {
+                "title": "Forgotten Oath of Days Past",
+                "piece": "Flower of Life",
+                "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703784997/FlameForge/artifacts/artifact1703785002905.webp"
+            },
+            "sands": {
+                "title": "Echoing Sound From Days Past",
+                "piece": "Sands of Eon",
+                "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703784973/FlameForge/artifacts/artifact1703784979690.webp"
+            },
+            "plume": {
+                "title": "Recollection of Days Past",
+                "piece": "Plume of Death",
+                "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703784956/FlameForge/artifacts/artifact1703784962014.webp"
+            },
+            "circlet": {
+                "title": "Poem Passed Down from Days Past",
+                "piece": "Circlet of Logos",
+                "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703784941/FlameForge/artifacts/artifact1703784947161.webp"
+            },
+            "goblet": {
+                "title": "Promised Dream of Days Past",
+                "piece": "Goblet of Eonothem",
+                "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703784925/FlameForge/artifacts/artifact1703784931435.webp"
+            }
+        },
+    },
+    {
+        "name": "Nighttime Whispers in the Echoing Woods",
+        "effect": {
+            "twoPc": "ATK +18%.",
+            "fourPc": "After using an Elemental Skill, gain a 20% Geo DMG Bonus for 10s. While under a shield granted by the Crystallize reaction, the above effect will be increased by 150%, and this additional increase disappears 1s after that shield is lost."
+        },
+        "fullSet": {
+            "flower": {
+                "title": "Selfless Floral Accessory",
+                "piece": "Flower of Life",
+                "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703785323/FlameForge/artifacts/artifact1703785329021.webp"
+            },
+            "sands": {
+                "title": "Faithful Hourglass",
+                "piece": "Sands of Eon",
+                "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703785302/FlameForge/artifacts/artifact1703785308702.webp"
+            },
+            "plume": {
+                "title": "Honest Quill",
+                "piece": "Plume of Death",
+                "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703785280/FlameForge/artifacts/artifact1703785286398.webp"
+            },
+            "circlet": {
+                "title": "Compassionate Ladies' Hat",
+                "piece": "Circlet of Logos",
+                "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703785266/FlameForge/artifacts/artifact1703785272764.webp"
+            },
+            "goblet": {
+                "title": "Magnanimous Ink Bottle",
+                "piece": "Goblet of Eonothem",
+                "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703785250/FlameForge/artifacts/artifact1703785256406.webp"
+            }
+        },
+    },
+    ...
+]</code></pre>
 </div>
 
                 </div>
