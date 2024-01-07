@@ -718,6 +718,63 @@
 ]</code></pre>
 </div>
 
+<div id="fetch-random-artifact">
+<h2 class="font-semibold text-lg text-slate-700 mt-5 mb-2">Fetch Random Artifact</h2>
+<div class="bg-teal-100 rounded-md text-teal-700 px-2 py-1 shadow-md inline-flex" role="alert"><p class="text-md font-bold font-mono">GET</p></div>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/artifact</code></pre>
+    
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">{
+    "name": "Pale Flame",
+    "effect": {
+        "twoPc": "Physical DMG is increased by 25%.",
+        "fourPc": "When an Elemental Skill hits an opponent, ATK is increased by 9% for 7s. This effect stacks up to 2 times and can be triggered once every 0.3s. Once 2 stacks are reached, the 2-set effect is increased by 100%."
+    },
+    "fullSet": {
+        "flower": {
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703792655/FlameForge/artifacts/artifact1703792661485.webp"
+        }
+    }
+}</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Additional Data:</p>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/artifact?infoSize=full</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">{
+    "name": "Pale Flame",
+    "effect": {
+        "twoPc": "Physical DMG is increased by 25%.",
+        "fourPc": "When an Elemental Skill hits an opponent, ATK is increased by 9% for 7s. This effect stacks up to 2 times and can be triggered once every 0.3s. Once 2 stacks are reached, the 2-set effect is increased by 100%."
+    },
+    "fullSet": {
+        "flower": {
+            "title": "Stainless Bloom",
+            "piece": "Flower of Life",
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703792655/FlameForge/artifacts/artifact1703792661485.webp"
+        },
+        "sands": {
+            "title": "Moment of Cessation",
+            "piece": "Sands of Eon",
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703792645/FlameForge/artifacts/artifact1703792651027.webp"
+        },
+        "plume": {
+            "title": "Wise Doctor's Pinion",
+            "piece": "Plume of Death",
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703792635/FlameForge/artifacts/artifact1703792641671.webp"
+        },
+        "circlet": {
+            "title": "Mocking Mask",
+            "piece": "Circlet of Logos",
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703792625/FlameForge/artifacts/artifact1703792631937.webp"
+        },
+        "goblet": {
+            "title": "Surpassing Cup",
+            "piece": "Goblet of Eonothem",
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703792613/FlameForge/artifacts/artifact1703792620245.webp"
+        }
+    }
+}</code></pre>
+</div>
+
                 </div>
             </div>
         </div>
