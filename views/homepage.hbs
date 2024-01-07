@@ -619,6 +619,105 @@
 </div>
 
 
+<div id="fetch-all-characters-by-weapon-type">
+<h2 class="font-semibold text-lg text-slate-700 mt-5 mb-2">Fetch All Characters by Weapon Type</h2>
+<div class="bg-teal-100 rounded-md text-teal-700 px-2 py-1 shadow-md inline-flex" role="alert"><p class="text-md font-bold font-mono">GET</p></div>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/characters?weapon=claymore</code></pre>
+    <p class="mt-2 leading-relaxed">Accepted weapon types are 
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">sword</span> ,
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">claymore</span> ,
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">polearm</span> ,
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">bow</span> ,
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">catalyst</span> ,
+    </p>
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">[
+    {
+        "name": "Navia",
+        "images": {
+            "profile": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703323303/FlameForge/characters/character1703323317960.png"
+        },
+        "desc": "The current President of Spina di Rosula, who is lovely, dutiful, and a great boss.",
+        "rarity": 5,
+        "vision": "Geo",
+        "weapon": "Claymore",
+        "region": [
+            "Fontaine"
+        ]
+    },
+    {
+        "name": "Freminet",
+        "images": {
+            "profile": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703324407/FlameForge/characters/character1703324421860.webp"
+        },
+        "desc": "A reserved young man who is well-versed in diving. Beneath his distant, icy demeanor lies a pure heart bereft of all flaws.",
+        "rarity": 4,
+        "vision": "Cryo",
+        "weapon": "Claymore",
+        "region": [
+            "Fontaine"
+        ]
+    },
+    ...
+]</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Additional Data:</p>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/characters?weapon=claymore&infoSize=full</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">[
+    {
+        "name": "Navia",
+        "images": {
+            "profile": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703323303/FlameForge/characters/character1703323317960.png",
+            "gacha": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703323231/FlameForge/characters/character1703323244487.png",
+            "card": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703323251/FlameForge/characters/character1703323263473.png"
+        },
+        "desc": "The current President of Spina di Rosula, who is lovely, dutiful, and a great boss.",
+        "rarity": 5,
+        "vision": "Geo",
+        "weapon": "Claymore",
+        "versionRelease": 4.3,
+        "birthday": "8/16",
+        "title": [
+            "Helm of the Radiant Rose"
+        ],
+        "constellation": "Rosa Multiflora",
+        "region": [
+            "Fontaine"
+        ],
+        "affiliation": [
+            "Spina di Rosula"
+        ],
+        "wikiUrl": "https://wiki.hoyolab.com/pc/genshin/entry/4576"
+    },
+    {
+        "name": "Freminet",
+        "images": {
+            "profile": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703324407/FlameForge/characters/character1703324421860.webp",
+            "gacha": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703324368/FlameForge/characters/character1703324382377.png",
+            "card": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703324384/FlameForge/characters/character1703324394296.png"
+        },
+        "desc": "A reserved young man who is well-versed in diving. Beneath his distant, icy demeanor lies a pure heart bereft of all flaws.",
+        "rarity": 4,
+        "vision": "Cryo",
+        "weapon": "Claymore",
+        "versionRelease": 4,
+        "birthday": "9/24",
+        "title": [
+            "Yearning for Unseen Depths"
+        ],
+        "constellation": "Automaton",
+        "region": [
+            "Fontaine"
+        ],
+        "affiliation": [
+            "Hotel Bouffes d'ete"
+        ],
+        "wikiUrl": "https://wiki.hoyolab.com/pc/genshin/entry/3964"
+    },
+    ...
+]</code></pre>
+</div>
+
                 </div>
             </div>
         </div>
