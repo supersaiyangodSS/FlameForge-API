@@ -118,7 +118,7 @@ const getAllCharacters = async (req: Request, res: Response) => {
                     ip: ip
                 })
                 const getCharacterByRegion = await Character.find({ region: { $in: [formattedInput] } }).select(
-                    '-_id -_v'
+                    '-_id -__v'
                 );
                 return res.send(getCharacterByRegion);
             }
