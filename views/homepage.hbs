@@ -1121,6 +1121,97 @@
 ]</code></pre>
 </div>
 
+<div id="fetch-all-weapons-by-rarity">
+<h2 class="font-semibold text-lg text-slate-700 mt-5 mb-2">Fetch All Weapons by Rarity</h2>
+<div class="bg-teal-100 rounded-md text-teal-700 px-2 py-1 shadow-md inline-flex" role="alert"><p class="text-md font-bold font-mono">GET</p></div>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/weapons?rarity=5</code></pre>
+    <p class="mt-2 leading-relaxed">Accepted rarity values are 
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">1</span> ,
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">2</span> ,
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">3</span> ,
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">4</span> ,
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">5</span> ,
+    </p>
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">[
+    {
+        "name": "Light of Foliar Incision",
+        "images": {
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867857/FlameForge/weapons/weapon1703867865942.webp"
+        },
+        "desc": "This gilded blade was made using precious white branches. It was once used to destroy countless poisons that infested the forest.",
+        "rarity": 5,
+        "baseAtk": 44.34,
+        "subStatType": "Critical Damage %",
+        "family": "Sword"
+    },
+    {
+        "name": "Splendor of Tranquil Waters",
+        "images": {
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867903/FlameForge/weapons/weapon1703867911540.webp"
+        },
+        "desc": "A scepter around which swirls pure water. In days long past, it once symbolized the highest authority over the seas.",
+        "rarity": 5,
+        "baseAtk": 44.34,
+        "subStatType": "Critical Damage %",
+        "family": "Sword"
+    },
+    ...
+]</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Additional Data:</p>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/weapons?rarity=5&infoSize=full</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">[
+    {
+        "name": "Light of Foliar Incision",
+        "images": {
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867857/FlameForge/weapons/weapon1703867865942.webp",
+            "original": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867867/FlameForge/weapons/weapon1703867875675.png",
+            "awakened": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867880/FlameForge/weapons/weapon1703867887327.png",
+            "gacha": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867891/FlameForge/weapons/weapon1703867899678.webp"
+        },
+        "desc": "This gilded blade was made using precious white branches. It was once used to destroy countless poisons that infested the forest.",
+        "rarity": 5,
+        "source": [
+            "Event Wish Exclusive"
+        ],
+        "baseAtk": 44.34,
+        "subStatType": "Critical Damage %",
+        "baseSubStat": "19.2",
+        "affix": "Whitemoon Bristle",
+        "passive": "CRIT Rate is increased by 4%. After Normal Attacks deal Elemental DMG, the Foliar Incision effect will be obtained, increasing DMG dealt by Normal Attacks and Elemental Skills by 120% of Elemental Mastery. This effect will disappear after 28 DMG instances or 12s. You can obtain Foliar Incision once every 12s.",
+        "versionRelease": 3.4,
+        "region": "Sumeru",
+        "family": "Sword",
+        "wikiUrl": "https://genshin.honeyhunterworld.com/i_n11512/?lang=EN"
+    },
+    {
+        "name": "Splendor of Tranquil Waters",
+        "images": {
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867903/FlameForge/weapons/weapon1703867911540.webp",
+            "original": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867912/FlameForge/weapons/weapon1703867920486.png",
+            "awakened": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867922/FlameForge/weapons/weapon1703867930499.png",
+            "gacha": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703867934/FlameForge/weapons/weapon1703867942677.webp"
+        },
+        "desc": "A scepter around which swirls pure water. In days long past, it once symbolized the highest authority over the seas.",
+        "rarity": 5,
+        "source": [
+            "Event Wish Exclusive"
+        ],
+        "baseAtk": 44.34,
+        "subStatType": "Critical Damage %",
+        "baseSubStat": "19.2",
+        "affix": "Dawn and Dusk by the Lake",
+        "passive": "When the equipping character's current HP increases or decreases, Elemental Skill DMG dealt will be increased by 8% for 6s. Max 3 stacks. This effect can be triggered once every 0.2s. When other party members' current HP increases or decreases, the equipping character's Max HP will be increased by 14% for 6s. Max 2 stacks. This effect can be triggered once every 0.2s. The aforementioned effects can be triggered even if the wielder is off-field.",
+        "versionRelease": 4.2,
+        "region": "Fontaine",
+        "family": "Sword",
+        "wikiUrl": "https://genshin.honeyhunterworld.com/i_n11513/?lang=EN"
+    },
+    ...
+]</code></pre>
+</div>
+
                 </div>
             </div>
         </div>
