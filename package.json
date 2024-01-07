@@ -5,6 +5,7 @@
   "type": "module",
   "main": "./dist/app.js",
   "scripts": {
+    "serve": "concurrently \"npm run server\" \"npm run build\"",
     "start": "node ./dist/server.js",
     "server": "nodemon ./dist/server.js -e js,ts,hbs",
     "build": "npx tailwindcss -i ./src/styles/input.css -o ./public/css/style.css --watch",
@@ -27,6 +28,7 @@
     "bcrypt": "^5.1.1",
     "browser-sync": "^2.29.3",
     "cloudinary": "^1.41.0",
+    "concurrently": "^8.2.2",
     "connect-flash": "^0.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
