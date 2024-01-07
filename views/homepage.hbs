@@ -1212,6 +1212,97 @@
 ]</code></pre>
 </div>
 
+<div id="fetch-all-weapon-by-type">
+<h2 class="font-semibold text-lg text-slate-700 mt-5 mb-2">Fetch All Weapon by Type</h2>
+<div class="bg-teal-100 rounded-md text-teal-700 px-2 py-1 shadow-md inline-flex" role="alert"><p class="text-md font-bold font-mono">GET</p></div>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/weapons?family=claymore</code></pre>
+    <p class="mt-2 leading-relaxed">Accepted weapon types are 
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">sword</span> ,
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">claymore</span> ,
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">polearm</span> ,
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">bow</span> ,
+    <span class="border-gray-300 border-2 text-emerald-700 rounded-sm px-1 font-mono">catalyst</span> ,
+    </p>
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">[
+    {
+        "name": "Beacon of the Reed Sea",
+        "images": {
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703952876/FlameForge/weapons/weapon1703952885467.webp"
+        },
+        "desc": "A large, flat-tipped sword designed in to fit as the weapon of an ancient king or some ceremonial instrument.",
+        "rarity": 5,
+        "baseAtk": 45.94,
+        "subStatType": "Critical Rate %",
+        "family": "Claymore"
+    },
+    {
+        "name": "Blackcliff Slasher",
+        "images": {
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703952940/FlameForge/weapons/weapon1703952950004.webp"
+        },
+        "desc": "An extremely sturdy greatsword from the Blackcliff Forge. It has a dark crimson color from the blade to pommel.",
+        "rarity": 4,
+        "baseAtk": 42.4,
+        "subStatType": "Critical Damage %",
+        "family": "Claymore"
+    },
+    ...
+]</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Additional Data:</p>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/weapons?family=claymore&infoSize=full</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">[
+    {
+        "name": "Beacon of the Reed Sea",
+        "images": {
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703952876/FlameForge/weapons/weapon1703952885467.webp",
+            "original": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703952895/FlameForge/weapons/weapon1703952905223.png",
+            "awakened": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703952911/FlameForge/weapons/weapon1703952919667.png",
+            "gacha": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703952922/FlameForge/weapons/weapon1703952933162.webp"
+        },
+        "desc": "A large, flat-tipped sword designed in to fit as the weapon of an ancient king or some ceremonial instrument.",
+        "rarity": 5,
+        "source": [
+            "Event Wish Exclusive"
+        ],
+        "baseAtk": 45.94,
+        "subStatType": "Critical Rate %",
+        "baseSubStat": "7.2",
+        "affix": "Desert Watch",
+        "passive": "After the character's Elemental Skill hits an opponent, their ATK will be increased by 20% for 8s. After the character takes DMG, their ATK will be increased by 20% for 8s. The 2 aforementioned effects can be triggered even when the character is not on the field. Additionally, when not protected by a shield, the character's Max HP will be increased by 32%.",
+        "versionRelease": 3.5,
+        "region": "Sumeru",
+        "family": "Claymore",
+        "wikiUrl": "https://genshin.honeyhunterworld.com/i_n12511/?lang=EN"
+    },
+    {
+        "name": "Blackcliff Slasher",
+        "images": {
+            "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703952940/FlameForge/weapons/weapon1703952950004.webp",
+            "original": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703952949/FlameForge/weapons/weapon1703952959432.png",
+            "awakened": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703952961/FlameForge/weapons/weapon1703952969907.png",
+            "gacha": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703952971/FlameForge/weapons/weapon1703952981915.webp"
+        },
+        "desc": "An extremely sturdy greatsword from the Blackcliff Forge. It has a dark crimson color from the blade to pommel.",
+        "rarity": 4,
+        "source": [
+            "Paimon's Bargains - Starglitter Exchange"
+        ],
+        "baseAtk": 42.4,
+        "subStatType": "Critical Damage %",
+        "baseSubStat": "12",
+        "affix": "Press the Advantage",
+        "passive": "After defeating an opponent, ATK is increased by 12% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.",
+        "versionRelease": 1,
+        "region": "Liyue",
+        "family": "Claymore",
+        "wikiUrl": "https://genshin.honeyhunterworld.com/i_n12408/?lang=EN"
+    },
+    ...
+]</code></pre>
+</div>
+
                 </div>
             </div>
         </div>
