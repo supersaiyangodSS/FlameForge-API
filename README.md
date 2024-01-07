@@ -50,15 +50,14 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
 
     [4, 5]
 
-
-
-
 ## Get all characters by weapon type
 
     GET /api/characters?weapon=claymore
     GET /api/characters?weapon=claymore&infoSize=full
 
     [sword, claymore, polearm, bow, catalyst]
+
+
 
 # Artifacts
 
@@ -72,10 +71,15 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
     GET /api/artifact?name=crimson-witch-of-flames
     GET /api/artifact?name=crimson-witch-of-flames?infoSize=full
 
+
+
+
 ## Get all artifacts
 
     GET /api/artifacts
     GET /api/artifacts?infoSize=full
+
+
 
 # Character
 
