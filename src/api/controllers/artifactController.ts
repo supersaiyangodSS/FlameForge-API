@@ -45,24 +45,26 @@ const getSingleArtifact = async (req: Request, res: Response) => {
                 { $sample: { size: 1 } },
                 { $project: { __v: 0, _id: 0 } }
             ])
+            const artifactObj = fullArtifactData[0];
             apiLogger.verbose('API call successful', {
                 endpoint: `/api/artifact&infoSize=full`,
                 method: 'GET',
                 ip: ip
             })
-            return res.json(fullArtifactData);
+            return res.json(artifactObj);
         }
 
         const minimalArtifactData = await Artifact.aggregate([
             { $sample: { size: 1 } },
             { $project: { __v: 0, _id: 0, 'fullSet.flower.title': 0, 'fullSet.flower.piece': 0, 'fullSet.sands': 0, 'fullSet.plume': 0, 'fullSet.circlet': 0, 'fullSet.goblet': 0 } }
         ])
+        const artifactObj = minimalArtifactData[0];
         apiLogger.verbose('API call successful', {
             endpoint: `/api/artifact`,
             method: 'GET',
             ip: ip
         })
-        return res.json(minimalArtifactData)
+        return res.json(artifactObj)
 
     } catch (error) {
         if (error.reason.code === 'ERR_ASSERTION') {
