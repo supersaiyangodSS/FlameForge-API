@@ -941,6 +941,54 @@
 ]</code></pre>
 </div>
 
+<div id="fetch-random-weapon">
+<h2 class="font-semibold text-lg text-slate-700 mt-5 mb-2">Fetch Random Weapon</h2>
+<div class="bg-teal-100 rounded-md text-teal-700 px-2 py-1 shadow-md inline-flex" role="alert"><p class="text-md font-bold font-mono">GET</p></div>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/weapon</code></pre>
+    
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">{
+    "name": "Sacrificial Greatsword",
+    "desc": "A ceremonial greatsword that has become petrified over time. The trinkets on it are still visible. It grants the wielder the power to withstand the winds of time.",
+    "rarity": 4,
+    "baseAtk": 43.73,
+    "subStatType": "Energy Recharge %",
+    "family": "Claymore",
+    "images": {
+        "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703956986/FlameForge/weapons/weapon1703956997404.webp",
+        "original": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703956996/FlameForge/weapons/weapon1703957006470.png",
+        "awakened": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703957006/FlameForge/weapons/weapon1703957016681.png",
+        "gacha": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703957016/FlameForge/weapons/weapon1703957026428.webp"
+    }
+}</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Additional Data:</p>
+    <pre class="language-http"><code class="bg-slate-500">http://localhost:4000/api/weapon?infoSize=full</code></pre>
+    <p class="text-lg text-slate-700 mt-5">Payload :</p>
+    <pre class="language-json"><code class="bg-slate-500">{
+    "name": "Sacrificial Greatsword",
+    "images": {
+        "icon": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703956986/FlameForge/weapons/weapon1703956997404.webp",
+        "original": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703956996/FlameForge/weapons/weapon1703957006470.png",
+        "awakened": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703957006/FlameForge/weapons/weapon1703957016681.png",
+        "gacha": "http://res.cloudinary.com/dusbvc8ox/image/upload/v1703957016/FlameForge/weapons/weapon1703957026428.webp"
+    },
+    "desc": "A ceremonial greatsword that has become petrified over time. The trinkets on it are still visible. It grants the wielder the power to withstand the winds of time.",
+    "rarity": 4,
+    "source": [
+        "Wish"
+    ],
+    "baseAtk": 43.73,
+    "subStatType": "Energy Recharge %",
+    "baseSubStat": "6.67",
+    "affix": "Composed",
+    "passive": "After damaging an opponent with an Elemental Skill, the skill has a 40% chance to end its own CD. Can only occur once every 30s.",
+    "versionRelease": 1,
+    "region": "Mondstadt",
+    "family": "Claymore",
+    "wikiUrl": "https://genshin.honeyhunterworld.com/i_n12403/?lang=EN"
+}</code></pre>
+</div>
+
                 </div>
             </div>
         </div>
