@@ -11,3 +11,32 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
 - run ```npm install```
 - run ```npm run make```
 - run ```npm run start```
+
+- [] home
+
+# Characters
+
+- [] fetch random character
+- [] fetch single character by name
+
+- [] fetch all characters
+- [] fetch all characters by vision
+- [] fetch all characters by region
+- [] fetch all characters by rarity
+- [] fetch all characters by weapon type
+
+# Artifacts
+
+- [] fetch random artifact
+- [] fetch artifact by name
+
+- [] fetch all artifacts
+
+# Weapons
+
+- [] fetch random weapon
+- [] fetch weapon by name
+
+- [] fetch all weapons
+- [] fetch all weapons by rarity
+- [] fetch all weapons by type
