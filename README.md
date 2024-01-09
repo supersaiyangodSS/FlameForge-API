@@ -4,6 +4,17 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
 
 ## Table of Contents
 
+1. [Features](#features)
+    1. [API](#api)
+    2. [API Dashboard](#api-dashboard)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Documentation](#documentation)
+5. [Contributing](#contributing)
+6. [License](#license)
+7. [Acknowledgement](#acknowledgement)
+8. [Demo & Screenshots](#demo-and-screenshots)
+
 ## Features
 
 ### API
@@ -40,6 +51,4 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
 
 ## Acknowledgement
 
-## Contact 
-
-## Demo or Screenshots 
+## Demo and Screenshots 
