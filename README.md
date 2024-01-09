@@ -36,8 +36,8 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
 * User Authentication and Authorization
 * Email verification
 
-### User:
-
+#### User:
+- 
     - Upload Character info as JSON
     - Upload Weapon info as JSON
     - Upload Artifact info as JSON
