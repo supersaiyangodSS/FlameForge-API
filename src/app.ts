@@ -18,6 +18,7 @@ import { eq } from './helpers/helper.js';
 import cors from 'cors';
 import helmet from 'helmet';
 import cloudinary from 'cloudinary';
+import { routeLogger } from './helpers/logger.js';
 connectDB();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -26,6 +27,7 @@ const app : Express = express();
 const viewsPath = join(__dirname, "../views");
 const layoutPath = join(__dirname, "../views/layouts");
 const partialsPath = join(__dirname, "../views/partials");
+const htmlPath = join(__dirname, '../html');
 const secretString = randomBytes(20).toString('hex');
 // const secret = process.env.SECRET || secretString;
 const secret = 'js';
@@ -130,9 +132,13 @@ export function checkAuthAdmin (req: Request, res: Response, next: NextFunction)
 }
 
 app.get('/', ( req : Request , res : Response) => {
-    res.render('homepage', {
-        title: "Homepage"
-    });
+    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    res.sendFile(join(htmlPath, 'homepage.html'));
+    routeLogger.verbose('route call successful', {
+        endpoint: `/`,
+        method: 'GET',
+        ip: ip
+    })
 });
 
 app.get('/report', ( req : Request , res : Response) => {
