@@ -6,14 +6,14 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
 
 1. [Features](#features)
     1. [API](#api)
-    2. [API Dashboard](#api-dashboard)
+    2. [Dashboard](#dashboard)
 2. [Installation](#installation)
 3. [Usage](#usage)
 4. [Documentation](#documentation)
 5. [Contributing](#contributing)
 6. [License](#license)
 7. [Acknowledgement](#acknowledgement)
-8. [Demo & Screenshots](#demo-and-screenshots)
+8. [Demo and Screenshots](#demo-and-screenshots)
 
 ## Features
 
@@ -31,7 +31,26 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
 
 * Retrieve detailed information about artifacts including 2pc, 4pc effects and images.
 
-### API Dashboard
+### Dashboard
+
+* User Authentication and Authorization
+* Email verification
+
+### User:
+
+    - Upload Character info as JSON
+    - Upload Weapon info as JSON
+    - Upload Artifact info as JSON
+    - Upload images to the server
+    - User account deletion
+
+#### Admin:
+
+- All features available to Users, plus:
+    - Export characters, weapons and artifacts as JSON
+    - Edit characters, weapons and artifacts information
+    - Delete characters, weapons and artifacts information
+    - User information
 
 ## Installation
 
