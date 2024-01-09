@@ -12,8 +12,9 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
 4. [Documentation](#documentation)
 5. [Contributing](#contributing)
 6. [License](#license)
-7. [Acknowledgement](#acknowledgement)
-8. [Demo and Screenshots](#demo-and-screenshots)
+7. [Contact](#contact)
+8. [Acknowledgement](#acknowledgement)
+9. [Demo and Screenshots](#demo-and-screenshots)
 
 ## Features
 
@@ -52,15 +53,38 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
     - Delete characters, weapons and artifacts information
     - User information
 
+## Prerequisites
+Before setting up and using the FlameForge API and Dashboard, ensure that you have the following prerequisites:
+
+* Node.js and npm:
+    - Install Node.js and npm on your machine. You can download them from nodejs.org.
+<br>
+
+* MongoDB:
+    - Set up a MongoDB instance or use MongoDB Atlas. Obtain the connection URL for configuring the API.
+<br>
+
+* Git:
+    - Install Git for version control. You can download it from git-scm.com.
+<br>
+
+* Cloudinary Account (Optional):
+    - If you plan to use Cloudinary for image management, create a Cloudinary account and obtain the Cloudinary API credentials.
+
+Now that you have the necessary prerequisites, you're ready to proceed with the installation and usage of the FlameForge API and Dashboard.
+
 ## Installation
 
 1. Clone Repository or Download Zip:
     - Clone this repository using git or download the zip file, If downloading, extract the contents after completion.
 <br>
+
 2. Rename Environment File:
     - Locate the file named `sample.env` and rename it to `.env`.
 <br>
+
 3. Edit the `.env` file and customize the following parameters:
+
     ```
     # Set your preferred port (default is 3000 if not provided)
     PORT=
@@ -129,10 +153,29 @@ These installation steps, ensure a comprehensive setup of the application. If yo
 
 ## Documentation
 
+For comprehensive guidance on utilizing FlameForge API endpoints, including parameter details, response formats, and example payloads, please refer to our API Usage [Documentation](https://localhost:4000).
+<!-- add actual link -->
+
+For information on installation, configuration, and initial setup of FlameForge API and Dashboard, please follow the instructions under the [Installation](#installation) section.
+
 ## Contributing
 
 ## License
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+## Contact
+
+Vedant - vedantsapalkar99@gmail.com
+Project Link: https://github.com/supersaiyangodSS/FlameForge-API
 
 ## Acknowledgement
+
+I would like to express my sincere appreciation to myself (Vedant), the sole creator and developer of FlameForge API. This project wouldn't have been possible without the dedication, hard work, and passion invested in every aspect, from conception to implementation.
+
+Your contributions and feedback are invaluable, shaping the growth of this project. Here's to a thriving and collaborative future for FlameForge API.
+
+Thank you for being a part of this journey.
+
+-Vedant
 
 ## Demo and Screenshots 
