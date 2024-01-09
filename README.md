@@ -37,7 +37,7 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
 * Email verification
 
 #### User:
-- 
+- User limited features:
     - Upload Character info as JSON
     - Upload Weapon info as JSON
     - Upload Artifact info as JSON
@@ -54,11 +54,76 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
 
 ## Installation
 
-- Clone this repository or download the zip [Extract the zip after downloading]
-- Open terminal in the root folder
-- run ```npm install```
-- run ```npm run make```
-- run ```npm run start```
+1. Clone Repository or Download Zip:
+    - Clone this repository using git or download the zip file, If downloading, extract the contents after completion.
+<br>
+2. Rename Environment File:
+    - Locate the file named `sample.env` and rename it to `.env`.
+<br>
+3. Edit the `.env` file and customize the following parameters:
+    ```
+    # Set your preferred port (default is 3000 if not provided)
+    PORT=
+
+    # Provide the URL for your MongoDB/Atlas database
+    DB=
+
+    # Secret string for session cookies (leave empty if not needed)
+    SECRET=         
+
+    # Your email ID for automated verification mails (optional, only required for email verification)
+    SERVER_EMAIL=
+
+    # Enter your email password for automated verification mails (leave empty if not needed)
+    SERVER_EMAIL_SECRET=
+
+    # Your own email address (optional, used for specific features like notifications)
+    MY_EMAIL=
+
+    # Cloudinary cloud name for image storage (optional, used for image upload features)
+    CLOUDINARY_CLOUD_NAME=
+
+    # Cloudinary API key for image storage (optional, used for image upload features)
+    CLOUDINARY_API_KEY=
+
+    # Cloudinary API secret for image storage (optional, used for image upload features)
+    CLOUDINARY_API_SECRET=
+    ```
+<br>
+
+4. Option Terminal:
+    - Navigate to the root folder of the project in your terminal.
+<br>
+
+5. Install Dependencies:
+    - Execute the following command to install all required modules:
+    ```
+    npm install
+    ```
+<br>
+
+6. Transpile TypeScript Code:
+    - Execute the following command to transpile all TypeScript code to JavaScript
+    ```
+    npm run make
+    ```
+<br>
+
+7. Build Tailwind:
+    - For tailwind development, you can run the optional command to build tailwind css
+    ```
+    npm run build
+    ```
+<br>
+
+8. Start the Server:
+    - Finally, start the server with the following command:
+    ```
+    npm run start
+    ```
+
+These installation steps, ensure a comprehensive setup of the application. If you have any questions or encounter issues, feel free to reach out for assistance.
+
 
 ## Usage
 
