@@ -133,7 +133,9 @@ export function checkAuthAdmin (req: Request, res: Response, next: NextFunction)
 
 app.get('/', ( req : Request , res : Response) => {
     const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    res.sendFile(join(htmlPath, 'homepage.html'));
+    res.render('homepage', {
+        title: "Documentation"
+    });
     routeLogger.verbose('route call successful', {
         endpoint: `/`,
         method: 'GET',
