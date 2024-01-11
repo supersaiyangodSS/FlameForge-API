@@ -8,13 +8,12 @@ This is an unofficial Genshin Impact API that delivers comprehensive data on cha
     1. [API](#api)
     2. [Dashboard](#dashboard)
 2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Documentation](#documentation)
-5. [Contributing](#contributing)
-6. [License](#license)
-7. [Contact](#contact)
-8. [Acknowledgement](#acknowledgement)
-9. [Demo and Screenshots](#demo-and-screenshots)
+3. [Documentation](#documentation)
+4. [Contributing](#contributing)
+5. [License](#license)
+6. [Contact](#contact)
+7. [Acknowledgement](#acknowledgement)
+8. [Demo and Screenshots](#demo-and-screenshots)
 
 ## Features
 
@@ -148,9 +147,6 @@ Now that you have the necessary prerequisites, you're ready to proceed with the 
 
 These installation steps, ensure a comprehensive setup of the application. If you have any questions or encounter issues, feel free to reach out for assistance.
 
-
-## Usage
-
 ## Documentation
 
 For comprehensive guidance on utilizing FlameForge API endpoints, including parameter details, response formats, and example payloads, please refer to our API Usage [Documentation](https://localhost:4000).
@@ -159,6 +155,16 @@ For comprehensive guidance on utilizing FlameForge API endpoints, including para
 For information on installation, configuration, and initial setup of FlameForge API and Dashboard, please follow the instructions under the [Installation](#installation) section.
 
 ## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
+
+1. Forke the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m "add some AmazingFeature`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a pull request.
 
 ## License
 Distributed under the MIT License. See `LICENSE.txt` for more information.
