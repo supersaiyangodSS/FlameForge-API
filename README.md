@@ -2,12 +2,6 @@
 
 This is an unofficial Genshin Impact API that delivers comprehensive data on characters, weapons, and artifacts. Built with Node.js, Express, and MongoDB, this API provides developers with seamless access to essential Genshin Impact information. Explore character details, weapon stats, and artifact attributes, all within the framework of a robust and user-friendly API.
 
-[![Contributors][contributors-shield]][https://github.com/supersaiyangodSS/FlameForge-API]
-[![Forks][forks-shield]][https://github.com/supersaiyangodSS/FlameForge-API]
-[![Stargazers][stars-shield]][https://github.com/supersaiyangodSS/FlameForge-API]
-[![Issues][issues-shield]][https://github.com/supersaiyangodSS/FlameForge-API]
-[![MIT License][license-shield]][https://github.com/supersaiyangodSS/FlameForge-API]
-
 ## Table of Contents
 
 1. [Features](#features)
