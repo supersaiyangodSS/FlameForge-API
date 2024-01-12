@@ -207,4 +207,4 @@ Thank you for being a part of this journey.
 
 ## Changelog
 
-You can find the detailed changelog [here](https://github.com/supersaiyangodSS/FlameForge-API/changelog.md)
+You can find the detailed changelog [here](https://github.com/supersaiyangodSS/FlameForge-API/blob/main/changelog.md)
