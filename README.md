@@ -14,6 +14,8 @@
 [product-screenshot]: images/screenshot.png
 <div align="center">
 
+<img src="https://raw.githubusercontent.com/supersaiyangodSS/FlameForge-API/main/public/assets/images/ult.webp">
+
 <h2 style="font-size: 32px;"> FlameForge API </h2>
 
 <p>This is an unofficial Genshin Impact API that delivers comprehensive data on characters, weapons, and artifacts. Built with Node.js, Express, and MongoDB, this API provides developers with seamless access to essential Genshin Impact information. Explore character details, weapon stats, and artifact attributes, all within the framework of a robust and user-friendly API.</p>
