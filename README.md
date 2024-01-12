@@ -1,15 +1,4 @@
 
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-
 <div align="center">
 
 [![GitHub stars](https://img.shields.io/github/stars/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/stargazers)&nbsp;&nbsp;&nbsp;&nbsp;
@@ -42,6 +31,7 @@
 6. [Contact](#contact)
 7. [Acknowledgement](#acknowledgement)
 8. [Demo and Screenshots](#demo-and-screenshots)
+9. [Changelog](#changelog)
 
 ## Features
 
@@ -213,3 +203,8 @@ Thank you for being a part of this journey.
 -Vedant
 
 ## Demo and Screenshots 
+
+
+## Changelog
+
+You can find the detailed changelog [here](https://github.com/supersaiyangodSS/FlameForge-API/changelog.md)
