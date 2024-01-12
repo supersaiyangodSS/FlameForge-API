@@ -65,8 +65,8 @@
 <br>
 
 - Bug fix:
-    - fixed array response for single character response
-    - fixed array response for single weapon response
+    - fixed array response for single character
+    - fixed array response for single weapon
     
 ### Dashboard
 
