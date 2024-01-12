@@ -9,10 +9,13 @@
 [issues-url]: https://github.com/othneildrew/Best-README-Template/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+
 <div align="center">
+
+[![GitHub stars](https://img.shields.io/github/stars/your-username/your-repository.svg)](https://github.com/supersaiyangodSS/FlameForge-API)
+[![GitHub forks](https://img.shields.io/github/forks/your-username/your-repository.svg)](https://github.com/supersaiyangodSS/FlameForge-API)
+[![GitHub contributors](https://img.shields.io/github/contributors/your-username/your-repository.svg)](https://github.com/supersaiyangodSS/FlameForge-APIs)
+
 
 <img src="https://raw.githubusercontent.com/supersaiyangodSS/FlameForge-API/main/public/assets/images/ult.webp">
 
