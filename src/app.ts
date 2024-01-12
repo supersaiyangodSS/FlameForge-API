@@ -94,7 +94,7 @@ cloudinary.v2.config({
   secure: true,
 });
 
-export const checkAuth = ( req : Request , res : Response, next : NextFunction ) => {
+export function checkAuth ( req: Request, res: Response, next: NextFunction ) {
     if ( req.session && req.session.user ) {
         next();
     }
