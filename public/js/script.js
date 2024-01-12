@@ -336,35 +336,43 @@ deleteArtifactBtns.forEach((btn) => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const searchBar = document.getElementById('your-search-bar-id');
 
-searchBar.addEventListener('input', () => {
-    const searchTerm = searchBar.value.toLowerCase();
+    const searchFunction = () => {
+        const searchTerm = searchBar.value.toLowerCase();
 
-    const filterItems = (items, type, noItemFoundElement) => {
-        let found = false;
+        const filterItems = (items, type, noItemFoundElement) => {
+            let found = false;
 
-        items.forEach(item => {
-            const itemName = item.querySelector(`.${type}-title`).textContent.toLowerCase();
+            items.forEach(item => {
+                const itemName = item.querySelector(`.${type}-title`).textContent.toLowerCase();
 
-            if (itemName.includes(searchTerm)) {
-                item.style.display = 'flex';
-                found = true;
+                if (itemName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                    found = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            if (found) {
+                noItemFoundElement.classList.add('s-hide');
             } else {
-                item.style.display = 'none';
+                noItemFoundElement.classList.remove('s-hide');
             }
-        });
+        };
 
-        if (found) {
-            noItemFoundElement.classList.add('s-hide');
-        } else {
-            noItemFoundElement.classList.remove('s-hide');
-        }
+        filterItems(document.querySelectorAll('.character-list'), 'character', document.getElementById('no-characters'));
+        filterItems(document.querySelectorAll('.weapon-list'), 'weapon', document.getElementById('no-weapons'));
+        filterItems(document.querySelectorAll('.artifact-list'), 'artifact', document.getElementById('no-artifacts'));
     };
-
-    filterItems(document.querySelectorAll('.character-list'), 'character', document.getElementById('no-characters'));
-    filterItems(document.querySelectorAll('.weapon-list'), 'weapon', document.getElementById('no-weapons'));
-    filterItems(document.querySelectorAll('.artifact-list'), 'artifact', document.getElementById('no-artifacts'));
+    if (searchBar) {
+        searchBar.addEventListener('input', searchFunction);
+    }
 });
+
+
 
 const showUploadBtn = () => {
     const fileInputCharacter = document.getElementById('uploadFile');
