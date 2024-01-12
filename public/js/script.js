@@ -340,48 +340,30 @@ deleteArtifactBtns.forEach((btn) => {
 searchBar.addEventListener('input', () => {
     const searchTerm = searchBar.value.toLowerCase();
 
-    const characterItems = document.querySelectorAll('.character-list');
-    characterItems.forEach(item => {
-        const characterName = item.querySelector('.character-title').textContent.toLowerCase();
+    const filterItems = (items, type, noItemFoundElement) => {
+        let found = false;
 
-        if (characterName.includes(searchTerm)) {
-            item.style.display = 'flex';
-            isCharacters.classList.add('s-hide');
-        }
-        else {
-            item.style.display = 'none';
-            isCharacters.classList.remove('s-hide');
-        }
-    });
+        items.forEach(item => {
+            const itemName = item.querySelector(`.${type}-title`).textContent.toLowerCase();
 
-    const weaponItems = document.querySelectorAll('.weapon-list');
-    weaponItems.forEach(item => {
-        const weaponName = item.querySelector('.weapon-title').textContent.toLowerCase();
+            if (itemName.includes(searchTerm)) {
+                item.style.display = 'flex';
+                found = true;
+            } else {
+                item.style.display = 'none';
+            }
+        });
 
-        if (weaponName.includes(searchTerm)) {
-            item.style.display = 'flex';
-            isWeapons.classList.add('s-hide');
+        if (found) {
+            noItemFoundElement.classList.add('s-hide');
+        } else {
+            noItemFoundElement.classList.remove('s-hide');
         }
-        else {
-            item.style.display = 'none';
-            isWeapons.classList.remove('s-hide');
-        }
-    });
+    };
 
-    const artifactItems = document.querySelectorAll('.artifact-list');
-    artifactItems.forEach(item => {
-        const artifactName = item.querySelector('.artifact-title').textContent.toLowerCase();
-
-        if (artifactName.includes(searchTerm)) {
-            item.style.display = 'flex';
-            isArtifacts.classList.add('s-hide');
-        }
-        else {
-            item.style.display = 'none';
-            isArtifacts.classList.remove('s-hide');
-        }
-    });
-
+    filterItems(document.querySelectorAll('.character-list'), 'character', document.getElementById('no-characters'));
+    filterItems(document.querySelectorAll('.weapon-list'), 'weapon', document.getElementById('no-weapons'));
+    filterItems(document.querySelectorAll('.artifact-list'), 'artifact', document.getElementById('no-artifacts'));
 });
 
 const showUploadBtn = () => {
