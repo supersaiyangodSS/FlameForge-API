@@ -27,10 +27,8 @@ const app : Express = express();
 const viewsPath = join(__dirname, "../views");
 const layoutPath = join(__dirname, "../views/layouts");
 const partialsPath = join(__dirname, "../views/partials");
-const htmlPath = join(__dirname, '../html');
 const secretString = randomBytes(20).toString('hex');
-// const secret = process.env.SECRET || secretString;
-const secret = 'js';
+const secret = process.env.SECRET || secretString;
 const oneDay = 1000 * 60 * 60 * 24;
 
 const hbs = create({
@@ -59,17 +57,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(sessions);
 app.use(flash());
 app.use(cors({
-    origin: "http://localhost:4000"
+    origin: "http://localhost:4000" // REPLACE
 }))
 app.use(express.static('public'));
 app.use(helmet())
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'", 'code.jquery.com', 'cdnjs.cloudflare.com', 'cdn.jsdeliver.net', '*'], // FIXME:
+        scriptSrc: ["'self'", "'unsafe-inline'", 'code.jquery.com', 'cdnjs.cloudflare.com', 'cdn.jsdelivr.net'],
         styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com', 'cdnjs.cloudflare.com'],
-        // fontSrc: ["'self'", 'fonts.gstatic.com', 'cdnjs.cloudflare.com'],
-        imgSrc: ["'self'", 'data:', '*'], // change to main images src for api and assets
+        imgSrc: ["'self'", 'data:', 'res.cloudinary.com'],
         connectSrc: ["'self'", 'fonts.googleapis.com', 'cdnjs.cloudflare.com'],
     }
 }));
@@ -97,28 +94,12 @@ cloudinary.v2.config({
   secure: true,
 });
 
-// export const checkAuth = ( req : Request , res : Response, next : NextFunction ) => {
-//     if ( req.session && req.session.user ) {
-//         next();
-//     }
-//     else {
-//         res.redirect('/sign-in');
-//     }
-// }
-
-export function checkAuth ( req: Request, res: Response, next: NextFunction ) {
-    req.session.user = 'SSJ'; //temp
-    req.session.role = 'admin' //temp
-    req.session.uid = '656cb6377894b27a8cd470cc' //temp
-    // req.session.role = 'user' //temp
-    if (req.session && req.session.user) {
-        console.log(`   user: ${req.session.user}
-    role: ${req.session.role}
-    uid: ${req.session.uid}`);
+export const checkAuth = ( req : Request , res : Response, next : NextFunction ) => {
+    if ( req.session && req.session.user ) {
         next();
     }
     else {
-        res.redirect('sign-in');
+        res.redirect('/sign-in');
     }
 }
 
