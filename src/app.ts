@@ -8,7 +8,7 @@ import dashboardRouter from "./routes/dashboardRouter.js";
 import miscRouter from './routes/miscRouter.js';
 import apiRouter from './api/routes/apiRouter.js';
 import { logger } from './helpers/logger.js';
-import exphbs, { create } from 'express-handlebars';
+import { create } from 'express-handlebars';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { randomBytes } from 'crypto';
