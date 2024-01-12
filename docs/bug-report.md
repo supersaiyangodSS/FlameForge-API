@@ -1,10 +1,3 @@
----
-name: "Bug report \U0001F41E"
-about: Create a bug report
-labels: bug
-
----
-
 | name | about | label |
 | ---- | ----- | ----- |
 | Bug report | Create a bug report | bug |
