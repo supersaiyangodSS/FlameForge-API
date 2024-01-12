@@ -1,133 +1,134 @@
 # Finalizing API Dashboard
-- [*] connection db file
-- [*] login router
-- [*] register router
-- [*] logger file
-- [*] characters
-- [*] weapon
-- [*] artifacts
-- [*] sort characters demo + syntax
-- [*] sort weapons demo + syntax
-- [*] sort artifacts demo + syntax
-- [*] character edit
-- [*] logout confirmation modal
-- [*] handle logout request
-- [*] delete account option
-- [*] delete account enter email option + modal
-- [*] delete account confirmation model
-- [*] handle delete account request
-- [*] change base to baseAtk
-- [*] change subStat to subStatType
-- [*] add sub baseSubStat
-- [*] add affix
-- [*] name
-- [*] desc
-- [*] rarity
-- [*] source
-- [*] baseAtk
-- [*] subStatType
-- [*] baseSubStat
-- [*] affix
-- [*] passive
-- [*] versionRelease
-- [*] region
-- [*] family
-    - [*] images
-        - [*] icon
-        - [*] original
-        - [*] awakened
-        - [*] gacha
-- [*] wikiUrl
-- [*] fix syntax and demo code
-- [*] logout modal finish
-- [*] clean all link:css
-- [*] make version partial
-- [*] fix weapon icon box
-- [*] responsive
-    - [*] characters
-    - [*] weapons
-    - [*] artifacts
-    - [*] edit character
-    - [*] edit weapon
-    - [*] edit artifact
-    - [*] register page
-    - [*] login page
-- [*] remove music functionality
-- [*] add delete modal
-- [*] clean redundant HBS code
-- [*] 404 page
-- [*] add count to the admin panel
-- [*] fix /delete route
-- [*] finalize all controllers
-    - [*] getDashboard
-    - [*] deleteUser
-    - [*] uploadCharacterFile
-    - [*] uploadWeaponFile
-    - [*] uploadArtifactFile
-    - [*] logoutUser
-    - [*] editCharacter
-    - [*] editWeapon
-    - [*] editArtifact
-    - [*] saveCharacter
-    - [*] saveWeapon
-    - [*] saveArtifact
-    - [*] deleteCharacter
-    - [*] deleteWeapon
-    - [*] deleteArtifact
-    - [*] downloadCharacters
-    - [*] downloadWeapons
-    - [*] downloadArtifacts
-- [*] error /report route
-- [*] anemo vision checkup
-- [*] dashboard or dashboard/
-- [*] fix xiao profiles
-- [*] javascript validation for report form 
-- [*] add search bar to the admin panel
-- [*] add artifact validation to router
-- [*] admin checkAuth
-- [*] add checkAuth and checkAuthAdmin to routes
-- [*] clear redundant assets
-- [*] change assets to /assets
-- [*] check all routers
-    - [*] register
-    - [*] misc
-    - [*] login
-    - [*] dashboard
-- [*] show/hide password
-    - [*] register
-    - [*] login
-- [*] finilize scripts
-    - [*] editArtifact
-    - [*] editCharacter
-    - [*] editWeapon
-    - [*] login
-    - [*] register
-    - [*] report
-    - [*] script
-- [*] registration page invite only access
-- [*] add logs to all request and actions
-- [*] add limiter to all actions
-- [*] convert png to webp
-- [*] helmet
-- [*] CORS
-- [*] add image upload limiter
-- [*] add image uplaod feature
-    - [*] characters
-    - [*] weapons
-    - [*] artifacts
-- [*] feed data
-    - [*] characters
-    - [*] weapons
-    - [*] artifacts
-- [*] vision/gnosis fix
-- [*] iterable JSON file error handle
-- [*] json upload error handling
-- [*] hoyowiki count scraper
-    - [*] characters
-    - [*] weapons
-    - [*] artifacts
+- [x] connection db file
+- [x] login router
+- [x] register router
+- [x] logger file
+- [x] characters
+- [x] weapon
+- [x] artifacts
+- [x] sort characters demo + syntax
+- [x] sort weapons demo + syntax
+- [x] sort artifacts demo + syntax
+- [x] character edit
+- [x] logout confirmation modal
+- [x] handle logout request
+- [x] delete account option
+- [x] delete account enter email option + modal
+- [x] delete account confirmation model
+- [x] handle delete account request
+- [x] change base to baseAtk
+- [x] change subStat to subStatType
+- [x] add sub baseSubStat
+- [x] add affix
+- [x] name
+- [x] desc
+- [x] rarity
+- [x] source
+- [x] baseAtk
+- [x] subStatType
+- [x] baseSubStat
+- [x] affix
+- [x] passive
+- [x] versionRelease
+- [x] region
+- [x] family
+    - [x] images
+        - [x] icon
+        - [x] original
+        - [x] awakened
+        - [x] gacha
+- [x] wikiUrl
+- [x] fix syntax and demo code
+- [x] logout modal finish
+- [x] clean all link:css
+- [x] make version partial
+- [x] fix weapon icon box
+- [x] responsive
+    - [x] characters
+    - [x] weapons
+    - [x] artifacts
+    - [x] edit character
+    - [x] edit weapon
+    - [x] edit artifact
+    - [x] register page
+    - [x] login page
+- [x] remove music functionality
+- [x] add delete modal
+- [x] clean redundant HBS code
+- [x] 404 page
+- [x] add count to the admin panel
+- [x] fix /delete route
+- [x] finalize all controllers
+    - [x] getDashboard
+    - [x] deleteUser
+    - [x] uploadCharacterFile
+    - [x] uploadWeaponFile
+    - [x] uploadArtifactFile
+    - [x] logoutUser
+    - [x] editCharacter
+    - [x] editWeapon
+    - [x] editArtifact
+    - [x] saveCharacter
+    - [x] saveWeapon
+    - [x] saveArtifact
+    - [x] deleteCharacter
+    - [x] deleteWeapon
+    - [x] deleteArtifact
+    - [x] downloadCharacters
+    - [x] downloadWeapons
+    - [x] downloadArtifacts
+- [x] error /report route
+- [x] anemo vision checkup
+- [x] dashboard or dashboard/
+- [x] fix xiao profiles
+- [x] javascript validation for report form 
+- [x] add search bar to the admin panel
+- [x] add artifact validation to router
+- [x] admin checkAuth
+- [x] add checkAuth and checkAuthAdmin to routes
+- [x] clear redundant assets
+- [x] change assets to /assets
+- [x] check all routers
+    - [x] register
+    - [x] misc
+    - [x] login
+    - [x] dashboard
+- [x] show/hide password
+    - [x] register
+    - [x] login
+- [x] finilize scripts
+    - [x] editArtifact
+    - [x] editCharacter
+    - [x] editWeapon
+    - [x] login
+    - [x] register
+    - [x] report
+    - [x] script
+- [x] registration page invite only access
+- [x] add logs to all request and actions
+- [x] add limiter to all actions
+- [x] convert png to webp
+- [x] helmet
+- [x] CORS
+- [x] add image upload limiter
+- [x] add image uplaod feature
+    - [x] characters
+    - [x] weapons
+    - [x] artifacts
+- [x] feed data
+    - [x] characters
+    - [x] weapons
+    - [x] artifacts
+- [x] vision/gnosis fix
+- [x] iterable JSON file error handle
+- [x] json upload error handling
+- [x] hoyowiki count scraper
+    - [x] characters
+    - [x] weapons
+    - [x] artifacts
+- [] fix no characters & weapons found bug in javscript
 - [] recheck app.ts
 - [] README.md
     - [] demo and screenshots
-    - [*] contributing
-    - [*] usage 
+    - [x] contributing
+    - [x] usage 
