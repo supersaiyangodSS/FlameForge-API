@@ -12,10 +12,10 @@
 
 <div align="center">
 
-[![GitHub stars](https://img.shields.io/github/stars/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/stargazers)&nbsp;&nbsp;
-[![GitHub forks](https://img.shields.io/github/forks/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/network)
-[![GitHub contributors](https://img.shields.io/github/contributors/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/graphs/contributors)
-[![GitHub issues](https://img.shields.io/github/issues/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/issues)
+[![GitHub stars](https://img.shields.io/github/stars/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/stargazers)&nbsp;&nbsp;&nbsp;&nbsp;
+[![GitHub forks](https://img.shields.io/github/forks/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/network)&nbsp;&nbsp;&nbsp;&nbsp;
+[![GitHub contributors](https://img.shields.io/github/contributors/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/graphs/contributors)&nbsp;&nbsp;&nbsp;&nbsp;
+[![GitHub issues](https://img.shields.io/github/issues/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/issues)&nbsp;&nbsp;&nbsp;&nbsp;
 [![GitHub license](https://img.shields.io/github/license/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/blob/main/LICENSE)
 
 
