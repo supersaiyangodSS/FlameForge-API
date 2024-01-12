@@ -12,7 +12,7 @@
 
 <div align="center">
 
-[![GitHub stars](https://img.shields.io/github/stars/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/stargazers)&nbsp;&nbsp;
 [![GitHub forks](https://img.shields.io/github/forks/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/network)
 [![GitHub contributors](https://img.shields.io/github/contributors/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/graphs/contributors)
 [![GitHub issues](https://img.shields.io/github/issues/supersaiyangodSS/FlameForge-API.svg)](https://github.com/supersaiyangodSS/FlameForge-API/issues)
