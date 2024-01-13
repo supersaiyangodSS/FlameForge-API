@@ -55,7 +55,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(sessions);
 app.use(flash());
 app.use(cors({
-    origin: "http://localhost:4000" // REPLACE
+    origin: "https://cyber-alder-ant/"
 }));
 app.use(express.static('public'));
 app.use(helmet());
