@@ -1,7 +1,7 @@
 import { config } from 'dotenv';
 config();
 import { connect } from 'mongoose';
-const mongoUri = process.env.DB_URL || 'mongodb://127.0.0.1:27017/API'; // TODO: Remove Later
+const mongoUri = process.env.DB || '';
 const connectDB = async () => {
     try {
         await connect(mongoUri);
