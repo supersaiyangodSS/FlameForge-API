@@ -1,6 +1,6 @@
 import { config } from 'dotenv';
 config();
-import { connect, mongo } from 'mongoose';
+import { connect } from 'mongoose';
 
 const mongoUri : string = process.env.DB || ''; 
 
