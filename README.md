@@ -137,6 +137,11 @@ Now that you have the necessary prerequisites, you're ready to proceed with the 
 <br>
 
 5. Install Dependencies:
+    - Execute the following command to install typescript and nodemon:
+    (If you have already installed TypeScript and nodemon globally, you can skip the following command.)
+    ```
+    npm install typescript, nodemon -g
+    ```
     - Execute the following command to install all required modules:
     ```
     npm install
@@ -178,11 +183,12 @@ Contributions are what make the open source community such an amazing place to l
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
 
-1. Forke the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m "add some AmazingFeature`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a pull request.
+1. Fork the project, specifically from the development branch.
+2. Clone your forked repository to your local machine.
+3. Create a new branch for your feature (`git checkout -b feature/AmazingFeature`).
+4. Implement your changes and commit them (`git commit -m "Add some AmazingFeature"`).
+5. Push your changes to the branch (`git push origin feature/AmazingFeature`).
+6. Open a pull request, ensuring that the base branch is set to the development branch.
 
 ## License
 Distributed under the MIT License. See `LICENSE.txt` for more information.
