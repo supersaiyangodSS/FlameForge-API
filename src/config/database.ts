@@ -1,8 +1,9 @@
 import { config } from 'dotenv';
 config();
-import { connect } from 'mongoose';
+import { connect, mongo } from 'mongoose';
 
-const mongoUri : string = process.env.DB_URL || 'mongodb://127.0.0.1:27017/API'; // TODO: Remove Later
+const mongoUri : string = process.env.DB || ''; 
+
 
 const connectDB = async () => {
     try {
