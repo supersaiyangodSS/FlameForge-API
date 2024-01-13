@@ -167,7 +167,7 @@ These installation steps, ensure a comprehensive setup of the application. If yo
 
 ## Documentation
 
-For comprehensive guidance on utilizing FlameForge API endpoints, including parameter details, response formats, and example payloads, please refer to our API Usage [Documentation](https://localhost:4000).
+For comprehensive guidance on utilizing FlameForge API endpoints, including parameter details, response formats, and example payloads, please refer to our API Usage [Documentation](https://flameforge.glitch.me/dashboard).
 <!-- add actual link -->
 
 For information on installation, configuration, and initial setup of FlameForge API and Dashboard, please follow the instructions under the [Installation](#installation) section.
@@ -190,7 +190,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 Vedant - vedantsapalkar99@gmail.com <br>
-Project Link: https://github.com/supersaiyangodSS/FlameForge-API
+Project Link: https://github.com/supersaiyangodSS/FlameForge-API <br>
+Main Link: https://flameforge.glitch.me/
 
 ## Acknowledgement
 
