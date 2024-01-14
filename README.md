@@ -211,6 +211,21 @@ Thank you for being a part of this journey.
 
 ## Demo and Screenshots 
 
+![register](https://i.postimg.cc/qvrdTv9j/dashboard-register.png)
+![login](https://i.postimg.cc/zGkYX1N5/dashboard-login.png)
+![character](https://i.postimg.cc/W4KWs9dT/dashboard-characters.png)
+![artifact](https://i.postimg.cc/MGX32kK9/dashboard-weapons.png)
+![weapon](https://i.postimg.cc/MGX32kK9/dashboard-weapons.png)
+![imgUploader](https://i.postimg.cc/KjtsqnvF/dashboard-image-uploader.png)
+![adminControl](https://i.postimg.cc/sfW8gRP8/dashboard-admin-control.png)
+![editCharacter](https://i.postimg.cc/dVwgfSyf/admin-control-edit-character.png)
+![editWeapon](https://i.postimg.cc/3JgPnHdp/admin-control-edit-weapon.png)
+![editArtifact](https://i.postimg.cc/v86Rxny0/admin-control-edit-artifacts.png)
+![home](https://i.postimg.cc/4NT0KFB3/dashboard-home.png)
+![people](https://i.postimg.cc/jdVpHjdt/dashboard-people.png)
+![settings](https://i.postimg.cc/Px9BFXWb/dashboard-settings.png)
+![report](https://i.postimg.cc/3JmHVvbk/report.png)
+![documentation](https://i.postimg.cc/43NkYF4c/documentation.png)
 
 ## Changelog
 
