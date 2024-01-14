@@ -336,9 +336,6 @@ deleteArtifactBtns.forEach((btn) => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const searchBar = document.getElementById('your-search-bar-id');
-
     const searchFunction = () => {
         const searchTerm = searchBar.value.toLowerCase();
 
@@ -367,10 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filterItems(document.querySelectorAll('.weapon-list'), 'weapon', document.getElementById('no-weapons'));
         filterItems(document.querySelectorAll('.artifact-list'), 'artifact', document.getElementById('no-artifacts'));
     };
-    if (searchBar) {
         searchBar.addEventListener('input', searchFunction);
-    }
-});
 
 
 
