@@ -364,7 +364,10 @@ deleteArtifactBtns.forEach((btn) => {
         filterItems(document.querySelectorAll('.weapon-list'), 'weapon', document.getElementById('no-weapons'));
         filterItems(document.querySelectorAll('.artifact-list'), 'artifact', document.getElementById('no-artifacts'));
     };
+    if (searchBar) {
+
         searchBar.addEventListener('input', searchFunction);
+    }
 
 
 

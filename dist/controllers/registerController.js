@@ -41,7 +41,7 @@ const addUser = async (req, res) => {
     const errors = validationResult(req);
     const { firstName, lastName, email, username, password } = req.body;
     const verificationToken = generateToken();
-    const verificationLink = `http://localhost:4000/sign-up/verify?token=${verificationToken}`;
+    const verificationLink = `https://5f75-45-115-89-2.ngrok-free.app/sign-up/verify?token=${verificationToken}`;
     if (!errors.isEmpty()) {
         const errorOne = errors.array()[0].msg;
         req.flash('error', errorOne);
