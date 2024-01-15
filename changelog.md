@@ -92,3 +92,5 @@
     - fixed logout modal UI
     - fixed no character/weapon found for search results
     - fixed CSP for images and scripts
+    - fixed loading issue for user role
+    - fixed link for email verification
