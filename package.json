@@ -11,7 +11,7 @@
     "watch-tailwind": "npx tailwindcss -i ./src/styles/input.css -o ./public/css/style.css --watch",
     "build-tailwind": "npx tailwindcss -i ./src/styles/input.css -o ./public/css/style.css",
     "ts-watch": "tsc -w",
-    "build-typescript": "tsc",
+    "build-typescript": "npx tsc",
     "build": "npm run build-tailwind && npm run build-typescript"
   },
   "keywords": [
