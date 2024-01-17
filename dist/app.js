@@ -19,6 +19,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import cloudinary from 'cloudinary';
 import { routeLogger } from './helpers/logger.js';
+import MongoStore from 'connect-mongo';
 connectDB();
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = dirname(__filename);
@@ -46,6 +47,7 @@ const sessions = session({
         httpOnly: false,
         maxAge: oneDay
     },
+    store: MongoStore.create({ mongoUrl: process.env.DB }),
     saveUninitialized: true
 });
 app.engine('hbs', hbs.engine);
