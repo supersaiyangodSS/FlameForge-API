@@ -12,7 +12,7 @@
     "build-tailwind": "npx tailwindcss -i ./src/styles/input.css -o ./public/css/style.css",
     "ts-watch": "tsc -w",
     "build-typescript": "npx tsc",
-    "build": "npm run build-tailwind && npm run build-typescript && npm run start"
+    "build": "npm run build-tailwind && npm run build-typescript"
   },
   "keywords": [
     "Genshin Impact",
