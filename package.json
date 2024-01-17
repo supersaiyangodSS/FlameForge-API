@@ -2,9 +2,6 @@
   "name": "genshin-impact-api-unofficial",
   "version": "1.0.0",
   "description": "",
-  "engines": {
-    "node": "16.14.2"
-  },
   "type": "module",
   "main": "./dist/app.js",
   "scripts": {
