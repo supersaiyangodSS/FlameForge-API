@@ -4,7 +4,7 @@ logs/
 /public/css/style.css
 .idea
 todo.md
-/views/partials/dashboard/*
-/views/dashboard.hbs
-/views/edit*
-/views/home.hbs
+views/partials/dashboard
+views/dashboard.hbs
+views/edit*
+views/home.hbs
