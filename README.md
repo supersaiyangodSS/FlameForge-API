@@ -179,6 +179,17 @@ For information on installation, configuration, and initial setup of FlameForge 
 
 ## Contributing
 
+### Important Notice: Changes in File Structure
+
+We have made updates to the file structure in the latest versions of the repository. As a result, the `.hbs` files are no longer included in the main codebase. If you require these files for the dashboard frontend, you can find them in the GitHub release section for version v1.0.0.
+
+#### Instructions for Dashboard Frontend Compatibility:
+Download the code for version v1.0.0 from the [GitHub releases](https://github.com/supersaiyangodSS/FlameForge-API/releases/tag/v1.0.0).
+Locate the .hbs files in the v1.0.0 release and copy them.
+Paste these files into the corresponding directories of any newer version you wish to use.
+
+Note: Make sure to check the .gitignore file to understand where these .hbs files should be placed in the updated versions. This information is crucial to ensure the correct functioning of the dashboard frontend.
+
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
