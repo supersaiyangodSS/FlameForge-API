@@ -8,3 +8,4 @@ views/partials/dashboard
 views/dashboard.hbs
 views/edit*
 views/home.hbs
+dist/
